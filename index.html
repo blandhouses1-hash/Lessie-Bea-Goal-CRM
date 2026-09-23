@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,41 +101,61 @@
     color:#664d03;
   }
 
-  /* GOAL ACHIEVED BANNER */
   .goal-banner{
-    margin: 12px 0 16px;
-    padding: 14px 16px;
-    border-radius: 14px;
-    background: #e91e63;
-    color: #fff;
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-    box-shadow: 0 8px 18px rgba(0,0,0,.18);
+    margin:12px 0 16px;
+    padding:14px 16px;
+    border-radius:14px;
+    background:#e91e63;
+    color:#fff;
+    font-weight:bold;
+    font-size:20px;
+    text-align:center;
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
   }
 
-  .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
-  @media (max-width:820px){ .grid2{ grid-template-columns: 1fr; } }
+  .grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
 
-  /* Locked Daily Focus Card */
+  @media (max-width:820px){
+    .grid2{ grid-template-columns:1fr; }
+    table, thead, tbody, th, td, tr{ display:block; }
+    thead{ display:none; }
+    td{ border-bottom:1px solid #ddd; }
+    .right{ text-align:left; }
+  }
+
   .focus-card{
-    border: 2px solid rgba(233,30,99,.18);
-    box-shadow: 0 10px 22px rgba(0,0,0,.10);
+    border:2px solid rgba(233,30,99,.18);
+    box-shadow:0 10px 22px rgba(0,0,0,.10);
   }
-  .focus-card h2{
-    margin-bottom: 6px;
-  }
+
+  .focus-card h2{ margin-bottom:6px; }
+
   .focus-line{
-    margin: 10px 0;
-    padding: 10px 12px;
-    border-radius: 12px;
-    border: 1px solid #eee;
-    background: #fff;
+    margin:10px 0;
+    padding:10px 12px;
+    border-radius:12px;
+    border:1px solid #eee;
+    background:#fff;
+  }
+
+  .goal-category{
+    margin-top:20px;
+    margin-bottom:8px;
+    color:#e91e63;
+    font-size:19px;
+    font-weight:bold;
+    border-bottom:1px solid #eee;
+    padding-bottom:6px;
   }
 </style>
 </head>
 
 <body>
+
 <header>
   <h1>Lessie Bea Goal CRM 🙏</h1>
   <p>12-Week Focus • One Active Goal at a Time • All Goals Visible</p>
@@ -150,47 +171,60 @@
 
 <div class="container">
 
-  <!-- VISION -->
+  <!-- =========================
+       VISION
+  ========================== -->
   <div id="vision" class="section active">
 
-    <!-- ✅ LOCKED DAILY FOCUS CARD (TOP) -->
     <div class="card focus-card">
+
       <h2>🗓️ Daily Focus Plan (Mon–Fri)</h2>
-      <p class="muted" style="margin-top:6px;"><strong>Total time:</strong> ~5–6 hours</p>
+
+      <p class="muted" style="margin-top:6px;">
+        <strong>Total time:</strong> ~5–6 hours
+      </p>
 
       <div class="focus-line">
-        🏡 <strong>Lessie Bea CRM</strong> — <span class="muted">Real Estate / Business</span><br>
+        🏡 <strong>Lessie Bea CRM</strong> —
+        <span class="muted">Real Estate / Business</span><br>
         <strong>3 hours</strong> — work leads, follow up, move deals
       </div>
 
       <div class="focus-line">
-        💪 <strong>Lessie Bea Health CRM</strong> — <span class="muted">Health & Fitness</span><br>
+        💪 <strong>Lessie Bea Health CRM</strong> —
+        <span class="muted">Health & Fitness</span><br>
         <strong>45–60 minutes</strong> — workout & track daily health
       </div>
 
       <div class="focus-line">
-        🧠 <strong>Lessie Bea Goal CRM</strong> — <span class="muted">Vision & 12-Week Focus</span><br>
+        🧠 <strong>Lessie Bea Goal CRM</strong> —
+        <span class="muted">Vision & 12-Week Focus</span><br>
         <strong>1 hour</strong> — focus on my current goal
       </div>
 
-      <p class="muted" style="margin:10px 0 0;"><strong>Weekends:</strong> Optional • Review only if needed • Rest without guilt</p>
+      <p class="muted" style="margin:10px 0 0;">
+        <strong>Weekends:</strong> Optional • Review only if needed • Rest without guilt
+      </p>
+
     </div>
 
     <div class="card">
 
-      <!-- Banner shown when goal achieved (weight or completed goal) -->
       <div id="goalBanner" class="goal-banner" style="display:none;">
         🏁 GOAL ACHIEVED! 🎉
         <div class="small" id="goalBannerText" style="margin-top:6px;"></div>
       </div>
 
       <h2>My Future Self 🙏</h2>
+
       <p class="muted">
-        I pray to get closer to GOD.I want to see myself at the best version of me. God please help me stay
-        dedicated, focused, and disciplined to achieve my goals and dream life.
+        I pray to get closer to GOD. I want to see myself at the best version of me.
+        God please help me stay dedicated, focused, and disciplined to achieve my goals
+        and dream life.
       </p>
 
       <h3>My Daily Standard</h3>
+
       <ul>
         <li>Wake up at <strong>6:00 AM</strong></li>
         <li>Read my Bible, pray, and seek God first</li>
@@ -199,6 +233,7 @@
       </ul>
 
       <h3>Health Goals (Checkbox Only)</h3>
+
       <label style="font-weight:normal;">
         <input type="checkbox" id="w175">
         I reached my <strong>1st goal weight: 175 lbs</strong>
@@ -212,38 +247,47 @@
       </label>
 
       <h3>My Businesses & Life Goals</h3>
-      <ul>
-        <li><strong>Real Estate:</strong> Minimum 2 deals per month</li>
-        <li><strong>Buy a Home & Build Rental Properties</strong></li>
-        <li><strong>Fix Teeth</strong></li>
-        <li><strong>GED</strong></li>
-        <li>Bookkeeping Business</li>
-        <li>Trucking Business</li>
-        <li>Healthcare Business</li>
-        <li>Cornstarch Business</li>
-        <li>YouTube Channels</li>
-        <li>Courses: Real Estate & Becoming an Author</li>
-      </ul>
+
+      <div id="visionGoals"></div>
 
       <div class="notice">
-        <strong>12-Week Rule:</strong> I only work on <strong>ONE</strong> main goal at a time.
-        All others are parked.
+        <strong>12-Week Rule:</strong>
+        I only work on <strong>ONE</strong> main goal at a time.
+        All other goals are parked.
       </div>
+
     </div>
   </div>
 
-  <!-- ALL GOALS -->
+
+  <!-- =========================
+       ALL GOALS
+  ========================== -->
   <div id="goals" class="section">
+
     <div class="card">
+
       <h2>All Goals</h2>
 
+      <p class="muted">
+        Keep every dream visible. Choose only ONE goal to actively work on
+        during each 12-week cycle.
+      </p>
+
       <label>Goal Title</label>
-      <input id="newGoalTitle" placeholder="Example: Fix Teeth • 12 Week Focus" />
+
+      <input
+        id="newGoalTitle"
+        placeholder="Example: Become an Author • 12 Week Focus"
+      />
 
       <div class="grid2">
+
         <div>
           <label>Category</label>
+
           <select id="newGoalCategory">
+
             <option value="Real Estate">Real Estate</option>
             <option value="Housing / Rentals">Housing / Rentals</option>
             <option value="GED">GED</option>
@@ -253,616 +297,2343 @@
             <option value="Credit">Credit</option>
             <option value="CDL / Class A">CDL / Class A</option>
             <option value="Medical Assistant">Medical Assistant</option>
+            <option value="House Inspector">House Inspector</option>
+            <option value="Dispatcher">Dispatcher</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Independent Living Homes">Independent Living Homes</option>
+            <option value="Dropshipping">Dropshipping</option>
+            <option value="Author">Author</option>
+            <option value="Planners">Planners</option>
+            <option value="Products">Products</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Websites & Apps">Websites & Apps</option>
             <option value="YouTube">YouTube</option>
             <option value="Courses">Courses</option>
+
           </select>
         </div>
 
         <div>
+
           <label>Goal Type</label>
+
           <select id="newGoalType">
-            <option value="standard">Standard 12-Week Goal</option>
-            <option value="realestate_outcome">Real Estate (Outcome Only: 2 deals/month)</option>
+
+            <option value="standard">
+              Standard 12-Week Goal
+            </option>
+
+            <option value="realestate_outcome">
+              Real Estate (Outcome Only: 2 deals/month)
+            </option>
+
           </select>
+
         </div>
+
       </div>
 
       <label>Notes (optional)</label>
-      <textarea id="newGoalNotes" rows="3" placeholder="Add your note/prayer/why this matters..."></textarea>
+
+      <textarea
+        id="newGoalNotes"
+        rows="3"
+        placeholder="Add your note/prayer/why this matters..."
+      ></textarea>
 
       <div class="btnRow">
-        <button class="btn" onclick="addGoal()">+ Add Goal</button>
-        <button class="btn ghost" onclick="addDefaultGoals()">Add My Default Goals (One-time)</button>
+
+        <button class="btn" onclick="addGoal()">
+          + Add Goal
+        </button>
+
+        <button class="btn ghost" onclick="addDefaultGoals()">
+          Add My Default Goals
+        </button>
+
       </div>
+
     </div>
 
+
     <div class="card">
+
       <h3 style="margin-top:0;">Goal List</h3>
+
       <div id="goalsTableWrap"></div>
+
     </div>
+
   </div>
 
-  <!-- ACTIVE GOAL -->
+
+  <!-- =========================
+       ACTIVE GOAL
+  ========================== -->
   <div id="active" class="section">
+
     <div class="card">
+
       <h2>Active 12-Week Goal</h2>
+
       <div id="activeGoalWrap"></div>
+
     </div>
+
   </div>
 
-  <!-- PROGRESS -->
+
+  <!-- =========================
+       PROGRESS
+  ========================== -->
   <div id="progress" class="section">
+
     <div class="card">
+
       <h2>Progress</h2>
+
       <div id="progressWrap"></div>
+
     </div>
+
   </div>
 
 </div>
 
-<!-- Confetti canvas -->
+
+<!-- CONFETTI -->
 <canvas id="confettiCanvas" style="
-  position: fixed; inset: 0; width: 100%; height: 100%;
-  pointer-events: none; z-index: 9999; display:none;"></canvas>
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:9999;
+display:none;">
+</canvas>
+
 
 <script>
+
 /* =========================
    STORAGE
 ========================= */
-const STORE_KEY = "lessieBeaGoalCRM_final_v2_withDailyFocus";
+
+const STORE_KEY =
+"lessieBeaGoalCRM_final_v3_12week_goals";
+
+
+function defaultStore(){
+
+  return {
+
+    goals: [],
+
+    activeGoalId: null,
+
+    weight:{
+      w175:false,
+      w155:false,
+      w175Date:"",
+      w155Date:""
+    }
+
+  };
+
+}
+
 
 function loadStore(){
+
   try{
-    return JSON.parse(localStorage.getItem(STORE_KEY)) || {
-      goals: [],
-      activeGoalId: null,
-      weight: {
-        w175: false,
-        w155: false,
-        w175Date: "",
-        w155Date: ""
+
+    const saved =
+      JSON.parse(localStorage.getItem(STORE_KEY));
+
+    if(saved){
+
+      if(!saved.goals) saved.goals = [];
+
+      if(!saved.weight){
+
+        saved.weight = {
+          w175:false,
+          w155:false,
+          w175Date:"",
+          w155Date:""
+        };
+
       }
-    };
-  }catch(e){
-    return {
-      goals: [],
-      activeGoalId: null,
-      weight: { w175:false, w155:false, w175Date:"", w155Date:"" }
-    };
-  }
+
+      if(!("activeGoalId" in saved)){
+        saved.activeGoalId = null;
+      }
+
+      return saved;
+
+    }
+
+  }catch(e){}
+
+  return defaultStore();
+
 }
+
+
 let store = loadStore();
-function saveStore(){ localStorage.setItem(STORE_KEY, JSON.stringify(store)); }
+
+
+function saveStore(){
+
+  localStorage.setItem(
+    STORE_KEY,
+    JSON.stringify(store)
+  );
+
+}
+
 
 /* =========================
    HELPERS
 ========================= */
+
 function uid(){
-  return "g_" + Math.random().toString(16).slice(2) + "_" + Date.now().toString(16);
+
+  return "g_" +
+    Math.random().toString(16).slice(2) +
+    "_" +
+    Date.now().toString(16);
+
 }
-function todayISO(){ return new Date().toISOString().split("T")[0]; }
+
+
+function todayISO(){
+
+  return new Date()
+    .toISOString()
+    .split("T")[0];
+
+}
+
+
 function addDays(dateStr, days){
-  const d = new Date(dateStr + "T00:00:00");
+
+  const d =
+    new Date(dateStr + "T00:00:00");
+
   d.setDate(d.getDate() + days);
+
   return d.toISOString().split("T")[0];
+
 }
-function getGoalById(id){ return store.goals.find(g => g.id === id) || null; }
+
+
+function getGoalById(id){
+
+  return store.goals.find(
+    g => g.id === id
+  ) || null;
+
+}
+
 
 function escapeHtml(str){
+
   return String(str || "")
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;")
     .replaceAll("'","&#039;");
+
 }
+
 
 function statusPill(status){
-  if(status === "active") return `<span class="pill active">Active</span>`;
-  if(status === "done") return `<span class="pill done">Completed</span>`;
+
+  if(status === "active")
+    return `<span class="pill active">Active</span>`;
+
+  if(status === "done")
+    return `<span class="pill done">Completed</span>`;
+
   return `<span class="pill parked">Parked</span>`;
+
 }
 
-/* =========================
-   NAV
-========================= */
-function showSection(id){
-  document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  renderAll();
-}
 
-/* =========================
-   DEFAULT GOALS
-========================= */
-function addDefaultGoals(){
-  const defaults = [
-    { title: "Real Estate • Minimum 2 Deals/Month (Outcome Only)", category: "Real Estate", type: "realestate_outcome",
-      notes: "Outcome only here. All daily actions live in my Real Estate CRM." },
-    { title: "GED • 12 Week Focus", category: "GED", type: "standard", notes: "" },
-    { title: "Fix Teeth • 12 Week Focus", category: "Fix Teeth", type: "standard", notes: "" },
-    { title: "Buy a Home & Rental Properties • 12 Week Focus", category: "Housing / Rentals", type: "standard", notes: "" },
-    { title: "Bookkeeping Business • 12 Week Focus", category: "Business", type: "standard", notes: "" },
-    { title: "Credit Repaired • 12 Week Focus", category: "Credit", type: "standard", notes: "" },
-    { title: "Medical Assistant • 12 Week Focus", category: "Medical Assistant", type: "standard", notes: "" },
-    { title: "Class A (CDL) • 12 Week Focus", category: "CDL / Class A", type: "standard", notes: "" },
-    { title: "Cornstarch Business • 12 Week Focus", category: "Business", type: "standard", notes: "" },
-    { title: "YouTube Channels • 12 Week Focus", category: "YouTube", type: "standard", notes: "Upload schedule stays consistent." },
-    { title: "Courses • Real Estate Course + Author Course", category: "Courses", type: "standard", notes: "" }
-  ];
+function formatPrettyDate(d){
 
-  const existing = new Set(store.goals.map(g => g.title.toLowerCase()));
-  let added = 0;
-
-  defaults.forEach(d => {
-    if(existing.has(d.title.toLowerCase())) return;
-
-    const g = {
-      id: uid(),
-      title: d.title,
-      category: d.category,
-      type: d.type,
-      notes: d.notes,
-      status: "parked",
-      createdAt: todayISO(),
-      startDate: null,
-      endDate: null,
-      completedAt: ""
-    };
-
-    if(d.type === "realestate_outcome"){
-      g.re = { m1: 0, m2: 0, m3: 0 };
-      g.reMonthlyTarget = 2;
-      g.reTotalTarget = 6;
-    }
-
-    store.goals.push(g);
-    added++;
-  });
-
-  saveStore();
-  alert(added ? `Added ${added} goals.` : "Your default goals are already added.");
-  renderAll();
-}
-
-/* =========================
-   GOAL CRUD
-========================= */
-function addGoal(){
-  const title = (document.getElementById("newGoalTitle").value || "").trim();
-  const category = document.getElementById("newGoalCategory").value;
-  const type = document.getElementById("newGoalType").value;
-  const notes = (document.getElementById("newGoalNotes").value || "").trim();
-
-  if(!title){ alert("Type a goal title first."); return; }
-
-  const g = {
-    id: uid(),
-    title,
-    category,
-    type,
-    notes,
-    status: "parked",
-    createdAt: todayISO(),
-    startDate: null,
-    endDate: null,
-    completedAt: ""
+  const opts = {
+    year:"numeric",
+    month:"short",
+    day:"numeric"
   };
 
-  if(type === "realestate_outcome"){
-    g.re = { m1: 0, m2: 0, m3: 0 };
-    g.reMonthlyTarget = 2;
-    g.reTotalTarget = 6;
+  return d.toLocaleDateString(
+    undefined,
+    opts
+  );
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showSection(id){
+
+  document
+    .querySelectorAll(".section")
+    .forEach(s =>
+      s.classList.remove("active")
+    );
+
+  document
+    .getElementById(id)
+    .classList.add("active");
+
+  renderAll();
+
+}
+
+
+/* =========================
+   ALL DEFAULT GOALS
+========================= */
+
+function addDefaultGoals(){
+
+  const defaults = [
+
+    {
+      title:"Real Estate • Minimum 2 Deals/Month (Outcome Only)",
+      category:"Real Estate",
+      type:"realestate_outcome",
+      notes:"Outcome only here. All daily actions live in my Real Estate CRM."
+    },
+
+    {
+      title:"GED • 12 Week Focus",
+      category:"GED",
+      type:"standard",
+      notes:""
+    },
+
+    {
+      title:"Fix Teeth • 12 Week Focus",
+      category:"Fix Teeth",
+      type:"standard",
+      notes:""
+    },
+
+    {
+      title:"Buy a Home & Rental Properties • 12 Week Focus",
+      category:"Housing / Rentals",
+      type:"standard",
+      notes:""
+    },
+
+    {
+      title:"Bookkeeping Business • 12 Week Focus",
+      category:"Business",
+      type:"standard",
+      notes:""
+    },
+
+    {
+      title:"Credit Repaired • 12 Week Focus",
+      category:"Credit",
+      type:"standard",
+      notes:""
+    },
+
+    {
+      title:"Medical Assistant • 12 Week Focus",
+      category:"Medical Assistant",
+      type:"standard",
+      notes:""
+    },
+
+    {
+      title:"Class A (CDL) • 12 Week Focus",
+      category:"CDL / Class A",
+      type:"standard",
+      notes:""
+    },
+
+    {
+      title:"Cornstarch Business • 12 Week Focus",
+      category:"Business",
+      type:"standard",
+      notes:""
+    },
+
+    {
+      title:"Trucking Business • 12 Week Focus",
+      category:"Business",
+      type:"standard",
+      notes:""
+    },
+
+    {
+      title:"Healthcare Business • 12 Week Focus",
+      category:"Healthcare",
+      type:"standard",
+      notes:""
+    },
+
+    {
+      title:"YouTube Channels • 12 Week Focus",
+      category:"YouTube",
+      type:"standard",
+      notes:"Upload schedule stays consistent."
+    },
+
+    {
+      title:"Courses • Real Estate Course + Author Course",
+      category:"Courses",
+      type:"standard",
+      notes:""
+    },
+
+    {
+      title:"Dispatcher Business • 12 Week Focus",
+      category:"Dispatcher",
+      type:"standard",
+      notes:"Build and grow my dispatcher business."
+    },
+
+    {
+      title:"House Inspector Business • 12 Week Focus",
+      category:"House Inspector",
+      type:"standard",
+      notes:"Build my house inspection business."
+    },
+
+    {
+      title:"Open Independent Living Homes • 12 Week Focus",
+      category:"Independent Living Homes",
+      type:"standard",
+      notes:"Build toward opening independent living homes."
+    },
+
+    {
+      title:"Dropshipping Business • 12 Week Focus",
+      category:"Dropshipping",
+      type:"standard",
+      notes:"Build and grow my dropshipping business."
+    },
+
+    {
+      title:"Become an Author • 12 Week Focus",
+      category:"Author",
+      type:"standard",
+      notes:"Write, publish, and build my author business."
+    },
+
+    {
+      title:"Build & Sell Courses • 12 Week Focus",
+      category:"Courses",
+      type:"standard",
+      notes:"Create courses that I can sell."
+    },
+
+    {
+      title:"Make Planners • 12 Week Focus",
+      category:"Planners",
+      type:"standard",
+      notes:"Create and sell planners, including my Bea Planner."
+    },
+
+    {
+      title:"Create & Sell Products • 12 Week Focus",
+      category:"Products",
+      type:"standard",
+      notes:"Kids coloring books, mugs, T-shirts, and other products."
+    },
+
+    {
+      title:"Monetize Instagram & Grow My Following • 12 Week Focus",
+      category:"Social Media",
+      type:"standard",
+      notes:"Build my Instagram audience and create income from Instagram."
+    },
+
+    {
+      title:"Monetize YouTube & Grow My Following • 12 Week Focus",
+      category:"YouTube",
+      type:"standard",
+      notes:"Build my YouTube audience and create income from YouTube."
+    },
+
+    {
+      title:"Build Millions of Followers Across My Social Media • 12 Week Focus",
+      category:"Social Media",
+      type:"standard",
+      notes:"Grow a large audience across my social media platforms."
+    },
+
+    {
+      title:"Keep All My Websites & Apps Running Properly • 12 Week Focus",
+      category:"Websites & Apps",
+      type:"standard",
+      notes:"Keep all of my websites, CRMs, apps, and online systems working properly, updated, and maintained."
+    }
+
+  ];
+
+
+  const existing =
+    new Set(
+      store.goals.map(
+        g => g.title.toLowerCase()
+      )
+    );
+
+
+  let added = 0;
+
+
+  defaults.forEach(d => {
+
+    if(
+      existing.has(
+        d.title.toLowerCase()
+      )
+    ){
+
+      return;
+
+    }
+
+
+    const g = {
+
+      id:uid(),
+
+      title:d.title,
+
+      category:d.category,
+
+      type:d.type,
+
+      notes:d.notes,
+
+      status:"parked",
+
+      createdAt:todayISO(),
+
+      startDate:null,
+
+      endDate:null,
+
+      completedAt:""
+
+    };
+
+
+    if(
+      d.type ===
+      "realestate_outcome"
+    ){
+
+      g.re = {
+        m1:0,
+        m2:0,
+        m3:0
+      };
+
+      g.reMonthlyTarget = 2;
+
+      g.reTotalTarget = 6;
+
+    }
+
+
+    store.goals.push(g);
+
+    existing.add(
+      d.title.toLowerCase()
+    );
+
+    added++;
+
+  });
+
+
+  saveStore();
+
+
+  alert(
+    added
+      ? `Added ${added} missing goals.`
+      : "All default goals are already in your CRM."
+  );
+
+
+  renderAll();
+
+}
+
+
+/* =========================
+   ADD CUSTOM GOAL
+========================= */
+
+function addGoal(){
+
+  const title =
+    (
+      document.getElementById(
+        "newGoalTitle"
+      ).value || ""
+    ).trim();
+
+
+  const category =
+    document.getElementById(
+      "newGoalCategory"
+    ).value;
+
+
+  const type =
+    document.getElementById(
+      "newGoalType"
+    ).value;
+
+
+  const notes =
+    (
+      document.getElementById(
+        "newGoalNotes"
+      ).value || ""
+    ).trim();
+
+
+  if(!title){
+
+    alert(
+      "Type a goal title first."
+    );
+
+    return;
+
   }
 
+
+  const g = {
+
+    id:uid(),
+
+    title,
+
+    category,
+
+    type,
+
+    notes,
+
+    status:"parked",
+
+    createdAt:todayISO(),
+
+    startDate:null,
+
+    endDate:null,
+
+    completedAt:""
+
+  };
+
+
+  if(type === "realestate_outcome"){
+
+    g.re = {
+      m1:0,
+      m2:0,
+      m3:0
+    };
+
+    g.reMonthlyTarget = 2;
+
+    g.reTotalTarget = 6;
+
+  }
+
+
   store.goals.unshift(g);
-  document.getElementById("newGoalTitle").value = "";
-  document.getElementById("newGoalNotes").value = "";
+
+
+  document.getElementById(
+    "newGoalTitle"
+  ).value = "";
+
+
+  document.getElementById(
+    "newGoalNotes"
+  ).value = "";
+
+
   saveStore();
+
   renderAll();
+
 }
+
+
+/* =========================
+   ACTIVE GOAL
+========================= */
 
 function setActiveGoal(goalId){
-  store.goals.forEach(g => { if(g.status === "active") g.status = "parked"; });
 
-  const g = getGoalById(goalId);
+  const current =
+    store.goals.find(
+      g => g.status === "active"
+    );
+
+
+  if(
+    current &&
+    current.id !== goalId
+  ){
+
+    if(
+      !confirm(
+        "You already have an active goal. Park the current goal and start this new 12-week goal?"
+      )
+    ){
+
+      return;
+
+    }
+
+    current.status = "parked";
+
+  }
+
+
+  const g =
+    getGoalById(goalId);
+
+
   if(!g) return;
+
 
   g.status = "active";
+
   g.startDate = todayISO();
-  g.endDate = addDays(g.startDate, 84);
-  store.activeGoalId = goalId;
+
+  g.endDate =
+    addDays(
+      g.startDate,
+      84
+    );
+
+  g.completedAt = "";
+
+  store.activeGoalId =
+    goalId;
+
 
   saveStore();
+
   renderAll();
+
 }
+
 
 function parkGoal(goalId){
-  const g = getGoalById(goalId);
+
+  const g =
+    getGoalById(goalId);
+
   if(!g) return;
 
-  if(g.status === "active") store.activeGoalId = null;
+
+  if(
+    g.status === "active"
+  ){
+
+    store.activeGoalId = null;
+
+  }
+
+
   g.status = "parked";
+
+
   saveStore();
+
   renderAll();
+
 }
 
+
 function completeGoal(goalId){
-  const g = getGoalById(goalId);
+
+  const g =
+    getGoalById(goalId);
+
   if(!g) return;
 
+
   g.status = "done";
-  g.completedAt = todayISO();
-  if(store.activeGoalId === goalId) store.activeGoalId = null;
+
+  g.completedAt =
+    todayISO();
+
+
+  if(
+    store.activeGoalId ===
+    goalId
+  ){
+
+    store.activeGoalId = null;
+
+  }
+
 
   saveStore();
 
-  // Banner + confetti for goal completion
-  showGoalAchievedBanner(g.title, formatPrettyDate(new Date()));
+
+  showGoalAchievedBanner(
+    g.title,
+    formatPrettyDate(
+      new Date()
+    )
+  );
+
+
   launchConfetti(2200);
 
   renderAll();
+
 }
+
 
 function deleteGoal(goalId){
-  const g = getGoalById(goalId);
-  const name = g ? g.title : "this goal";
-  if(!confirm(`Delete "${name}"? This cannot be undone.`)) return;
 
-  store.goals = store.goals.filter(x => x.id !== goalId);
-  if(store.activeGoalId === goalId) store.activeGoalId = null;
+  const g =
+    getGoalById(goalId);
+
+
+  const name =
+    g
+      ? g.title
+      : "this goal";
+
+
+  if(
+    !confirm(
+      `Delete "${name}"? This cannot be undone.`
+    )
+  ){
+
+    return;
+
+  }
+
+
+  store.goals =
+    store.goals.filter(
+      x => x.id !== goalId
+    );
+
+
+  if(
+    store.activeGoalId ===
+    goalId
+  ){
+
+    store.activeGoalId = null;
+
+  }
+
+
   saveStore();
+
   renderAll();
+
 }
 
-/* Notes for each goal (editable right in the goal list) */
+
+/* =========================
+   NOTES
+========================= */
+
 function saveGoalNote(goalId){
-  const g = getGoalById(goalId);
+
+  const g =
+    getGoalById(goalId);
+
   if(!g) return;
-  const el = document.getElementById("note_" + goalId);
-  g.notes = (el?.value || "").trim();
+
+
+  const el =
+    document.getElementById(
+      "note_" + goalId
+    );
+
+
+  g.notes =
+    (el?.value || "")
+      .trim();
+
+
   saveStore();
+
   renderAll();
+
 }
 
-/* Active goal notes */
-function updateActiveGoalNotes(goalId){
-  const g = getGoalById(goalId);
+
+function updateActiveGoalNotes(
+  goalId
+){
+
+  const g =
+    getGoalById(goalId);
+
   if(!g) return;
-  const el = document.getElementById("activeNotes");
-  g.notes = (el?.value || "").trim();
+
+
+  const el =
+    document.getElementById(
+      "activeNotes"
+    );
+
+
+  g.notes =
+    (el?.value || "")
+      .trim();
+
+
   saveStore();
+
 }
+
 
 /* =========================
-   REAL ESTATE OUTCOME
+   REAL ESTATE
 ========================= */
-function updateDealMonth(goalId, monthIndex, val){
-  const g = getGoalById(goalId);
-  if(!g || g.type !== "realestate_outcome") return;
-  const n = Math.max(0, Number(val || 0));
-  g.re["m"+monthIndex] = n;
+
+function updateDealMonth(
+  goalId,
+  monthIndex,
+  val
+){
+
+  const g =
+    getGoalById(goalId);
+
+
+  if(
+    !g ||
+    g.type !==
+    "realestate_outcome"
+  ){
+
+    return;
+
+  }
+
+
+  const n =
+    Math.max(
+      0,
+      Number(val || 0)
+    );
+
+
+  g.re[
+    "m" + monthIndex
+  ] = n;
+
+
   saveStore();
+
   renderAll();
+
 }
+
 
 /* =========================
-   WEIGHT + BANNER + CONFETTI
+   BANNER
 ========================= */
-function formatPrettyDate(d){
-  const opts = { year: "numeric", month: "short", day: "numeric" };
-  return d.toLocaleDateString(undefined, opts);
+
+function showGoalAchievedBanner(
+  goalText,
+  dateText
+){
+
+  const banner =
+    document.getElementById(
+      "goalBanner"
+    );
+
+
+  const bannerText =
+    document.getElementById(
+      "goalBannerText"
+    );
+
+
+  if(
+    !banner ||
+    !bannerText
+  ){
+
+    return;
+
+  }
+
+
+  bannerText.textContent =
+    `${goalText} • ${dateText}`;
+
+
+  banner.style.display =
+    "block";
+
+
+  setTimeout(
+    () => {
+
+      banner.style.display =
+        "none";
+
+    },
+    6000
+  );
+
 }
 
-function showGoalAchievedBanner(goalText, dateText){
-  const banner = document.getElementById("goalBanner");
-  const bannerText = document.getElementById("goalBannerText");
-  if(!banner || !bannerText) return;
 
-  bannerText.textContent = `${goalText} • ${dateText}`;
-  banner.style.display = "block";
+/* =========================
+   CONFETTI
+========================= */
 
-  setTimeout(() => {
-    banner.style.display = "none";
-  }, 6000);
-}
+function launchConfetti(
+  durationMs = 1500
+){
 
-/* Minimal Confetti (no libraries) */
-function launchConfetti(durationMs = 1500){
-  const canvas = document.getElementById("confettiCanvas");
+  const canvas =
+    document.getElementById(
+      "confettiCanvas"
+    );
+
+
   if(!canvas) return;
 
-  const ctx = canvas.getContext("2d");
-  const DPR = Math.max(1, Math.floor(window.devicePixelRatio || 1));
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  const DPR =
+    Math.max(
+      1,
+      Math.floor(
+        window.devicePixelRatio || 1
+      )
+    );
+
 
   function resize(){
-    canvas.width = Math.floor(window.innerWidth * DPR);
-    canvas.height = Math.floor(window.innerHeight * DPR);
-    canvas.style.display = "block";
+
+    canvas.width =
+      Math.floor(
+        window.innerWidth * DPR
+      );
+
+    canvas.height =
+      Math.floor(
+        window.innerHeight * DPR
+      );
+
+    canvas.style.display =
+      "block";
+
   }
+
+
   resize();
 
+
   const particles = [];
-  const colors = ["#e91e63","#ff9800","#4caf50","#2196f3","#9c27b0","#ffeb3b","#00bcd4","#ff5722"];
+
+
+  const colors = [
+    "#e91e63",
+    "#ff9800",
+    "#4caf50",
+    "#2196f3",
+    "#9c27b0",
+    "#ffeb3b",
+    "#00bcd4",
+    "#ff5722"
+  ];
+
 
   const count = 140;
-  for(let i=0;i<count;i++){
+
+
+  for(
+    let i = 0;
+    i < count;
+    i++
+  ){
+
     particles.push({
-      x: Math.random() * canvas.width,
-      y: -Math.random() * canvas.height * 0.2,
-      r: (4 + Math.random() * 6) * DPR,
-      vy: (3 + Math.random() * 6) * DPR,
-      vx: (-2 + Math.random() * 4) * DPR,
-      rot: Math.random() * Math.PI,
-      vr: (-0.2 + Math.random() * 0.4),
-      color: colors[Math.floor(Math.random()*colors.length)],
-      shape: Math.random() < 0.5 ? "rect" : "circle"
+
+      x:
+        Math.random() *
+        canvas.width,
+
+      y:
+        -Math.random() *
+        canvas.height *
+        0.2,
+
+      r:
+        (4 +
+          Math.random() * 6) *
+        DPR,
+
+      vy:
+        (3 +
+          Math.random() * 6) *
+        DPR,
+
+      vx:
+        (-2 +
+          Math.random() * 4) *
+        DPR,
+
+      rot:
+        Math.random() *
+        Math.PI,
+
+      vr:
+        (-0.2 +
+          Math.random() * 0.4),
+
+      color:
+        colors[
+          Math.floor(
+            Math.random() *
+            colors.length
+          )
+        ],
+
+      shape:
+        Math.random() < 0.5
+          ? "rect"
+          : "circle"
+
     });
+
   }
 
-  let start = performance.now();
-  function frame(now){
-    const t = now - start;
-    ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    for(const p of particles){
+  let start =
+    performance.now();
+
+
+  function frame(now){
+
+    const t =
+      now - start;
+
+
+    ctx.clearRect(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+
+    for(
+      const p of particles
+    ){
+
       p.x += p.vx;
+
       p.y += p.vy;
+
       p.rot += p.vr;
+
       p.vy *= 1.004;
+
       p.vx *= 0.999;
 
-      if(p.y > canvas.height + 40*DPR) {
-        p.y = -20*DPR;
-        p.x = Math.random() * canvas.width;
-        p.vy = (3 + Math.random() * 6) * DPR;
+
+      if(
+        p.y >
+        canvas.height +
+        40 * DPR
+      ){
+
+        p.y =
+          -20 * DPR;
+
+        p.x =
+          Math.random() *
+          canvas.width;
+
+        p.vy =
+          (3 +
+            Math.random() * 6) *
+          DPR;
+
       }
+
 
       ctx.save();
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.rot);
-      ctx.fillStyle = p.color;
 
-      if(p.shape === "rect"){
-        ctx.fillRect(-p.r, -p.r, p.r*2, p.r*1.2);
-      } else {
+      ctx.translate(
+        p.x,
+        p.y
+      );
+
+      ctx.rotate(
+        p.rot
+      );
+
+      ctx.fillStyle =
+        p.color;
+
+
+      if(
+        p.shape ===
+        "rect"
+      ){
+
+        ctx.fillRect(
+          -p.r,
+          -p.r,
+          p.r * 2,
+          p.r * 1.2
+        );
+
+      }else{
+
         ctx.beginPath();
-        ctx.arc(0,0,p.r*0.6,0,Math.PI*2);
+
+        ctx.arc(
+          0,
+          0,
+          p.r * 0.6,
+          0,
+          Math.PI * 2
+        );
+
         ctx.fill();
+
       }
+
+
       ctx.restore();
+
     }
+
 
     if(t < durationMs){
-      requestAnimationFrame(frame);
-    } else {
-      canvas.style.display = "none";
-      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      requestAnimationFrame(
+        frame
+      );
+
+    }else{
+
+      canvas.style.display =
+        "none";
+
+      ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+
     }
+
   }
 
-  window.addEventListener("resize", resize, { once:true });
+
+  window.addEventListener(
+    "resize",
+    resize,
+    {once:true}
+  );
+
+
   requestAnimationFrame(frame);
+
 }
+
 
 /* =========================
-   RENDER
+   VISION GOAL LIST
 ========================= */
-function renderGoalsTable(){
-  const wrap = document.getElementById("goalsTableWrap");
+
+function renderVisionGoals(){
+
+  const wrap =
+    document.getElementById(
+      "visionGoals"
+    );
+
+
   if(!wrap) return;
 
-  if(store.goals.length === 0){
-    wrap.innerHTML = `<p class="muted">No goals yet. Add one above (or click “Add My Default Goals”).</p>`;
+
+  if(
+    store.goals.length === 0
+  ){
+
+    wrap.innerHTML =
+      `<p class="muted">
+        No goals added yet. Go to All Goals and click
+        <strong>Add My Default Goals</strong>.
+      </p>`;
+
     return;
+
   }
 
-  const rows = store.goals.map(g => {
-    const onlyOneActive = store.activeGoalId && store.activeGoalId !== g.id && g.status !== "active";
-    const activateBtn = (g.status !== "active")
-      ? `<button class="btn" onclick="setActiveGoal('${g.id}')" ${onlyOneActive ? "disabled title='Only one active goal at a time. Park/Complete your active goal first.'" : ""}>Activate 12-Week</button>`
-      : `<button class="btn secondary" onclick="parkGoal('${g.id}')">Park</button>`;
 
-    const typeLabel = (g.type === "realestate_outcome") ? "Outcome Only" : "Standard";
+  const categories = {};
 
-    return `
-      <tr>
-        <td>
-          <div><strong>${escapeHtml(g.title)}</strong> ${statusPill(g.status)}</div>
-          <div class="small muted">${escapeHtml(g.category)} • ${typeLabel}</div>
-          ${g.completedAt ? `<div class="small muted">🏁 Completed: ${escapeHtml(g.completedAt)}</div>` : ""}
 
-          <div style="margin-top:10px;">
-            <div class="small muted" style="margin-bottom:6px;"><strong>Notes for this goal:</strong></div>
-            <textarea id="note_${g.id}" rows="3" placeholder="Write notes for this goal...">${escapeHtml(g.notes || "")}</textarea>
-            <div class="btnRow" style="margin-top:8px;">
-              <button class="btn ghost" onclick="saveGoalNote('${g.id}')">Save Note</button>
+  store.goals.forEach(g => {
+
+    if(
+      !categories[g.category]
+    ){
+
+      categories[g.category] =
+        [];
+
+    }
+
+    categories[g.category].push(g);
+
+  });
+
+
+  let html = "";
+
+
+  Object.keys(categories)
+    .sort()
+    .forEach(category => {
+
+      html += `
+        <div class="goal-category">
+          ${escapeHtml(category)}
+        </div>
+        <ul>
+      `;
+
+
+      categories[category]
+        .forEach(g => {
+
+          html += `
+            <li>
+              ${escapeHtml(g.title)}
+              ${statusPill(g.status)}
+            </li>
+          `;
+
+        });
+
+
+      html += `
+        </ul>
+      `;
+
+    });
+
+
+  wrap.innerHTML = html;
+
+}
+
+
+/* =========================
+   GOALS TABLE
+========================= */
+
+function renderGoalsTable(){
+
+  const wrap =
+    document.getElementById(
+      "goalsTableWrap"
+    );
+
+
+  if(!wrap) return;
+
+
+  if(
+    store.goals.length === 0
+  ){
+
+    wrap.innerHTML =
+      `<p class="muted">
+        No goals yet. Add one above or click
+        “Add My Default Goals”.
+      </p>`;
+
+    return;
+
+  }
+
+
+  const rows =
+    store.goals.map(g => {
+
+      const anotherActive =
+        store.goals.some(
+          x =>
+            x.status === "active" &&
+            x.id !== g.id
+        );
+
+
+      const activateBtn =
+        g.status !== "active"
+
+          ? `
+            <button
+              class="btn"
+              onclick="setActiveGoal('${g.id}')"
+            >
+              Activate 12-Week
+            </button>
+          `
+
+          : `
+            <button
+              class="btn secondary"
+              onclick="parkGoal('${g.id}')"
+            >
+              Park
+            </button>
+          `;
+
+
+      const typeLabel =
+        g.type ===
+        "realestate_outcome"
+          ? "Outcome Only"
+          : "Standard";
+
+
+      return `
+
+        <tr>
+
+          <td>
+
+            <div>
+
+              <strong>
+                ${escapeHtml(g.title)}
+              </strong>
+
+              ${statusPill(g.status)}
+
             </div>
-          </div>
-        </td>
 
-        <td class="right">
-          <div class="small muted">Created: ${escapeHtml(g.createdAt || "—")}</div>
-          <div class="small muted">12 Weeks: ${escapeHtml(g.startDate || "—")} → ${escapeHtml(g.endDate || "—")}</div>
+            <div class="small muted">
+              ${escapeHtml(g.category)}
+              •
+              ${typeLabel}
+            </div>
 
-          <div class="btnRow" style="justify-content:flex-end;">
-            ${activateBtn}
-            <button class="btn ghost" onclick="completeGoal('${g.id}')">Complete</button>
-            <button class="btn warn" onclick="deleteGoal('${g.id}')">Delete</button>
-          </div>
-        </td>
-      </tr>
-    `;
-  }).join("");
+
+            ${
+              g.completedAt
+                ? `
+                  <div class="small muted">
+                    🏁 Completed:
+                    ${escapeHtml(
+                      g.completedAt
+                    )}
+                  </div>
+                `
+                : ""
+            }
+
+
+            <div style="margin-top:10px;">
+
+              <div
+                class="small muted"
+                style="margin-bottom:6px;"
+              >
+                <strong>
+                  Notes for this goal:
+                </strong>
+              </div>
+
+
+              <textarea
+                id="note_${g.id}"
+                rows="3"
+                placeholder="Write notes for this goal..."
+              >${escapeHtml(
+                g.notes || ""
+              )}</textarea>
+
+
+              <div
+                class="btnRow"
+                style="margin-top:8px;"
+              >
+
+                <button
+                  class="btn ghost"
+                  onclick="saveGoalNote('${g.id}')"
+                >
+                  Save Note
+                </button>
+
+              </div>
+
+            </div>
+
+          </td>
+
+
+          <td class="right">
+
+            <div class="small muted">
+              Created:
+              ${escapeHtml(
+                g.createdAt || "—"
+              )}
+            </div>
+
+            <div class="small muted">
+              12 Weeks:
+              ${escapeHtml(
+                g.startDate || "—"
+              )}
+              →
+              ${escapeHtml(
+                g.endDate || "—"
+              )}
+            </div>
+
+
+            <div
+              class="btnRow"
+              style="justify-content:flex-end;"
+            >
+
+              ${activateBtn}
+
+
+              <button
+                class="btn ghost"
+                onclick="completeGoal('${g.id}')"
+              >
+                Complete
+              </button>
+
+
+              <button
+                class="btn warn"
+                onclick="deleteGoal('${g.id}')"
+              >
+                Delete
+              </button>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }).join("");
+
 
   wrap.innerHTML = `
+
     <table>
+
       <thead>
-        <tr><th>Goal</th><th class="right">Actions</th></tr>
+
+        <tr>
+          <th>Goal</th>
+          <th class="right">
+            Actions
+          </th>
+        </tr>
+
       </thead>
-      <tbody>${rows}</tbody>
+
+      <tbody>
+        ${rows}
+      </tbody>
+
     </table>
+
   `;
+
 }
+
+
+/* =========================
+   ACTIVE GOAL DISPLAY
+========================= */
 
 function renderActiveGoal(){
-  const wrap = document.getElementById("activeGoalWrap");
+
+  const wrap =
+    document.getElementById(
+      "activeGoalWrap"
+    );
+
+
   if(!wrap) return;
 
-  if(!store.activeGoalId){
-    wrap.innerHTML = `<div class="notice"><strong>No active goal yet.</strong> Go to <strong>All Goals</strong> and click <strong>Activate 12-Week</strong>.</div>`;
+
+  if(
+    !store.activeGoalId
+  ){
+
+    wrap.innerHTML =
+      `<div class="notice">
+
+        <strong>
+          No active goal yet.
+        </strong>
+
+        Go to
+        <strong>All Goals</strong>
+        and click
+        <strong>
+          Activate 12-Week
+        </strong>.
+
+      </div>`;
+
     return;
+
   }
 
-  const g = getGoalById(store.activeGoalId);
+
+  const g =
+    getGoalById(
+      store.activeGoalId
+    );
+
+
   if(!g){
-    wrap.innerHTML = `<div class="notice">Active goal not found.</div>`;
+
+    wrap.innerHTML =
+      `<div class="notice">
+        Active goal not found.
+      </div>`;
+
     store.activeGoalId = null;
+
     saveStore();
+
     return;
+
   }
+
 
   let extra = "";
-  if(g.type === "realestate_outcome"){
-    const total = (g.re?.m1 || 0) + (g.re?.m2 || 0) + (g.re?.m3 || 0);
-    const target = g.reTotalTarget || 6;
-    const percent = Math.min(100, (total / target) * 100);
+
+
+  if(
+    g.type ===
+    "realestate_outcome"
+  ){
+
+    const total =
+      (g.re?.m1 || 0) +
+      (g.re?.m2 || 0) +
+      (g.re?.m3 || 0);
+
+
+    const target =
+      g.reTotalTarget || 6;
+
+
+    const percent =
+      Math.min(
+        100,
+        (total / target) * 100
+      );
+
 
     extra = `
-      <div class="card" style="margin-top:14px; border:1px solid #eee; box-shadow:none;">
-        <h3 style="margin-top:0;">Real Estate (Outcome Only)</h3>
-        <p class="muted">Goal: <strong>minimum 2 deals per month</strong>. No to-do list here.</p>
 
-        <label>Month 1 Deals</label>
-        <input type="number" min="0" value="${g.re?.m1 ?? 0}" oninput="updateDealMonth('${g.id}',1,this.value)" />
+      <div
+        class="card"
+        style="
+          margin-top:14px;
+          border:1px solid #eee;
+          box-shadow:none;
+        "
+      >
 
-        <label>Month 2 Deals</label>
-        <input type="number" min="0" value="${g.re?.m2 ?? 0}" oninput="updateDealMonth('${g.id}',2,this.value)" />
+        <h3 style="margin-top:0;">
+          Real Estate (Outcome Only)
+        </h3>
 
-        <label>Month 3 Deals</label>
-        <input type="number" min="0" value="${g.re?.m3 ?? 0}" oninput="updateDealMonth('${g.id}',3,this.value)" />
+
+        <p class="muted">
+          Goal:
+          <strong>
+            minimum 2 deals per month
+          </strong>.
+          No to-do list here.
+        </p>
+
+
+        <label>
+          Month 1 Deals
+        </label>
+
+        <input
+          type="number"
+          min="0"
+          value="${g.re?.m1 ?? 0}"
+          oninput="
+            updateDealMonth(
+              '${g.id}',
+              1,
+              this.value
+            )
+          "
+        />
+
+
+        <label>
+          Month 2 Deals
+        </label>
+
+        <input
+          type="number"
+          min="0"
+          value="${g.re?.m2 ?? 0}"
+          oninput="
+            updateDealMonth(
+              '${g.id}',
+              2,
+              this.value
+            )
+          "
+        />
+
+
+        <label>
+          Month 3 Deals
+        </label>
+
+        <input
+          type="number"
+          min="0"
+          value="${g.re?.m3 ?? 0}"
+          oninput="
+            updateDealMonth(
+              '${g.id}',
+              3,
+              this.value
+            )
+          "
+        />
+
 
         <div class="progress-bar">
-          <div class="progress-fill" style="width:${percent}%;"></div>
+
+          <div
+            class="progress-fill"
+            style="
+              width:${percent}%;
+            "
+          ></div>
+
         </div>
-        <p class="small muted" style="margin-top:8px;">Total Deals Closed: <strong>${total}</strong> / ${target}</p>
+
+
+        <p
+          class="small muted"
+          style="margin-top:8px;"
+        >
+
+          Total Deals Closed:
+          <strong>
+            ${total}
+          </strong>
+          /
+          ${target}
+
+        </p>
+
       </div>
+
     `;
+
   }
 
-  wrap.innerHTML = `
-    <div>
-      <h3 style="margin-top:0;">${escapeHtml(g.title)} ${statusPill(g.status)}</h3>
-      <p class="muted"><strong>Category:</strong> ${escapeHtml(g.category)}</p>
-      <p class="muted"><strong>Timeline:</strong> ${escapeHtml(g.startDate || "—")} → ${escapeHtml(g.endDate || "—")}</p>
 
-      <div class="card" style="margin-top:14px; border:1px solid #eee; box-shadow:none;">
-        <h3 style="margin-top:0;">Notes for This Goal (While I’m Working On It)</h3>
-        <textarea id="activeNotes" rows="5" placeholder="Write notes for this goal..." oninput="updateActiveGoalNotes('${g.id}')">${escapeHtml(g.notes || "")}</textarea>
-        <p class="small muted">Auto-saves as you type.</p>
+  const daysLeft =
+    g.endDate
+      ? Math.max(
+          0,
+          Math.ceil(
+            (
+              new Date(
+                g.endDate +
+                "T00:00:00"
+              ) -
+              new Date()
+            ) /
+            86400000
+          )
+        )
+      : "—";
+
+
+  wrap.innerHTML = `
+
+    <div>
+
+      <h3 style="margin-top:0;">
+
+        ${escapeHtml(g.title)}
+
+        ${statusPill(g.status)}
+
+      </h3>
+
+
+      <p class="muted">
+        <strong>
+          Category:
+        </strong>
+        ${escapeHtml(g.category)}
+      </p>
+
+
+      <p class="muted">
+        <strong>
+          Timeline:
+        </strong>
+        ${escapeHtml(
+          g.startDate || "—"
+        )}
+        →
+        ${escapeHtml(
+          g.endDate || "—"
+        )}
+      </p>
+
+
+      <div
+        class="notice"
+        style="margin-top:12px;"
+      >
+
+        🎯
+        <strong>
+          This is your ONE active goal.
+        </strong>
+
+        <br>
+
+        ⏳
+        <strong>
+          ${daysLeft}
+        </strong>
+        days remaining in this
+        12-week focus.
+
+        <br>
+
+        <span class="small">
+          When this 12-week cycle is finished,
+          you can choose another goal.
+        </span>
+
       </div>
+
+
+      <div
+        class="card"
+        style="
+          margin-top:14px;
+          border:1px solid #eee;
+          box-shadow:none;
+        "
+      >
+
+        <h3 style="margin-top:0;">
+          Notes for This Goal
+        </h3>
+
+
+        <textarea
+          id="activeNotes"
+          rows="5"
+          placeholder="Write notes for this goal..."
+          oninput="
+            updateActiveGoalNotes(
+              '${g.id}'
+            )
+          "
+        >${escapeHtml(
+          g.notes || ""
+        )}</textarea>
+
+
+        <p class="small muted">
+          Auto-saves as you type.
+        </p>
+
+      </div>
+
 
       <div class="btnRow">
-        <button class="btn secondary" onclick="parkGoal('${g.id}')">Park This Goal</button>
-        <button class="btn ghost" onclick="completeGoal('${g.id}')">Mark Completed</button>
+
+        <button
+          class="btn secondary"
+          onclick="parkGoal('${g.id}')"
+        >
+          Park This Goal
+        </button>
+
+
+        <button
+          class="btn ghost"
+          onclick="completeGoal('${g.id}')"
+        >
+          Mark Completed
+        </button>
+
       </div>
 
+
       ${extra}
+
     </div>
+
   `;
+
 }
+
+
+/* =========================
+   PROGRESS
+========================= */
 
 function renderProgress(){
-  const wrap = document.getElementById("progressWrap");
+
+  const wrap =
+    document.getElementById(
+      "progressWrap"
+    );
+
+
   if(!wrap) return;
 
-  const totalGoals = store.goals.length;
-  const active = store.goals.filter(g => g.status === "active").length;
-  const parked = store.goals.filter(g => g.status === "parked").length;
-  const done = store.goals.filter(g => g.status === "done").length;
+
+  const totalGoals =
+    store.goals.length;
+
+
+  const active =
+    store.goals.filter(
+      g =>
+        g.status === "active"
+    ).length;
+
+
+  const parked =
+    store.goals.filter(
+      g =>
+        g.status === "parked"
+    ).length;
+
+
+  const done =
+    store.goals.filter(
+      g =>
+        g.status === "done"
+    ).length;
+
+
+  const activeGoal =
+    store.activeGoalId
+      ? getGoalById(
+          store.activeGoalId
+        )
+      : null;
+
 
   wrap.innerHTML = `
-    <div class="card" style="border:1px solid #eee; box-shadow:none;">
-      <h3 style="margin-top:0;">Summary</h3>
-      <p><strong>Total Goals:</strong> ${totalGoals}</p>
-      <p><strong>Active:</strong> ${active} • <strong>Parked:</strong> ${parked} • <strong>Completed:</strong> ${done}</p>
 
-      <p><strong>1st Goal Weight 175:</strong> ${store.weight.w175 ? "✅" : "⬜"}
-        ${store.weight.w175Date ? `<span class="small muted"> • 📅 ${escapeHtml(store.weight.w175Date)}</span>` : ""}
+    <div
+      class="card"
+      style="
+        border:1px solid #eee;
+        box-shadow:none;
+      "
+    >
+
+      <h3 style="margin-top:0;">
+        12-Week Goal Summary
+      </h3>
+
+
+      <p>
+        <strong>
+          Total Goals:
+        </strong>
+        ${totalGoals}
       </p>
 
-      <p><strong>2nd Goal Weight 155:</strong> ${store.weight.w155 ? "✅" : "⬜"}
-        ${store.weight.w155Date ? `<span class="small muted"> • 📅 ${escapeHtml(store.weight.w155Date)}</span>` : ""}
+
+      <p>
+        <strong>
+          Active:
+        </strong>
+        ${active}
+
+        •
+        
+        <strong>
+          Parked:
+        </strong>
+        ${parked}
+
+        •
+
+        <strong>
+          Completed:
+        </strong>
+        ${done}
       </p>
+
+
+      <p>
+
+        <strong>
+          Current Active Goal:
+        </strong>
+
+        ${
+          activeGoal
+            ? escapeHtml(
+                activeGoal.title
+              )
+            : "None selected"
+        }
+
+      </p>
+
+
+      <hr
+        style="
+          border:0;
+          border-top:1px solid #eee;
+        "
+      />
+
+
+      <p>
+        <strong>
+          1st Goal Weight 175:
+        </strong>
+
+        ${
+          store.weight.w175
+            ? "✅"
+            : "⬜"
+        }
+
+        ${
+          store.weight.w175Date
+            ? `
+              <span class="small muted">
+                • 📅
+                ${escapeHtml(
+                  store.weight.w175Date
+                )}
+              </span>
+            `
+            : ""
+        }
+
+      </p>
+
+
+      <p>
+
+        <strong>
+          2nd Goal Weight 155:
+        </strong>
+
+        ${
+          store.weight.w155
+            ? "✅"
+            : "⬜"
+        }
+
+        ${
+          store.weight.w155Date
+            ? `
+              <span class="small muted">
+                • 📅
+                ${escapeHtml(
+                  store.weight.w155Date
+                )}
+              </span>
+            `
+            : ""
+        }
+
+      </p>
+
     </div>
+
   `;
+
 }
+
+
+/* =========================
+   RENDER EVERYTHING
+========================= */
 
 function renderAll(){
-  // Weight checkboxes + date stamps + banner + confetti
-  const w175 = document.getElementById("w175");
-  const w155 = document.getElementById("w155");
-  const w175DateEl = document.getElementById("w175Date");
-  const w155DateEl = document.getElementById("w155Date");
+
+  const w175 =
+    document.getElementById(
+      "w175"
+    );
+
+
+  const w155 =
+    document.getElementById(
+      "w155"
+    );
+
+
+  const w175DateEl =
+    document.getElementById(
+      "w175Date"
+    );
+
+
+  const w155DateEl =
+    document.getElementById(
+      "w155Date"
+    );
+
 
   if(w175){
-    w175.checked = !!store.weight.w175;
+
+    w175.checked =
+      !!store.weight.w175;
+
+
     if(w175DateEl){
-      w175DateEl.textContent = store.weight.w175Date ? `📅 Reached on: ${store.weight.w175Date}` : "";
+
+      w175DateEl.textContent =
+        store.weight.w175Date
+          ? `📅 Reached on: ${store.weight.w175Date}`
+          : "";
+
     }
+
+
     w175.onchange = () => {
-      store.weight.w175 = w175.checked;
+
+      store.weight.w175 =
+        w175.checked;
+
+
       if(w175.checked){
-        store.weight.w175Date = formatPrettyDate(new Date());
-        showGoalAchievedBanner("1st goal weight: 175 lbs", store.weight.w175Date);
-        launchConfetti(1600);
-      } else {
-        store.weight.w175Date = "";
+
+        store.weight.w175Date =
+          formatPrettyDate(
+            new Date()
+          );
+
+
+        showGoalAchievedBanner(
+          "1st goal weight: 175 lbs",
+          store.weight.w175Date
+        );
+
+
+        launchConfetti(
+          1600
+        );
+
+      }else{
+
+        store.weight.w175Date =
+          "";
+
       }
+
+
       saveStore();
+
       renderAll();
+
     };
+
   }
+
 
   if(w155){
-    w155.checked = !!store.weight.w155;
+
+    w155.checked =
+      !!store.weight.w155;
+
+
     if(w155DateEl){
-      w155DateEl.textContent = store.weight.w155Date ? `📅 Reached on: ${store.weight.w155Date}` : "";
+
+      w155DateEl.textContent =
+        store.weight.w155Date
+          ? `📅 Reached on: ${store.weight.w155Date}`
+          : "";
+
     }
+
+
     w155.onchange = () => {
-      store.weight.w155 = w155.checked;
+
+      store.weight.w155 =
+        w155.checked;
+
+
       if(w155.checked){
-        store.weight.w155Date = formatPrettyDate(new Date());
-        showGoalAchievedBanner("2nd goal weight: 155 lbs", store.weight.w155Date);
-        launchConfetti(2000);
-      } else {
-        store.weight.w155Date = "";
+
+        store.weight.w155Date =
+          formatPrettyDate(
+            new Date()
+          );
+
+
+        showGoalAchievedBanner(
+          "2nd goal weight: 155 lbs",
+          store.weight.w155Date
+        );
+
+
+        launchConfetti(
+          2000
+        );
+
+      }else{
+
+        store.weight.w155Date =
+          "";
+
       }
+
+
       saveStore();
+
       renderAll();
+
     };
+
   }
 
+
+  renderVisionGoals();
+
   renderGoalsTable();
+
   renderActiveGoal();
+
   renderProgress();
+
 }
+
 
 /* =========================
    RESET
 ========================= */
+
 function resetConfirm(){
-  if(confirm("Reset Lessie Bea Goal CRM data? This clears all goals, notes, and progress.")){
-    localStorage.removeItem(STORE_KEY);
-    store = loadStore();
+
+  if(
+    confirm(
+      "Reset Lessie Bea Goal CRM data? This clears all goals, notes, and progress."
+    )
+  ){
+
+    localStorage.removeItem(
+      STORE_KEY
+    );
+
+
+    store =
+      defaultStore();
+
+
+    saveStore();
+
     renderAll();
-    showSection("vision");
+
+    showSection(
+      "vision"
+    );
+
   }
+
 }
 
-/* INIT */
+
+/* =========================
+   FIRST LOAD
+   Automatically add missing
+   default goals for existing users.
+========================= */
+
+function initializeDefaultGoals(){
+
+  const hasGoals =
+    store.goals.length > 0;
+
+
+  if(!hasGoals){
+
+    addDefaultGoals();
+
+  }
+
+}
+
+
+initializeDefaultGoals();
+
 renderAll();
+
 </script>
 
 </body>
 </html>
+```
