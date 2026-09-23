@@ -2,70 +2,65 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Lessie Bea Goal CRM 🙏</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lessie Bea Goal CRM 🙏</title>
 
 <style>
-  *{
-    box-sizing:border-box;
-  }
+  *{box-sizing:border-box}
 
   body{
-    font-family:Arial,sans-serif;
-    font-size:18px;
-    background:linear-gradient(135deg,#ffd1dc,#ffffff);
     margin:0;
-    padding:0;
-    color:#000;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:17px;
+    background:linear-gradient(135deg,#ffd1dc,#ffffff);
+    color:#222;
   }
 
   header{
     background:#e91e63;
-    color:#fff;
-    padding:20px;
+    color:white;
+    padding:22px 16px;
     text-align:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
   }
 
   header h1{
-    margin:0;
+    margin:0 0 7px;
     font-size:30px;
   }
 
   header p{
-    margin:8px 0 0;
-    font-size:18px;
-    opacity:.95;
-  }
-
-  nav{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-    background:#fff;
-    padding:12px;
-    border-bottom:1px solid #ddd;
-    position:sticky;
-    top:0;
-    z-index:5;
-  }
-
-  nav button{
-    padding:12px 16px;
-    border:none;
-    border-radius:10px;
-    background:#e91e63;
-    color:#fff;
-    cursor:pointer;
+    margin:0;
     font-size:16px;
   }
 
-  nav button.secondary{
-    background:#555;
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding:12px;
+    background:white;
+    position:sticky;
+    top:0;
+    z-index:50;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
   }
 
-  nav button:hover{
-    opacity:.92;
+  .tab{
+    flex:1 1 130px;
+    border:none;
+    padding:13px 10px;
+    border-radius:10px;
+    background:#f8d7e1;
+    color:#8b1745;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:15px;
+  }
+
+  .tab.active{
+    background:#e91e63;
+    color:white;
   }
 
   .container{
@@ -74,337 +69,410 @@
     padding:18px;
   }
 
-  .section{
-    display:none;
-  }
-
-  .section.active{
-    display:block;
-  }
+  .page{display:none}
+  .page.active{display:block}
 
   .card{
-    background:#fff;
-    border-radius:14px;
-    padding:18px;
-    margin-bottom:16px;
-    box-shadow:0 4px 10px rgba(0,0,0,.1);
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 3px 12px rgba(0,0,0,.10);
   }
 
   h2{
     color:#e91e63;
     margin-top:0;
-    font-size:26px;
   }
 
   h3{
-    font-size:20px;
-    margin-bottom:8px;
-  }
-
-  .muted{
-    color:#444;
-    opacity:.9;
-  }
-
-  .small{
-    font-size:14px;
-    opacity:.9;
-  }
-
-  input,
-  select,
-  textarea{
-    padding:12px;
-    width:100%;
-    margin-top:8px;
-    border-radius:10px;
-    border:1px solid #ddd;
-    font-size:16px;
+    color:#8b1745;
   }
 
   label{
     display:block;
-    margin-top:12px;
     font-weight:bold;
+    margin:12px 0 6px;
   }
 
-  .btnRow{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:12px;
+  input,textarea,select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:9px;
+    font-size:16px;
+    font-family:inherit;
+  }
+
+  textarea{
+    min-height:100px;
+    resize:vertical;
+  }
+
+  button{
+    border:none;
+    border-radius:9px;
+    padding:11px 15px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
   }
 
   .btn{
-    padding:12px 14px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
     background:#e91e63;
-    color:#fff;
-    font-size:16px;
+    color:white;
   }
 
-  .btn.secondary{
-    background:#555;
+  .btn:hover{
+    opacity:.9;
   }
 
-  .btn.warn{
-    background:#b00020;
+  .btn-light{
+    background:#f8d7e1;
+    color:#8b1745;
   }
 
-  .btn.ghost{
-    background:#fff;
-    color:#e91e63;
-    border:1px solid #e91e63;
+  .btn-danger{
+    background:#c62828;
+    color:white;
   }
 
-  .btn.green{
+  .btn-green{
     background:#2e7d32;
+    color:white;
+  }
+
+  .btn-blue{
+    background:#1976d2;
+    color:white;
+  }
+
+  .button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:14px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:16px;
   }
 
   .pill{
     display:inline-block;
-    padding:5px 12px;
-    border-radius:999px;
-    background:#f7f7f7;
-    border:1px solid #eee;
+    padding:6px 10px;
+    border-radius:20px;
+    background:#f8d7e1;
+    color:#8b1745;
+    font-weight:bold;
     font-size:13px;
-    margin-left:8px;
+    margin:3px;
   }
 
-  .pill.active{
-    background:#ffe3ee;
-    border-color:#ffc3d7;
+  .status-active{
+    background:#e91e63;
+    color:white;
   }
 
-  .pill.parked{
-    background:#f5f5f5;
+  .status-parked{
+    background:#eee;
+    color:#555;
   }
 
-  .pill.done{
-    background:#e9ffe9;
-    border-color:#bdf0bd;
+  .status-done{
+    background:#d8f5da;
+    color:#176b1c;
+  }
+
+  .vision-list{
+    margin:0;
+    padding-left:22px;
+  }
+
+  .vision-list li{
+    margin:7px 0;
+  }
+
+  .focus-box{
+    border-left:6px solid #e91e63;
+    background:#fff5f8;
+    padding:15px;
+    border-radius:10px;
+    margin:12px 0;
+  }
+
+  .goal-card{
+    border:2px solid #f4bfd0;
+    border-radius:13px;
+    padding:16px;
+    margin-bottom:12px;
+    background:#fffafb;
+  }
+
+  .goal-card.active-goal{
+    border-color:#e91e63;
+    box-shadow:0 0 0 2px rgba(233,30,99,.10);
+  }
+
+  .goal-title{
+    font-size:19px;
+    font-weight:bold;
+    color:#8b1745;
+  }
+
+  .goal-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:12px;
+  }
+
+  .table-wrap{
+    overflow-x:auto;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+  }
+
+  th,td{
+    padding:11px;
+    border-bottom:1px solid #eee;
+    text-align:left;
+    vertical-align:top;
+  }
+
+  th{
+    background:#fce3eb;
+    color:#8b1745;
   }
 
   .notice{
-    padding:14px;
-    border-radius:12px;
-    background:#fff3cd;
-    border:1px solid #ffe69c;
-    color:#664d03;
+    background:#fff4c2;
+    border-left:5px solid #e0a800;
+    padding:13px;
+    border-radius:8px;
+    margin-bottom:15px;
   }
 
-  .goal-banner{
-    margin:12px 0 16px;
-    padding:14px 16px;
-    border-radius:14px;
-    background:#e91e63;
-    color:#fff;
-    font-weight:bold;
-    font-size:20px;
+  .success{
+    background:#e7f7e8;
+    border-left:5px solid #2e7d32;
+    padding:13px;
+    border-radius:8px;
+  }
+
+  .empty{
     text-align:center;
-    box-shadow:0 8px 18px rgba(0,0,0,.18);
+    padding:25px;
+    color:#777;
   }
 
-  .grid2{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-  }
-
-  .grid3{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:12px;
-  }
-
-  .focus-card{
-    border:2px solid rgba(233,30,99,.18);
-    box-shadow:0 10px 22px rgba(0,0,0,.10);
-  }
-
-  .focus-line{
+  .progress-bar{
+    height:20px;
+    background:#eee;
+    border-radius:20px;
+    overflow:hidden;
     margin:10px 0;
-    padding:10px 12px;
-    border-radius:12px;
-    border:1px solid #eee;
-    background:#fff;
   }
 
-  .goal-category{
-    margin-top:20px;
-    margin-bottom:8px;
+  .progress-fill{
+    height:100%;
+    background:#e91e63;
+    width:0%;
+    transition:.3s;
+  }
+
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
+  }
+
+  .stat{
+    background:#fff5f8;
+    border:1px solid #f2c4d3;
+    border-radius:12px;
+    padding:15px;
+    text-align:center;
+  }
+
+  .stat-number{
+    font-size:28px;
+    font-weight:bold;
     color:#e91e63;
-    font-size:19px;
-    font-weight:bold;
-    border-bottom:1px solid #eee;
-    padding-bottom:6px;
   }
 
-  .goal-banner-active{
-    background:#e91e63;
-    color:#fff;
-    border-radius:14px;
-    padding:16px;
-    margin-bottom:16px;
-    text-align:center;
-    font-size:20px;
-    font-weight:bold;
+  .task-item{
+    background:#fffafa;
+    border:1px solid #f1c8d5;
+    border-radius:12px;
+    padding:13px;
+    margin-bottom:10px;
   }
 
-  .task-card{
-    border:1px solid #eee;
-    border-radius:14px;
-    padding:14px;
-    margin:10px 0;
-    background:#fff;
-  }
-
-  .task-card.completed{
-    background:#f2fff2;
-    border-color:#bde5bd;
-  }
-
-  .task-row{
+  .task-main{
     display:flex;
     align-items:flex-start;
-    gap:12px;
+    gap:10px;
   }
 
-  .task-check{
-    width:24px;
-    height:24px;
+  .task-main input[type="checkbox"]{
+    width:22px;
+    height:22px;
     margin-top:2px;
-    flex:none;
+    flex:0 0 auto;
   }
 
-  .task-title{
-    font-weight:bold;
+  .task-text{
     flex:1;
+    font-size:17px;
+    line-height:1.4;
   }
 
-  .task-card.completed .task-title{
+  .task-done .task-text{
     text-decoration:line-through;
-    opacity:.65;
+    color:#888;
+  }
+
+  .task-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:10px;
+    margin-left:32px;
   }
 
   .link-list{
     display:flex;
     flex-wrap:wrap;
-    gap:8px;
-    margin-top:12px;
+    gap:6px;
+    margin:10px 0 0 32px;
   }
 
   .site-link{
     display:inline-block;
+    background:#e91e63;
+    color:white;
     text-decoration:none;
-    background:#fff;
-    color:#e91e63;
-    border:1px solid #e91e63;
-    padding:8px 11px;
-    border-radius:9px;
+    padding:7px 10px;
+    border-radius:8px;
     font-size:14px;
-    font-weight:bold;
   }
 
   .site-link:hover{
-    background:#ffe3ee;
+    opacity:.85;
   }
 
-  .link-editor{
+  .link-row{
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:8px;
+    margin-top:7px;
     background:#fafafa;
-    border:1px solid #eee;
-    border-radius:12px;
-    padding:12px;
-    margin-top:10px;
   }
 
-  .template-task{
-    border:1px solid #eee;
-    border-radius:12px;
-    padding:12px;
-    margin:8px 0;
-    background:#fff;
+  .link-row a{
+    color:#e91e63;
+    font-weight:bold;
+    word-break:break-all;
   }
 
-  .template-task-header{
+  .small{
+    font-size:13px;
+    color:#777;
+  }
+
+  .modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:100;
+    padding:20px;
+    overflow:auto;
+  }
+
+  .modal.show{
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+  }
+
+  .modal-content{
+    width:100%;
+    max-width:650px;
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    margin-top:30px;
+  }
+
+  .modal-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:10px;
   }
 
-  .progress-bar{
-    width:100%;
+  .close{
     background:#eee;
-    border-radius:10px;
-    overflow:hidden;
-    height:20px;
-    margin-top:10px;
+    color:#333;
+    font-size:20px;
   }
 
-  .progress-fill{
-    height:20px;
-    background:#e91e63;
-    width:0%;
+  .appointment-card,
+  .personal-task-card{
+    border:1px solid #f0c4d2;
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:10px;
+    background:#fffafb;
   }
 
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:12px;
-  }
-
-  th,
-  td{
-    text-align:left;
-    padding:12px;
-    border-bottom:1px solid #eee;
-    vertical-align:top;
-  }
-
-  th{
+  .appointment-date{
     color:#e91e63;
-    font-size:14px;
+    font-weight:bold;
+    font-size:18px;
   }
 
-  .right{
-    text-align:right;
+  .personal-completed{
+    opacity:.65;
   }
 
-  .empty{
-    text-align:center;
-    padding:25px;
-    color:#555;
+  .personal-completed .personal-task-title{
+    text-decoration:line-through;
   }
 
-  @media(max-width:820px){
-    .grid2,
-    .grid3{
-      grid-template-columns:1fr;
-    }
+  .category-heading{
+    color:#e91e63;
+    border-bottom:2px solid #f3c5d4;
+    padding-bottom:7px;
+    margin-top:25px;
+  }
 
-    table,
-    thead,
-    tbody,
-    th,
-    td,
-    tr{
-      display:block;
-    }
+  .checkbox-line{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:10px 0;
+  }
 
-    thead{
-      display:none;
-    }
+  .checkbox-line input{
+    width:22px;
+    height:22px;
+  }
 
-    td{
-      border-bottom:1px solid #ddd;
-    }
-
-    .right{
-      text-align:left;
-    }
+  @media(max-width:600px){
+    body{font-size:16px}
+    header h1{font-size:25px}
+    .container{padding:10px}
+    .card{padding:15px}
+    .tab{flex-basis:100px}
   }
 </style>
 </head>
@@ -416,66 +484,59 @@
   <p>12-Week Focus • One Active Goal at a Time • All Goals Visible</p>
 </header>
 
-<nav>
-  <button onclick="showSection('vision')">My Vision</button>
-  <button onclick="showSection('goals')">All Goals</button>
-  <button onclick="showSection('active')">Active Goal</button>
-  <button onclick="showSection('daily')">🗓️ Daily Schedule</button>
-  <button onclick="showSection('progress')">Progress</button>
-  <button class="secondary" onclick="resetConfirm()">Reset (Optional)</button>
-</nav>
+<div class="tabs">
+  <button class="tab active" onclick="showPage('vision',this)">🙏 My Vision</button>
+  <button class="tab" onclick="showPage('goals',this)">🎯 All Goals</button>
+  <button class="tab" onclick="showPage('active',this)">⭐ Active Goal</button>
+  <button class="tab" onclick="showPage('daily',this)">🗓️ Daily Schedule</button>
+  <button class="tab" onclick="showPage('personal',this)">💗 Personal</button>
+  <button class="tab" onclick="showPage('progress',this)">📊 Progress</button>
+  <button class="tab" onclick="showPage('reset',this)">🔄 Reset</button>
+</div>
 
 <div class="container">
 
-<!-- =====================================================
-     VISION
-====================================================== -->
+<!-- =========================
+     MY VISION
+========================= -->
+<section id="vision" class="page active">
 
-<div id="vision" class="section active">
-
-  <div class="card focus-card">
-
+  <div class="card">
     <h2>🗓️ Daily Focus Plan (Mon–Fri)</h2>
 
-    <p class="muted">
-      <strong>Total time:</strong> ~5–6 hours
-    </p>
-
-    <div class="focus-line">
-      🏡 <strong>Lessie Bea CRM</strong> —
-      <span class="muted">Real Estate / Business</span><br>
-      <strong>3 hours</strong> — work leads, follow up, move deals
+    <div class="focus-box">
+      <strong>Total time: ~5–6 hours</strong>
     </div>
 
-    <div class="focus-line">
-      💪 <strong>Lessie Bea Health CRM</strong> —
-      <span class="muted">Health & Fitness</span><br>
-      <strong>45–60 minutes</strong> — workout & track daily health
+    <div class="grid">
+
+      <div class="focus-box">
+        <h3>🏡 Lessie Bea CRM — Real Estate / Business</h3>
+        <strong>3 hours</strong>
+        <p>Work leads, follow up, move deals.</p>
+      </div>
+
+      <div class="focus-box">
+        <h3>💪 Lessie Bea Health CRM — Health & Fitness</h3>
+        <strong>45–60 minutes</strong>
+        <p>Workout & track daily health.</p>
+      </div>
+
+      <div class="focus-box">
+        <h3>🧠 Lessie Bea Goal CRM — Vision & 12-Week Focus</h3>
+        <strong>1 hour</strong>
+        <p>Focus on my current goal.</p>
+      </div>
+
     </div>
 
-    <div class="focus-line">
-      🧠 <strong>Lessie Bea Goal CRM</strong> —
-      <span class="muted">Vision & 12-Week Focus</span><br>
-      <strong>1 hour</strong> — focus on my current goal
-    </div>
-
-    <p class="muted">
-      <strong>Weekends:</strong>
-      Optional • Review only if needed • Rest without guilt
-    </p>
-
+    <p><strong>Weekends:</strong> Optional • Review only if needed • Rest without guilt</p>
   </div>
 
   <div class="card">
+    <h2>🙏 My Future Self</h2>
 
-    <div id="goalBanner" class="goal-banner" style="display:none;">
-      🏁 GOAL ACHIEVED! 🎉
-      <div class="small" id="goalBannerText"></div>
-    </div>
-
-    <h2>My Future Self 🙏</h2>
-
-    <p class="muted">
+    <p>
       I pray to get closer to GOD. I want to see myself at the best version of me.
       God please help me stay dedicated, focused, and disciplined to achieve my goals
       and dream life.
@@ -483,3373 +544,3104 @@
 
     <h3>My Daily Standard</h3>
 
-    <ul>
-      <li>Wake up at <strong>6:00 AM</strong></li>
+    <ul class="vision-list">
+      <li>Wake up at 6:00 AM</li>
       <li>Read my Bible, pray, and seek God first</li>
-      <li>Spend time with <strong>loved ones</strong></li>
-      <li><strong>I work out</strong></li>
+      <li>Spend time with loved ones</li>
+      <li>I work out</li>
     </ul>
+  </div>
 
-    <h3>Health Goals (Checkbox Only)</h3>
+  <div class="card">
+    <h2>💪 Health Goals</h2>
+    <p class="small">Checkbox only — your goal weights are tracked here.</p>
 
-    <label style="font-weight:normal;">
-      <input type="checkbox" id="w175">
-      I reached my <strong>1st goal weight: 175 lbs</strong>
-      <div class="small muted" id="w175Date"></div>
-    </label>
+    <div class="checkbox-line">
+      <input type="checkbox" id="weight175" onchange="saveVisionSettings()">
+      <label for="weight175" style="margin:0">I reached my 1st goal weight: 175 lbs</label>
+    </div>
 
-    <label style="font-weight:normal;">
-      <input type="checkbox" id="w155">
-      I reached my <strong>2nd goal weight: 155 lbs</strong>
-      <div class="small muted" id="w155Date"></div>
-    </label>
+    <div class="checkbox-line">
+      <input type="checkbox" id="weight155" onchange="saveVisionSettings()">
+      <label for="weight155" style="margin:0">I reached my 2nd goal weight: 155 lbs</label>
+    </div>
+  </div>
 
-    <h3>My Businesses & Life Goals</h3>
-
+  <div class="card">
+    <h2>🌸 My Businesses & Life Goals</h2>
     <div id="visionGoals"></div>
+  </div>
 
-    <div class="notice">
-      <strong>12-Week Rule:</strong>
-      I only work on <strong>ONE</strong> main goal at a time.
+  <div class="card">
+    <h2>🙏 12-Week Rule</h2>
+    <div class="success">
+      <strong>I only work on ONE main goal at a time.</strong>
+      <br>
       All other goals are parked.
     </div>
-
   </div>
 
-</div>
+</section>
 
 
-<!-- =====================================================
+<!-- =========================
      ALL GOALS
-====================================================== -->
-
-<div id="goals" class="section">
+========================= -->
+<section id="goals" class="page">
 
   <div class="card">
+    <h2>🎯 All Goals</h2>
 
-    <h2>All Goals</h2>
+    <div class="notice">
+      You can have many goals, but only <strong>ONE active goal</strong> at a time.
+    </div>
 
-    <p class="muted">
-      Keep every dream visible. Choose only ONE goal to actively work on
-      during each 12-week cycle.
-    </p>
-
-    <label>Goal Title</label>
-
-    <input
-      id="newGoalTitle"
-      placeholder="Example: Become an Author • 12 Week Focus"
-    />
-
-    <div class="grid2">
+    <div class="grid">
 
       <div>
+        <label>Goal Name</label>
+        <input id="newGoalTitle" placeholder="Example: GED">
 
         <label>Category</label>
+        <input id="newGoalCategory" placeholder="Example: Education">
 
-        <select id="newGoalCategory">
-
-          <option value="Real Estate">Real Estate</option>
-          <option value="Housing / Rentals">Housing / Rentals</option>
-          <option value="GED">GED</option>
-          <option value="Fix Teeth">Fix Teeth</option>
-          <option value="Business">Business</option>
-          <option value="Personal">Personal</option>
-          <option value="Credit">Credit</option>
-          <option value="CDL / Class A">CDL / Class A</option>
-          <option value="Medical Assistant">Medical Assistant</option>
-          <option value="House Inspector">House Inspector</option>
-          <option value="Dispatcher">Dispatcher</option>
-          <option value="Healthcare">Healthcare</option>
-          <option value="Independent Living Homes">Independent Living Homes</option>
-          <option value="Dropshipping">Dropshipping</option>
-          <option value="Author">Author</option>
-          <option value="Planners">Planners</option>
-          <option value="Products">Products</option>
-          <option value="Social Media">Social Media</option>
-          <option value="Websites & Apps">Websites & Apps</option>
-          <option value="YouTube">YouTube</option>
-          <option value="Courses">Courses</option>
-
+        <label>Goal Type</label>
+        <select id="newGoalType">
+          <option value="standard">Standard Goal</option>
+          <option value="realestate">Real Estate Outcome Goal</option>
         </select>
-
       </div>
 
       <div>
-
-        <label>Goal Type</label>
-
-        <select id="newGoalType">
-
-          <option value="standard">
-            Standard 12-Week Goal
-          </option>
-
-          <option value="realestate_outcome">
-            Real Estate — Outcome Only
-          </option>
-
-        </select>
-
+        <label>Notes</label>
+        <textarea id="newGoalNotes" placeholder="What does this goal mean to you?"></textarea>
       </div>
 
     </div>
 
-    <label>Notes</label>
-
-    <textarea
-      id="newGoalNotes"
-      rows="3"
-      placeholder="Add your note, prayer, reason, or long-term vision..."
-    ></textarea>
-
-    <div class="btnRow">
-
-      <button class="btn" onclick="addGoal()">
-        + Add Goal
-      </button>
-
-      <button class="btn ghost" onclick="addDefaultGoals()">
-        Add My Default Goals
-      </button>
-
+    <div class="button-row">
+      <button class="btn" onclick="addGoal()">➕ Add Goal</button>
+      <button class="btn-light" onclick="addDefaultGoals()">➕ Add Default Goals</button>
     </div>
-
   </div>
 
   <div class="card">
-
-    <h3>Goal List</h3>
-
-    <div id="goalsTableWrap"></div>
-
+    <h2>📋 Goal List</h2>
+    <div id="goalsList"></div>
   </div>
 
-</div>
+</section>
 
 
-<!-- =====================================================
+<!-- =========================
      ACTIVE GOAL
-====================================================== -->
+========================= -->
+<section id="active" class="page">
 
-<div id="active" class="section">
+  <div id="activeGoalContent"></div>
 
-  <div class="card">
-
-    <h2>Active 12-Week Goal</h2>
-
-    <div id="activeGoalWrap"></div>
-
-  </div>
-
-</div>
+</section>
 
 
-<!-- =====================================================
+<!-- =========================
      DAILY SCHEDULE
-====================================================== -->
-
-<div id="daily" class="section">
+========================= -->
+<section id="daily" class="page">
 
   <div class="card">
-
     <h2>🗓️ Daily Schedule</h2>
 
-    <div id="dailyGoalBanner"></div>
+    <div id="dailyGoalHeader"></div>
 
-    <p class="muted">
-      This is your working list for today.
-      Your goal template stays saved separately.
-    </p>
+    <div class="grid">
 
-    <div class="btnRow">
+      <div>
+        <label>Day</label>
+        <input type="date" id="dailyDate" onchange="changeDailyDate()">
+      </div>
 
-      <button class="btn" onclick="loadGoalTemplateForToday()">
-        Load Goal Tasks
-      </button>
-
-      <button class="btn secondary" onclick="clearTodayTasks()">
-        Clear Today's Tasks
-      </button>
+      <div>
+        <label>Preview Goal</label>
+        <select id="dailyGoalSelector" onchange="changeDailyGoalPreview()"></select>
+      </div>
 
     </div>
 
+    <div class="button-row">
+      <button class="btn" onclick="addTask()">➕ Add Task</button>
+      <button class="btn-light" onclick="reloadDailyTemplate()">🔄 Reload Goal Template</button>
+      <button class="btn-danger" onclick="clearTodayTasks()">🗑️ Clear Today's Tasks</button>
+    </div>
   </div>
 
-
   <div class="card">
+    <h2>📊 Today's Progress</h2>
 
-    <h2>Today's Tasks</h2>
+    <div id="dailyProgressText"></div>
 
-    <div id="todayTasksWrap"></div>
-
+    <div class="progress-bar">
+      <div class="progress-fill" id="dailyProgressFill"></div>
+    </div>
   </div>
 
+  <div class="card">
+    <h2>✅ Today's Tasks</h2>
+
+    <div id="dailyTasks"></div>
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PERSONAL
+========================= -->
+<section id="personal" class="page">
 
   <div class="card">
+    <h2>💗 Personal</h2>
 
-    <h2>➕ Add Task to Today</h2>
-
-    <label>Task</label>
-
-    <input
-      id="newTodayTask"
-      placeholder="Example: Contact 5 motivated sellers"
-    />
-
-    <label>Website / Link (optional)</label>
-
-    <input
-      id="newTodayLink"
-      placeholder="https://example.com"
-    />
-
-    <label>Link Name (optional)</label>
-
-    <input
-      id="newTodayLinkName"
-      placeholder="Example: PropWire"
-    />
-
-    <div class="btnRow">
-
-      <button class="btn" onclick="addTodayTask()">
-        + Add Task
-      </button>
-
+    <div class="notice">
+      This section is for personal life responsibilities that don't need to be part of
+      your 12-week goal.
     </div>
 
+    <div class="button-row">
+      <button class="btn" onclick="openAppointmentModal()">📅 Add Appointment</button>
+      <button class="btn" onclick="openPersonalTaskModal()">✅ Add Personal To-Do</button>
+      <button class="btn" onclick="openErrandModal()">🛒 Add Errand</button>
+    </div>
   </div>
-
 
   <div class="card">
-
-    <h2>⚙️ Goal Task Template</h2>
-
-    <p class="muted">
-      These are the normal tasks and websites for the selected goal.
-      Editing the template does not change today's completed checklist.
-    </p>
-
-    <div id="templateWrap"></div>
-
-    <hr style="border:0;border-top:1px solid #eee;margin:20px 0;">
-
-    <h3>Add Template Task</h3>
-
-    <label>Task</label>
-
-    <input
-      id="templateTaskTitle"
-      placeholder="Example: Search PropWire for motivated sellers"
-    />
-
-    <label>Website / Link</label>
-
-    <input
-      id="templateTaskUrl"
-      placeholder="https://www.propwire.com/"
-    />
-
-    <label>Website Name</label>
-
-    <input
-      id="templateTaskLinkName"
-      placeholder="PropWire"
-    />
-
-    <div class="btnRow">
-
-      <button class="btn" onclick="addTemplateTask()">
-        + Add Template Task
-      </button>
-
-    </div>
-
+    <h2>📅 Appointments</h2>
+    <div id="appointmentsList"></div>
   </div>
 
-</div>
+  <div class="card">
+    <h2>✅ Personal To-Do List</h2>
+    <div id="personalTasksList"></div>
+  </div>
+
+  <div class="card">
+    <h2>🛒 Errands</h2>
+    <div id="errandsList"></div>
+  </div>
+
+</section>
 
 
-<!-- =====================================================
+<!-- =========================
      PROGRESS
-====================================================== -->
-
-<div id="progress" class="section">
+========================= -->
+<section id="progress" class="page">
 
   <div class="card">
+    <h2>📊 Progress</h2>
 
-    <h2>Progress</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-number" id="statTotal">0</div>
+        <div>Total Goals</div>
+      </div>
 
-    <div id="progressWrap"></div>
+      <div class="stat">
+        <div class="stat-number" id="statActive">0</div>
+        <div>Active</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-number" id="statParked">0</div>
+        <div>Parked</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-number" id="statDone">0</div>
+        <div>Completed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>⚖️ Weight Milestones</h2>
+
+    <div id="weightProgress"></div>
+  </div>
+
+  <div class="card">
+    <h2>🎯 Goal Progress</h2>
+
+    <div id="goalProgressList"></div>
+  </div>
+
+</section>
+
+
+<!-- =========================
+     RESET
+========================= -->
+<section id="reset" class="page">
+
+  <div class="card">
+    <h2>🔄 Reset CRM</h2>
+
+    <div class="notice">
+      Resetting will delete the saved goals, daily tasks, appointments,
+      personal to-dos, errands, and settings from this browser.
+    </div>
+
+    <button class="btn-danger" onclick="resetCRM()">
+      ⚠️ Reset Everything
+    </button>
+  </div>
+
+</section>
+
+</div>
+
+
+<!-- =========================
+     TASK MODAL
+========================= -->
+<div class="modal" id="taskModal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2 id="taskModalTitle">➕ Add Task</h2>
+      <button class="close" onclick="closeTaskModal()">✕</button>
+    </div>
+
+    <input type="hidden" id="editingTaskId">
+
+    <label>Task</label>
+    <input id="taskText" placeholder="Example: Find 5 seller leads">
+
+    <h3>🔗 Links for This Task</h3>
+
+    <p class="small">
+      Add websites you use for this task. You can add as many links as you want.
+    </p>
+
+    <label>Link Name</label>
+    <input id="taskLinkLabel" placeholder="Example: Propwire">
+
+    <label>Website URL</label>
+    <input id="taskLinkUrl" placeholder="https://example.com">
+
+    <button class="btn-light" onclick="addTaskLink()">➕ Add Link</button>
+
+    <div id="taskLinksEditor"></div>
+
+    <div class="button-row">
+      <button class="btn" onclick="saveTask()">💾 Save Task</button>
+      <button class="btn-light" onclick="closeTaskModal()">Cancel</button>
+    </div>
 
   </div>
 
 </div>
 
+
+<!-- =========================
+     APPOINTMENT MODAL
+========================= -->
+<div class="modal" id="appointmentModal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2 id="appointmentModalTitle">📅 Add Appointment</h2>
+      <button class="close" onclick="closeAppointmentModal()">✕</button>
+    </div>
+
+    <input type="hidden" id="editingAppointmentId">
+
+    <label>Appointment</label>
+    <input id="appointmentTitle" placeholder="Example: Dentist">
+
+    <label>Date</label>
+    <input type="date" id="appointmentDate">
+
+    <label>Notes</label>
+    <textarea id="appointmentNotes" placeholder="Address, what to bring, questions, etc."></textarea>
+
+    <label>Link (optional)</label>
+    <input id="appointmentLink" placeholder="https://example.com">
+
+    <div class="button-row">
+      <button class="btn" onclick="saveAppointment()">💾 Save Appointment</button>
+      <button class="btn-light" onclick="closeAppointmentModal()">Cancel</button>
+    </div>
+
+  </div>
+
 </div>
 
 
-<!-- =====================================================
-     CONFETTI
-====================================================== -->
+<!-- =========================
+     PERSONAL TASK MODAL
+========================= -->
+<div class="modal" id="personalTaskModal">
 
-<canvas id="confettiCanvas" style="
-position:fixed;
-inset:0;
-width:100%;
-height:100%;
-pointer-events:none;
-z-index:9999;
-display:none;">
-</canvas>
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2 id="personalTaskModalTitle">✅ Add Personal To-Do</h2>
+      <button class="close" onclick="closePersonalTaskModal()">✕</button>
+    </div>
+
+    <input type="hidden" id="editingPersonalTaskId">
+
+    <label>Task</label>
+    <input id="personalTaskTitle" placeholder="Example: Pay PG&E">
+
+    <label>Date</label>
+    <input type="date" id="personalTaskDate">
+
+    <label>Notes</label>
+    <textarea id="personalTaskNotes" placeholder="Optional notes"></textarea>
+
+    <label>Link (optional)</label>
+    <input id="personalTaskLink" placeholder="https://example.com">
+
+    <div class="button-row">
+      <button class="btn" onclick="savePersonalTask()">💾 Save To-Do</button>
+      <button class="btn-light" onclick="closePersonalTaskModal()">Cancel</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     ERRAND MODAL
+========================= -->
+<div class="modal" id="errandModal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2 id="errandModalTitle">🛒 Add Errand</h2>
+      <button class="close" onclick="closeErrandModal()">✕</button>
+    </div>
+
+    <input type="hidden" id="editingErrandId">
+
+    <label>Errand</label>
+    <input id="errandTitle" placeholder="Example: Grocery Store">
+
+    <label>Date</label>
+    <input type="date" id="errandDate">
+
+    <label>Notes</label>
+    <textarea id="errandNotes" placeholder="What do I need to get or do?"></textarea>
+
+    <label>Link (optional)</label>
+    <input id="errandLink" placeholder="https://example.com">
+
+    <div class="button-row">
+      <button class="btn" onclick="saveErrand()">💾 Save Errand</button>
+      <button class="btn-light" onclick="closeErrandModal()">Cancel</button>
+    </div>
+
+  </div>
+
+</div>
 
 
 <script>
 
-/* =====================================================
-   STORAGE
-===================================================== */
+const STORAGE_KEY = "lessieBeaGoalCRM_final_v4_personal_daily";
 
-const STORE_KEY =
-"lessieBeaGoalCRM_v4_daily_schedule";
+const todayISO = () => {
+  const d = new Date();
+  const local = new Date(d.getTime() - d.getTimezoneOffset()*60000);
+  return local.toISOString().slice(0,10);
+};
 
+function uid(){
+  return Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+}
 
-function defaultStore(){
+function addDays(dateString, days){
+  const d = new Date(dateString + "T00:00:00");
+  d.setDate(d.getDate()+days);
+  return d.toISOString().slice(0,10);
+}
 
-  return {
+function formatPrettyDate(dateString){
+  if(!dateString) return "";
+  const d = new Date(dateString + "T00:00:00");
+  return d.toLocaleDateString(undefined,{
+    weekday:"long",
+    year:"numeric",
+    month:"long",
+    day:"numeric"
+  });
+}
 
-    goals:[],
+function escapeHtml(value){
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
 
-    activeGoalId:null,
+function normalizeUrl(url){
+  let value = String(url || "").trim();
 
-    todayTasks:{},
+  if(!value) return "";
 
-    weight:{
-      w175:false,
-      w155:false,
-      w175Date:"",
-      w155Date:""
+  if(/^javascript:/i.test(value)) return "";
+
+  if(/^https?:\/\//i.test(value)){
+    return value;
+  }
+
+  return "https://" + value;
+}
+
+function safeUrl(url){
+  const normalized = normalizeUrl(url);
+
+  if(!normalized) return "";
+
+  try{
+    const parsed = new URL(normalized);
+
+    if(parsed.protocol !== "http:" && parsed.protocol !== "https:"){
+      return "";
     }
 
+    return parsed.href;
+  }catch(e){
+    return "";
+  }
+}
+
+
+/* =========================
+   DEFAULT GOALS
+========================= */
+
+const DEFAULT_GOALS = [
+
+  {
+    title:"Real Estate • Minimum 2 Deals/Month (Outcome Only)",
+    category:"Real Estate",
+    type:"realestate",
+    notes:"Outcome goal: minimum 2 real estate deals per month."
+  },
+
+  {
+    title:"GED",
+    category:"Education",
+    type:"standard",
+    notes:"Complete my GED."
+  },
+
+  {
+    title:"Fix Teeth",
+    category:"Personal",
+    type:"standard",
+    notes:"Work toward getting my teeth fixed."
+  },
+
+  {
+    title:"Buy a Home & Rental Properties",
+    category:"Housing / Rentals",
+    type:"standard",
+    notes:"Buy my home and build rental properties."
+  },
+
+  {
+    title:"Bookkeeping Business",
+    category:"Business",
+    type:"standard",
+    notes:"Build my bookkeeping business."
+  },
+
+  {
+    title:"Credit Repaired",
+    category:"Credit",
+    type:"standard",
+    notes:"Repair and improve my credit."
+  },
+
+  {
+    title:"Open Medical Assistant Facility • 12 Week Focus",
+    category:"Healthcare",
+    type:"standard",
+    notes:"I already have my Medical Assistant. This goal is for building toward opening a facility for medical assistants later."
+  },
+
+  {
+    title:"Class A (CDL)",
+    category:"CDL / Class A",
+    type:"standard",
+    notes:"Work toward obtaining my Class A CDL."
+  },
+
+  {
+    title:"Cornstarch Business",
+    category:"Business",
+    type:"standard",
+    notes:"Grow and improve my Cornstarch Business."
+  },
+
+  {
+    title:"YouTube Channels",
+    category:"YouTube",
+    type:"standard",
+    notes:"Build and maintain my YouTube channels."
+  },
+
+  {
+    title:"Courses",
+    category:"Courses",
+    type:"standard",
+    notes:"Complete my Real Estate Course + Author Course."
+  },
+
+  {
+    title:"Dispatcher Business",
+    category:"Dispatcher",
+    type:"standard",
+    notes:"Build my dispatcher business."
+  },
+
+  {
+    title:"House Inspector Business",
+    category:"House Inspector",
+    type:"standard",
+    notes:"Build my house inspector business."
+  },
+
+  {
+    title:"Open Independent Living Homes",
+    category:"Independent Living Homes",
+    type:"standard",
+    notes:"Work toward opening independent living homes."
+  },
+
+  {
+    title:"Dropshipping Business",
+    category:"Dropshipping",
+    type:"standard",
+    notes:"Build my dropshipping business."
+  },
+
+  {
+    title:"Become an Author",
+    category:"Author",
+    type:"standard",
+    notes:"Write and publish my books."
+  },
+
+  {
+    title:"Build & Sell Courses",
+    category:"Courses",
+    type:"standard",
+    notes:"Create and sell my own courses."
+  },
+
+  {
+    title:"Make Planners",
+    category:"Planners",
+    type:"standard",
+    notes:"Create my planners, including the Bea Planner."
+  },
+
+  {
+    title:"Create & Sell Products",
+    category:"Products",
+    type:"standard",
+    notes:"Kids' Coloring Books, Mugs, T-Shirts & Other Items."
+  },
+
+  {
+    title:"Monetize Instagram & Grow My Following",
+    category:"Social Media",
+    type:"standard",
+    notes:"Grow and monetize Instagram."
+  },
+
+  {
+    title:"Monetize YouTube & Grow My Following",
+    category:"YouTube",
+    type:"standard",
+    notes:"Grow and monetize YouTube."
+  },
+
+  {
+    title:"Build Millions of Followers Across My Social Media",
+    category:"Social Media",
+    type:"standard",
+    notes:"Build a large following across my social platforms."
+  },
+
+  {
+    title:"Keep All My Websites & Apps Running Properly",
+    category:"Websites & Apps",
+    type:"standard",
+    notes:"Maintain all of my websites and apps."
+  }
+
+];
+
+
+/* =========================
+   REAL ESTATE TASK TEMPLATE
+========================= */
+
+const REAL_ESTATE_TASKS = [
+
+  {
+    text:"Find 5–10 seller leads",
+    links:[
+      {label:"Propwire",url:"https://www.propwire.com/"},
+      {label:"Zillow FSBO",url:"https://www.zillow.com/"},
+      {label:"Craigslist",url:"https://www.craigslist.org/"},
+      {label:"County GIS",url:"https://www.google.com/search?q=county+GIS"},
+      {label:"Redfin",url:"https://www.redfin.com/"},
+      {label:"Google Maps",url:"https://www.google.com/maps/"},
+      {label:"Regrid",url:"https://regrid.com/"},
+      {label:"NETR Online",url:"https://www.netronline.com/"}
+    ]
+  },
+
+  {
+    text:"Contact 3–5 sellers",
+    links:[
+      {label:"Google Voice",url:"https://voice.google.com/"}
+    ]
+  },
+
+  {
+    text:"Find 3–5 new buyers",
+    links:[
+      {label:"Propwire",url:"https://www.propwire.com/"},
+      {label:"Zillow",url:"https://www.zillow.com/"},
+      {label:"Craigslist",url:"https://www.craigslist.org/"},
+      {label:"Realtor.com",url:"https://www.realtor.com/"},
+      {label:"Redfin",url:"https://www.redfin.com/"},
+      {label:"Google Maps",url:"https://www.google.com/maps/"}
+    ]
+  },
+
+  {
+    text:"Analyze 1–2 properties",
+    links:[
+      {label:"Propwire",url:"https://www.propwire.com/"},
+      {label:"Zillow",url:"https://www.zillow.com/"},
+      {label:"Redfin",url:"https://www.redfin.com/"},
+      {label:"Regrid",url:"https://regrid.com/"},
+      {label:"NETR Online",url:"https://www.netronline.com/"}
+    ]
+  },
+
+  {
+    text:"Send 1 offer",
+    links:[]
+  },
+
+  {
+    text:"Follow up with sellers",
+    links:[
+      {label:"Google Voice",url:"https://voice.google.com/"}
+    ]
+  },
+
+  {
+    text:"Follow up with buyers",
+    links:[
+      {label:"Google Voice",url:"https://voice.google.com/"}
+    ]
+  },
+
+  {
+    text:"Update CRM",
+    links:[]
+  }
+
+];
+
+
+/* =========================
+   STATE
+========================= */
+
+let state = {
+  goals:[],
+  dailyTasks:{},
+  appointments:[],
+  personalTasks:[],
+  errands:[],
+  vision:{
+    weight175:false,
+    weight155:false
+  }
+};
+
+let dailyPreviewGoalId = null;
+let taskEditorLinks = [];
+
+
+/* =========================
+   LOAD / SAVE
+========================= */
+
+function saveState(){
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+}
+
+function loadState(){
+
+  const saved = localStorage.getItem(STORAGE_KEY);
+
+  if(saved){
+
+    try{
+      state = JSON.parse(saved);
+    }catch(e){
+      state = {
+        goals:[],
+        dailyTasks:{},
+        appointments:[],
+        personalTasks:[],
+        errands:[],
+        vision:{weight175:false,weight155:false}
+      };
+    }
+
+  }
+
+  if(!Array.isArray(state.goals)) state.goals=[];
+  if(!state.dailyTasks || typeof state.dailyTasks !== "object") state.dailyTasks={};
+  if(!Array.isArray(state.appointments)) state.appointments=[];
+  if(!Array.isArray(state.personalTasks)) state.personalTasks=[];
+  if(!Array.isArray(state.errands)) state.errands=[];
+  if(!state.vision) state.vision={weight175:false,weight155:false};
+
+  migrateMedicalAssistantGoal();
+
+  if(state.goals.length === 0){
+    addDefaultGoals(false);
+  }
+
+  saveState();
+}
+
+function migrateMedicalAssistantGoal(){
+
+  state.goals.forEach(goal => {
+
+    if(
+      goal.title === "Medical Assistant • 12 Week Focus" ||
+      goal.title === "Medical Assistant"
+    ){
+
+      goal.title = "Open Medical Assistant Facility • 12 Week Focus";
+      goal.category = "Healthcare";
+      goal.notes =
+        "I already have my Medical Assistant. This goal is for building toward opening a facility for medical assistants later.";
+    }
+
+  });
+}
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function showPage(pageId,button){
+
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+  });
+
+  document.querySelectorAll(".tab").forEach(tab=>{
+    tab.classList.remove("active");
+  });
+
+  const page = document.getElementById(pageId);
+
+  if(page) page.classList.add("active");
+
+  if(button) button.classList.add("active");
+
+  if(pageId === "daily"){
+    prepareDailyPage();
+  }
+
+  if(pageId === "personal"){
+    renderPersonal();
+  }
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+
+/* =========================
+   GOALS
+========================= */
+
+function createGoal(data){
+
+  return {
+    id:uid(),
+    title:data.title,
+    category:data.category || "Other",
+    type:data.type || "standard",
+    notes:data.notes || "",
+    status:"parked",
+    startDate:"",
+    endDate:"",
+    taskTemplate:[],
+    realEstateMonths:{
+      month1:0,
+      month2:0,
+      month3:0
+    }
   };
 
 }
 
-
-function loadStore(){
-
-  try{
-
-    const saved =
-      JSON.parse(
-        localStorage.getItem(STORE_KEY)
-      );
-
-    if(saved){
-
-      if(!saved.goals)
-        saved.goals=[];
-
-      if(!saved.todayTasks)
-        saved.todayTasks={};
-
-      if(!saved.weight){
-
-        saved.weight={
-          w175:false,
-          w155:false,
-          w175Date:"",
-          w155Date:""
-        };
-
-      }
-
-      if(!("activeGoalId" in saved))
-        saved.activeGoalId=null;
-
-      return saved;
-
-    }
-
-  }catch(e){}
-
-  return defaultStore();
-
+function getActiveGoal(){
+  return state.goals.find(g=>g.status==="active");
 }
-
-
-let store=loadStore();
-
-
-function saveStore(){
-
-  localStorage.setItem(
-    STORE_KEY,
-    JSON.stringify(store)
-  );
-
-}
-
-
-/* =====================================================
-   HELPERS
-===================================================== */
-
-function uid(){
-
-  return "id_" +
-    Math.random()
-      .toString(16)
-      .slice(2) +
-    "_" +
-    Date.now()
-      .toString(16);
-
-}
-
-
-function todayISO(){
-
-  return new Date()
-    .toISOString()
-    .split("T")[0];
-
-}
-
-
-function addDays(dateStr,days){
-
-  const d =
-    new Date(
-      dateStr+"T00:00:00"
-    );
-
-  d.setDate(
-    d.getDate()+days
-  );
-
-  return d
-    .toISOString()
-    .split("T")[0];
-
-}
-
-
-function getGoalById(id){
-
-  return store.goals.find(
-    g=>g.id===id
-  ) || null;
-
-}
-
-
-function escapeHtml(str){
-
-  return String(str||"")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-
-function safeUrl(url){
-
-  url=(url||"").trim();
-
-  if(!url)
-    return "";
-
-  if(
-    !/^https?:\/\//i.test(url)
-  ){
-
-    url="https://"+url;
-
-  }
-
-  return url;
-
-}
-
-
-function statusPill(status){
-
-  if(status==="active")
-    return `<span class="pill active">Active</span>`;
-
-  if(status==="done")
-    return `<span class="pill done">Completed</span>`;
-
-  return `<span class="pill parked">Parked</span>`;
-
-}
-
-
-function formatPrettyDate(d){
-
-  return d.toLocaleDateString(
-    undefined,
-    {
-      year:"numeric",
-      month:"short",
-      day:"numeric"
-    }
-  );
-
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-function showSection(id){
-
-  document
-    .querySelectorAll(".section")
-    .forEach(
-      s=>s.classList.remove("active")
-    );
-
-  document
-    .getElementById(id)
-    .classList.add("active");
-
-  renderAll();
-
-}
-
-
-/* =====================================================
-   DEFAULT GOALS
-===================================================== */
-
-function defaultGoals(){
-
-  return [
-
-    {
-      title:"Wholesale Real Estate",
-      category:"Real Estate",
-      type:"standard",
-      notes:"Daily wholesale work. Find motivated sellers, find buyers, analyze properties, follow up, and send offers.",
-      tasks:getRealEstateTasks()
-    },
-
-    {
-      title:"Real Estate • Minimum 2 Deals/Month (Outcome Only)",
-      category:"Real Estate",
-      type:"realestate_outcome",
-      notes:"Outcome only. Daily wholesale actions are handled in the Daily Schedule.",
-      tasks:[]
-    },
-
-    {
-      title:"GED • 12 Week Focus",
-      category:"GED",
-      type:"standard",
-      notes:"Complete GED preparation and work toward passing the GED.",
-      tasks:[
-        {title:"Study GED material",links:[]},
-        {title:"Complete practice questions",links:[]},
-        {title:"Review weak subjects",links:[]}
-      ]
-    },
-
-    {
-      title:"Fix Teeth • 12 Week Focus",
-      category:"Fix Teeth",
-      type:"standard",
-      notes:"Work toward getting dental care completed.",
-      tasks:[
-        {title:"Research dental options",links:[]},
-        {title:"Schedule dental appointment",links:[]},
-        {title:"Complete dental follow-up",links:[]}
-      ]
-    },
-
-    {
-      title:"Buy a Home & Rental Properties • 12 Week Focus",
-      category:"Housing / Rentals",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Research homes and rental properties",links:[]},
-        {title:"Review financing options",links:[]},
-        {title:"Save toward property purchase",links:[]}
-      ]
-    },
-
-    {
-      title:"Bookkeeping Business • 12 Week Focus",
-      category:"Business",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Work on bookkeeping business setup",links:[]},
-        {title:"Work on bookkeeping CRM",links:[]},
-        {title:"Find potential bookkeeping clients",links:[]}
-      ]
-    },
-
-    {
-      title:"Credit Repaired • 12 Week Focus",
-      category:"Credit",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Review credit reports",links:[]},
-        {title:"Work on credit issues",links:[]},
-        {title:"Track credit progress",links:[]}
-      ]
-    },
-
-    {
-      title:"Medical Assistant • Completed / Use Later",
-      category:"Medical Assistant",
-      type:"standard",
-      notes:"Medical Assistant training/career is something I already have. This goal can be used as a foundation for my future Healthcare Business.",
-      tasks:[]
-    },
-
-    {
-      title:"Class A (CDL) • 12 Week Focus",
-      category:"CDL / Class A",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Study CDL material",links:[]},
-        {title:"Research CDL requirements",links:[]},
-        {title:"Work toward Class A CDL",links:[]}
-      ]
-    },
-
-    {
-      title:"Cornstarch Business • 12 Week Focus",
-      category:"Business",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Make cornstarch products",links:[]},
-        {title:"Package orders",links:[]},
-        {title:"Check inventory",links:[]},
-        {title:"Work on Shopify",links:[]},
-        {title:"Create marketing content",links:[]}
-      ]
-    },
-
-    {
-      title:"Trucking Business • 12 Week Focus",
-      category:"Business",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Work on trucking business setup",links:[]},
-        {title:"Research funding",links:[]},
-        {title:"Research equipment",links:[]}
-      ]
-    },
-
-    {
-      title:"Healthcare Business • Open a Facility for Medical Assistants",
-      category:"Healthcare",
-      type:"standard",
-      notes:"Long-term vision: use my Medical Assistant background to build a healthcare business and eventually open a facility for Medical Assistants.",
-      tasks:[
-        {title:"Research facility business requirements",links:[]},
-        {title:"Research licensing and regulations",links:[]},
-        {title:"Research facility startup costs",links:[]},
-        {title:"Research business structure",links:[]},
-        {title:"Create facility business plan",links:[]}
-      ]
-    },
-
-    {
-      title:"YouTube Channels • 12 Week Focus",
-      category:"YouTube",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Create YouTube content",links:[]},
-        {title:"Record video",links:[]},
-        {title:"Edit video",links:[]},
-        {title:"Upload video",links:[]}
-      ]
-    },
-
-    {
-      title:"Courses • Real Estate Course + Author Course",
-      category:"Courses",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Work on Real Estate Course",links:[]},
-        {title:"Work on Author Course",links:[]}
-      ]
-    },
-
-    {
-      title:"Dispatcher Business • 12 Week Focus",
-      category:"Dispatcher",
-      type:"standard",
-      notes:"Build and grow Bea Dispatch Services.",
-      tasks:[
-        {title:"Find loads / dispatch opportunities",links:[]},
-        {title:"Contact potential trucking clients",links:[]},
-        {title:"Work on dispatcher business",links:[]}
-      ]
-    },
-
-    {
-      title:"House Inspector Business • 12 Week Focus",
-      category:"House Inspector",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Work on house inspector business",links:[]},
-        {title:"Research requirements",links:[]},
-        {title:"Research business setup",links:[]}
-      ]
-    },
-
-    {
-      title:"Open Independent Living Homes • 12 Week Focus",
-      category:"Independent Living Homes",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Research independent living home requirements",links:[]},
-        {title:"Research property requirements",links:[]},
-        {title:"Research business model",links:[]}
-      ]
-    },
-
-    {
-      title:"Dropshipping Business • 12 Week Focus",
-      category:"Dropshipping",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Research products",links:[]},
-        {title:"Work on Shopify store",links:[]},
-        {title:"Research suppliers",links:[]},
-        {title:"Create product listings",links:[]}
-      ]
-    },
-
-    {
-      title:"Become an Author • 12 Week Focus",
-      category:"Author",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Write my book",links:[]},
-        {title:"Edit my book",links:[]},
-        {title:"Work on publishing",links:[]}
-      ]
-    },
-
-    {
-      title:"Build & Sell Courses • 12 Week Focus",
-      category:"Courses",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Create course material",links:[]},
-        {title:"Record course lessons",links:[]},
-        {title:"Prepare course for sale",links:[]}
-      ]
-    },
-
-    {
-      title:"Make Planners • 12 Week Focus",
-      category:"Planners",
-      type:"standard",
-      notes:"Create and sell planners, including my Bea Planner.",
-      tasks:[
-        {title:"Work on Bea Planner",links:[]},
-        {title:"Design planner pages",links:[]},
-        {title:"Prepare planner for sale",links:[]}
-      ]
-    },
-
-    {
-      title:"Create & Sell Products • 12 Week Focus",
-      category:"Products",
-      type:"standard",
-      notes:"Kids coloring books, mugs, T-shirts, and other products.",
-      tasks:[
-        {title:"Research product ideas",links:[]},
-        {title:"Create products",links:[]},
-        {title:"Create listings",links:[]},
-        {title:"Market products",links:[]}
-      ]
-    },
-
-    {
-      title:"Monetize Instagram & Grow My Following • 12 Week Focus",
-      category:"Social Media",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Create Instagram content",links:[]},
-        {title:"Post content",links:[]},
-        {title:"Engage with followers",links:[]},
-        {title:"Work on monetization",links:[]}
-      ]
-    },
-
-    {
-      title:"Monetize YouTube & Grow My Following • 12 Week Focus",
-      category:"YouTube",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Create YouTube content",links:[]},
-        {title:"Post video",links:[]},
-        {title:"Engage with viewers",links:[]},
-        {title:"Work on monetization",links:[]}
-      ]
-    },
-
-    {
-      title:"Build Millions of Followers Across My Social Media • 12 Week Focus",
-      category:"Social Media",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Create social media content",links:[]},
-        {title:"Post consistently",links:[]},
-        {title:"Engage with audience",links:[]},
-        {title:"Grow followers",links:[]}
-      ]
-    },
-
-    {
-      title:"Keep All My Websites & Apps Running Properly • 12 Week Focus",
-      category:"Websites & Apps",
-      type:"standard",
-      notes:"",
-      tasks:[
-        {title:"Check websites",links:[]},
-        {title:"Check apps and CRMs",links:[]},
-        {title:"Fix website/app problems",links:[]},
-        {title:"Make needed updates",links:[]}
-      ]
-    }
-
-  ];
-
-}
-
-
-/* =====================================================
-   REAL ESTATE TASKS + LINKS
-===================================================== */
-
-function getRealEstateTasks(){
-
-  return [
-
-    {
-      title:"Find 5–10 motivated seller leads",
-      links:[
-        {
-          name:"PropWire",
-          url:"https://www.propwire.com/"
-        },
-        {
-          name:"Zillow FSBO",
-          url:"https://www.zillow.com/"
-        },
-        {
-          name:"Craigslist",
-          url:"https://www.craigslist.org/"
-        },
-        {
-          name:"Regrid",
-          url:"https://regrid.com/"
-        },
-        {
-          name:"NETR Online",
-          url:"https://publicrecords.netronline.com/"
-        },
-        {
-          name:"Google Maps",
-          url:"https://maps.google.com/"
-        }
-      ]
-    },
-
-    {
-      title:"Contact 3–5 sellers",
-      links:[
-        {
-          name:"Google Voice",
-          url:"https://voice.google.com/"
-        }
-      ]
-    },
-
-    {
-      title:"Follow up with seller leads",
-      links:[
-        {
-          name:"Google Voice",
-          url:"https://voice.google.com/"
-        }
-      ]
-    },
-
-    {
-      title:"Find 3–5 new buyers",
-      links:[
-        {
-          name:"PropWire",
-          url:"https://www.propwire.com/"
-        },
-        {
-          name:"Zillow",
-          url:"https://www.zillow.com/"
-        },
-        {
-          name:"Craigslist",
-          url:"https://www.craigslist.org/"
-        },
-        {
-          name:"Realtor.com",
-          url:"https://www.realtor.com/"
-        },
-        {
-          name:"Redfin",
-          url:"https://www.redfin.com/"
-        }
-      ]
-    },
-
-    {
-      title:"Analyze 1–2 properties",
-      links:[
-        {
-          name:"PropWire",
-          url:"https://www.propwire.com/"
-        },
-        {
-          name:"Zillow",
-          url:"https://www.zillow.com/"
-        },
-        {
-          name:"Redfin",
-          url:"https://www.redfin.com/"
-        },
-        {
-          name:"Regrid",
-          url:"https://regrid.com/"
-        }
-      ]
-    },
-
-    {
-      title:"Send 1 offer",
-      links:[]
-    },
-
-    {
-      title:"Buyer follow-up",
-      links:[
-        {
-          name:"Google Voice",
-          url:"https://voice.google.com/"
-        }
-      ]
-    },
-
-    {
-      title:"Check public records / property information",
-      links:[
-        {
-          name:"County Public Records",
-          url:"https://www.google.com/search?q=county+public+records"
-        },
-        {
-          name:"NETR Online",
-          url:"https://publicrecords.netronline.com/"
-        }
-      ]
-    }
-
-  ];
-
-}
-
-
-/* =====================================================
-   DEFAULT GOALS LOADER
-===================================================== */
-
-function addDefaultGoals(){
-
-  const defaults =
-    defaultGoals();
-
-  const existing =
-    new Set(
-      store.goals.map(
-        g=>g.title.toLowerCase()
-      )
-    );
-
-  let added=0;
-
-  defaults.forEach(d=>{
-
-    if(
-      existing.has(
-        d.title.toLowerCase()
-      )
-    ){
-
-      return;
-
-    }
-
-    const g={
-      id:uid(),
-      title:d.title,
-      category:d.category,
-      type:d.type,
-      notes:d.notes || "",
-      tasks:d.tasks || [],
-      status:"parked",
-      createdAt:todayISO(),
-      startDate:null,
-      endDate:null,
-      completedAt:""
-    };
-
-    if(
-      d.type==="realestate_outcome"
-    ){
-
-      g.re={
-        m1:0,
-        m2:0,
-        m3:0
-      };
-
-      g.reMonthlyTarget=2;
-      g.reTotalTarget=6;
-
-    }
-
-    store.goals.push(g);
-
-    existing.add(
-      d.title.toLowerCase()
-    );
-
-    added++;
-
-  });
-
-  saveStore();
-
-  alert(
-    added
-      ? `Added ${added} missing goals.`
-      : "All default goals are already in your CRM."
-  );
-
-  renderAll();
-
-}
-
-
-/* =====================================================
-   ADD GOAL
-===================================================== */
 
 function addGoal(){
 
-  const title=
-    document
-      .getElementById("newGoalTitle")
-      .value
-      .trim();
+  const title = document.getElementById("newGoalTitle").value.trim();
 
   if(!title){
-
-    alert("Type a goal title first.");
-
+    alert("Please enter a goal name.");
     return;
-
   }
 
-  const category=
-    document
-      .getElementById("newGoalCategory")
-      .value;
+  const category =
+    document.getElementById("newGoalCategory").value.trim() || "Other";
 
-  const type=
-    document
-      .getElementById("newGoalType")
-      .value;
+  const type =
+    document.getElementById("newGoalType").value;
 
-  const notes=
-    document
-      .getElementById("newGoalNotes")
-      .value
-      .trim();
+  const notes =
+    document.getElementById("newGoalNotes").value.trim();
 
-  const g={
-    id:uid(),
-    title:title,
-    category:category,
-    type:type,
-    notes:notes,
-    tasks:[],
-    status:"parked",
-    createdAt:todayISO(),
-    startDate:null,
-    endDate:null,
-    completedAt:""
-  };
-
-  if(type==="realestate_outcome"){
-
-    g.re={
-      m1:0,
-      m2:0,
-      m3:0
-    };
-
-    g.reMonthlyTarget=2;
-    g.reTotalTarget=6;
-
-  }
-
-  store.goals.unshift(g);
-
-  document
-    .getElementById("newGoalTitle")
-    .value="";
-
-  document
-    .getElementById("newGoalNotes")
-    .value="";
-
-  saveStore();
-
-  renderAll();
-
-}
-
-
-/* =====================================================
-   ACTIVATE / PARK / COMPLETE
-===================================================== */
-
-function setActiveGoal(goalId){
-
-  const current=
-    store.goals.find(
-      g=>g.status==="active"
-    );
-
-  if(
-    current &&
-    current.id!==goalId
-  ){
-
-    if(
-      !confirm(
-        "You already have an active goal. Park the current goal and start this new 12-week goal?"
-      )
-    ){
-
-      return;
-
-    }
-
-    current.status="parked";
-
-  }
-
-  const g=
-    getGoalById(goalId);
-
-  if(!g) return;
-
-  g.status="active";
-
-  g.startDate=todayISO();
-
-  g.endDate=
-    addDays(
-      g.startDate,
-      84
-    );
-
-  g.completedAt="";
-
-  store.activeGoalId=goalId;
-
-  saveStore();
-
-  renderAll();
-
-}
-
-
-function parkGoal(goalId){
-
-  const g=
-    getGoalById(goalId);
-
-  if(!g) return;
-
-  g.status="parked";
-
-  if(
-    store.activeGoalId===goalId
-  ){
-
-    store.activeGoalId=null;
-
-  }
-
-  saveStore();
-
-  renderAll();
-
-}
-
-
-function completeGoal(goalId){
-
-  const g=
-    getGoalById(goalId);
-
-  if(!g) return;
-
-  g.status="done";
-
-  g.completedAt=
-    todayISO();
-
-  if(
-    store.activeGoalId===goalId
-  ){
-
-    store.activeGoalId=null;
-
-  }
-
-  saveStore();
-
-  showGoalAchievedBanner(
-    g.title,
-    formatPrettyDate(new Date())
+  const duplicate = state.goals.some(
+    g => g.title.toLowerCase() === title.toLowerCase()
   );
 
-  launchConfetti(2200);
+  if(duplicate){
+    alert("That goal already exists.");
+    return;
+  }
+
+  state.goals.push(createGoal({
+    title,
+    category,
+    type,
+    notes
+  }));
+
+  saveState();
+
+  document.getElementById("newGoalTitle").value="";
+  document.getElementById("newGoalCategory").value="";
+  document.getElementById("newGoalNotes").value="";
 
   renderAll();
 
+  alert("Goal added.");
 }
 
+function addDefaultGoals(showAlert=true){
 
-function deleteGoal(goalId){
+  let added=0;
 
-  const g=
-    getGoalById(goalId);
+  DEFAULT_GOALS.forEach(defaultGoal=>{
 
-  const name=
-    g ? g.title : "this goal";
-
-  if(
-    !confirm(
-      `Delete "${name}"? This cannot be undone.`
-    )
-  ){
-
-    return;
-
-  }
-
-  store.goals=
-    store.goals.filter(
-      x=>x.id!==goalId
+    const exists = state.goals.some(
+      g => g.title.toLowerCase() === defaultGoal.title.toLowerCase()
     );
 
-  if(
-    store.activeGoalId===goalId
-  ){
+    if(!exists){
+      const goal=createGoal(defaultGoal);
 
-    store.activeGoalId=null;
+      if(goal.title === "Real Estate • Minimum 2 Deals/Month (Outcome Only)"){
+        goal.taskTemplate = [];
+      }else{
+        goal.taskTemplate = genericTaskTemplate();
+      }
 
-  }
+      state.goals.push(goal);
+      added++;
+    }
 
-  delete store.todayTasks[goalId];
+  });
 
-  saveStore();
-
+  saveState();
   renderAll();
 
+  if(showAlert){
+    alert(added + " default goal(s) added.");
+  }
 }
 
+function genericTaskTemplate(){
 
-/* =====================================================
-   GOAL NOTES
-===================================================== */
-
-function saveGoalNote(goalId){
-
-  const g=
-    getGoalById(goalId);
-
-  if(!g) return;
-
-  const el=
-    document.getElementById(
-      "note_"+goalId
-    );
-
-  g.notes=
-    (el?.value || "").trim();
-
-  saveStore();
-
-}
-
-
-/* =====================================================
-   REAL ESTATE OUTCOME
-===================================================== */
-
-function updateDealMonth(
-  goalId,
-  monthIndex,
-  val
-){
-
-  const g=
-    getGoalById(goalId);
-
-  if(
-    !g ||
-    g.type!=="realestate_outcome"
-  ){
-
-    return;
-
-  }
-
-  const n=
-    Math.max(
-      0,
-      Number(val||0)
-    );
-
-  g.re["m"+monthIndex]=n;
-
-  saveStore();
-
-  renderAll();
-
-}
-
-
-/* =====================================================
-   DAILY TASKS
-===================================================== */
-
-function getTodayTasksForGoal(goalId){
-
-  if(!store.todayTasks[goalId])
-    store.todayTasks[goalId]=[];
-
-  return store.todayTasks[goalId];
-
-}
-
-
-function loadGoalTemplateForToday(){
-
-  const g=
-    getGoalById(
-      store.activeGoalId
-    );
-
-  if(!g){
-
-    alert(
-      "Choose an active goal first."
-    );
-
-    return;
-
-  }
-
-  if(
-    !g.tasks ||
-    g.tasks.length===0
-  ){
-
-    alert(
-      "This goal does not have a task template yet. Add tasks below."
-    );
-
-    return;
-
-  }
-
-  const current=
-    getTodayTasksForGoal(g.id);
-
-  const todayKey=
-    todayISO();
-
-  const alreadyLoaded=
-    current.some(
-      t=>t.sourceDate===todayKey
-    );
-
-  if(alreadyLoaded){
-
-    alert(
-      "Today's goal tasks have already been loaded."
-    );
-
-    return;
-
-  }
-
-  g.tasks.forEach(template=>{
-
-    current.push({
-
+  return [
+    {
       id:uid(),
+      text:"Choose today's most important action for this goal",
+      done:false,
+      links:[]
+    },
+    {
+      id:uid(),
+      text:"Work on one important step toward this goal",
+      done:false,
+      links:[]
+    },
+    {
+      id:uid(),
+      text:"Complete or move forward on today's task",
+      done:false,
+      links:[]
+    },
+    {
+      id:uid(),
+      text:"Review what I accomplished today",
+      done:false,
+      links:[]
+    }
+  ];
+}
 
-      title:template.title,
+function activateGoal(id){
 
-      links:
-        JSON.parse(
-          JSON.stringify(
-            template.links || []
-          )
-        ),
+  const newGoal = state.goals.find(g=>g.id===id);
 
-      completed:false,
+  if(!newGoal) return;
 
-      sourceDate:todayKey
+  const current = getActiveGoal();
 
-    });
+  if(current && current.id !== id){
 
+    const confirmChange = confirm(
+      "Your current active goal is:\n\n" +
+      current.title +
+      "\n\nDo you want to park it and make this your new active goal?"
+    );
+
+    if(!confirmChange) return;
+
+    current.status="parked";
+  }
+
+  newGoal.status="active";
+
+  if(!newGoal.startDate){
+    newGoal.startDate=todayISO();
+    newGoal.endDate=addDays(newGoal.startDate,84);
+  }
+
+  if(
+    newGoal.title === "Real Estate • Minimum 2 Deals/Month (Outcome Only)"
+  ){
+    newGoal.type="realestate";
+  }
+
+  if(!Array.isArray(newGoal.taskTemplate)){
+    newGoal.taskTemplate =
+      newGoal.type === "realestate"
+      ? []
+      : genericTaskTemplate();
+  }
+
+  saveState();
+
+  renderAll();
+
+  alert("Active goal changed to:\n" + newGoal.title);
+}
+
+function parkGoal(id){
+
+  const goal=state.goals.find(g=>g.id===id);
+
+  if(!goal) return;
+
+  if(goal.status==="active"){
+    alert("You cannot park the active goal directly. Activate another goal first.");
+    return;
+  }
+
+  goal.status="parked";
+
+  saveState();
+  renderAll();
+}
+
+function completeGoal(id){
+
+  const goal=state.goals.find(g=>g.id===id);
+
+  if(!goal) return;
+
+  if(!confirm("Mark this goal as completed?")) return;
+
+  goal.status="done";
+
+  saveState();
+  renderAll();
+
+  confetti();
+}
+
+function editGoal(id){
+
+  const goal=state.goals.find(g=>g.id===id);
+
+  if(!goal) return;
+
+  const title=prompt("Goal name:",goal.title);
+
+  if(title===null) return;
+
+  const cleanTitle=title.trim();
+
+  if(!cleanTitle) return;
+
+  const notes=prompt("Goal notes:",goal.notes || "");
+
+  goal.title=cleanTitle;
+
+  if(notes!==null){
+    goal.notes=notes;
+  }
+
+  saveState();
+  renderAll();
+}
+
+function deleteGoal(id){
+
+  const goal=state.goals.find(g=>g.id===id);
+
+  if(!goal) return;
+
+  if(goal.status==="active"){
+    alert("Activate another goal before deleting the current active goal.");
+    return;
+  }
+
+  if(!confirm(
+    "Delete this goal?\n\n" +
+    goal.title +
+    "\n\nThis cannot be undone."
+  )) return;
+
+  state.goals=state.goals.filter(g=>g.id!==id);
+
+  Object.keys(state.dailyTasks).forEach(key=>{
+    if(key.endsWith("|"+id)){
+      delete state.dailyTasks[key];
+    }
   });
 
-  saveStore();
-
+  saveState();
   renderAll();
-
 }
 
 
-function addTodayTask(){
-
-  const g=
-    getGoalById(
-      store.activeGoalId
-    );
-
-  if(!g){
-
-    alert(
-      "Choose an active goal first."
-    );
-
-    return;
-
-  }
-
-  const title=
-    document
-      .getElementById("newTodayTask")
-      .value
-      .trim();
-
-  if(!title){
-
-    alert(
-      "Type a task first."
-    );
-
-    return;
-
-  }
-
-  const url=
-    safeUrl(
-      document
-        .getElementById("newTodayLink")
-        .value
-    );
-
-  const name=
-    document
-      .getElementById("newTodayLinkName")
-      .value
-      .trim();
-
-  const links=[];
-
-  if(url){
-
-    links.push({
-
-      name:name || "Open Website",
-
-      url:url
-
-    });
-
-  }
-
-  getTodayTasksForGoal(g.id).push({
-
-    id:uid(),
-
-    title:title,
-
-    links:links,
-
-    completed:false,
-
-    sourceDate:todayISO(),
-
-    custom:true
-
-  });
-
-  document
-    .getElementById("newTodayTask")
-    .value="";
-
-  document
-    .getElementById("newTodayLink")
-    .value="";
-
-  document
-    .getElementById("newTodayLinkName")
-    .value="";
-
-  saveStore();
-
-  renderAll();
-
-}
-
-
-function toggleTodayTask(
-  goalId,
-  taskId
-){
-
-  const tasks=
-    getTodayTasksForGoal(goalId);
-
-  const task=
-    tasks.find(
-      t=>t.id===taskId
-    );
-
-  if(!task) return;
-
-  task.completed=
-    !task.completed;
-
-  saveStore();
-
-  renderAll();
-
-}
-
-
-function deleteTodayTask(
-  goalId,
-  taskId
-){
-
-  if(
-    !confirm(
-      "Delete this task from today's schedule?"
-    )
-  ){
-
-    return;
-
-  }
-
-  store.todayTasks[goalId]=
-    getTodayTasksForGoal(goalId)
-      .filter(
-        t=>t.id!==taskId
-      );
-
-  saveStore();
-
-  renderAll();
-
-}
-
-
-function clearTodayTasks(){
-
-  const g=
-    getGoalById(
-      store.activeGoalId
-    );
-
-  if(!g){
-
-    alert(
-      "Choose an active goal first."
-    );
-
-    return;
-
-  }
-
-  if(
-    !confirm(
-      "Clear all of today's tasks for this goal?"
-    )
-  ){
-
-    return;
-
-  }
-
-  store.todayTasks[g.id]=[];
-
-  saveStore();
-
-  renderAll();
-
-}
-
-
-/* =====================================================
-   TEMPLATE TASKS
-===================================================== */
-
-function addTemplateTask(){
-
-  const g=
-    getGoalById(
-      store.activeGoalId
-    );
-
-  if(!g){
-
-    alert(
-      "Choose an active goal first."
-    );
-
-    return;
-
-  }
-
-  const title=
-    document
-      .getElementById("templateTaskTitle")
-      .value
-      .trim();
-
-  if(!title){
-
-    alert(
-      "Type a task first."
-    );
-
-    return;
-
-  }
-
-  const url=
-    safeUrl(
-      document
-        .getElementById("templateTaskUrl")
-        .value
-    );
-
-  const name=
-    document
-      .getElementById("templateTaskLinkName")
-      .value
-      .trim();
-
-  if(!g.tasks)
-    g.tasks=[];
-
-  const links=[];
-
-  if(url){
-
-    links.push({
-
-      name:name || "Open Website",
-
-      url:url
-
-    });
-
-  }
-
-  g.tasks.push({
-
-    title:title,
-
-    links:links
-
-  });
-
-  document
-    .getElementById("templateTaskTitle")
-    .value="";
-
-  document
-    .getElementById("templateTaskUrl")
-    .value="";
-
-  document
-    .getElementById("templateTaskLinkName")
-    .value="";
-
-  saveStore();
-
-  renderAll();
-
-}
-
-
-function deleteTemplateTask(
-  goalId,
-  index
-){
-
-  const g=
-    getGoalById(goalId);
-
-  if(!g) return;
-
-  if(
-    !confirm(
-      "Delete this task from the goal template?"
-    )
-  ){
-
-    return;
-
-  }
-
-  g.tasks.splice(index,1);
-
-  saveStore();
-
-  renderAll();
-
-}
-
-
-function addLinkToTemplateTask(
-  goalId,
-  index
-){
-
-  const g=
-    getGoalById(goalId);
-
-  if(!g) return;
-
-  const name=
-    prompt(
-      "Website name (example: PropWire):"
-    );
-
-  if(name===null) return;
-
-  const url=
-    prompt(
-      "Website URL:"
-    );
-
-  if(url===null) return;
-
-  const clean=
-    safeUrl(url);
-
-  if(!clean){
-
-    alert(
-      "Enter a valid website."
-    );
-
-    return;
-
-  }
-
-  if(!g.tasks[index].links)
-    g.tasks[index].links=[];
-
-  g.tasks[index].links.push({
-
-    name:name.trim() || "Open Website",
-
-    url:clean
-
-  });
-
-  saveStore();
-
-  renderAll();
-
-}
-
-
-/* =====================================================
-   DAILY DISPLAY
-===================================================== */
-
-function renderDailySchedule(){
-
-  const banner=
-    document.getElementById(
-      "dailyGoalBanner"
-    );
-
-  const tasksWrap=
-    document.getElementById(
-      "todayTasksWrap"
-    );
-
-  const templateWrap=
-    document.getElementById(
-      "templateWrap"
-    );
-
-  if(
-    !banner ||
-    !tasksWrap ||
-    !templateWrap
-  ){
-
-    return;
-
-  }
-
-  const g=
-    store.activeGoalId
-      ? getGoalById(
-          store.activeGoalId
-        )
-      : null;
-
-  if(!g){
-
-    banner.innerHTML=`
-      <div class="notice">
-        <strong>No active goal selected.</strong><br>
-        Go to <strong>All Goals</strong> and activate the
-        goal you are working on for this 12-week cycle.
-      </div>
-    `;
-
-    tasksWrap.innerHTML=
-      `<div class="empty">
-        Your Daily Schedule will appear here when you select an active goal.
-      </div>`;
-
-    templateWrap.innerHTML="";
-
-    return;
-
-  }
-
-  banner.innerHTML=`
-
-    <div class="goal-banner-active">
-
-      🎯 CURRENT GOAL
-
-      <br>
-
-      ${escapeHtml(g.title)}
-
-      <div class="small" style="margin-top:7px;">
-        Only this goal is active during your 12-week focus.
-      </div>
-
-    </div>
-
-  `;
-
-
-  const tasks=
-    getTodayTasksForGoal(g.id);
-
-
-  if(tasks.length===0){
-
-    tasksWrap.innerHTML=`
-
-      <div class="empty">
-
-        <p>
-          <strong>No tasks loaded for today yet.</strong>
-        </p>
-
-        <p class="muted">
-          Click <strong>Load Goal Tasks</strong> to bring your
-          saved goal tasks into today's checklist.
-        </p>
-
-      </div>
-
-    `;
-
-  }else{
-
-    tasksWrap.innerHTML=
-      tasks.map(
-        task=>`
-
-          <div class="task-card ${
-            task.completed
-              ? "completed"
-              : ""
-          }">
-
-            <div class="task-row">
-
-              <input
-                class="task-check"
-                type="checkbox"
-                ${
-                  task.completed
-                    ? "checked"
-                    : ""
-                }
-                onchange="
-                  toggleTodayTask(
-                    '${g.id}',
-                    '${task.id}'
-                  )
-                "
-              >
-
-              <div class="task-title">
-
-                ${escapeHtml(task.title)}
-
-                ${
-                  task.links &&
-                  task.links.length
-                    ? `
-                      <div class="link-list">
-
-                        ${task.links.map(
-                          link=>`
-
-                            <a
-                              class="site-link"
-                              href="${escapeHtml(
-                                safeUrl(link.url)
-                              )}"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              🔗
-                              ${escapeHtml(
-                                link.name
-                              )}
-                            </a>
-
-                          `
-                        ).join("")}
-
-                      </div>
-                    `
-                    : ""
-                }
-
-              </div>
-
-              <button
-                class="btn warn"
-                style="padding:8px 10px;font-size:13px;"
-                onclick="
-                  deleteTodayTask(
-                    '${g.id}',
-                    '${task.id}'
-                  )
-                "
-              >
-                Delete
-              </button>
-
-            </div>
-
-          </div>
-
-        `
-      ).join("");
-
-  }
-
-
-  /* TEMPLATE */
-
-  if(
-    g.type==="realestate_outcome"
-  ){
-
-    templateWrap.innerHTML=`
-
-      <div class="notice">
-
-        <strong>Real Estate Outcome Only</strong>
-
-        <br><br>
-
-        This goal tracks the outcome of
-        <strong>minimum 2 deals/month</strong>.
-
-        <br><br>
-
-        Your wholesale actions belong under the
-        <strong>Wholesale Real Estate</strong>
-        Daily Schedule.
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  const template=
-    g.tasks || [];
-
-
-  if(template.length===0){
-
-    templateWrap.innerHTML=`
-
-      <div class="empty">
-
-        No template tasks yet.
-
-        <br>
-
-        Add your first task below.
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  templateWrap.innerHTML=
-    template.map(
-      (task,index)=>`
-
-        <div class="template-task">
-
-          <div class="template-task-header">
-
-            <strong>
-              ${escapeHtml(task.title)}
-            </strong>
-
-            <button
-              class="btn warn"
-              style="padding:7px 10px;font-size:13px;"
-              onclick="
-                deleteTemplateTask(
-                  '${g.id}',
-                  ${index}
-                )
-              "
-            >
-              Delete
-            </button>
-
-          </div>
-
-
-          ${
-            task.links &&
-            task.links.length
-              ? `
-                <div class="link-list">
-
-                  ${task.links.map(
-                    link=>`
-
-                      <a
-                        class="site-link"
-                        href="${escapeHtml(
-                          safeUrl(link.url)
-                        )}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        🔗
-                        ${escapeHtml(link.name)}
-                      </a>
-
-                    `
-                  ).join("")}
-
-                </div>
-              `
-              : `
-                <p class="small muted">
-                  No website attached.
-                </p>
-              `
-          }
-
-
-          <button
-            class="btn ghost"
-            style="margin-top:10px;"
-            onclick="
-              addLinkToTemplateTask(
-                '${g.id}',
-                ${index}
-              )
-            "
-          >
-            + Add Website
-          </button>
-
-        </div>
-
-      `
-    ).join("");
-
-}
-
-
-/* =====================================================
-   ACTIVE GOAL DISPLAY
-===================================================== */
-
-function renderActiveGoal(){
-
-  const wrap=
-    document.getElementById(
-      "activeGoalWrap"
-    );
-
-  if(!wrap) return;
-
-  if(!store.activeGoalId){
-
-    wrap.innerHTML=`
-
-      <div class="notice">
-
-        <strong>No active goal yet.</strong>
-
-        <br><br>
-
-        Go to <strong>All Goals</strong>
-        and activate the goal you want to work on
-        for your 12-week cycle.
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-  const g=
-    getGoalById(
-      store.activeGoalId
-    );
-
-  if(!g){
-
-    store.activeGoalId=null;
-
-    saveStore();
-
-    wrap.innerHTML=
-      `<div class="notice">
-        Active goal not found.
-      </div>`;
-
-    return;
-
-  }
-
-
-  const daysLeft=
-    g.endDate
-      ? Math.max(
-          0,
-          Math.ceil(
-            (
-              new Date(
-                g.endDate+
-                "T00:00:00"
-              )-
-              new Date()
-            )/
-            86400000
-          )
-        )
-      : "—";
-
-
-  let extra="";
-
-
-  if(
-    g.type==="realestate_outcome"
-  ){
-
-    const total=
-      (g.re?.m1||0)+
-      (g.re?.m2||0)+
-      (g.re?.m3||0);
-
-    const target=
-      g.reTotalTarget||6;
-
-    const percent=
-      Math.min(
-        100,
-        (total/target)*100
-      );
-
-    extra=`
-
-      <div class="card"
-        style="
-          margin-top:14px;
-          border:1px solid #eee;
-          box-shadow:none;
-        "
-      >
-
-        <h3>
-          Real Estate Outcome
-        </h3>
-
-        <p class="muted">
-          Goal:
-          <strong>
-            Minimum 2 deals per month
-          </strong>.
-        </p>
-
-        <label>
-          Month 1 Deals
-        </label>
-
-        <input
-          type="number"
-          min="0"
-          value="${g.re?.m1??0}"
-          oninput="
-            updateDealMonth(
-              '${g.id}',
-              1,
-              this.value
-            )
-          "
-        >
-
-        <label>
-          Month 2 Deals
-        </label>
-
-        <input
-          type="number"
-          min="0"
-          value="${g.re?.m2??0}"
-          oninput="
-            updateDealMonth(
-              '${g.id}',
-              2,
-              this.value
-            )
-          "
-        >
-
-        <label>
-          Month 3 Deals
-        </label>
-
-        <input
-          type="number"
-          min="0"
-          value="${g.re?.m3??0}"
-          oninput="
-            updateDealMonth(
-              '${g.id}',
-              3,
-              this.value
-            )
-          "
-        >
-
-        <div class="progress-bar">
-
-          <div
-            class="progress-fill"
-            style="width:${percent}%"
-          ></div>
-
-        </div>
-
-        <p class="small muted">
-
-          Total Deals Closed:
-          <strong>${total}</strong>
-          /
-          ${target}
-
-        </p>
-
-      </div>
-
-    `;
-
-  }
-
-
-  wrap.innerHTML=`
-
-    <h3>
-      ${escapeHtml(g.title)}
-      ${statusPill(g.status)}
-    </h3>
-
-    <p class="muted">
-
-      <strong>Category:</strong>
-      ${escapeHtml(g.category)}
-
-    </p>
-
-    <p class="muted">
-
-      <strong>Timeline:</strong>
-      ${escapeHtml(g.startDate||"—")}
-      →
-      ${escapeHtml(g.endDate||"—")}
-
-    </p>
-
-    <div class="notice">
-
-      🎯
-      <strong>
-        This is your ONE active goal.
-      </strong>
-
-      <br><br>
-
-      ⏳
-      <strong>${daysLeft}</strong>
-      days remaining.
-
-    </div>
-
-    <div class="card"
-      style="
-        margin-top:14px;
-        border:1px solid #eee;
-        box-shadow:none;
-      "
-    >
-
-      <h3>
-        Notes for This Goal
-      </h3>
-
-      <textarea
-        id="activeNotes"
-        rows="5"
-        oninput="
-          updateActiveGoalNotes(
-            '${g.id}'
-          )
-        "
-      >${escapeHtml(g.notes||"")}</textarea>
-
-      <p class="small muted">
-        Auto-saves as you type.
-      </p>
-
-    </div>
-
-    <div class="btnRow">
-
-      <button
-        class="btn"
-        onclick="
-          showSection('daily')
-        "
-      >
-        🗓️ Open Daily Schedule
-      </button>
-
-      <button
-        class="btn secondary"
-        onclick="
-          parkGoal('${g.id}')
-        "
-      >
-        Park This Goal
-      </button>
-
-      <button
-        class="btn ghost"
-        onclick="
-          completeGoal('${g.id}')
-        "
-      >
-        Mark Completed
-      </button>
-
-    </div>
-
-    ${extra}
-
-  `;
-
-}
-
-
-function updateActiveGoalNotes(goalId){
-
-  const g=
-    getGoalById(goalId);
-
-  if(!g) return;
-
-  const el=
-    document.getElementById(
-      "activeNotes"
-    );
-
-  g.notes=
-    (el?.value||"");
-
-  saveStore();
-
-}
-
-
-/* =====================================================
+/* =========================
    VISION
-===================================================== */
+========================= */
+
+function saveVisionSettings(){
+
+  state.vision.weight175 =
+    document.getElementById("weight175").checked;
+
+  state.vision.weight155 =
+    document.getElementById("weight155").checked;
+
+  saveState();
+  renderProgress();
+}
 
 function renderVisionGoals(){
 
-  const wrap=
-    document.getElementById(
-      "visionGoals"
-    );
+  const container=document.getElementById("visionGoals");
 
-  if(!wrap) return;
+  if(!container) return;
 
-  if(
-    store.goals.length===0
-  ){
+  const grouped={};
 
-    wrap.innerHTML=`
+  state.goals.forEach(goal=>{
 
-      <p class="muted">
-        No goals added yet.
-      </p>
+    if(!grouped[goal.category]){
+      grouped[goal.category]=[];
+    }
 
-    `;
-
-    return;
-
-  }
-
-  const categories={};
-
-  store.goals.forEach(g=>{
-
-    if(!categories[g.category])
-      categories[g.category]=[];
-
-    categories[g.category].push(g);
+    grouped[goal.category].push(goal);
 
   });
 
   let html="";
 
-  Object.keys(categories)
+  Object.keys(grouped)
     .sort()
     .forEach(category=>{
 
-      html+=`
-
-        <div class="goal-category">
+      html += `
+        <h3 class="category-heading">
           ${escapeHtml(category)}
-        </div>
-
-        <ul>
-
+        </h3>
       `;
 
-      categories[category]
-        .forEach(g=>{
+      grouped[category].forEach(goal=>{
 
-          html+=`
+        const statusText =
+          goal.status==="active"
+          ? "Active"
+          : goal.status==="done"
+          ? "Completed"
+          : "Parked";
 
-            <li>
+        html += `
+          <div class="focus-box">
+            <strong>${escapeHtml(goal.title)}</strong>
+            <span class="pill ${
+              goal.status==="active"
+              ? "status-active"
+              : goal.status==="done"
+              ? "status-done"
+              : "status-parked"
+            }">
+              ${statusText}
+            </span>
+          </div>
+        `;
 
-              ${escapeHtml(g.title)}
-
-              ${statusPill(g.status)}
-
-            </li>
-
-          `;
-
-        });
-
-      html+=`</ul>`;
+      });
 
     });
 
-  wrap.innerHTML=html;
-
+  container.innerHTML=html;
 }
 
 
-/* =====================================================
-   GOALS TABLE
-===================================================== */
+/* =========================
+   RENDER GOALS
+========================= */
 
-function renderGoalsTable(){
+function renderGoalsList(){
 
-  const wrap=
-    document.getElementById(
-      "goalsTableWrap"
-    );
+  const container=document.getElementById("goalsList");
 
-  if(!wrap) return;
+  if(!container) return;
 
-  if(
-    store.goals.length===0
-  ){
+  if(state.goals.length===0){
+    container.innerHTML='<div class="empty">No goals yet.</div>';
+    return;
+  }
 
-    wrap.innerHTML=`
+  let html="";
 
-      <p class="muted">
-        No goals yet.
-      </p>
+  state.goals.forEach(goal=>{
 
+    const statusText =
+      goal.status==="active"
+      ? "ACTIVE"
+      : goal.status==="done"
+      ? "COMPLETED"
+      : "PARKED";
+
+    html += `
+      <div class="goal-card ${goal.status==="active" ? "active-goal":""}">
+
+        <div class="goal-title">
+          ${escapeHtml(goal.title)}
+        </div>
+
+        <div>
+          <span class="pill">${escapeHtml(goal.category)}</span>
+          <span class="pill ${
+            goal.status==="active"
+            ? "status-active"
+            : goal.status==="done"
+            ? "status-done"
+            : "status-parked"
+          }">${statusText}</span>
+        </div>
+
+        ${
+          goal.notes
+          ? `<p>${escapeHtml(goal.notes)}</p>`
+          : ""
+        }
+
+        ${
+          goal.startDate
+          ? `
+            <p class="small">
+              12-Week Period:
+              ${formatPrettyDate(goal.startDate)}
+              →
+              ${formatPrettyDate(goal.endDate)}
+            </p>
+          `
+          : ""
+        }
+
+        <div class="goal-actions">
+
+          ${
+            goal.status!=="active" && goal.status!=="done"
+            ? `<button class="btn" onclick="activateGoal('${goal.id}')">⭐ Make Active</button>`
+            : ""
+          }
+
+          ${
+            goal.status==="active"
+            ? `<button class="btn-green" onclick="showActiveFromGoal()">⭐ View Active Goal</button>`
+            : ""
+          }
+
+          ${
+            goal.status!=="done"
+            ? `<button class="btn-light" onclick="editGoal('${goal.id}')">✏️ Edit</button>`
+            : ""
+          }
+
+          ${
+            goal.status!=="active" && goal.status!=="done"
+            ? `<button class="btn-danger" onclick="deleteGoal('${goal.id}')">🗑️ Delete</button>`
+            : ""
+          }
+
+          ${
+            goal.status==="active"
+            ? `<button class="btn-green" onclick="completeGoal('${goal.id}')">✅ Complete</button>`
+            : ""
+          }
+
+        </div>
+
+      </div>
+    `;
+
+  });
+
+  container.innerHTML=html;
+}
+
+function showActiveFromGoal(){
+
+  const button = document.querySelector('.tab[onclick*="active"]');
+
+  showPage("active",button);
+}
+
+
+/* =========================
+   ACTIVE GOAL
+========================= */
+
+function renderActiveGoal(){
+
+  const container=document.getElementById("activeGoalContent");
+
+  if(!container) return;
+
+  const goal=getActiveGoal();
+
+  if(!goal){
+
+    container.innerHTML=`
+      <div class="card">
+        <h2>⭐ Active Goal</h2>
+        <div class="notice">
+          You don't currently have an active goal.
+        </div>
+
+        <p>
+          Go to <strong>All Goals</strong> and choose the goal you want to
+          focus on for your 12-week period.
+        </p>
+      </div>
     `;
 
     return;
+  }
+
+  let realEstateHtml="";
+
+  if(goal.type==="realestate"){
+
+    const m1=goal.realEstateMonths?.month1 || 0;
+    const m2=goal.realEstateMonths?.month2 || 0;
+    const m3=goal.realEstateMonths?.month3 || 0;
+
+    realEstateHtml=`
+      <div class="card">
+        <h2>🏡 Real Estate Outcome Tracking</h2>
+
+        <div class="grid">
+
+          <div>
+            <label>Month 1 Deals</label>
+            <input
+              type="number"
+              min="0"
+              value="${m1}"
+              onchange="updateREMonth(1,this.value)"
+            >
+          </div>
+
+          <div>
+            <label>Month 2 Deals</label>
+            <input
+              type="number"
+              min="0"
+              value="${m2}"
+              onchange="updateREMonth(2,this.value)"
+            >
+          </div>
+
+          <div>
+            <label>Month 3 Deals</label>
+            <input
+              type="number"
+              min="0"
+              value="${m3}"
+              onchange="updateREMonth(3,this.value)"
+            >
+          </div>
+
+        </div>
+
+        <p>
+          Target: <strong>Minimum 2 deals per month.</strong>
+        </p>
+      </div>
+    `;
 
   }
 
-  const rows=
-    store.goals.map(g=>{
+  container.innerHTML=`
 
-      const activateBtn=
-        g.status!=="active"
+    <div class="card">
 
+      <h2>⭐ My Active Goal</h2>
+
+      <div class="focus-box">
+
+        <h3>${escapeHtml(goal.title)}</h3>
+
+        <span class="pill status-active">ACTIVE</span>
+
+        <p>
+          <strong>12-Week Period:</strong><br>
+          ${formatPrettyDate(goal.startDate)}
+          →
+          ${formatPrettyDate(goal.endDate)}
+        </p>
+
+        <p>
+          <strong>Category:</strong>
+          ${escapeHtml(goal.category)}
+        </p>
+
+      </div>
+
+      <label>Goal Notes</label>
+
+      <textarea
+        id="activeGoalNotes"
+        oninput="saveActiveGoalNotes()"
+      >${escapeHtml(goal.notes || "")}</textarea>
+
+      <div class="button-row">
+
+        <button class="btn-blue" onclick="openDailyForActive()">
+          🗓️ Go To Daily Schedule
+        </button>
+
+        <button class="btn-green" onclick="completeGoal('${goal.id}')">
+          ✅ Complete Goal
+        </button>
+
+      </div>
+
+    </div>
+
+    ${realEstateHtml}
+
+  `;
+}
+
+function saveActiveGoalNotes(){
+
+  const goal=getActiveGoal();
+
+  if(!goal) return;
+
+  goal.notes=document.getElementById("activeGoalNotes").value;
+
+  saveState();
+}
+
+function updateREMonth(month,value){
+
+  const goal=getActiveGoal();
+
+  if(!goal || goal.type!=="realestate") return;
+
+  if(!goal.realEstateMonths){
+    goal.realEstateMonths={
+      month1:0,
+      month2:0,
+      month3:0
+    };
+  }
+
+  goal.realEstateMonths["month"+month]=
+    Math.max(0,parseInt(value)||0);
+
+  saveState();
+  renderProgress();
+}
+
+function openDailyForActive(){
+
+  const button = document.querySelector('.tab[onclick*="daily"]');
+
+  showPage("daily",button);
+}
+
+
+/* =========================
+   DAILY TASK STORAGE
+========================= */
+
+function dailyKey(date,goalId){
+  return date + "|" + goalId;
+}
+
+function getDailyTasks(date,goalId){
+
+  const key=dailyKey(date,goalId);
+
+  if(!state.dailyTasks[key]){
+    return null;
+  }
+
+  return state.dailyTasks[key];
+}
+
+function saveDailyTasks(date,goalId,tasks){
+
+  state.dailyTasks[dailyKey(date,goalId)] = tasks;
+
+  saveState();
+}
+
+function getGoalTemplate(goal){
+
+  if(!goal) return [];
+
+  if(
+    goal.title === "Real Estate • Minimum 2 Deals/Month (Outcome Only)"
+  ){
+    return [];
+  }
+
+  if(goal.title.toLowerCase().includes("real estate")){
+    return REAL_ESTATE_TASKS.map(item=>({
+      id:uid(),
+      text:item.text,
+      done:false,
+      links:item.links.map(link=>({
+        id:uid(),
+        label:link.label,
+        url:link.url
+      }))
+    }));
+  }
+
+  if(Array.isArray(goal.taskTemplate) && goal.taskTemplate.length){
+    return goal.taskTemplate.map(task=>({
+      id:uid(),
+      text:task.text,
+      done:false,
+      links:Array.isArray(task.links)
+        ? task.links.map(link=>({
+            id:uid(),
+            label:link.label,
+            url:link.url
+          }))
+        : []
+    }));
+  }
+
+  return genericTaskTemplate();
+}
+
+function ensureDailyTasks(date,goalId){
+
+  const existing=getDailyTasks(date,goalId);
+
+  if(existing){
+    return existing;
+  }
+
+  const goal=state.goals.find(g=>g.id===goalId);
+
+  const tasks=getGoalTemplate(goal);
+
+  saveDailyTasks(date,goalId,tasks);
+
+  return tasks;
+}
+
+
+/* =========================
+   DAILY PAGE
+========================= */
+
+function prepareDailyPage(){
+
+  const dateInput=document.getElementById("dailyDate");
+
+  if(!dateInput.value){
+    dateInput.value=todayISO();
+  }
+
+  populateDailyGoalSelector();
+
+  const active=getActiveGoal();
+
+  if(active && !dailyPreviewGoalId){
+    dailyPreviewGoalId=active.id;
+  }
+
+  if(!dailyPreviewGoalId && state.goals.length){
+    dailyPreviewGoalId=state.goals[0].id;
+  }
+
+  const selector=document.getElementById("dailyGoalSelector");
+
+  if(selector && dailyPreviewGoalId){
+    selector.value=dailyPreviewGoalId;
+  }
+
+  renderDaily();
+}
+
+function populateDailyGoalSelector(){
+
+  const selector=document.getElementById("dailyGoalSelector");
+
+  if(!selector) return;
+
+  const active=getActiveGoal();
+
+  let html="";
+
+  if(active){
+    html += `
+      <option value="${active.id}">
+        ⭐ Active: ${escapeHtml(active.title)}
+      </option>
+    `;
+  }
+
+  state.goals
+    .filter(g=>!active || g.id!==active.id)
+    .forEach(goal=>{
+
+      html += `
+        <option value="${goal.id}">
+          ${escapeHtml(goal.title)}
+        </option>
+      `;
+
+    });
+
+  selector.innerHTML=html;
+
+  if(dailyPreviewGoalId){
+    selector.value=dailyPreviewGoalId;
+  }else if(active){
+    dailyPreviewGoalId=active.id;
+    selector.value=active.id;
+  }
+}
+
+function changeDailyDate(){
+
+  renderDaily();
+}
+
+function changeDailyGoalPreview(){
+
+  dailyPreviewGoalId =
+    document.getElementById("dailyGoalSelector").value;
+
+  renderDaily();
+}
+
+function renderDaily(){
+
+  const date =
+    document.getElementById("dailyDate").value || todayISO();
+
+  const goalId =
+    dailyPreviewGoalId ||
+    getActiveGoal()?.id;
+
+  const header=document.getElementById("dailyGoalHeader");
+
+  if(!goalId){
+
+    header.innerHTML=`
+      <div class="notice">
+        No goal is selected. Activate a goal first.
+      </div>
+    `;
+
+    document.getElementById("dailyTasks").innerHTML=
+      '<div class="empty">No daily tasks.</div>';
+
+    document.getElementById("dailyProgressText").innerHTML="";
+    document.getElementById("dailyProgressFill").style.width="0%";
+
+    return;
+  }
+
+  const goal=state.goals.find(g=>g.id===goalId);
+
+  if(!goal) return;
+
+  const active=getActiveGoal();
+
+  header.innerHTML=`
+
+    <div class="focus-box">
+
+      <h3>
+        ${goal.id===active?.id ? "⭐" : "👀"}
+        Today's Goal: ${escapeHtml(goal.title)}
+      </h3>
+
+      ${
+        goal.id!==active?.id
+        ? `
+          <p class="small">
+            You are previewing this goal. Your 12-week active goal has not changed.
+          </p>
+        `
+        : ""
+      }
+
+      <p>
+        <strong>Date:</strong>
+        ${formatPrettyDate(date)}
+      </p>
+
+    </div>
+  `;
+
+  const tasks=ensureDailyTasks(date,goalId);
+
+  renderDailyTasks(tasks,date,goalId);
+}
+
+function renderDailyTasks(tasks,date,goalId){
+
+  const container=document.getElementById("dailyTasks");
+
+  if(!tasks.length){
+
+    container.innerHTML=`
+      <div class="empty">
+        No tasks for this goal today.
+        <br><br>
+        Click <strong>Add Task</strong> to create your first task.
+      </div>
+    `;
+
+    updateDailyProgress(tasks);
+    return;
+  }
+
+  let html="";
+
+  tasks.forEach((task,index)=>{
+
+    const links=Array.isArray(task.links)
+      ? task.links
+      : [];
+
+    html += `
+      <div class="task-item ${task.done ? "task-done":""}">
+
+        <div class="task-main">
+
+          <input
+            type="checkbox"
+            ${task.done ? "checked":""}
+            onchange="toggleTask('${task.id}')"
+          >
+
+          <div class="task-text">
+            ${escapeHtml(task.text)}
+          </div>
+
+        </div>
+
+        ${
+          links.length
           ? `
-            <button
-              class="btn"
-              onclick="
-                setActiveGoal(
-                  '${g.id}'
-                )
-              "
-            >
-              Activate 12-Week
-            </button>
+            <div class="link-list">
+
+              ${links.map(link=>{
+
+                const url=safeUrl(link.url);
+
+                if(!url) return "";
+
+                return `
+                  <a
+                    class="site-link"
+                    href="${escapeHtml(url)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🔗 ${escapeHtml(link.label)}
+                  </a>
+                `;
+
+              }).join("")}
+
+            </div>
           `
+          : ""
+        }
 
-          : `
+        <div class="task-actions">
+
+          <button
+            class="btn-light"
+            onclick="editTask('${task.id}')"
+          >
+            ✏️ Edit
+          </button>
+
+          <button
+            class="btn-danger"
+            onclick="deleteTask('${task.id}')"
+          >
+            🗑️ Delete
+          </button>
+
+          ${
+            index>0
+            ? `<button class="btn-light" onclick="moveTask('${task.id}',-1)">⬆️</button>`
+            : ""
+          }
+
+          ${
+            index<tasks.length-1
+            ? `<button class="btn-light" onclick="moveTask('${task.id}',1)">⬇️</button>`
+            : ""
+          }
+
+        </div>
+
+      </div>
+    `;
+
+  });
+
+  container.innerHTML=html;
+
+  updateDailyProgress(tasks);
+}
+
+function updateDailyProgress(tasks){
+
+  const total=tasks.length;
+
+  const done=tasks.filter(task=>task.done).length;
+
+  const percent=
+    total
+    ? Math.round((done/total)*100)
+    : 0;
+
+  document.getElementById("dailyProgressText").innerHTML=
+    `<strong>${done}/${total} tasks complete</strong>`;
+
+  document.getElementById("dailyProgressFill").style.width=
+    percent+"%";
+}
+
+function getCurrentDailyTaskArray(){
+
+  const date =
+    document.getElementById("dailyDate").value || todayISO();
+
+  const goalId =
+    dailyPreviewGoalId ||
+    getActiveGoal()?.id;
+
+  if(!goalId) return null;
+
+  return {
+    date,
+    goalId,
+    tasks:ensureDailyTasks(date,goalId)
+  };
+}
+
+function addTask(){
+
+  const current=getCurrentDailyTaskArray();
+
+  if(!current){
+    alert("Please select a goal first.");
+    return;
+  }
+
+  taskEditorLinks=[];
+  document.getElementById("editingTaskId").value="";
+  document.getElementById("taskText").value="";
+  document.getElementById("taskLinkLabel").value="";
+  document.getElementById("taskLinkUrl").value="";
+  document.getElementById("taskModalTitle").textContent="➕ Add Task";
+
+  renderTaskLinksEditor();
+
+  document.getElementById("taskModal").classList.add("show");
+}
+
+function editTask(id){
+
+  const current=getCurrentDailyTaskArray();
+
+  if(!current) return;
+
+  const task=current.tasks.find(t=>t.id===id);
+
+  if(!task) return;
+
+  document.getElementById("editingTaskId").value=id;
+  document.getElementById("taskText").value=task.text;
+
+  taskEditorLinks=Array.isArray(task.links)
+    ? task.links.map(link=>({...link}))
+    : [];
+
+  document.getElementById("taskLinkLabel").value="";
+  document.getElementById("taskLinkUrl").value="";
+  document.getElementById("taskModalTitle").textContent="✏️ Edit Task";
+
+  renderTaskLinksEditor();
+
+  document.getElementById("taskModal").classList.add("show");
+}
+
+function closeTaskModal(){
+
+  document.getElementById("taskModal").classList.remove("show");
+}
+
+function addTaskLink(){
+
+  const label =
+    document.getElementById("taskLinkLabel").value.trim();
+
+  const rawUrl =
+    document.getElementById("taskLinkUrl").value.trim();
+
+  if(!label){
+    alert("Please enter a link name.");
+    return;
+  }
+
+  const url=safeUrl(rawUrl);
+
+  if(!url){
+    alert("Please enter a valid HTTP or HTTPS website.");
+    return;
+  }
+
+  taskEditorLinks.push({
+    id:uid(),
+    label,
+    url
+  });
+
+  document.getElementById("taskLinkLabel").value="";
+  document.getElementById("taskLinkUrl").value="";
+
+  renderTaskLinksEditor();
+}
+
+function renderTaskLinksEditor(){
+
+  const container=document.getElementById("taskLinksEditor");
+
+  if(!taskEditorLinks.length){
+
+    container.innerHTML=
+      '<p class="small">No links added yet.</p>';
+
+    return;
+  }
+
+  container.innerHTML=
+    taskEditorLinks.map((link,index)=>{
+
+      const url=safeUrl(link.url);
+
+      return `
+        <div class="link-row">
+
+          <strong>${escapeHtml(link.label)}</strong>
+
+          ${
+            url
+            ? `
+              <br>
+              <a
+                href="${escapeHtml(url)}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ${escapeHtml(url)}
+              </a>
+            `
+            : ""
+          }
+
+          <div class="button-row">
+
             <button
-              class="btn secondary"
-              onclick="
-                parkGoal(
-                  '${g.id}'
-                )
-              "
+              class="btn-danger"
+              onclick="removeTaskEditorLink(${index})"
             >
-              Park
+              🗑️ Remove
             </button>
-          `;
 
-      const typeLabel=
-        g.type==="realestate_outcome"
-          ? "Outcome Only"
-          : "Standard";
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+}
+
+function removeTaskEditorLink(index){
+
+  taskEditorLinks.splice(index,1);
+
+  renderTaskLinksEditor();
+}
+
+function saveTask(){
+
+  const current=getCurrentDailyTaskArray();
+
+  if(!current){
+    alert("Please select a goal first.");
+    return;
+  }
+
+  const text=
+    document.getElementById("taskText").value.trim();
+
+  if(!text){
+    alert("Please enter a task.");
+    return;
+  }
+
+  const editingId=
+    document.getElementById("editingTaskId").value;
+
+  if(editingId){
+
+    const task=current.tasks.find(t=>t.id===editingId);
+
+    if(task){
+
+      task.text=text;
+      task.links=taskEditorLinks.map(link=>({...link}));
+
+    }
+
+  }else{
+
+    current.tasks.push({
+      id:uid(),
+      text,
+      done:false,
+      links:taskEditorLinks.map(link=>({...link}))
+    });
+
+  }
+
+  saveDailyTasks(
+    current.date,
+    current.goalId,
+    current.tasks
+  );
+
+  closeTaskModal();
+  renderDaily();
+}
+
+function toggleTask(id){
+
+  const current=getCurrentDailyTaskArray();
+
+  if(!current) return;
+
+  const task=current.tasks.find(t=>t.id===id);
+
+  if(!task) return;
+
+  task.done=!task.done;
+
+  saveDailyTasks(
+    current.date,
+    current.goalId,
+    current.tasks
+  );
+
+  renderDaily();
+}
+
+function deleteTask(id){
+
+  const current=getCurrentDailyTaskArray();
+
+  if(!current) return;
+
+  const task=current.tasks.find(t=>t.id===id);
+
+  if(!task) return;
+
+  if(!confirm("Delete this task?")) return;
+
+  current.tasks=current.tasks.filter(t=>t.id!==id);
+
+  saveDailyTasks(
+    current.date,
+    current.goalId,
+    current.tasks
+  );
+
+  renderDaily();
+}
+
+function moveTask(id,direction){
+
+  const current=getCurrentDailyTaskArray();
+
+  if(!current) return;
+
+  const index=current.tasks.findIndex(t=>t.id===id);
+
+  const newIndex=index+direction;
+
+  if(index<0 || newIndex<0 || newIndex>=current.tasks.length){
+    return;
+  }
+
+  const temp=current.tasks[index];
+
+  current.tasks[index]=current.tasks[newIndex];
+  current.tasks[newIndex]=temp;
+
+  saveDailyTasks(
+    current.date,
+    current.goalId,
+    current.tasks
+  );
+
+  renderDaily();
+}
+
+function reloadDailyTemplate(){
+
+  const current=getCurrentDailyTaskArray();
+
+  if(!current) return;
+
+  if(current.tasks.length){
+
+    if(!confirm(
+      "Reloading the goal template will replace today's current tasks.\n\nContinue?"
+    )){
+      return;
+    }
+
+  }
+
+  const goal=state.goals.find(g=>g.id===current.goalId);
+
+  const tasks=getGoalTemplate(goal);
+
+  saveDailyTasks(
+    current.date,
+    current.goalId,
+    tasks
+  );
+
+  renderDaily();
+}
+
+function clearTodayTasks(){
+
+  const current=getCurrentDailyTaskArray();
+
+  if(!current) return;
+
+  if(!confirm(
+    "Delete all tasks for this date and goal?"
+  )){
+    return;
+  }
+
+  delete state.dailyTasks[
+    dailyKey(current.date,current.goalId)
+  ];
+
+  saveState();
+
+  renderDaily();
+}
+
+
+/* =========================
+   PERSONAL APPOINTMENTS
+========================= */
+
+function openAppointmentModal(){
+
+  document.getElementById("editingAppointmentId").value="";
+  document.getElementById("appointmentTitle").value="";
+  document.getElementById("appointmentDate").value=todayISO();
+  document.getElementById("appointmentNotes").value="";
+  document.getElementById("appointmentLink").value="";
+
+  document.getElementById("appointmentModalTitle").textContent=
+    "📅 Add Appointment";
+
+  document.getElementById("appointmentModal").classList.add("show");
+}
+
+function editAppointment(id){
+
+  const item=state.appointments.find(a=>a.id===id);
+
+  if(!item) return;
+
+  document.getElementById("editingAppointmentId").value=id;
+  document.getElementById("appointmentTitle").value=item.title;
+  document.getElementById("appointmentDate").value=item.date;
+  document.getElementById("appointmentNotes").value=item.notes || "";
+  document.getElementById("appointmentLink").value=item.link || "";
+
+  document.getElementById("appointmentModalTitle").textContent=
+    "✏️ Edit Appointment";
+
+  document.getElementById("appointmentModal").classList.add("show");
+}
+
+function closeAppointmentModal(){
+
+  document.getElementById("appointmentModal").classList.remove("show");
+}
+
+function saveAppointment(){
+
+  const title=
+    document.getElementById("appointmentTitle").value.trim();
+
+  const date=
+    document.getElementById("appointmentDate").value;
+
+  const notes=
+    document.getElementById("appointmentNotes").value.trim();
+
+  const rawLink=
+    document.getElementById("appointmentLink").value.trim();
+
+  if(!title){
+    alert("Please enter the appointment.");
+    return;
+  }
+
+  if(!date){
+    alert("Please choose a date.");
+    return;
+  }
+
+  let link="";
+
+  if(rawLink){
+    link=safeUrl(rawLink);
+
+    if(!link){
+      alert("Please enter a valid HTTP or HTTPS link.");
+      return;
+    }
+  }
+
+  const editingId=
+    document.getElementById("editingAppointmentId").value;
+
+  if(editingId){
+
+    const item=state.appointments.find(a=>a.id===editingId);
+
+    if(item){
+      item.title=title;
+      item.date=date;
+      item.notes=notes;
+      item.link=link;
+    }
+
+  }else{
+
+    state.appointments.push({
+      id:uid(),
+      title,
+      date,
+      notes,
+      link,
+      done:false
+    });
+
+  }
+
+  saveState();
+  closeAppointmentModal();
+  renderPersonal();
+}
+
+function toggleAppointment(id){
+
+  const item=state.appointments.find(a=>a.id===id);
+
+  if(!item) return;
+
+  item.done=!item.done;
+
+  saveState();
+  renderPersonal();
+}
+
+function deleteAppointment(id){
+
+  if(!confirm("Delete this appointment?")) return;
+
+  state.appointments=
+    state.appointments.filter(a=>a.id!==id);
+
+  saveState();
+  renderPersonal();
+}
+
+
+/* =========================
+   PERSONAL TO-DO
+========================= */
+
+function openPersonalTaskModal(){
+
+  document.getElementById("editingPersonalTaskId").value="";
+  document.getElementById("personalTaskTitle").value="";
+  document.getElementById("personalTaskDate").value=todayISO();
+  document.getElementById("personalTaskNotes").value="";
+  document.getElementById("personalTaskLink").value="";
+
+  document.getElementById("personalTaskModalTitle").textContent=
+    "✅ Add Personal To-Do";
+
+  document.getElementById("personalTaskModal").classList.add("show");
+}
+
+function editPersonalTask(id){
+
+  const item=state.personalTasks.find(t=>t.id===id);
+
+  if(!item) return;
+
+  document.getElementById("editingPersonalTaskId").value=id;
+  document.getElementById("personalTaskTitle").value=item.title;
+  document.getElementById("personalTaskDate").value=item.date || "";
+  document.getElementById("personalTaskNotes").value=item.notes || "";
+  document.getElementById("personalTaskLink").value=item.link || "";
+
+  document.getElementById("personalTaskModalTitle").textContent=
+    "✏️ Edit Personal To-Do";
+
+  document.getElementById("personalTaskModal").classList.add("show");
+}
+
+function closePersonalTaskModal(){
+
+  document.getElementById("personalTaskModal").classList.remove("show");
+}
+
+function savePersonalTask(){
+
+  const title=
+    document.getElementById("personalTaskTitle").value.trim();
+
+  const date=
+    document.getElementById("personalTaskDate").value;
+
+  const notes=
+    document.getElementById("personalTaskNotes").value.trim();
+
+  const rawLink=
+    document.getElementById("personalTaskLink").value.trim();
+
+  if(!title){
+    alert("Please enter the task.");
+    return;
+  }
+
+  let link="";
+
+  if(rawLink){
+
+    link=safeUrl(rawLink);
+
+    if(!link){
+      alert("Please enter a valid HTTP or HTTPS link.");
+      return;
+    }
+
+  }
+
+  const editingId=
+    document.getElementById("editingPersonalTaskId").value;
+
+  if(editingId){
+
+    const item=state.personalTasks.find(t=>t.id===editingId);
+
+    if(item){
+      item.title=title;
+      item.date=date;
+      item.notes=notes;
+      item.link=link;
+    }
+
+  }else{
+
+    state.personalTasks.push({
+      id:uid(),
+      title,
+      date,
+      notes,
+      link,
+      done:false
+    });
+
+  }
+
+  saveState();
+  closePersonalTaskModal();
+  renderPersonal();
+}
+
+function togglePersonalTask(id){
+
+  const item=state.personalTasks.find(t=>t.id===id);
+
+  if(!item) return;
+
+  item.done=!item.done;
+
+  saveState();
+  renderPersonal();
+}
+
+function deletePersonalTask(id){
+
+  if(!confirm("Delete this personal task?")) return;
+
+  state.personalTasks=
+    state.personalTasks.filter(t=>t.id!==id);
+
+  saveState();
+  renderPersonal();
+}
+
+
+/* =========================
+   ERRANDS
+========================= */
+
+function openErrandModal(){
+
+  document.getElementById("editingErrandId").value="";
+  document.getElementById("errandTitle").value="";
+  document.getElementById("errandDate").value=todayISO();
+  document.getElementById("errandNotes").value="";
+  document.getElementById("errandLink").value="";
+
+  document.getElementById("errandModalTitle").textContent=
+    "🛒 Add Errand";
+
+  document.getElementById("errandModal").classList.add("show");
+}
+
+function editErrand(id){
+
+  const item=state.errands.find(e=>e.id===id);
+
+  if(!item) return;
+
+  document.getElementById("editingErrandId").value=id;
+  document.getElementById("errandTitle").value=item.title;
+  document.getElementById("errandDate").value=item.date || "";
+  document.getElementById("errandNotes").value=item.notes || "";
+  document.getElementById("errandLink").value=item.link || "";
+
+  document.getElementById("errandModalTitle").textContent=
+    "✏️ Edit Errand";
+
+  document.getElementById("errandModal").classList.add("show");
+}
+
+function closeErrandModal(){
+
+  document.getElementById("errandModal").classList.remove("show");
+}
+
+function saveErrand(){
+
+  const title=
+    document.getElementById("errandTitle").value.trim();
+
+  const date=
+    document.getElementById("errandDate").value;
+
+  const notes=
+    document.getElementById("errandNotes").value.trim();
+
+  const rawLink=
+    document.getElementById("errandLink").value.trim();
+
+  if(!title){
+    alert("Please enter the errand.");
+    return;
+  }
+
+  let link="";
+
+  if(rawLink){
+
+    link=safeUrl(rawLink);
+
+    if(!link){
+      alert("Please enter a valid HTTP or HTTPS link.");
+      return;
+    }
+
+  }
+
+  const editingId=
+    document.getElementById("editingErrandId").value;
+
+  if(editingId){
+
+    const item=state.errands.find(e=>e.id===editingId);
+
+    if(item){
+      item.title=title;
+      item.date=date;
+      item.notes=notes;
+      item.link=link;
+    }
+
+  }else{
+
+    state.errands.push({
+      id:uid(),
+      title,
+      date,
+      notes,
+      link,
+      done:false
+    });
+
+  }
+
+  saveState();
+  closeErrandModal();
+  renderPersonal();
+}
+
+function toggleErrand(id){
+
+  const item=state.errands.find(e=>e.id===id);
+
+  if(!item) return;
+
+  item.done=!item.done;
+
+  saveState();
+  renderPersonal();
+}
+
+function deleteErrand(id){
+
+  if(!confirm("Delete this errand?")) return;
+
+  state.errands=
+    state.errands.filter(e=>e.id!==id);
+
+  saveState();
+  renderPersonal();
+}
+
+
+/* =========================
+   PERSONAL RENDER
+========================= */
+
+function renderPersonal(){
+
+  renderAppointments();
+  renderPersonalTasks();
+  renderErrands();
+
+}
+
+function renderAppointments(){
+
+  const container=document.getElementById("appointmentsList");
+
+  if(!container) return;
+
+  if(!state.appointments.length){
+
+    container.innerHTML=`
+      <div class="empty">
+        No appointments added yet.
+        <br><br>
+        Click <strong>Add Appointment</strong> to add one.
+      </div>
+    `;
+
+    return;
+  }
+
+  const items=[...state.appointments].sort(
+    (a,b)=>(a.date||"").localeCompare(b.date||"")
+  );
+
+  container.innerHTML=items.map(item=>`
+
+    <div class="appointment-card">
+
+      <div class="appointment-date">
+        📅 ${escapeHtml(formatPrettyDate(item.date))}
+      </div>
+
+      <h3>
+        ${escapeHtml(item.title)}
+      </h3>
+
+      ${
+        item.notes
+        ? `<p>${escapeHtml(item.notes)}</p>`
+        : ""
+      }
+
+      ${
+        item.link
+        ? `
+          <p>
+            <a
+              class="site-link"
+              href="${escapeHtml(safeUrl(item.link))}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🔗 Open Link
+            </a>
+          </p>
+        `
+        : ""
+      }
+
+      <div class="button-row">
+
+        <button
+          class="btn-light"
+          onclick="editAppointment('${item.id}')"
+        >
+          ✏️ Edit
+        </button>
+
+        <button
+          class="btn-danger"
+          onclick="deleteAppointment('${item.id}')"
+        >
+          🗑️ Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  `).join("");
+}
+
+function renderPersonalTasks(){
+
+  const container=document.getElementById("personalTasksList");
+
+  if(!container) return;
+
+  if(!state.personalTasks.length){
+
+    container.innerHTML=`
+      <div class="empty">
+        No personal to-dos yet.
+      </div>
+    `;
+
+    return;
+  }
+
+  const items=[...state.personalTasks].sort(
+    (a,b)=>(a.date||"").localeCompare(b.date||"")
+  );
+
+  container.innerHTML=items.map(item=>`
+
+    <div class="personal-task-card ${
+      item.done ? "personal-completed":""
+    }">
+
+      <div class="task-main">
+
+        <input
+          type="checkbox"
+          ${item.done ? "checked":""}
+          onchange="togglePersonalTask('${item.id}')"
+        >
+
+        <div>
+
+          <div class="personal-task-title">
+            <strong>${escapeHtml(item.title)}</strong>
+          </div>
+
+          ${
+            item.date
+            ? `<div class="small">📅 ${escapeHtml(formatPrettyDate(item.date))}</div>`
+            : ""
+          }
+
+        </div>
+
+      </div>
+
+      ${
+        item.notes
+        ? `<p>${escapeHtml(item.notes)}</p>`
+        : ""
+      }
+
+      ${
+        item.link
+        ? `
+          <a
+            class="site-link"
+            href="${escapeHtml(safeUrl(item.link))}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🔗 Open Link
+          </a>
+        `
+        : ""
+      }
+
+      <div class="button-row">
+
+        <button
+          class="btn-light"
+          onclick="editPersonalTask('${item.id}')"
+        >
+          ✏️ Edit
+        </button>
+
+        <button
+          class="btn-danger"
+          onclick="deletePersonalTask('${item.id}')"
+        >
+          🗑️ Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  `).join("");
+}
+
+function renderErrands(){
+
+  const container=document.getElementById("errandsList");
+
+  if(!container) return;
+
+  if(!state.errands.length){
+
+    container.innerHTML=`
+      <div class="empty">
+        No errands added yet.
+      </div>
+    `;
+
+    return;
+  }
+
+  const items=[...state.errands].sort(
+    (a,b)=>(a.date||"").localeCompare(b.date||"")
+  );
+
+  container.innerHTML=items.map(item=>`
+
+    <div class="personal-task-card ${
+      item.done ? "personal-completed":""
+    }">
+
+      <div class="task-main">
+
+        <input
+          type="checkbox"
+          ${item.done ? "checked":""}
+          onchange="toggleErrand('${item.id}')"
+        >
+
+        <div>
+
+          <div class="personal-task-title">
+            <strong>🛒 ${escapeHtml(item.title)}</strong>
+          </div>
+
+          ${
+            item.date
+            ? `<div class="small">📅 ${escapeHtml(formatPrettyDate(item.date))}</div>`
+            : ""
+          }
+
+        </div>
+
+      </div>
+
+      ${
+        item.notes
+        ? `<p>${escapeHtml(item.notes)}</p>`
+        : ""
+      }
+
+      ${
+        item.link
+        ? `
+          <a
+            class="site-link"
+            href="${escapeHtml(safeUrl(item.link))}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🔗 Open Link
+          </a>
+        `
+        : ""
+      }
+
+      <div class="button-row">
+
+        <button
+          class="btn-light"
+          onclick="editErrand('${item.id}')"
+        >
+          ✏️ Edit
+        </button>
+
+        <button
+          class="btn-danger"
+          onclick="deleteErrand('${item.id}')"
+        >
+          🗑️ Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  `).join("");
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function renderProgress(){
+
+  const total=state.goals.length;
+  const active=state.goals.filter(g=>g.status==="active").length;
+  const parked=state.goals.filter(g=>g.status==="parked").length;
+  const done=state.goals.filter(g=>g.status==="done").length;
+
+  document.getElementById("statTotal").textContent=total;
+  document.getElementById("statActive").textContent=active;
+  document.getElementById("statParked").textContent=parked;
+  document.getElementById("statDone").textContent=done;
+
+  const weightContainer=
+    document.getElementById("weightProgress");
+
+  if(weightContainer){
+
+    weightContainer.innerHTML=`
+
+      <div class="checkbox-line">
+        <span style="font-size:25px">
+          ${state.vision.weight175 ? "✅" : "⬜"}
+        </span>
+
+        <strong>
+          175 lbs
+        </strong>
+      </div>
+
+      <div class="checkbox-line">
+        <span style="font-size:25px">
+          ${state.vision.weight155 ? "✅" : "⬜"}
+        </span>
+
+        <strong>
+          155 lbs
+        </strong>
+      </div>
+
+    `;
+
+  }
+
+  const goalContainer=
+    document.getElementById("goalProgressList");
+
+  if(!goalContainer) return;
+
+  if(!state.goals.length){
+
+    goalContainer.innerHTML=
+      '<div class="empty">No goals.</div>';
+
+    return;
+  }
+
+  goalContainer.innerHTML=
+    state.goals.map(goal=>{
+
+      let percent=0;
+
+      if(goal.status==="done"){
+        percent=100;
+      }else if(goal.status==="active"){
+        percent=25;
+      }
+
+      if(goal.type==="realestate"){
+
+        const months=goal.realEstateMonths || {};
+
+        const totalDeals=
+          (months.month1||0)+
+          (months.month2||0)+
+          (months.month3||0);
+
+        percent=Math.min(100,
+          Math.round((totalDeals/6)*100)
+        );
+
+      }
 
       return `
 
-        <tr>
+        <div class="goal-card">
 
-          <td>
+          <strong>
+            ${escapeHtml(goal.title)}
+          </strong>
 
-            <strong>
-              ${escapeHtml(g.title)}
-            </strong>
-
-            ${statusPill(g.status)}
-
-            <div class="small muted">
-              ${escapeHtml(g.category)}
-              •
-              ${typeLabel}
-            </div>
-
-            ${
-              g.completedAt
-                ? `
-                  <div class="small muted">
-                    🏁 Completed:
-                    ${escapeHtml(
-                      g.completedAt
-                    )}
-                  </div>
-                `
-                : ""
-            }
-
-            <div style="margin-top:10px;">
-
-              <textarea
-                id="note_${g.id}"
-                rows="3"
-                placeholder="Notes for this goal..."
-              >${escapeHtml(
-                g.notes||""
-              )}</textarea>
-
-              <button
-                class="btn ghost"
-                style="margin-top:8px;"
-                onclick="
-                  saveGoalNote(
-                    '${g.id}'
-                  )
-                "
-              >
-                Save Note
-              </button>
-
-            </div>
-
-          </td>
-
-          <td class="right">
-
-            <div class="small muted">
-              Created:
-              ${escapeHtml(
-                g.createdAt||"—"
-              )}
-            </div>
-
-            <div class="small muted">
-              12 Weeks:
-              ${escapeHtml(
-                g.startDate||"—"
-              )}
-              →
-              ${escapeHtml(
-                g.endDate||"—"
-              )}
-            </div>
-
+          <div class="progress-bar">
             <div
-              class="btnRow"
-              style="justify-content:flex-end;"
-            >
+              class="progress-fill"
+              style="width:${percent}%"
+            ></div>
+          </div>
 
-              ${activateBtn}
+          <div class="small">
+            ${percent}% complete
+          </div>
 
-              <button
-                class="btn ghost"
-                onclick="
-                  completeGoal(
-                    '${g.id}'
-                  )
-                "
-              >
-                Complete
-              </button>
-
-              <button
-                class="btn warn"
-                onclick="
-                  deleteGoal(
-                    '${g.id}'
-                  )
-                "
-              >
-                Delete
-              </button>
-
-            </div>
-
-          </td>
-
-        </tr>
+        </div>
 
       `;
 
     }).join("");
-
-  wrap.innerHTML=`
-
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>Goal</th>
-
-          <th class="right">
-            Actions
-          </th>
-
-        </tr>
-
-      </thead>
-
-      <tbody>
-
-        ${rows}
-
-      </tbody>
-
-    </table>
-
-  `;
-
 }
 
 
-/* =====================================================
-   PROGRESS
-===================================================== */
-
-function renderProgress(){
-
-  const wrap=
-    document.getElementById(
-      "progressWrap"
-    );
-
-  if(!wrap) return;
-
-  const total=
-    store.goals.length;
-
-  const active=
-    store.goals.filter(
-      g=>g.status==="active"
-    ).length;
-
-  const parked=
-    store.goals.filter(
-      g=>g.status==="parked"
-    ).length;
-
-  const done=
-    store.goals.filter(
-      g=>g.status==="done"
-    ).length;
-
-  const activeGoal=
-    store.activeGoalId
-      ? getGoalById(
-          store.activeGoalId
-        )
-      : null;
-
-  let dailyProgress="—";
-
-  if(activeGoal){
-
-    const tasks=
-      getTodayTasksForGoal(
-        activeGoal.id
-      );
-
-    if(tasks.length){
-
-      const completed=
-        tasks.filter(
-          t=>t.completed
-        ).length;
-
-      dailyProgress=
-        `${completed} / ${tasks.length}`;
-
-    }
-
-  }
-
-  wrap.innerHTML=`
-
-    <div class="card"
-      style="
-        border:1px solid #eee;
-        box-shadow:none;
-      "
-    >
-
-      <h3>
-        12-Week Goal Summary
-      </h3>
-
-      <p>
-        <strong>Total Goals:</strong>
-        ${total}
-      </p>
-
-      <p>
-
-        <strong>Active:</strong>
-        ${active}
-
-        •
-
-        <strong>Parked:</strong>
-        ${parked}
-
-        •
-
-        <strong>Completed:</strong>
-        ${done}
-
-      </p>
-
-      <p>
-
-        <strong>Current Active Goal:</strong>
-
-        ${
-          activeGoal
-            ? escapeHtml(
-                activeGoal.title
-              )
-            : "None selected"
-        }
-
-      </p>
-
-      <p>
-
-        <strong>Today's Tasks:</strong>
-        ${dailyProgress}
-
-      </p>
-
-      <hr style="
-        border:0;
-        border-top:1px solid #eee;
-      ">
-
-      <p>
-
-        <strong>
-          1st Goal Weight — 175 lbs:
-        </strong>
-
-        ${
-          store.weight.w175
-            ? "✅"
-            : "⬜"
-        }
-
-        ${
-          store.weight.w175Date
-            ? `
-              <span class="small muted">
-                • ${escapeHtml(
-                  store.weight.w175Date
-                )}
-              </span>
-            `
-            : ""
-        }
-
-      </p>
-
-      <p>
-
-        <strong>
-          2nd Goal Weight — 155 lbs:
-        </strong>
-
-        ${
-          store.weight.w155
-            ? "✅"
-            : "⬜"
-        }
-
-        ${
-          store.weight.w155Date
-            ? `
-              <span class="small muted">
-                • ${escapeHtml(
-                  store.weight.w155Date
-                )}
-              </span>
-            `
-            : ""
-        }
-
-      </p>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =====================================================
-   WEIGHT CHECKBOXES
-===================================================== */
-
-function setupWeightBoxes(){
-
-  const w175=
-    document.getElementById(
-      "w175"
-    );
-
-  const w155=
-    document.getElementById(
-      "w155"
-    );
-
-  const d175=
-    document.getElementById(
-      "w175Date"
-    );
-
-  const d155=
-    document.getElementById(
-      "w155Date"
-    );
-
-
-  if(w175){
-
-    w175.checked=
-      !!store.weight.w175;
-
-    d175.textContent=
-      store.weight.w175Date
-        ? `📅 Reached on: ${store.weight.w175Date}`
-        : "";
-
-    w175.onchange=()=>{
-
-      store.weight.w175=
-        w175.checked;
-
-      if(w175.checked){
-
-        store.weight.w175Date=
-          formatPrettyDate(
-            new Date()
-          );
-
-        showGoalAchievedBanner(
-          "1st goal weight: 175 lbs",
-          store.weight.w175Date
-        );
-
-        launchConfetti(1600);
-
-      }else{
-
-        store.weight.w175Date="";
-
-      }
-
-      saveStore();
-
-      renderAll();
-
-    };
-
-  }
-
-
-  if(w155){
-
-    w155.checked=
-      !!store.weight.w155;
-
-    d155.textContent=
-      store.weight.w155Date
-        ? `📅 Reached on: ${store.weight.w155Date}`
-        : "";
-
-    w155.onchange=()=>{
-
-      store.weight.w155=
-        w155.checked;
-
-      if(w155.checked){
-
-        store.weight.w155Date=
-          formatPrettyDate(
-            new Date()
-          );
-
-        showGoalAchievedBanner(
-          "2nd goal weight: 155 lbs",
-          store.weight.w155Date
-        );
-
-        launchConfetti(2000);
-
-      }else{
-
-        store.weight.w155Date="";
-
-      }
-
-      saveStore();
-
-      renderAll();
-
-    };
-
-  }
-
-}
-
-
-/* =====================================================
-   BANNER
-===================================================== */
-
-function showGoalAchievedBanner(
-  goalText,
-  dateText
-){
-
-  const banner=
-    document.getElementById(
-      "goalBanner"
-    );
-
-  const text=
-    document.getElementById(
-      "goalBannerText"
-    );
-
-  if(!banner||!text)
-    return;
-
-  text.textContent=
-    `${goalText} • ${dateText}`;
-
-  banner.style.display="block";
-
-  setTimeout(
-    ()=>{
-      banner.style.display="none";
-    },
-    6000
-  );
-
-}
-
-
-/* =====================================================
-   CONFETTI
-===================================================== */
-
-function launchConfetti(
-  durationMs=1500
-){
-
-  const canvas=
-    document.getElementById(
-      "confettiCanvas"
-    );
-
-  if(!canvas) return;
-
-  const ctx=
-    canvas.getContext("2d");
-
-  const DPR=
-    Math.max(
-      1,
-      Math.floor(
-        window.devicePixelRatio||1
-      )
-    );
-
-  canvas.width=
-    window.innerWidth*DPR;
-
-  canvas.height=
-    window.innerHeight*DPR;
-
-  canvas.style.display="block";
-
-  const colors=[
-    "#e91e63",
-    "#ff9800",
-    "#4caf50",
-    "#2196f3",
-    "#9c27b0",
-    "#ffeb3b",
-    "#00bcd4",
-    "#ff5722"
-  ];
-
-  const particles=[];
-
-  for(
-    let i=0;
-    i<140;
-    i++
-  ){
-
-    particles.push({
-
-      x:
-        Math.random()*
-        canvas.width,
-
-      y:
-        -Math.random()*
-        canvas.height*
-        .2,
-
-      r:
-        (4+
-          Math.random()*6)*
-        DPR,
-
-      vy:
-        (3+
-          Math.random()*6)*
-        DPR,
-
-      vx:
-        (-2+
-          Math.random()*4)*
-        DPR,
-
-      rot:
-        Math.random()*Math.PI,
-
-      vr:
-        -.2+
-        Math.random()*.4,
-
-      color:
-        colors[
-          Math.floor(
-            Math.random()*
-            colors.length
-          )
-        ]
-
-    });
-
-  }
-
-  const start=
-    performance.now();
-
-  function frame(now){
-
-    const elapsed=
-      now-start;
-
-    ctx.clearRect(
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-
-    particles.forEach(p=>{
-
-      p.x+=p.vx;
-      p.y+=p.vy;
-      p.rot+=p.vr;
-      p.vy*=1.004;
-
-      ctx.save();
-
-      ctx.translate(
-        p.x,
-        p.y
-      );
-
-      ctx.rotate(
-        p.rot
-      );
-
-      ctx.fillStyle=
-        p.color;
-
-      ctx.fillRect(
-        -p.r,
-        -p.r,
-        p.r*2,
-        p.r*1.2
-      );
-
-      ctx.restore();
-
-    });
-
-    if(
-      elapsed<durationMs
-    ){
-
-      requestAnimationFrame(
-        frame
-      );
-
-    }else{
-
-      canvas.style.display=
-        "none";
-
-      ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-      );
-
-    }
-
-  }
-
-  requestAnimationFrame(frame);
-
-}
-
-
-/* =====================================================
-   RENDER ALL
-===================================================== */
+/* =========================
+   RENDER EVERYTHING
+========================= */
 
 function renderAll(){
 
-  setupWeightBoxes();
-
   renderVisionGoals();
-
-  renderGoalsTable();
-
+  renderGoalsList();
   renderActiveGoal();
-
-  renderDailySchedule();
-
   renderProgress();
 
+  const weight175=document.getElementById("weight175");
+  const weight155=document.getElementById("weight155");
+
+  if(weight175){
+    weight175.checked=!!state.vision.weight175;
+  }
+
+  if(weight155){
+    weight155.checked=!!state.vision.weight155;
+  }
+
+  if(
+    document.getElementById("daily").classList.contains("active")
+  ){
+    prepareDailyPage();
+  }
+
+  renderPersonal();
 }
 
 
-/* =====================================================
+/* =========================
    RESET
-===================================================== */
+========================= */
 
-function resetConfirm(){
+function resetCRM(){
 
-  if(
-    confirm(
-      "Reset Lessie Bea Goal CRM data? This clears all goals, notes, daily tasks, and progress."
-    )
-  ){
+  const first=confirm(
+    "Are you sure you want to reset the entire Lessie Bea Goal CRM?"
+  );
 
-    localStorage.removeItem(
-      STORE_KEY
+  if(!first) return;
+
+  const second=confirm(
+    "This will delete ALL saved goals, daily tasks, appointments, personal to-dos, errands and settings from this browser.\n\nContinue?"
+  );
+
+  if(!second) return;
+
+  localStorage.removeItem(STORAGE_KEY);
+
+  location.reload();
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function confetti(){
+
+  for(let i=0;i<80;i++){
+
+    const piece=document.createElement("div");
+
+    piece.style.position="fixed";
+    piece.style.left=Math.random()*100+"vw";
+    piece.style.top="-20px";
+    piece.style.width="8px";
+    piece.style.height="14px";
+    piece.style.background=[
+      "#e91e63",
+      "#ffd1dc",
+      "#ffffff",
+      "#000000"
+    ][Math.floor(Math.random()*4)];
+    piece.style.zIndex="9999";
+    piece.style.transform=
+      "rotate("+Math.random()*360+"deg)";
+
+    document.body.appendChild(piece);
+
+    const duration=
+      1500 + Math.random()*2500;
+
+    piece.animate(
+      [
+        {
+          transform:"translateY(0) rotate(0deg)",
+          opacity:1
+        },
+        {
+          transform:
+            "translateY(110vh) rotate(720deg)",
+          opacity:0
+        }
+      ],
+      {
+        duration,
+        easing:"ease-out"
+      }
     );
 
-    store=
-      defaultStore();
-
-    saveStore();
-
-    renderAll();
-
-    showSection(
-      "vision"
-    );
+    setTimeout(()=>{
+      piece.remove();
+    },duration+100);
 
   }
 
 }
 
 
-/* =====================================================
+/* =========================
    INITIALIZE
-===================================================== */
+========================= */
 
-function initializeDefaultGoals(){
-
-  if(
-    store.goals.length===0
-  ){
-
-    addDefaultGoals();
-
-  }
-
-}
-
-
-/* =====================================================
-   START
-===================================================== */
-
-initializeDefaultGoals();
-
+loadState();
 renderAll();
+
+document.getElementById("dailyDate").value=todayISO();
 
 </script>
 
