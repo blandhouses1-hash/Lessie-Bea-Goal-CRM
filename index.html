@@ -7,12 +7,12 @@
 
 <style>
   body{
-    font-family:Arial,sans-serif;
-    font-size:18px;
-    background:linear-gradient(135deg,#ffd1dc,#ffffff);
-    margin:0;
-    padding:0;
-    color:#222;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    background: linear-gradient(135deg,#ffd1dc,#ffffff);
+    margin: 0;
+    padding: 0;
+    color: #222;
   }
 
   header{
@@ -106,10 +106,6 @@
   textarea{
     min-height:120px;
     resize:vertical;
-  }
-
-  button{
-    font-family:Arial,sans-serif;
   }
 
   .btn{
@@ -330,6 +326,10 @@
     margin-top:5px;
   }
 
+  .links{
+    margin-top:10px;
+  }
+
   .links a{
     color:#000;
     font-weight:bold;
@@ -413,106 +413,199 @@
 </header>
 
 <div class="tabs">
-  <button class="tab" onclick="showPage('vision',this)">🙏 My Vision</button>
-  <button class="tab" onclick="showPage('goals',this)">🎯 All Goals</button>
-  <button class="tab" onclick="showPage('active',this)">⭐ Active Goal</button>
-  <button class="tab" onclick="showPage('daily',this)">🗓️ Daily Schedule</button>
-  <button class="tab" onclick="showPage('personal',this)">💗 Personal</button>
-  <button class="tab" onclick="showPage('routine',this)">💗 Routine</button>
-  <button class="tab" onclick="showPage('progress',this)">📊 Progress</button>
-  <button class="tab" onclick="showPage('reset',this)">🔄 Reset</button>
+
+  <button class="tab" onclick="showPage('vision',this)">
+    🙏 My Vision
+  </button>
+
+  <button class="tab" onclick="showPage('goals',this)">
+    🎯 All Goals
+  </button>
+
+  <button class="tab" onclick="showPage('active',this)">
+    ⭐ Active Goal
+  </button>
+
+  <button class="tab" onclick="showPage('daily',this)">
+    🗓️ Daily Schedule
+  </button>
+
+  <button class="tab" onclick="showPage('personal',this)">
+    💗 Personal
+  </button>
+
+  <!-- ONLY NEW BUTTON -->
+  <button class="tab" onclick="showPage('routine',this)">
+    💗 Routine
+  </button>
+
+  <button class="tab" onclick="showPage('progress',this)">
+    📊 Progress
+  </button>
+
+  <button class="tab" onclick="showPage('reset',this)">
+    🔄 Reset
+  </button>
+
 </div>
+
 
 <!-- =========================
      MY VISION
 ========================= -->
+
 <section id="vision" class="page active">
 
   <div class="card">
+
     <h2>🙏 My Vision</h2>
 
     <div class="focus-box">
-      <h3>Daily Focus Plan</h3>
 
-      <p><strong>Monday–Friday</strong></p>
+      <h3>Daily Focus Plan Mon–Fri</h3>
 
-      <ul>
-        <li><strong>Lessie Bea CRM — Real Estate / Business:</strong> 3 hours</li>
-        <li><strong>Lessie Bea Health CRM — Health & Fitness:</strong> 45–60 minutes</li>
-        <li><strong>Lessie Bea Goal CRM — Vision & 12-Week Focus:</strong> 1 hour</li>
-      </ul>
+      <p>
+        <strong>
+          Lessie Bea CRM — Real Estate / Business
+        </strong>
+        — 3 hours
+      </p>
 
-      <p><strong>Weekends:</strong> Optional</p>
+      <p>
+        <strong>
+          Lessie Bea Health CRM — Health & Fitness
+        </strong>
+        — 45–60 minutes
+      </p>
+
+      <p>
+        <strong>
+          Lessie Bea Goal CRM — Vision & 12-Week Focus
+        </strong>
+        — 1 hour
+      </p>
+
+      <p>
+        <strong>Weekends:</strong> Optional
+      </p>
+
     </div>
 
+
     <div class="card">
+
       <h3>🙏 My Future Self Prayer</h3>
+
       <p>
         Lord, help me become the woman You created me to be.
         Help me stay focused, disciplined, faithful, consistent,
         and obedient to Your direction.
       </p>
+
     </div>
 
+
     <div class="card">
+
       <h3>🌅 Daily Standard</h3>
 
       <ul class="vision-list">
+
         <li>⏰ Wake up at 6:00 AM</li>
+
         <li>📖 Bible first</li>
+
         <li>🙏 Prayer and God first</li>
-        <li>❤️ Make time for my loved ones</li>
+
+        <li>❤️ Loved ones</li>
+
         <li>🏋️ Workout</li>
+
       </ul>
+
     </div>
 
+
     <div class="card">
+
       <h3>💜 Health Goals</h3>
 
       <div class="checkbox-line">
-        <input type="checkbox" id="weight175"
-               onchange="toggleVision('weight175')">
-        <label for="weight175">Reach 175 lbs</label>
+
+        <input
+          type="checkbox"
+          id="weight175"
+          onchange="toggleVision('weight175')"
+        >
+
+        <label for="weight175">
+          Reach 175 lbs
+        </label>
+
       </div>
+
 
       <div class="checkbox-line">
-        <input type="checkbox" id="weight155"
-               onchange="toggleVision('weight155')">
-        <label for="weight155">Reach 155 lbs</label>
+
+        <input
+          type="checkbox"
+          id="weight155"
+          onchange="toggleVision('weight155')"
+        >
+
+        <label for="weight155">
+          Reach 155 lbs
+        </label>
+
       </div>
+
     </div>
 
+
     <div class="card">
+
       <h3>💼 Businesses & Life Goals</h3>
+
       <div id="visionGoals"></div>
+
     </div>
 
+
     <div class="card">
+
       <h3>📅 12-Week Rule</h3>
+
       <p>
-        Focus on one active goal for 12 weeks while keeping all other
-        goals visible. The purpose is to create consistent progress
-        instead of trying to complete everything at once.
+        Focus on one active goal for 12 weeks while keeping all
+        other goals visible.
       </p>
+
     </div>
 
   </div>
+
 </section>
 
 
 <!-- =========================
      ALL GOALS
 ========================= -->
+
 <section id="goals" class="page">
 
   <div class="card">
+
     <h2>🎯 All Goals</h2>
 
     <div class="notice">
-      Your goals stay visible. Only one goal is the active 12-week focus.
+
+      Your goals stay visible.
+      Only one goal is the active 12-week focus.
+
     </div>
 
     <div id="goalsList"></div>
+
   </div>
 
 </section>
@@ -521,12 +614,15 @@
 <!-- =========================
      ACTIVE GOAL
 ========================= -->
+
 <section id="active" class="page">
 
   <div class="card">
+
     <h2>⭐ Active 12-Week Goal</h2>
 
     <div id="activeGoal"></div>
+
   </div>
 
 </section>
@@ -535,19 +631,31 @@
 <!-- =========================
      DAILY SCHEDULE
 ========================= -->
+
 <section id="daily" class="page">
 
   <div class="card">
+
     <h2>🗓️ Daily Schedule</h2>
 
     <div class="notice">
+
       Use this page to execute the work for your active goal.
+
     </div>
 
-    <label for="dailyDate">Date</label>
-    <input type="date" id="dailyDate" onchange="prepareDailyPage()">
+    <label for="dailyDate">
+      Date
+    </label>
+
+    <input
+      type="date"
+      id="dailyDate"
+      onchange="prepareDailyPage()"
+    >
 
     <div id="dailyContent"></div>
+
   </div>
 
 </section>
@@ -556,89 +664,173 @@
 <!-- =========================
      PERSONAL
 ========================= -->
+
 <section id="personal" class="page">
 
   <div class="card">
+
     <h2>💗 Personal</h2>
 
     <div class="notice">
-      Keep personal appointments, to-do items, and errands separate
-      from your business and goal work.
+      Keep personal appointments, to-do items, and errands
+      separate from your business and goal work.
     </div>
+
   </div>
 
+
+  <!-- APPOINTMENTS -->
+
   <div class="card">
+
     <h2>📅 Appointments</h2>
 
     <label>Date</label>
-    <input type="date" id="appointmentDate">
+
+    <input
+      type="date"
+      id="appointmentDate"
+    >
 
     <label>Time</label>
-    <input type="time" id="appointmentTime">
+
+    <input
+      type="time"
+      id="appointmentTime"
+    >
 
     <label>Appointment</label>
-    <input type="text" id="appointmentTitle"
-           placeholder="Doctor, dentist, etc.">
+
+    <input
+      type="text"
+      id="appointmentTitle"
+      placeholder="Doctor, dentist, etc."
+    >
 
     <label>Notes</label>
-    <textarea id="appointmentNotes"
-              placeholder="Appointment details"></textarea>
+
+    <textarea
+      id="appointmentNotes"
+      placeholder="Appointment details"
+    ></textarea>
 
     <div class="button-row">
-      <button class="btn" onclick="addAppointment()">➕ Add Appointment</button>
+
+      <button
+        class="btn"
+        onclick="addAppointment()"
+      >
+        ➕ Add Appointment
+      </button>
+
     </div>
 
     <div id="appointmentsList"></div>
+
   </div>
 
+
+  <!-- PERSONAL TASKS -->
+
   <div class="card">
+
     <h2>📝 Personal To-Do List</h2>
 
     <label>Task</label>
-    <input type="text" id="personalTaskTitle"
-           placeholder="Personal task">
+
+    <input
+      type="text"
+      id="personalTaskTitle"
+      placeholder="Personal task"
+    >
 
     <label>Date</label>
-    <input type="date" id="personalTaskDate">
+
+    <input
+      type="date"
+      id="personalTaskDate"
+    >
 
     <label>Notes</label>
-    <textarea id="personalTaskNotes"
-              placeholder="Notes"></textarea>
+
+    <textarea
+      id="personalTaskNotes"
+      placeholder="Notes"
+    ></textarea>
 
     <label>Optional Link</label>
-    <input type="url" id="personalTaskLink"
-           placeholder="https://">
+
+    <input
+      type="url"
+      id="personalTaskLink"
+      placeholder="https://"
+    >
 
     <div class="button-row">
-      <button class="btn" onclick="addPersonalTask()">➕ Add Task</button>
+
+      <button
+        class="btn"
+        onclick="addPersonalTask()"
+      >
+        ➕ Add Task
+      </button>
+
     </div>
 
     <div id="personalTasksList"></div>
+
   </div>
 
+
+  <!-- ERRANDS -->
+
   <div class="card">
+
     <h2>🛒 Errands</h2>
 
     <label>Errand</label>
-    <input type="text" id="errandTitle"
-           placeholder="Grocery store, pharmacy, etc.">
+
+    <input
+      type="text"
+      id="errandTitle"
+      placeholder="Grocery store, pharmacy, etc."
+    >
 
     <label>Date</label>
-    <input type="date" id="errandDate">
+
+    <input
+      type="date"
+      id="errandDate"
+    >
 
     <label>Notes</label>
-    <textarea id="errandNotes"
-              placeholder="What needs to be done"></textarea>
+
+    <textarea
+      id="errandNotes"
+      placeholder="What needs to be done"
+    ></textarea>
 
     <label>Optional Link</label>
-    <input type="url" id="errandLink"
-           placeholder="https://">
+
+    <input
+      type="url"
+      id="errandLink"
+      placeholder="https://"
+    >
 
     <div class="button-row">
-      <button class="btn" onclick="addErrand()">➕ Add Errand</button>
+
+      <button
+        class="btn"
+        onclick="addErrand()"
+      >
+        ➕ Add Errand
+      </button>
+
     </div>
 
     <div id="errandsList"></div>
+
   </div>
 
 </section>
@@ -647,95 +839,148 @@
 <!-- =========================
      ROUTINE
 ========================= -->
+
 <section id="routine" class="page">
 
   <div class="card">
+
     <h2>💗 My Routine</h2>
 
     <div class="notice">
-      My daily routine is divided into Morning, Afternoon, Evening,
-      and Night.
+
+      My daily routine is divided into Morning,
+      Afternoon, Evening, and Night.
+
     </div>
+
   </div>
 
+
   <div class="card">
+
     <h2>🌅 Morning Routine</h2>
 
-    <label>What I do in the morning</label>
+    <label>
+      What I do in the morning
+    </label>
 
-    <textarea id="morningRoutine"
+    <textarea
+      id="morningRoutine"
       placeholder="Example:
 Wake up at 6:00 AM
 Read my Bible
 Pray
 Workout
-Get ready for the day"></textarea>
+Get ready for the day"
+    ></textarea>
 
     <div class="button-row">
-      <button class="btn" onclick="saveRoutine()">
+
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
         💾 Save Morning Routine
       </button>
+
     </div>
+
   </div>
 
+
   <div class="card">
+
     <h2>☀️ Afternoon Routine</h2>
 
-    <label>What I do in the afternoon</label>
+    <label>
+      What I do in the afternoon
+    </label>
 
-    <textarea id="afternoonRoutine"
+    <textarea
+      id="afternoonRoutine"
       placeholder="Example:
 Work on Real Estate
 Follow up with sellers
 Work on current goal
 Lunch
-Errands"></textarea>
+Errands"
+    ></textarea>
 
     <div class="button-row">
-      <button class="btn" onclick="saveRoutine()">
+
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
         💾 Save Afternoon Routine
       </button>
+
     </div>
+
   </div>
 
+
   <div class="card">
+
     <h2>🌆 Evening Routine</h2>
 
-    <label>What I do in the evening</label>
+    <label>
+      What I do in the evening
+    </label>
 
-    <textarea id="eveningRoutine"
+    <textarea
+      id="eveningRoutine"
       placeholder="Example:
 Finish work
 Spend time with family
 Dinner
 Clean up
-Prepare for tomorrow"></textarea>
+Prepare for tomorrow"
+    ></textarea>
 
     <div class="button-row">
-      <button class="btn" onclick="saveRoutine()">
+
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
         💾 Save Evening Routine
       </button>
+
     </div>
+
   </div>
 
+
   <div class="card">
+
     <h2>🌙 Night Routine</h2>
 
-    <label>What I do at night</label>
+    <label>
+      What I do at night
+    </label>
 
-    <textarea id="nightRoutine"
+    <textarea
+      id="nightRoutine"
       placeholder="Example:
 Review my day
 Pray
 Read Bible
 Prepare clothes for tomorrow
-Go to bed"></textarea>
+Go to bed"
+    ></textarea>
 
     <div class="button-row">
-      <button class="btn" onclick="saveRoutine()">
+
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
         💾 Save Night Routine
       </button>
+
     </div>
+
   </div>
 
 </section>
@@ -744,12 +989,15 @@ Go to bed"></textarea>
 <!-- =========================
      PROGRESS
 ========================= -->
+
 <section id="progress" class="page">
 
   <div class="card">
+
     <h2>📊 Progress</h2>
 
     <div id="progressContent"></div>
+
   </div>
 
 </section>
@@ -758,18 +1006,26 @@ Go to bed"></textarea>
 <!-- =========================
      RESET
 ========================= -->
+
 <section id="reset" class="page">
 
   <div class="card">
+
     <h2>🔄 Reset</h2>
 
     <div class="notice">
+
       Resetting will clear the saved CRM data from this device.
+
     </div>
 
-    <button class="btn btn-danger" onclick="resetCRM()">
+    <button
+      class="btn btn-danger"
+      onclick="resetCRM()"
+    >
       🔄 Reset CRM
     </button>
+
   </div>
 
 </section>
@@ -778,10 +1034,11 @@ Go to bed"></textarea>
 <script>
 
 /* =========================
-   STORAGE
+   ORIGINAL STORAGE KEY
 ========================= */
 
-const STORAGE_KEY = "lessieBeaGoalCRM_final_v4_daily_schedule";
+const STORAGE_KEY =
+  "lessieBeaGoalCRM_final_v4_personal_daily";
 
 
 /* =========================
@@ -799,6 +1056,8 @@ let state = {
   personalTasks:[],
 
   errands:[],
+
+  /* ONLY NEW ROUTINE DATA */
 
   routine:{
     morning:"",
@@ -987,12 +1246,14 @@ const DEFAULT_GOALS = [
 
 /* =========================
    REAL ESTATE DAILY TEMPLATE
+   KEEPING ALL SITE LINKS
 ========================= */
 
 const REAL_ESTATE_TASKS = [
 
   {
     title:"Find 5–10 seller leads",
+
     links:[
       ["Propwire","https://www.propwire.com/"],
       ["Zillow FSBO","https://www.zillow.com/"],
@@ -1003,17 +1264,23 @@ const REAL_ESTATE_TASKS = [
       ["Regrid","https://regrid.com/"],
       ["NETR Online","https://www.netronline.com/"]
     ]
+
   },
+
 
   {
     title:"Contact 3–5 sellers",
+
     links:[
       ["Google Voice","https://voice.google.com/"]
     ]
+
   },
+
 
   {
     title:"Find 3–5 new buyers",
+
     links:[
       ["Propwire","https://www.propwire.com/"],
       ["Zillow","https://www.zillow.com/"],
@@ -1022,10 +1289,13 @@ const REAL_ESTATE_TASKS = [
       ["Redfin","https://www.redfin.com/"],
       ["Google Maps","https://www.google.com/maps/"]
     ]
+
   },
+
 
   {
     title:"Analyze 1–2 properties",
+
     links:[
       ["Propwire","https://www.propwire.com/"],
       ["Zillow","https://www.zillow.com/"],
@@ -1033,80 +1303,110 @@ const REAL_ESTATE_TASKS = [
       ["Regrid","https://regrid.com/"],
       ["NETR Online","https://www.netronline.com/"]
     ]
+
   },
+
 
   {
     title:"Send 1 offer",
+
     links:[]
+
   },
+
 
   {
     title:"Follow up with sellers",
+
     links:[
       ["Google Voice","https://voice.google.com/"]
     ]
+
   },
+
 
   {
     title:"Follow up with buyers",
+
     links:[
       ["Google Voice","https://voice.google.com/"]
     ]
+
   },
+
 
   {
     title:"Update CRM",
+
     links:[]
+
   }
 
 ];
 
 
 /* =========================
-   LOAD / SAVE
+   LOAD STATE
 ========================= */
 
 function loadState(){
 
-  const saved=localStorage.getItem(STORAGE_KEY);
+  const saved =
+    localStorage.getItem(STORAGE_KEY);
 
   if(saved){
 
     try{
 
-      const parsed=JSON.parse(saved);
+      const parsed =
+        JSON.parse(saved);
 
-      if(parsed && typeof parsed==="object"){
+      if(parsed &&
+         typeof parsed==="object"){
+
         state=parsed;
+
       }
 
     }catch(e){
-      console.log("Could not load saved state.");
+
+      console.log(
+        "Could not load saved state."
+      );
+
     }
 
   }
 
-  if(!Array.isArray(state.goals)){
+
+  if(!Array.isArray(state.goals))
     state.goals=[];
-  }
 
-  if(!state.dailyTasks || typeof state.dailyTasks!=="object"){
+
+  if(!state.dailyTasks ||
+     typeof state.dailyTasks!=="object"){
+
     state.dailyTasks={};
+
   }
 
-  if(!Array.isArray(state.appointments)){
+
+  if(!Array.isArray(state.appointments))
     state.appointments=[];
-  }
 
-  if(!Array.isArray(state.personalTasks)){
+
+  if(!Array.isArray(state.personalTasks))
     state.personalTasks=[];
-  }
 
-  if(!Array.isArray(state.errands)){
+
+  if(!Array.isArray(state.errands))
     state.errands=[];
-  }
 
-  if(!state.routine || typeof state.routine!=="object"){
+
+  /* ONLY NEW ROUTINE INITIALIZATION */
+
+  if(!state.routine ||
+     typeof state.routine!=="object"){
 
     state.routine={
       morning:"",
@@ -1117,63 +1417,72 @@ function loadState(){
 
   }
 
-  if(typeof state.routine.morning!=="string"){
+
+  if(typeof state.routine.morning!=="string")
     state.routine.morning="";
-  }
 
-  if(typeof state.routine.afternoon!=="string"){
+
+  if(typeof state.routine.afternoon!=="string")
     state.routine.afternoon="";
-  }
 
-  if(typeof state.routine.evening!=="string"){
+
+  if(typeof state.routine.evening!=="string")
     state.routine.evening="";
-  }
 
-  if(typeof state.routine.night!=="string"){
+
+  if(typeof state.routine.night!=="string")
     state.routine.night="";
-  }
+
 
   if(!state.vision){
+
     state.vision={
       weight175:false,
       weight155:false
     };
+
   }
 
-  if(typeof state.vision.weight175!=="boolean"){
-    state.vision.weight175=false;
-  }
-
-  if(typeof state.vision.weight155!=="boolean"){
-    state.vision.weight155=false;
-  }
 
   if(state.goals.length===0){
 
-    state.goals=DEFAULT_GOALS.map((goal,index)=>({
+    state.goals =
+      DEFAULT_GOALS.map(
+        (goal,index)=>({
 
-      id:"goal_"+Date.now()+"_"+index,
+          id:
+            "goal_" +
+            Date.now() +
+            "_" +
+            index,
 
-      ...goal,
+          ...goal,
 
-      active:false,
+          active:false,
 
-      completed:false,
+          completed:false,
 
-      useLater:false,
+          useLater:false,
 
-      startDate:"",
+          startDate:"",
 
-      notes:goal.notes || ""
+          notes:
+            goal.notes || ""
 
-    }));
+        })
+      );
 
   }
+
 
   saveState();
 
 }
 
+
+/* =========================
+   SAVE STATE
+========================= */
 
 function saveState(){
 
@@ -1191,31 +1500,45 @@ function saveState(){
 
 function showPage(pageId,button){
 
-  document.querySelectorAll(".page").forEach(page=>{
-    page.classList.remove("active");
-  });
+  document
+    .querySelectorAll(".page")
+    .forEach(page=>{
+      page.classList.remove("active");
+    });
 
-  document.querySelectorAll(".tab").forEach(tab=>{
-    tab.classList.remove("active");
-  });
 
-  const page=document.getElementById(pageId);
+  document
+    .querySelectorAll(".tab")
+    .forEach(tab=>{
+      tab.classList.remove("active");
+    });
+
+
+  const page =
+    document.getElementById(pageId);
+
 
   if(page){
     page.classList.add("active");
   }
 
+
   if(button){
     button.classList.add("active");
   }
+
 
   if(pageId==="daily"){
     prepareDailyPage();
   }
 
+
   if(pageId==="personal"){
     renderPersonal();
   }
+
+
+  /* ONLY NEW ROUTINE PAGE */
 
   if(pageId==="routine"){
     renderRoutine();
@@ -1230,7 +1553,8 @@ function showPage(pageId,button){
 
 function toggleVision(key){
 
-  state.vision[key]=document.getElementById(key).checked;
+  state.vision[key] =
+    document.getElementById(key).checked;
 
   saveState();
 
@@ -1239,10 +1563,15 @@ function toggleVision(key){
 
 function renderVision(){
 
-  document.getElementById("weight175").checked=
+  document.getElementById(
+    "weight175"
+  ).checked =
     !!state.vision.weight175;
 
-  document.getElementById("weight155").checked=
+
+  document.getElementById(
+    "weight155"
+  ).checked =
     !!state.vision.weight155;
 
 }
@@ -1250,128 +1579,183 @@ function renderVision(){
 
 function renderVisionGoals(){
 
-  const box=document.getElementById("visionGoals");
+  const box =
+    document.getElementById(
+      "visionGoals"
+    );
 
   if(!box)return;
 
-  const businessGoals=state.goals.filter(
-    goal=>goal.title!==""
-  );
 
-  if(!businessGoals.length){
+  if(!state.goals.length){
 
-    box.innerHTML=
+    box.innerHTML =
       '<div class="empty">No goals yet.</div>';
 
     return;
 
   }
 
-  box.innerHTML=businessGoals.map(goal=>`
 
-    <div class="goal-card">
+  box.innerHTML =
+    state.goals.map(goal=>`
 
-      <div class="goal-title">
-        ${escapeHtml(goal.title)}
+      <div class="goal-card">
+
+        <div class="goal-title">
+          ${escapeHtml(goal.title)}
+        </div>
+
+        <span class="pill">
+          ${escapeHtml(
+            goal.category || "Goal"
+          )}
+        </span>
+
       </div>
 
-      <span class="pill">
-        ${escapeHtml(goal.category || "Goal")}
-      </span>
-
-    </div>
-
-  `).join("");
+    `).join("");
 
 }
 
 
 /* =========================
-   GOALS
+   GOALS LIST
 ========================= */
 
 function renderGoalsList(){
 
-  const box=document.getElementById("goalsList");
+  const box =
+    document.getElementById(
+      "goalsList"
+    );
 
   if(!box)return;
 
+
   if(!state.goals.length){
 
-    box.innerHTML=
+    box.innerHTML =
       '<div class="empty">No goals yet.</div>';
 
     return;
 
   }
 
-  box.innerHTML=state.goals.map((goal,index)=>{
 
-    let status="Not Active";
+  box.innerHTML =
+    state.goals.map(
+      (goal,index)=>{
 
-    if(goal.completed){
-      status="Completed";
-    }else if(goal.useLater){
-      status="Use Later";
-    }else if(goal.active){
-      status="Active";
-    }
+        let status =
+          "Not Active";
 
-    let statusClass="status-active";
+        if(goal.completed){
 
-    if(goal.completed){
-      statusClass="status-complete";
-    }else if(goal.useLater){
-      statusClass="status-use";
-    }
+          status="Completed";
 
-    return `
+        }else if(goal.useLater){
 
-      <div class="goal-card">
+          status="Use Later";
 
-        <div class="goal-title">
-          ${index+1}. ${escapeHtml(goal.title)}
-        </div>
+        }else if(goal.active){
 
-        <span class="pill">
-          ${escapeHtml(goal.category || "Goal")}
-        </span>
+          status="Active";
 
-        <span class="status ${statusClass}">
-          ${status}
-        </span>
+        }
 
-        <p>
-          ${escapeHtml(goal.notes || "")}
-        </p>
 
-        <div class="goal-actions">
+        let statusClass =
+          "status-active";
 
-          <button
-            class="btn btn-blue"
-            onclick="setActiveGoal('${goal.id}')">
-            ⭐ Make Active
-          </button>
 
-          <button
-            class="btn btn-green"
-            onclick="completeGoal('${goal.id}')">
-            ✅ Completed
-          </button>
+        if(goal.completed){
 
-          <button
-            class="btn btn-light"
-            onclick="useGoalLater('${goal.id}')">
-            ⏳ Use Later
-          </button>
+          statusClass =
+            "status-complete";
 
-        </div>
+        }else if(goal.useLater){
 
-      </div>
+          statusClass =
+            "status-use";
 
-    `;
+        }
 
-  }).join("");
+
+        return `
+
+          <div class="goal-card">
+
+            <div class="goal-title">
+
+              ${index+1}.
+              ${escapeHtml(goal.title)}
+
+            </div>
+
+            <span class="pill">
+
+              ${escapeHtml(
+                goal.category || "Goal"
+              )}
+
+            </span>
+
+            <span
+              class="status ${statusClass}">
+
+              ${status}
+
+            </span>
+
+            <p>
+
+              ${escapeHtml(
+                goal.notes || ""
+              )}
+
+            </p>
+
+
+            <div class="goal-actions">
+
+              <button
+                class="btn btn-blue"
+                onclick="
+                  setActiveGoal('${goal.id}')
+                "
+              >
+                ⭐ Make Active
+              </button>
+
+
+              <button
+                class="btn btn-green"
+                onclick="
+                  completeGoal('${goal.id}')
+                "
+              >
+                ✅ Completed
+              </button>
+
+
+              <button
+                class="btn btn-light"
+                onclick="
+                  useGoalLater('${goal.id}')
+                "
+              >
+                ⏳ Use Later
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
 
 }
 
@@ -1380,107 +1764,79 @@ function setActiveGoal(id){
 
   state.goals.forEach(goal=>{
 
-    goal.active=(goal.id===id);
+    goal.active =
+      goal.id===id;
 
     if(goal.id===id){
+
       goal.useLater=false;
+
     }
 
   });
+
 
   saveState();
 
   renderAll();
 
-  alert("Active 12-week goal updated! ⭐");
+  alert(
+    "Active 12-week goal updated! ⭐"
+  );
 
 }
 
 
 function completeGoal(id){
 
-  const goal=state.goals.find(g=>g.id===id);
+  const goal =
+    state.goals.find(
+      g=>g.id===id
+    );
 
   if(!goal)return;
 
+
   goal.completed=true;
+
   goal.active=false;
+
   goal.useLater=false;
+
 
   saveState();
 
   renderAll();
 
-  alert("Goal marked completed! 🎉");
+  alert(
+    "Goal marked completed! 🎉"
+  );
 
 }
 
 
 function useGoalLater(id){
 
-  const goal=state.goals.find(g=>g.id===id);
+  const goal =
+    state.goals.find(
+      g=>g.id===id
+    );
 
   if(!goal)return;
 
+
   goal.useLater=true;
+
   goal.active=false;
+
 
   saveState();
 
   renderAll();
 
-  alert("Goal marked Use Later! ⏳");
-
-}
-
-
-function renderActiveGoal(){
-
-  const box=document.getElementById("activeGoal");
-
-  if(!box)return;
-
-  const goal=state.goals.find(g=>g.active);
-
-  if(!goal){
-
-    box.innerHTML=`
-
-      <div class="empty">
-        <h3>No Active Goal</h3>
-        <p>
-          Go to All Goals and choose the goal you want
-          to focus on for your 12 weeks.
-        </p>
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-  box.innerHTML=`
-
-    <div class="focus-box">
-
-      <h2>${escapeHtml(goal.title)}</h2>
-
-      <span class="pill">
-        ${escapeHtml(goal.category || "Goal")}
-      </span>
-
-      <p>
-        ${escapeHtml(goal.notes || "")}
-      </p>
-
-      <div class="notice">
-        This is your current 12-week focus.
-      </div>
-
-    </div>
-
-  `;
+  alert(
+    "Goal marked Use Later! ⏳"
+  );
 
 }
 
@@ -1491,24 +1847,38 @@ function renderActiveGoal(){
 
 function prepareDailyPage(){
 
-  const dateInput=document.getElementById("dailyDate");
+  const dateInput =
+    document.getElementById(
+      "dailyDate"
+    );
 
   if(!dateInput)return;
 
+
   if(!dateInput.value){
 
-    const today=new Date();
+    const today =
+      new Date();
 
-    const year=today.getFullYear();
+    const year =
+      today.getFullYear();
 
-    const month=String(today.getMonth()+1).padStart(2,"0");
+    const month =
+      String(
+        today.getMonth()+1
+      ).padStart(2,"0");
 
-    const day=String(today.getDate()).padStart(2,"0");
+    const day =
+      String(
+        today.getDate()
+      ).padStart(2,"0");
 
-    dateInput.value=
+
+    dateInput.value =
       `${year}-${month}-${day}`;
 
   }
+
 
   renderDailySchedule();
 
@@ -1518,7 +1888,9 @@ function prepareDailyPage(){
 function getDailyTasksForDate(date){
 
   if(!state.dailyTasks[date]){
+
     state.dailyTasks[date]=[];
+
   }
 
   return state.dailyTasks[date];
@@ -1528,23 +1900,38 @@ function getDailyTasksForDate(date){
 
 function renderDailySchedule(){
 
-  const box=document.getElementById("dailyContent");
+  const box =
+    document.getElementById(
+      "dailyContent"
+    );
 
-  const date=document.getElementById("dailyDate")?.value;
+  const date =
+    document.getElementById(
+      "dailyDate"
+    )?.value;
+
 
   if(!box || !date)return;
 
-  const activeGoal=state.goals.find(g=>g.active);
+
+  const activeGoal =
+    state.goals.find(
+      g=>g.active
+    );
+
 
   if(!activeGoal){
 
-    box.innerHTML=`
+    box.innerHTML = `
 
       <div class="empty">
+
         <h3>No Active Goal</h3>
+
         <p>
           Select an active 12-week goal first.
         </p>
+
       </div>
 
     `;
@@ -1553,24 +1940,37 @@ function renderDailySchedule(){
 
   }
 
-  let tasks=getDailyTasksForDate(date);
+
+  let tasks =
+    getDailyTasksForDate(date);
+
 
   if(
     activeGoal.type==="realestate" &&
     tasks.length===0
   ){
 
-    tasks=REAL_ESTATE_TASKS.map((task,index)=>({
+    tasks =
+      REAL_ESTATE_TASKS.map(
+        (task,index)=>({
 
-      id:"daily_"+date+"_"+index,
+          id:
+            "daily_" +
+            date +
+            "_" +
+            index,
 
-      title:task.title,
+          title:
+            task.title,
 
-      links:task.links,
+          links:
+            task.links,
 
-      completed:false
+          completed:false
 
-    }));
+        })
+      );
+
 
     state.dailyTasks[date]=tasks;
 
@@ -1578,13 +1978,18 @@ function renderDailySchedule(){
 
   }
 
+
   if(tasks.length===0){
 
-    box.innerHTML=`
+    box.innerHTML = `
 
       <div class="notice">
 
-        <h3>${escapeHtml(activeGoal.title)}</h3>
+        <h3>
+          ${escapeHtml(
+            activeGoal.title
+          )}
+        </h3>
 
         <p>
           Add your daily work below.
@@ -1592,10 +1997,16 @@ function renderDailySchedule(){
 
       </div>
 
+
       <div class="button-row">
-        <button class="btn" onclick="addDailyTask()">
+
+        <button
+          class="btn"
+          onclick="addDailyTask()"
+        >
           ➕ Add Daily Task
         </button>
+
       </div>
 
     `;
@@ -1604,69 +2015,115 @@ function renderDailySchedule(){
 
   }
 
-  box.innerHTML=`
+
+  box.innerHTML = `
 
     <div class="notice">
 
-      <h3>${escapeHtml(activeGoal.title)}</h3>
+      <h3>
+        ${escapeHtml(
+          activeGoal.title
+        )}
+      </h3>
 
       <p>
-        Daily Schedule for ${escapeHtml(date)}
+        Daily Schedule for
+        ${escapeHtml(date)}
       </p>
 
     </div>
 
-    ${tasks.map((task,index)=>`
 
-      <div class="goal-card">
+    ${tasks.map(
+      (task,index)=>`
 
-        <div class="task-item">
+        <div class="goal-card">
 
-          <input
-            type="checkbox"
-            ${task.completed ? "checked" : ""}
-            onchange="toggleDailyTask('${date}',${index})"
-          >
+          <div class="task-item">
 
-          <div style="flex:1">
+            <input
+              type="checkbox"
+              ${
+                task.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                toggleDailyTask(
+                  '${date}',
+                  ${index}
+                )
+              "
+            >
 
-            <strong>
-              ${escapeHtml(task.title)}
-            </strong>
 
-            ${
-              task.links && task.links.length
-              ?
-              `<div class="links" style="margin-top:8px">
-                ${task.links.map(link=>`
-                  <a
-                    href="${link[1]}"
-                    target="_blank"
-                    rel="noopener">
-                    ${escapeHtml(link[0])}
-                  </a>
-                `).join("")}
-              </div>`
-              :
-              ""
-            }
+            <div style="flex:1">
+
+              <strong>
+                ${escapeHtml(
+                  task.title
+                )}
+              </strong>
+
+
+              ${
+                task.links &&
+                task.links.length
+                ?
+                `
+
+                  <div class="links">
+
+                    ${task.links.map(
+                      link=>`
+
+                        <a
+                          href="${link[1]}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          🔗
+                          ${escapeHtml(
+                            link[0]
+                          )}
+                        </a>
+
+                      `
+                    ).join("")}
+
+                  </div>
+
+                `
+                :
+                ""
+              }
+
+            </div>
 
           </div>
 
         </div>
 
-      </div>
+      `
+    ).join("")}
 
-    `).join("")}
 
     <div class="button-row">
 
-      <button class="btn" onclick="addDailyTask()">
+      <button
+        class="btn"
+        onclick="addDailyTask()"
+      >
         ➕ Add Daily Task
       </button>
 
-      <button class="btn btn-danger"
-        onclick="clearDailyTasks('${date}')">
+
+      <button
+        class="btn btn-danger"
+        onclick="
+          clearDailyTasks('${date}')
+        "
+      >
         🗑️ Clear Daily Tasks
       </button>
 
@@ -1679,10 +2136,13 @@ function renderDailySchedule(){
 
 function toggleDailyTask(date,index){
 
-  if(!state.dailyTasks[date])return;
+  if(!state.dailyTasks[date])
+    return;
 
-  state.dailyTasks[date][index].completed=
+
+  state.dailyTasks[date][index].completed =
     !state.dailyTasks[date][index].completed;
+
 
   saveState();
 
@@ -1695,21 +2155,36 @@ function toggleDailyTask(date,index){
 
 function addDailyTask(){
 
-  const date=document.getElementById("dailyDate").value;
+  const date =
+    document.getElementById(
+      "dailyDate"
+    ).value;
+
 
   if(!date)return;
 
-  const title=prompt("Enter daily task:");
+
+  const title =
+    prompt(
+      "Enter daily task:"
+    );
+
 
   if(!title)return;
 
+
   if(!state.dailyTasks[date]){
+
     state.dailyTasks[date]=[];
+
   }
+
 
   state.dailyTasks[date].push({
 
-    id:"daily_"+Date.now(),
+    id:
+      "daily_" +
+      Date.now(),
 
     title:title,
 
@@ -1718,6 +2193,7 @@ function addDailyTask(){
     completed:false
 
   });
+
 
   saveState();
 
@@ -1728,7 +2204,14 @@ function addDailyTask(){
 
 function clearDailyTasks(date){
 
-  if(!confirm("Clear all daily tasks for this date?"))return;
+  if(
+    !confirm(
+      "Clear all daily tasks for this date?"
+    )
+  ){
+    return;
+  }
+
 
   delete state.dailyTasks[date];
 
@@ -1745,21 +2228,37 @@ function clearDailyTasks(date){
 
 function addAppointment(){
 
-  const date=document.getElementById("appointmentDate").value;
+  const date =
+    document.getElementById(
+      "appointmentDate"
+    ).value;
 
-  const time=document.getElementById("appointmentTime").value;
+  const time =
+    document.getElementById(
+      "appointmentTime"
+    ).value;
 
-  const title=document.getElementById("appointmentTitle").value.trim();
+  const title =
+    document.getElementById(
+      "appointmentTitle"
+    ).value.trim();
 
-  const notes=document.getElementById("appointmentNotes").value.trim();
+  const notes =
+    document.getElementById(
+      "appointmentNotes"
+    ).value.trim();
+
 
   if(!title){
 
-    alert("Please enter the appointment.");
+    alert(
+      "Please enter the appointment."
+    );
 
     return;
 
   }
+
 
   state.appointments.push({
 
@@ -1777,11 +2276,19 @@ function addAppointment(){
 
   });
 
+
   saveState();
 
-  document.getElementById("appointmentTitle").value="";
 
-  document.getElementById("appointmentNotes").value="";
+  document.getElementById(
+    "appointmentTitle"
+  ).value="";
+
+
+  document.getElementById(
+    "appointmentNotes"
+  ).value="";
+
 
   renderPersonal();
 
@@ -1790,8 +2297,11 @@ function addAppointment(){
 
 function deleteAppointment(id){
 
-  state.appointments=
-    state.appointments.filter(item=>item.id!==id);
+  state.appointments =
+    state.appointments.filter(
+      item=>item.id!==id
+    );
+
 
   saveState();
 
@@ -1802,12 +2312,18 @@ function deleteAppointment(id){
 
 function toggleAppointment(id){
 
-  const item=
-    state.appointments.find(item=>item.id===id);
+  const item =
+    state.appointments.find(
+      item=>item.id===id
+    );
+
 
   if(!item)return;
 
-  item.completed=!item.completed;
+
+  item.completed =
+    !item.completed;
+
 
   saveState();
 
@@ -1818,25 +2334,37 @@ function toggleAppointment(id){
 
 function addPersonalTask(){
 
-  const title=
-    document.getElementById("personalTaskTitle").value.trim();
+  const title =
+    document.getElementById(
+      "personalTaskTitle"
+    ).value.trim();
 
-  const date=
-    document.getElementById("personalTaskDate").value;
+  const date =
+    document.getElementById(
+      "personalTaskDate"
+    ).value;
 
-  const notes=
-    document.getElementById("personalTaskNotes").value.trim();
+  const notes =
+    document.getElementById(
+      "personalTaskNotes"
+    ).value.trim();
 
-  const link=
-    document.getElementById("personalTaskLink").value.trim();
+  const link =
+    document.getElementById(
+      "personalTaskLink"
+    ).value.trim();
+
 
   if(!title){
 
-    alert("Please enter a task.");
+    alert(
+      "Please enter a task."
+    );
 
     return;
 
   }
+
 
   state.personalTasks.push({
 
@@ -1854,15 +2382,29 @@ function addPersonalTask(){
 
   });
 
+
   saveState();
 
-  document.getElementById("personalTaskTitle").value="";
 
-  document.getElementById("personalTaskDate").value="";
+  document.getElementById(
+    "personalTaskTitle"
+  ).value="";
 
-  document.getElementById("personalTaskNotes").value="";
 
-  document.getElementById("personalTaskLink").value="";
+  document.getElementById(
+    "personalTaskDate"
+  ).value="";
+
+
+  document.getElementById(
+    "personalTaskNotes"
+  ).value="";
+
+
+  document.getElementById(
+    "personalTaskLink"
+  ).value="";
+
 
   renderPersonal();
 
@@ -1871,8 +2413,11 @@ function addPersonalTask(){
 
 function deletePersonalTask(id){
 
-  state.personalTasks=
-    state.personalTasks.filter(item=>item.id!==id);
+  state.personalTasks =
+    state.personalTasks.filter(
+      item=>item.id!==id
+    );
+
 
   saveState();
 
@@ -1883,12 +2428,18 @@ function deletePersonalTask(id){
 
 function togglePersonalTask(id){
 
-  const item=
-    state.personalTasks.find(item=>item.id===id);
+  const item =
+    state.personalTasks.find(
+      item=>item.id===id
+    );
+
 
   if(!item)return;
 
-  item.completed=!item.completed;
+
+  item.completed =
+    !item.completed;
+
 
   saveState();
 
@@ -1899,25 +2450,37 @@ function togglePersonalTask(id){
 
 function addErrand(){
 
-  const title=
-    document.getElementById("errandTitle").value.trim();
+  const title =
+    document.getElementById(
+      "errandTitle"
+    ).value.trim();
 
-  const date=
-    document.getElementById("errandDate").value;
+  const date =
+    document.getElementById(
+      "errandDate"
+    ).value;
 
-  const notes=
-    document.getElementById("errandNotes").value.trim();
+  const notes =
+    document.getElementById(
+      "errandNotes"
+    ).value.trim();
 
-  const link=
-    document.getElementById("errandLink").value.trim();
+  const link =
+    document.getElementById(
+      "errandLink"
+    ).value.trim();
+
 
   if(!title){
 
-    alert("Please enter an errand.");
+    alert(
+      "Please enter an errand."
+    );
 
     return;
 
   }
+
 
   state.errands.push({
 
@@ -1935,15 +2498,29 @@ function addErrand(){
 
   });
 
+
   saveState();
 
-  document.getElementById("errandTitle").value="";
 
-  document.getElementById("errandDate").value="";
+  document.getElementById(
+    "errandTitle"
+  ).value="";
 
-  document.getElementById("errandNotes").value="";
 
-  document.getElementById("errandLink").value="";
+  document.getElementById(
+    "errandDate"
+  ).value="";
+
+
+  document.getElementById(
+    "errandNotes"
+  ).value="";
+
+
+  document.getElementById(
+    "errandLink"
+  ).value="";
+
 
   renderPersonal();
 
@@ -1952,8 +2529,11 @@ function addErrand(){
 
 function deleteErrand(id){
 
-  state.errands=
-    state.errands.filter(item=>item.id!==id);
+  state.errands =
+    state.errands.filter(
+      item=>item.id!==id
+    );
+
 
   saveState();
 
@@ -1964,12 +2544,18 @@ function deleteErrand(id){
 
 function toggleErrand(id){
 
-  const item=
-    state.errands.find(item=>item.id===id);
+  const item =
+    state.errands.find(
+      item=>item.id===id
+    );
+
 
   if(!item)return;
 
-  item.completed=!item.completed;
+
+  item.completed =
+    !item.completed;
+
 
   saveState();
 
@@ -1991,225 +2577,390 @@ function renderPersonal(){
 
 function renderAppointments(){
 
-  const box=document.getElementById("appointmentsList");
+  const box =
+    document.getElementById(
+      "appointmentsList"
+    );
+
 
   if(!box)return;
 
+
   if(!state.appointments.length){
 
-    box.innerHTML=
+    box.innerHTML =
       '<div class="empty">No appointments added yet.</div>';
 
     return;
 
   }
 
-  box.innerHTML=state.appointments.map(item=>`
 
-    <div class="appointment-card">
+  box.innerHTML =
+    state.appointments.map(
+      item=>`
 
-      <div class="checkbox-line">
+        <div class="appointment-card">
 
-        <input
-          type="checkbox"
-          ${item.completed ? "checked" : ""}
-          onchange="toggleAppointment(${item.id})">
+          <div class="checkbox-line">
 
-        <strong>
-          ${escapeHtml(item.title)}
-        </strong>
+            <input
+              type="checkbox"
+              ${
+                item.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                toggleAppointment(
+                  ${item.id}
+                )
+              "
+            >
 
-      </div>
+            <strong>
+              ${escapeHtml(
+                item.title
+              )}
+            </strong>
 
-      <p>
-        ${escapeHtml(item.date || "")}
-        ${item.time ? " • "+escapeHtml(item.time) : ""}
-      </p>
+          </div>
 
-      <p>
-        ${escapeHtml(item.notes || "")}
-      </p>
 
-      <button
-        class="btn btn-danger"
-        onclick="deleteAppointment(${item.id})">
-        🗑️ Delete
-      </button>
+          <p>
 
-    </div>
+            ${escapeHtml(
+              item.date || ""
+            )}
 
-  `).join("");
+            ${
+              item.time
+              ?
+              " • " +
+              escapeHtml(
+                item.time
+              )
+              :
+              ""
+            }
+
+          </p>
+
+
+          <p>
+
+            ${escapeHtml(
+              item.notes || ""
+            )}
+
+          </p>
+
+
+          <button
+            class="btn btn-danger"
+            onclick="
+              deleteAppointment(
+                ${item.id}
+              )
+            "
+          >
+            🗑️ Delete
+          </button>
+
+        </div>
+
+      `
+    ).join("");
 
 }
 
 
 function renderPersonalTasks(){
 
-  const box=document.getElementById("personalTasksList");
+  const box =
+    document.getElementById(
+      "personalTasksList"
+    );
+
 
   if(!box)return;
 
+
   if(!state.personalTasks.length){
 
-    box.innerHTML=
+    box.innerHTML =
       '<div class="empty">No personal tasks added yet.</div>';
 
     return;
 
   }
 
-  box.innerHTML=state.personalTasks.map(item=>`
 
-    <div class="personal-card">
+  box.innerHTML =
+    state.personalTasks.map(
+      item=>`
 
-      <div class="checkbox-line">
+        <div class="personal-card">
 
-        <input
-          type="checkbox"
-          ${item.completed ? "checked" : ""}
-          onchange="togglePersonalTask(${item.id})">
+          <div class="checkbox-line">
 
-        <strong>
-          ${escapeHtml(item.title)}
-        </strong>
+            <input
+              type="checkbox"
+              ${
+                item.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                togglePersonalTask(
+                  ${item.id}
+                )
+              "
+            >
 
-      </div>
+            <strong>
+              ${escapeHtml(
+                item.title
+              )}
+            </strong>
 
-      ${
-        item.date
-        ? `<p>📅 ${escapeHtml(item.date)}</p>`
-        : ""
-      }
+          </div>
 
-      ${
-        item.notes
-        ? `<p>${escapeHtml(item.notes)}</p>`
-        : ""
-      }
 
-      ${
-        item.link
-        ? `
-          <p>
-            <a
-              href="${escapeHtml(item.link)}"
-              target="_blank"
-              rel="noopener">
-              🔗 Open Link
-            </a>
-          </p>
-        `
-        : ""
-      }
+          ${
+            item.date
+            ?
+            `<p>
+              📅
+              ${escapeHtml(
+                item.date
+              )}
+            </p>`
+            :
+            ""
+          }
 
-      <button
-        class="btn btn-danger"
-        onclick="deletePersonalTask(${item.id})">
-        🗑️ Delete
-      </button>
 
-    </div>
+          ${
+            item.notes
+            ?
+            `<p>
+              ${escapeHtml(
+                item.notes
+              )}
+            </p>`
+            :
+            ""
+          }
 
-  `).join("");
+
+          ${
+            item.link
+            ?
+            `
+              <p>
+                <a
+                  href="${escapeHtml(item.link)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🔗 Open Link
+                </a>
+              </p>
+            `
+            :
+            ""
+          }
+
+
+          <button
+            class="btn btn-danger"
+            onclick="
+              deletePersonalTask(
+                ${item.id}
+              )
+            "
+          >
+            🗑️ Delete
+          </button>
+
+        </div>
+
+      `
+    ).join("");
 
 }
 
 
 function renderErrands(){
 
-  const box=document.getElementById("errandsList");
+  const box =
+    document.getElementById(
+      "errandsList"
+    );
+
 
   if(!box)return;
 
+
   if(!state.errands.length){
 
-    box.innerHTML=
+    box.innerHTML =
       '<div class="empty">No errands added yet.</div>';
 
     return;
 
   }
 
-  box.innerHTML=state.errands.map(item=>`
 
-    <div class="personal-card">
+  box.innerHTML =
+    state.errands.map(
+      item=>`
 
-      <div class="checkbox-line">
+        <div class="personal-card">
 
-        <input
-          type="checkbox"
-          ${item.completed ? "checked" : ""}
-          onchange="toggleErrand(${item.id})">
+          <div class="checkbox-line">
 
-        <strong>
-          ${escapeHtml(item.title)}
-        </strong>
+            <input
+              type="checkbox"
+              ${
+                item.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                toggleErrand(
+                  ${item.id}
+                )
+              "
+            >
 
-      </div>
+            <strong>
+              ${escapeHtml(
+                item.title
+              )}
+            </strong>
 
-      ${
-        item.date
-        ? `<p>📅 ${escapeHtml(item.date)}</p>`
-        : ""
-      }
+          </div>
 
-      ${
-        item.notes
-        ? `<p>${escapeHtml(item.notes)}</p>`
-        : ""
-      }
 
-      ${
-        item.link
-        ? `
-          <p>
-            <a
-              href="${escapeHtml(item.link)}"
-              target="_blank"
-              rel="noopener">
-              🔗 Open Link
-            </a>
-          </p>
-        `
-        : ""
-      }
+          ${
+            item.date
+            ?
+            `<p>
+              📅
+              ${escapeHtml(
+                item.date
+              )}
+            </p>`
+            :
+            ""
+          }
 
-      <button
-        class="btn btn-danger"
-        onclick="deleteErrand(${item.id})">
-        🗑️ Delete
-      </button>
 
-    </div>
+          ${
+            item.notes
+            ?
+            `<p>
+              ${escapeHtml(
+                item.notes
+              )}
+            </p>`
+            :
+            ""
+          }
 
-  `).join("");
+
+          ${
+            item.link
+            ?
+            `
+              <p>
+                <a
+                  href="${escapeHtml(item.link)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🔗 Open Link
+                </a>
+              </p>
+            `
+            :
+            ""
+          }
+
+
+          <button
+            class="btn btn-danger"
+            onclick="
+              deleteErrand(
+                ${item.id}
+              )
+            "
+          >
+            🗑️ Delete
+          </button>
+
+        </div>
+
+      `
+    ).join("");
 
 }
 
 
 /* =========================
    ROUTINE
+   ONLY NEW FEATURE
 ========================= */
 
 function renderRoutine(){
 
-  const morning=document.getElementById("morningRoutine");
+  const morning =
+    document.getElementById(
+      "morningRoutine"
+    );
 
-  const afternoon=document.getElementById("afternoonRoutine");
+  const afternoon =
+    document.getElementById(
+      "afternoonRoutine"
+    );
 
-  const evening=document.getElementById("eveningRoutine");
+  const evening =
+    document.getElementById(
+      "eveningRoutine"
+    );
 
-  const night=document.getElementById("nightRoutine");
+  const night =
+    document.getElementById(
+      "nightRoutine"
+    );
 
-  if(!morning || !afternoon || !evening || !night)return;
 
-  morning.value=state.routine?.morning || "";
+  if(
+    !morning ||
+    !afternoon ||
+    !evening ||
+    !night
+  ){
+    return;
+  }
 
-  afternoon.value=state.routine?.afternoon || "";
 
-  evening.value=state.routine?.evening || "";
+  morning.value =
+    state.routine?.morning || "";
 
-  night.value=state.routine?.night || "";
+
+  afternoon.value =
+    state.routine?.afternoon || "";
+
+
+  evening.value =
+    state.routine?.evening || "";
+
+
+  night.value =
+    state.routine?.night || "";
 
 }
 
@@ -2219,29 +2970,50 @@ function saveRoutine(){
   if(!state.routine){
 
     state.routine={
+
       morning:"",
+
       afternoon:"",
+
       evening:"",
+
       night:""
+
     };
 
   }
 
-  state.routine.morning=
-    document.getElementById("morningRoutine").value;
 
-  state.routine.afternoon=
-    document.getElementById("afternoonRoutine").value;
+  state.routine.morning =
+    document.getElementById(
+      "morningRoutine"
+    ).value;
 
-  state.routine.evening=
-    document.getElementById("eveningRoutine").value;
 
-  state.routine.night=
-    document.getElementById("nightRoutine").value;
+  state.routine.afternoon =
+    document.getElementById(
+      "afternoonRoutine"
+    ).value;
+
+
+  state.routine.evening =
+    document.getElementById(
+      "eveningRoutine"
+    ).value;
+
+
+  state.routine.night =
+    document.getElementById(
+      "nightRoutine"
+    ).value;
+
 
   saveState();
 
-  alert("Routine saved! 💗");
+
+  alert(
+    "Routine saved! 💗"
+  );
 
 }
 
@@ -2252,116 +3024,204 @@ function saveRoutine(){
 
 function renderProgress(){
 
-  const box=document.getElementById("progressContent");
+  const box =
+    document.getElementById(
+      "progressContent"
+    );
+
 
   if(!box)return;
 
-  const totalGoals=state.goals.length;
 
-  const completedGoals=
-    state.goals.filter(g=>g.completed).length;
+  const totalGoals =
+    state.goals.length;
 
-  const activeGoal=
-    state.goals.find(g=>g.active);
+
+  const completedGoals =
+    state.goals.filter(
+      g=>g.completed
+    ).length;
+
+
+  const activeGoal =
+    state.goals.find(
+      g=>g.active
+    );
+
 
   let dailyTotal=0;
 
   let dailyCompleted=0;
 
-  Object.values(state.dailyTasks).forEach(tasks=>{
 
-    if(!Array.isArray(tasks))return;
+  Object.values(
+    state.dailyTasks
+  ).forEach(tasks=>{
 
-    dailyTotal+=tasks.length;
+    if(!Array.isArray(tasks))
+      return;
 
-    dailyCompleted+=tasks.filter(
-      task=>task.completed
-    ).length;
+
+    dailyTotal +=
+      tasks.length;
+
+
+    dailyCompleted +=
+      tasks.filter(
+        task=>task.completed
+      ).length;
 
   });
 
-  const goalPercent=
+
+  const goalPercent =
     totalGoals
-    ? Math.round((completedGoals/totalGoals)*100)
-    : 0;
+    ?
+    Math.round(
+      (
+        completedGoals /
+        totalGoals
+      ) * 100
+    )
+    :
+    0;
 
-  const dailyPercent=
+
+  const dailyPercent =
     dailyTotal
-    ? Math.round((dailyCompleted/dailyTotal)*100)
-    : 0;
+    ?
+    Math.round(
+      (
+        dailyCompleted /
+        dailyTotal
+      ) * 100
+    )
+    :
+    0;
 
-  box.innerHTML=`
+
+  box.innerHTML = `
 
     <div class="stats">
 
       <div class="stat">
-        <strong>${totalGoals}</strong>
+
+        <strong>
+          ${totalGoals}
+        </strong>
+
         Total Goals
+
       </div>
 
+
       <div class="stat">
-        <strong>${completedGoals}</strong>
+
+        <strong>
+          ${completedGoals}
+        </strong>
+
         Completed Goals
+
       </div>
 
+
       <div class="stat">
-        <strong>${dailyCompleted}</strong>
+
+        <strong>
+          ${dailyCompleted}
+        </strong>
+
         Daily Tasks Completed
+
       </div>
+
 
       <div class="stat">
-        <strong>${dailyTotal}</strong>
+
+        <strong>
+          ${dailyTotal}
+        </strong>
+
         Daily Tasks
+
       </div>
 
     </div>
 
+
     <div class="card">
 
-      <h3>🎯 Goal Progress</h3>
+      <h3>
+        🎯 Goal Progress
+      </h3>
 
       <div class="progress-wrap">
 
         <div
           class="progress-bar"
-          style="width:${goalPercent}%">
+          style="
+            width:${goalPercent}%
+          "
+        >
+
           ${goalPercent}%
+
         </div>
 
       </div>
 
     </div>
 
+
     <div class="card">
 
-      <h3>🗓️ Daily Schedule Progress</h3>
+      <h3>
+        🗓️ Daily Schedule Progress
+      </h3>
 
       <div class="progress-wrap">
 
         <div
           class="progress-bar"
-          style="width:${dailyPercent}%">
+          style="
+            width:${dailyPercent}%
+          "
+        >
+
           ${dailyPercent}%
+
         </div>
 
       </div>
 
     </div>
 
+
     <div class="card">
 
-      <h3>⭐ Active Goal</h3>
+      <h3>
+        ⭐ Active Goal
+      </h3>
 
       ${
         activeGoal
         ?
-        `<p>
-          <strong>
-            ${escapeHtml(activeGoal.title)}
-          </strong>
-        </p>`
+        `
+          <p>
+            <strong>
+              ${escapeHtml(
+                activeGoal.title
+              )}
+            </strong>
+          </p>
+        `
         :
-        `<p>No active goal selected.</p>`
+        `
+          <p>
+            No active goal selected.
+          </p>
+        `
       }
 
     </div>
@@ -2377,13 +3237,19 @@ function renderProgress(){
 
 function resetCRM(){
 
-  const confirmed=confirm(
-    "Are you sure you want to reset the Goal CRM? This will clear saved data on this device."
-  );
+  const confirmed =
+    confirm(
+      "Are you sure you want to reset the Goal CRM? This will clear saved data on this device."
+    );
+
 
   if(!confirmed)return;
 
-  localStorage.removeItem(STORAGE_KEY);
+
+  localStorage.removeItem(
+    STORAGE_KEY
+  );
+
 
   location.reload();
 
@@ -2396,12 +3262,29 @@ function resetCRM(){
 
 function escapeHtml(value){
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  );
 
 }
 
@@ -2422,14 +3305,23 @@ function renderAll(){
 
   renderProgress();
 
+
   if(
-    document.getElementById("daily") &&
-    document.getElementById("daily").classList.contains("active")
+    document
+      .getElementById("daily")
+      .classList
+      .contains("active")
   ){
+
     prepareDailyPage();
+
   }
 
+
   renderPersonal();
+
+
+  /* ONLY NEW ROUTINE RENDER */
 
   renderRoutine();
 
