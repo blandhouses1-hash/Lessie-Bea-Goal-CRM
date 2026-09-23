@@ -1,5 +1,4 @@
-```html
-<!DOCTYPE html>
+`<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -11,45 +10,106 @@
     font-family: Arial, sans-serif;
     font-size: 18px;
     background: linear-gradient(135deg,#ffd1dc,#ffffff);
-    margin:0; padding:0; color:#000;
+    margin:0;
+    padding:0;
+    color:#000;
   }
 
   header{
-    background:#e91e63; color:#fff; padding:20px; text-align:center;
+    background:#e91e63;
+    color:#fff;
+    padding:20px;
+    text-align:center;
   }
-  header h1{ margin:0; font-size:30px; }
-  header p{ margin:8px 0 0; font-size:18px; opacity:.95; }
+
+  header h1{
+    margin:0;
+    font-size:30px;
+  }
+
+  header p{
+    margin:8px 0 0;
+    font-size:18px;
+    opacity:.95;
+  }
 
   nav{
-    display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
-    background:#fff; padding:12px; border-bottom:1px solid #ddd;
-    position:sticky; top:0; z-index:5;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    background:#fff;
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    position:sticky;
+    top:0;
+    z-index:5;
   }
+
   nav button{
     padding:12px 16px;
-    border:none; border-radius:10px;
-    background:#e91e63; color:#fff; cursor:pointer;
+    border:none;
+    border-radius:10px;
+    background:#e91e63;
+    color:#fff;
+    cursor:pointer;
     font-size:16px;
   }
-  nav button.secondary{ background:#555; }
-  nav button:hover{ opacity:.92; }
-  nav button:disabled{ opacity:.45; cursor:not-allowed; }
 
-  .container{ max-width:1100px; margin:auto; padding:18px; }
-  .section{ display:none; }
-  .section.active{ display:block; }
+  nav button.secondary{
+    background:#555;
+  }
+
+  nav button:hover{
+    opacity:.92;
+  }
+
+  .container{
+    max-width:1100px;
+    margin:auto;
+    padding:18px;
+  }
+
+  .section{
+    display:none;
+  }
+
+  .section.active{
+    display:block;
+  }
 
   .card{
-    background:#fff; border-radius:14px; padding:18px; margin-bottom:16px;
+    background:#fff;
+    border-radius:14px;
+    padding:18px;
+    margin-bottom:16px;
     box-shadow:0 4px 10px rgba(0,0,0,.1);
   }
 
-  h2{ color:#e91e63; margin-top:0; font-size:26px; }
-  h3{ font-size:20px; margin-bottom:8px; }
-  .muted{ color:#444; opacity:.9; }
-  .small{ font-size:14px; opacity:.9; }
+  h2{
+    color:#e91e63;
+    margin-top:0;
+    font-size:26px;
+  }
 
-  input, select, textarea{
+  h3{
+    font-size:20px;
+    margin-bottom:8px;
+  }
+
+  .muted{
+    color:#444;
+    opacity:.9;
+  }
+
+  .small{
+    font-size:14px;
+    opacity:.9;
+  }
+
+  input,
+  select,
+  textarea{
     padding:12px;
     width:100%;
     margin-top:8px;
@@ -59,9 +119,19 @@
     font-size:16px;
   }
 
-  label{ display:block; margin-top:12px; font-weight:bold; }
+  label{
+    display:block;
+    margin-top:12px;
+    font-weight:bold;
+  }
 
-  .btnRow{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+  .btnRow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:12px;
+  }
+
   .btn{
     padding:12px 14px;
     border:none;
@@ -71,33 +141,97 @@
     color:#fff;
     font-size:16px;
   }
-  .btn.secondary{ background:#555; }
-  .btn.warn{ background:#b00020; }
-  .btn.ghost{ background:#fff; color:#e91e63; border:1px solid #e91e63; }
-  .btn:disabled{ opacity:.45; cursor:not-allowed; }
+
+  .btn.secondary{
+    background:#555;
+  }
+
+  .btn.warn{
+    background:#b00020;
+  }
+
+  .btn.ghost{
+    background:#fff;
+    color:#e91e63;
+    border:1px solid #e91e63;
+  }
+
+  .btn.green{
+    background:#2e7d32;
+  }
+
+  .btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+  }
 
   .pill{
-    display:inline-block; padding:5px 12px; border-radius:999px;
-    background:#f7f7f7; border:1px solid #eee; font-size:13px;
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:999px;
+    background:#f7f7f7;
+    border:1px solid #eee;
+    font-size:13px;
     margin-left:8px;
   }
-  .pill.active{ background:#ffe3ee; border-color:#ffc3d7; }
-  .pill.parked{ background:#f5f5f5; }
-  .pill.done{ background:#e9ffe9; border-color:#bdf0bd; }
 
-  table{ width:100%; border-collapse:collapse; margin-top:12px; }
-  th, td{ text-align:left; padding:12px; border-bottom:1px solid #eee; vertical-align:top; }
-  th{ color:#e91e63; font-size:14px; }
-  .right{ text-align:right; }
+  .pill.active{
+    background:#ffe3ee;
+    border-color:#ffc3d7;
+  }
+
+  .pill.parked{
+    background:#f5f5f5;
+  }
+
+  .pill.done{
+    background:#e9ffe9;
+    border-color:#bdf0bd;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:12px;
+  }
+
+  th,
+  td{
+    text-align:left;
+    padding:12px;
+    border-bottom:1px solid #eee;
+    vertical-align:top;
+  }
+
+  th{
+    color:#e91e63;
+    font-size:14px;
+  }
+
+  .right{
+    text-align:right;
+  }
 
   .progress-bar{
-    width:100%; background:#eee; border-radius:10px; overflow:hidden;
-    height:20px; margin-top:10px;
+    width:100%;
+    background:#eee;
+    border-radius:10px;
+    overflow:hidden;
+    height:20px;
+    margin-top:10px;
   }
-  .progress-fill{ height:20px; background:#e91e63; width:0%; }
+
+  .progress-fill{
+    height:20px;
+    background:#e91e63;
+    width:0%;
+  }
 
   .notice{
-    padding:14px; border-radius:12px; background:#fff3cd; border:1px solid #ffe69c;
+    padding:14px;
+    border-radius:12px;
+    background:#fff3cd;
+    border:1px solid #ffe69c;
     color:#664d03;
   }
 
@@ -119,12 +253,39 @@
     gap:12px;
   }
 
+  .grid3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+  }
+
   @media (max-width:820px){
-    .grid2{ grid-template-columns:1fr; }
-    table, thead, tbody, th, td, tr{ display:block; }
-    thead{ display:none; }
-    td{ border-bottom:1px solid #ddd; }
-    .right{ text-align:left; }
+
+    .grid2,
+    .grid3{
+      grid-template-columns:1fr;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr{
+      display:block;
+    }
+
+    thead{
+      display:none;
+    }
+
+    td{
+      border-bottom:1px solid #ddd;
+    }
+
+    .right{
+      text-align:left;
+    }
   }
 
   .focus-card{
@@ -132,7 +293,9 @@
     box-shadow:0 10px 22px rgba(0,0,0,.10);
   }
 
-  .focus-card h2{ margin-bottom:6px; }
+  .focus-card h2{
+    margin-bottom:6px;
+  }
 
   .focus-line{
     margin:10px 0;
@@ -151,6 +314,178 @@
     border-bottom:1px solid #eee;
     padding-bottom:6px;
   }
+
+  /* =========================
+     DAILY SCHEDULE
+  ========================== */
+
+  .schedule-header{
+    background:#e91e63;
+    color:#fff;
+    padding:18px;
+    border-radius:14px;
+    margin-bottom:16px;
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+  }
+
+  .schedule-header h2{
+    color:#fff;
+    margin:0 0 8px;
+  }
+
+  .schedule-date{
+    background:#fff;
+    color:#000;
+    padding:12px;
+    border-radius:10px;
+    margin-top:12px;
+  }
+
+  .task-summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin:14px 0;
+  }
+
+  .summary-box{
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:14px;
+    text-align:center;
+  }
+
+  .summary-number{
+    font-size:26px;
+    font-weight:bold;
+    color:#e91e63;
+  }
+
+  .task-list{
+    margin-top:15px;
+  }
+
+  .task-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:9px;
+    box-shadow:0 2px 5px rgba(0,0,0,.06);
+  }
+
+  .task-row.completed{
+    background:#f4fff4;
+    opacity:.82;
+  }
+
+  .task-row.completed .task-text{
+    text-decoration:line-through;
+    color:#555;
+  }
+
+  .task-check{
+    width:25px !important;
+    height:25px;
+    margin:0 !important;
+    flex:0 0 25px;
+    cursor:pointer;
+  }
+
+  .task-text{
+    flex:1;
+    font-size:18px;
+    word-break:break-word;
+  }
+
+  .task-actions{
+    display:flex;
+    gap:5px;
+    flex-wrap:wrap;
+  }
+
+  .mini-btn{
+    border:none;
+    border-radius:8px;
+    padding:7px 9px;
+    cursor:pointer;
+    background:#eee;
+    font-size:14px;
+  }
+
+  .mini-btn:hover{
+    opacity:.8;
+  }
+
+  .mini-btn.danger{
+    background:#ffdede;
+    color:#b00020;
+  }
+
+  .mini-btn.move{
+    background:#ffe3ee;
+    color:#e91e63;
+  }
+
+  .add-task-box{
+    background:#fff;
+    border:2px dashed #f3a2bd;
+    border-radius:14px;
+    padding:16px;
+    margin-top:16px;
+  }
+
+  .template-box{
+    background:#fff8fb;
+    border:1px solid #ffd0df;
+    border-radius:14px;
+    padding:15px;
+    margin-top:15px;
+  }
+
+  .template-task{
+    padding:8px 0;
+    border-bottom:1px solid #eee;
+  }
+
+  .template-task:last-child{
+    border-bottom:none;
+  }
+
+  .day-note{
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:14px;
+    margin-top:15px;
+  }
+
+  .day-note textarea{
+    min-height:90px;
+  }
+
+  .no-active{
+    text-align:center;
+    padding:25px;
+  }
+
+  .empty-task{
+    text-align:center;
+    padding:25px;
+    background:#fafafa;
+    border-radius:12px;
+    border:1px dashed #ccc;
+    margin-top:15px;
+  }
+
+  .current-goal-select{
+    margin-top:8px;
+  }
+
 </style>
 </head>
 
@@ -165,6 +500,7 @@
   <button onclick="showSection('vision')">My Vision</button>
   <button onclick="showSection('goals')">All Goals</button>
   <button onclick="showSection('active')">Active Goal</button>
+  <button onclick="showSection('schedule')">🗓️ Daily Schedule</button>
   <button onclick="showSection('progress')">Progress</button>
   <button class="secondary" onclick="resetConfirm()">Reset (Optional)</button>
 </nav>
@@ -174,6 +510,7 @@
   <!-- =========================
        VISION
   ========================== -->
+
   <div id="vision" class="section active">
 
     <div class="card focus-card">
@@ -203,7 +540,8 @@
       </div>
 
       <p class="muted" style="margin:10px 0 0;">
-        <strong>Weekends:</strong> Optional • Review only if needed • Rest without guilt
+        <strong>Weekends:</strong>
+        Optional • Review only if needed • Rest without guilt
       </p>
 
     </div>
@@ -263,6 +601,7 @@
   <!-- =========================
        ALL GOALS
   ========================== -->
+
   <div id="goals" class="section">
 
     <div class="card">
@@ -284,6 +623,7 @@
       <div class="grid2">
 
         <div>
+
           <label>Category</label>
 
           <select id="newGoalCategory">
@@ -311,6 +651,7 @@
             <option value="Courses">Courses</option>
 
           </select>
+
         </div>
 
         <div>
@@ -355,7 +696,6 @@
 
     </div>
 
-
     <div class="card">
 
       <h3 style="margin-top:0;">Goal List</h3>
@@ -370,6 +710,7 @@
   <!-- =========================
        ACTIVE GOAL
   ========================== -->
+
   <div id="active" class="section">
 
     <div class="card">
@@ -384,8 +725,20 @@
 
 
   <!-- =========================
+       DAILY SCHEDULE
+  ========================== -->
+
+  <div id="schedule" class="section">
+
+    <div id="dailyScheduleWrap"></div>
+
+  </div>
+
+
+  <!-- =========================
        PROGRESS
   ========================== -->
+
   <div id="progress" class="section">
 
     <div class="card">
@@ -402,6 +755,7 @@
 
 
 <!-- CONFETTI -->
+
 <canvas id="confettiCanvas" style="
 position:fixed;
 inset:0;
@@ -415,12 +769,12 @@ display:none;">
 
 <script>
 
-/* =========================
+/* =========================================================
    STORAGE
-========================= */
+========================================================= */
 
 const STORE_KEY =
-"lessieBeaGoalCRM_final_v3_12week_goals";
+"lessieBeaGoalCRM_final_v4_daily_schedule";
 
 
 function defaultStore(){
@@ -436,7 +790,9 @@ function defaultStore(){
       w155:false,
       w175Date:"",
       w155Date:""
-    }
+    },
+
+    dailySchedules:{}
 
   };
 
@@ -448,11 +804,14 @@ function loadStore(){
   try{
 
     const saved =
-      JSON.parse(localStorage.getItem(STORE_KEY));
+      JSON.parse(
+        localStorage.getItem(STORE_KEY)
+      );
 
     if(saved){
 
-      if(!saved.goals) saved.goals = [];
+      if(!saved.goals)
+        saved.goals = [];
 
       if(!saved.weight){
 
@@ -465,9 +824,11 @@ function loadStore(){
 
       }
 
-      if(!("activeGoalId" in saved)){
+      if(!("activeGoalId" in saved))
         saved.activeGoalId = null;
-      }
+
+      if(!saved.dailySchedules)
+        saved.dailySchedules = {};
 
       return saved;
 
@@ -493,25 +854,52 @@ function saveStore(){
 }
 
 
-/* =========================
+/* =========================================================
    HELPERS
-========================= */
+========================================================= */
 
 function uid(){
 
   return "g_" +
-    Math.random().toString(16).slice(2) +
+    Math.random()
+      .toString(16)
+      .slice(2) +
     "_" +
-    Date.now().toString(16);
+    Date.now()
+      .toString(16);
+
+}
+
+
+function taskUid(){
+
+  return "t_" +
+    Math.random()
+      .toString(16)
+      .slice(2) +
+    "_" +
+    Date.now()
+      .toString(16);
 
 }
 
 
 function todayISO(){
 
-  return new Date()
-    .toISOString()
-    .split("T")[0];
+  const d = new Date();
+
+  const year =
+    d.getFullYear();
+
+  const month =
+    String(d.getMonth()+1)
+      .padStart(2,"0");
+
+  const day =
+    String(d.getDate())
+      .padStart(2,"0");
+
+  return `${year}-${month}-${day}`;
 
 }
 
@@ -519,11 +907,26 @@ function todayISO(){
 function addDays(dateStr, days){
 
   const d =
-    new Date(dateStr + "T00:00:00");
+    new Date(
+      dateStr + "T00:00:00"
+    );
 
-  d.setDate(d.getDate() + days);
+  d.setDate(
+    d.getDate() + days
+  );
 
-  return d.toISOString().split("T")[0];
+  const year =
+    d.getFullYear();
+
+  const month =
+    String(d.getMonth()+1)
+      .padStart(2,"0");
+
+  const day =
+    String(d.getDate())
+      .padStart(2,"0");
+
+  return `${year}-${month}-${day}`;
 
 }
 
@@ -578,40 +981,1883 @@ function formatPrettyDate(d){
 }
 
 
-/* =========================
+function formatScheduleDate(dateStr){
+
+  const d =
+    new Date(
+      dateStr + "T00:00:00"
+    );
+
+  return formatPrettyDate(d);
+
+}
+
+
+/* =========================================================
+   DAILY TASK TEMPLATES
+========================================================= */
+
+const DAILY_TASK_TEMPLATES = {
+
+  "Wholesale Real Estate":[
+
+    "Find 5–10 seller leads",
+
+    "Contact 3–5 sellers",
+
+    "Follow up with sellers",
+
+    "Find 3–5 new buyers",
+
+    "Follow up with buyers",
+
+    "Analyze 1–2 properties",
+
+    "Send 1 offer",
+
+    "Update seller and buyer leads in CRM",
+
+    "Review today's real estate progress"
+
+  ],
+
+
+  "Real Estate • Minimum 2 Deals/Month (Outcome Only)":[
+
+    "Review deals closed this month",
+
+    "Review 12-week deal progress",
+
+    "Confirm current deal outcome",
+
+    "Update deal totals"
+
+  ],
+
+
+  "GED":[
+
+    "Study GED subject",
+
+    "Complete GED practice questions",
+
+    "Review missed questions",
+
+    "Work on weakest GED subject",
+
+    "Track today's GED progress"
+
+  ],
+
+
+  "Fix Teeth":[
+
+    "Review dental treatment plan",
+
+    "Complete one dental-related task",
+
+    "Check appointment or paperwork needs",
+
+    "Set aside money for dental care",
+
+    "Track progress toward fixing my teeth"
+
+  ],
+
+
+  "Buy a Home & Rental Properties":[
+
+    "Research homes or rental properties",
+
+    "Review prices in target areas",
+
+    "Research financing options",
+
+    "Save or organize property information",
+
+    "Work on my home/rental property plan"
+
+  ],
+
+
+  "Bookkeeping Business":[
+
+    "Work on bookkeeping business setup",
+
+    "Work on bookkeeping CRM",
+
+    "Organize bookkeeping documents",
+
+    "Work on finding potential bookkeeping clients",
+
+    "Improve bookkeeping skills",
+
+    "Complete one business-building task"
+
+  ],
+
+
+  "Credit Repaired":[
+
+    "Review credit report",
+
+    "Work on one credit issue",
+
+    "Organize credit documents",
+
+    "Track debts and balances",
+
+    "Complete one credit-repair action"
+
+  ],
+
+
+  "Medical Assistant":[
+
+    "Study Medical Assistant material",
+
+    "Complete one lesson or assignment",
+
+    "Review notes",
+
+    "Practice terminology or skills",
+
+    "Track education progress"
+
+  ],
+
+
+  "Class A (CDL)":[
+
+    "Study CDL material",
+
+    "Complete CDL practice questions",
+
+    "Review missed questions",
+
+    "Study one CDL topic",
+
+    "Track CDL preparation progress"
+
+  ],
+
+
+  "Cornstarch Business":[
+
+    "Make cornstarch products",
+
+    "Package products",
+
+    "Check inventory",
+
+    "Process or review orders",
+
+    "Update Shopify",
+
+    "Create marketing content",
+
+    "Post business content",
+
+    "Respond to customer messages",
+
+    "Work on increasing sales"
+
+  ],
+
+
+  "Trucking Business":[
+
+    "Work on trucking business plan",
+
+    "Research funding or financing",
+
+    "Research equipment or truck needs",
+
+    "Work on business setup",
+
+    "Complete one trucking-business task"
+
+  ],
+
+
+  "Healthcare Business":[
+
+    "Work on healthcare business plan",
+
+    "Research business requirements",
+
+    "Work on services and pricing",
+
+    "Research customers or clients",
+
+    "Complete one healthcare business task"
+
+  ],
+
+
+  "YouTube Channels":[
+
+    "Work on YouTube content",
+
+    "Create or edit a video",
+
+    "Write or improve a video title",
+
+    "Create thumbnail/content assets",
+
+    "Post or schedule content",
+
+    "Respond to comments",
+
+    "Review channel progress"
+
+  ],
+
+
+  "Courses":[
+
+    "Work on Real Estate Course",
+
+    "Work on Author Course",
+
+    "Create or organize one lesson",
+
+    "Research course material",
+
+    "Complete one course-building task"
+
+  ],
+
+
+  "Dispatcher Business":[
+
+    "Work on Bea Dispatch Services",
+
+    "Find potential trucking clients",
+
+    "Research loads or dispatch opportunities",
+
+    "Work on dispatcher marketing",
+
+    "Follow up with potential clients",
+
+    "Improve dispatch systems",
+
+    "Complete one business-building task"
+
+  ],
+
+
+  "House Inspector Business":[
+
+    "Work on house inspector business plan",
+
+    "Study home inspection requirements",
+
+    "Research licensing/certification steps",
+
+    "Research inspection tools",
+
+    "Work on business setup",
+
+    "Complete one house-inspector task"
+
+  ],
+
+
+  "Open Independent Living Homes":[
+
+    "Research independent living home requirements",
+
+    "Research property options",
+
+    "Research licensing and regulations",
+
+    "Work on business plan",
+
+    "Research funding options",
+
+    "Complete one independent-living-home task"
+
+  ],
+
+
+  "Dropshipping Business":[
+
+    "Research product opportunities",
+
+    "Research suppliers",
+
+    "Work on Shopify store",
+
+    "Add or improve product listings",
+
+    "Work on product marketing",
+
+    "Review store performance",
+
+    "Complete one dropshipping task"
+
+  ],
+
+
+  "Become an Author":[
+
+    "Write",
+
+    "Edit what I wrote",
+
+    "Work on book outline",
+
+    "Research publishing",
+
+    "Work on author brand",
+
+    "Complete one author-business task"
+
+  ],
+
+
+  "Build & Sell Courses":[
+
+    "Work on course idea",
+
+    "Create one lesson",
+
+    "Create course materials",
+
+    "Work on course sales page",
+
+    "Research course marketing",
+
+    "Complete one course-building task"
+
+  ],
+
+
+  "Make Planners":[
+
+    "Work on Bea Planner",
+
+    "Design planner pages",
+
+    "Improve planner layout",
+
+    "Work on planner bundle ideas",
+
+    "Research planner products",
+
+    "Work on selling/marketing planners",
+
+    "Complete one planner task"
+
+  ],
+
+
+  "Create & Sell Products":[
+
+    "Work on kids coloring books",
+
+    "Work on mugs",
+
+    "Work on T-shirts",
+
+    "Research product ideas",
+
+    "Create or improve one product",
+
+    "Work on product listings",
+
+    "Work on product marketing"
+
+  ],
+
+
+  "Monetize Instagram & Grow My Following":[
+
+    "Create Instagram content",
+
+    "Post on Instagram",
+
+    "Engage with followers",
+
+    "Respond to comments/messages",
+
+    "Work on monetization",
+
+    "Review Instagram growth"
+
+  ],
+
+
+  "Monetize YouTube & Grow My Following":[
+
+    "Create YouTube content",
+
+    "Post or schedule a video",
+
+    "Engage with viewers",
+
+    "Respond to comments",
+
+    "Work on YouTube monetization",
+
+    "Review YouTube growth"
+
+  ],
+
+
+  "Build Millions of Followers Across My Social Media":[
+
+    "Create social media content",
+
+    "Post content",
+
+    "Engage with followers",
+
+    "Respond to comments",
+
+    "Study audience growth",
+
+    "Work on content strategy",
+
+    "Track follower growth"
+
+  ],
+
+
+  "Keep All My Websites & Apps Running Properly":[
+
+    "Check websites",
+
+    "Check CRMs",
+
+    "Check apps",
+
+    "Test important features",
+
+    "Fix one website or app issue",
+
+    "Check forms and links",
+
+    "Check backups/storage",
+
+    "Update systems if needed"
+
+  ]
+
+};
+
+
+/* =========================================================
+   FIND TEMPLATE FOR GOAL
+========================================================= */
+
+function getTemplateForGoal(goal){
+
+  if(!goal)
+    return [];
+
+
+  const title =
+    goal.title || "";
+
+
+  /* Exact known goal */
+
+  if(
+    DAILY_TASK_TEMPLATES[title]
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES[title]
+    ];
+
+  }
+
+
+  /* Match by important keywords */
+
+  const lower =
+    title.toLowerCase();
+
+
+  if(
+    lower.includes("wholesale")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Wholesale Real Estate"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("cornstarch")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Cornstarch Business"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("dispatcher")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Dispatcher Business"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("dropshipping")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Dropshipping Business"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("planner")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Make Planners"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("youtube")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["YouTube Channels"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("instagram")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Monetize Instagram & Grow My Following"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("author")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Become an Author"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("course")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Build & Sell Courses"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("website") ||
+    lower.includes("app")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Keep All My Websites & Apps Running Properly"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("credit")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Credit Repaired"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("ged")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["GED"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("teeth")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Fix Teeth"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("medical assistant")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Medical Assistant"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("cdl") ||
+    lower.includes("class a")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Class A (CDL)"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("house inspector")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["House Inspector Business"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("independent living")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Open Independent Living Homes"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("bookkeeping")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Bookkeeping Business"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("trucking")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Trucking Business"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("healthcare")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Healthcare Business"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("product")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Create & Sell Products"]
+    ];
+
+  }
+
+
+  if(
+    lower.includes("home") ||
+    lower.includes("rental")
+  ){
+
+    return [
+      ...DAILY_TASK_TEMPLATES["Buy a Home & Rental Properties"]
+    ];
+
+  }
+
+
+  return [
+
+    "Work on my active goal",
+
+    "Complete one important task",
+
+    "Make progress toward my 12-week goal",
+
+    "Review today's progress"
+
+  ];
+
+}
+
+
+/* =========================================================
+   DAILY SCHEDULE DATA
+========================================================= */
+
+function getDailyScheduleKey(){
+
+  return todayISO();
+
+}
+
+
+function ensureDailySchedule(){
+
+  const key =
+    getDailyScheduleKey();
+
+
+  if(
+    !store.dailySchedules[key]
+  ){
+
+    const goal =
+      store.activeGoalId
+        ? getGoalById(
+            store.activeGoalId
+          )
+        : null;
+
+
+    const template =
+      getTemplateForGoal(goal);
+
+
+    store.dailySchedules[key] = {
+
+      goalId:
+        goal
+          ? goal.id
+          : null,
+
+      tasks:
+        template.map(
+          text => ({
+            id:taskUid(),
+            text,
+            completed:false
+          })
+        ),
+
+      note:""
+
+    };
+
+
+    saveStore();
+
+  }
+
+}
+
+
+function getTodaySchedule(){
+
+  ensureDailySchedule();
+
+  return store.dailySchedules[
+    getDailyScheduleKey()
+  ];
+
+}
+
+
+/* =========================================================
+   START DAILY SCHEDULE FOR ACTIVE GOAL
+========================================================= */
+
+function startTodayForActiveGoal(){
+
+  const goal =
+    store.activeGoalId
+      ? getGoalById(
+          store.activeGoalId
+        )
+      : null;
+
+
+  if(!goal){
+
+    alert(
+      "Choose an Active Goal first."
+    );
+
+    showSection("goals");
+
+    return;
+
+  }
+
+
+  const key =
+    getDailyScheduleKey();
+
+
+  const existing =
+    store.dailySchedules[key];
+
+
+  if(
+    existing &&
+    existing.goalId === goal.id
+  ){
+
+    showSection("schedule");
+
+    return;
+
+  }
+
+
+  const template =
+    getTemplateForGoal(goal);
+
+
+  store.dailySchedules[key] = {
+
+    goalId:goal.id,
+
+    tasks:
+      template.map(
+        text => ({
+          id:taskUid(),
+          text,
+          completed:false
+        })
+      ),
+
+    note:""
+
+  };
+
+
+  saveStore();
+
+  showSection("schedule");
+
+}
+
+
+/* =========================================================
+   DAILY TASK ACTIONS
+========================================================= */
+
+function toggleDailyTask(taskId){
+
+  const schedule =
+    getTodaySchedule();
+
+
+  const task =
+    schedule.tasks.find(
+      t => t.id === taskId
+    );
+
+
+  if(!task) return;
+
+
+  task.completed =
+    !task.completed;
+
+
+  saveStore();
+
+  renderDailySchedule();
+
+}
+
+
+function addDailyTask(){
+
+  const input =
+    document.getElementById(
+      "newDailyTask"
+    );
+
+
+  if(!input) return;
+
+
+  const text =
+    (input.value || "")
+      .trim();
+
+
+  if(!text){
+
+    alert(
+      "Type a task first."
+    );
+
+    return;
+
+  }
+
+
+  const schedule =
+    getTodaySchedule();
+
+
+  schedule.tasks.push({
+
+    id:taskUid(),
+
+    text,
+
+    completed:false
+
+  });
+
+
+  input.value = "";
+
+  saveStore();
+
+  renderDailySchedule();
+
+}
+
+
+function editDailyTask(taskId){
+
+  const schedule =
+    getTodaySchedule();
+
+
+  const task =
+    schedule.tasks.find(
+      t => t.id === taskId
+    );
+
+
+  if(!task) return;
+
+
+  const newText =
+    prompt(
+      "Edit today's task:",
+      task.text
+    );
+
+
+  if(
+    newText === null
+  ){
+
+    return;
+
+  }
+
+
+  const clean =
+    newText.trim();
+
+
+  if(!clean){
+
+    alert(
+      "Task cannot be blank."
+    );
+
+    return;
+
+  }
+
+
+  task.text =
+    clean;
+
+
+  saveStore();
+
+  renderDailySchedule();
+
+}
+
+
+function deleteDailyTask(taskId){
+
+  const schedule =
+    getTodaySchedule();
+
+
+  const task =
+    schedule.tasks.find(
+      t => t.id === taskId
+    );
+
+
+  if(!task) return;
+
+
+  if(
+    !confirm(
+      `Remove "${task.text}" from today's schedule?`
+    )
+  ){
+
+    return;
+
+  }
+
+
+  schedule.tasks =
+    schedule.tasks.filter(
+      t => t.id !== taskId
+    );
+
+
+  saveStore();
+
+  renderDailySchedule();
+
+}
+
+
+function moveDailyTask(taskId, direction){
+
+  const schedule =
+    getTodaySchedule();
+
+
+  const index =
+    schedule.tasks.findIndex(
+      t => t.id === taskId
+    );
+
+
+  if(index < 0) return;
+
+
+  const newIndex =
+    index + direction;
+
+
+  if(
+    newIndex < 0 ||
+    newIndex >= schedule.tasks.length
+  ){
+
+    return;
+
+  }
+
+
+  const temp =
+    schedule.tasks[index];
+
+
+  schedule.tasks[index] =
+    schedule.tasks[newIndex];
+
+
+  schedule.tasks[newIndex] =
+    temp;
+
+
+  saveStore();
+
+  renderDailySchedule();
+
+}
+
+
+function saveDailyNote(){
+
+  const schedule =
+    getTodaySchedule();
+
+
+  const note =
+    document.getElementById(
+      "dailyNote"
+    );
+
+
+  if(!note) return;
+
+
+  schedule.note =
+    note.value || "";
+
+
+  saveStore();
+
+}
+
+
+/* =========================================================
+   DAILY SCHEDULE RESET
+========================================================= */
+
+function resetTodayTasks(){
+
+  const goal =
+    store.activeGoalId
+      ? getGoalById(
+          store.activeGoalId
+        )
+      : null;
+
+
+  if(!goal){
+
+    alert(
+      "Choose an Active Goal first."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !confirm(
+      "Reset today's tasks back to the Active Goal template?"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  const template =
+    getTemplateForGoal(goal);
+
+
+  store.dailySchedules[
+    getDailyScheduleKey()
+  ] = {
+
+    goalId:goal.id,
+
+    tasks:
+      template.map(
+        text => ({
+          id:taskUid(),
+          text,
+          completed:false
+        })
+      ),
+
+    note:""
+
+  };
+
+
+  saveStore();
+
+  renderDailySchedule();
+
+}
+
+
+/* =========================================================
+   ADD TEMPLATE TASK TO TODAY
+========================================================= */
+
+function addTemplateTask(taskText){
+
+  const schedule =
+    getTodaySchedule();
+
+
+  const alreadyExists =
+    schedule.tasks.some(
+      t =>
+        t.text.toLowerCase() ===
+        taskText.toLowerCase()
+    );
+
+
+  if(alreadyExists){
+
+    alert(
+      "That task is already on today's schedule."
+    );
+
+    return;
+
+  }
+
+
+  schedule.tasks.push({
+
+    id:taskUid(),
+
+    text:taskText,
+
+    completed:false
+
+  });
+
+
+  saveStore();
+
+  renderDailySchedule();
+
+}
+
+
+/* =========================================================
+   DAILY SCHEDULE DISPLAY
+========================================================= */
+
+function renderDailySchedule(){
+
+  const wrap =
+    document.getElementById(
+      "dailyScheduleWrap"
+    );
+
+
+  if(!wrap) return;
+
+
+  const activeGoal =
+    store.activeGoalId
+      ? getGoalById(
+          store.activeGoalId
+        )
+      : null;
+
+
+  if(!activeGoal){
+
+    wrap.innerHTML = `
+
+      <div class="card no-active">
+
+        <h2>🗓️ Daily Schedule</h2>
+
+        <div class="notice">
+
+          <strong>
+            No Active Goal selected.
+          </strong>
+
+          <br><br>
+
+          Your Daily Schedule follows your
+          <strong>ONE Active Goal</strong>.
+
+          <br><br>
+
+          Go to <strong>All Goals</strong>
+          and activate the goal you are working on.
+
+        </div>
+
+        <div class="btnRow" style="justify-content:center;">
+
+          <button
+            class="btn"
+            onclick="showSection('goals')"
+          >
+            Choose My Active Goal
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  const schedule =
+    getTodaySchedule();
+
+
+  /*
+    If today's schedule belongs to another goal,
+    show the option to load the active goal.
+  */
+
+  if(
+    schedule.goalId !==
+    activeGoal.id
+  ){
+
+    wrap.innerHTML = `
+
+      <div class="card">
+
+        <h2>🗓️ Daily Schedule</h2>
+
+        <div class="notice">
+
+          Today's schedule is currently saved for:
+
+          <br>
+
+          <strong>
+            ${
+              escapeHtml(
+                getGoalById(schedule.goalId)?.title
+                || "Another goal"
+              )
+            }
+          </strong>
+
+          <br><br>
+
+          Your current Active Goal is:
+
+          <br>
+
+          <strong>
+            ${escapeHtml(activeGoal.title)}
+          </strong>
+
+        </div>
+
+        <div class="btnRow">
+
+          <button
+            class="btn"
+            onclick="startTodayForActiveGoal()"
+          >
+            Load Today's Tasks for Active Goal
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  const total =
+    schedule.tasks.length;
+
+
+  const completed =
+    schedule.tasks.filter(
+      t => t.completed
+    ).length;
+
+
+  const remaining =
+    total - completed;
+
+
+  const percent =
+    total === 0
+      ? 0
+      : Math.round(
+          (completed / total) * 100
+        );
+
+
+  const template =
+    getTemplateForGoal(
+      activeGoal
+    );
+
+
+  let taskHTML = "";
+
+
+  if(
+    schedule.tasks.length === 0
+  ){
+
+    taskHTML = `
+
+      <div class="empty-task">
+
+        <strong>
+          No tasks on today's schedule.
+        </strong>
+
+        <br><br>
+
+        Add a task below or load the goal template.
+
+      </div>
+
+    `;
+
+  }else{
+
+    taskHTML =
+      schedule.tasks
+        .map(
+          (task,index) => `
+
+            <div
+              class="task-row ${
+                task.completed
+                  ? "completed"
+                  : ""
+              }"
+            >
+
+              <input
+                type="checkbox"
+                class="task-check"
+                ${
+                  task.completed
+                    ? "checked"
+                    : ""
+                }
+                onchange="
+                  toggleDailyTask('${task.id}')
+                "
+              >
+
+              <div class="task-text">
+
+                ${escapeHtml(task.text)}
+
+              </div>
+
+              <div class="task-actions">
+
+                <button
+                  class="mini-btn move"
+                  title="Move up"
+                  onclick="
+                    moveDailyTask(
+                      '${task.id}',
+                      -1
+                    )
+                  "
+                >
+                  ↑
+                </button>
+
+                <button
+                  class="mini-btn move"
+                  title="Move down"
+                  onclick="
+                    moveDailyTask(
+                      '${task.id}',
+                      1
+                    )
+                  "
+                >
+                  ↓
+                </button>
+
+                <button
+                  class="mini-btn"
+                  onclick="
+                    editDailyTask(
+                      '${task.id}'
+                    )
+                  "
+                >
+                  ✏️
+                </button>
+
+                <button
+                  class="mini-btn danger"
+                  onclick="
+                    deleteDailyTask(
+                      '${task.id}'
+                    )
+                  "
+                >
+                  🗑️
+                </button>
+
+              </div>
+
+            </div>
+
+          `
+        )
+        .join("");
+
+  }
+
+
+  let templateHTML = "";
+
+
+  if(template.length){
+
+    templateHTML = `
+
+      <div class="template-box">
+
+        <h3 style="margin-top:0;">
+          📋 Goal Task Template
+        </h3>
+
+        <p class="small muted">
+          These are your standard tasks for this goal.
+          Add any task back to today's schedule without
+          changing the saved template.
+        </p>
+
+        ${
+          template
+            .map(
+              task => `
+
+                <div class="template-task">
+
+                  ${escapeHtml(task)}
+
+                  <button
+                    class="mini-btn"
+                    style="float:right;"
+                    onclick="
+                      addTemplateTask(
+                        ${JSON.stringify(task)}
+                      )
+                    "
+                  >
+                    + Add
+                  </button>
+
+                  <div style="clear:both;"></div>
+
+                </div>
+
+              `
+            )
+            .join("")
+        }
+
+      </div>
+
+    `;
+
+  }
+
+
+  wrap.innerHTML = `
+
+    <div class="schedule-header">
+
+      <h2>
+        🗓️ Daily Schedule
+      </h2>
+
+      <div>
+        <strong>
+          Today's Focus:
+        </strong>
+        ${escapeHtml(activeGoal.title)}
+      </div>
+
+      <div class="schedule-date">
+
+        📅
+        <strong>
+          ${formatScheduleDate(
+            todayISO()
+          )}
+        </strong>
+
+        <br>
+
+        <span class="small">
+          No timestamps — just the tasks I need to accomplish.
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3 style="margin-top:0;">
+        🎯 Today's Goal
+      </h3>
+
+      <p>
+        <strong>
+          ${escapeHtml(activeGoal.title)}
+        </strong>
+
+        ${statusPill(activeGoal.status)}
+      </p>
+
+      <div class="progress-bar">
+
+        <div
+          class="progress-fill"
+          style="width:${percent}%;"
+        ></div>
+
+      </div>
+
+      <div class="task-summary">
+
+        <div class="summary-box">
+
+          <div class="summary-number">
+            ${total}
+          </div>
+
+          <div class="small">
+            Total Tasks
+          </div>
+
+        </div>
+
+
+        <div class="summary-box">
+
+          <div class="summary-number">
+            ${completed}
+          </div>
+
+          <div class="small">
+            Completed
+          </div>
+
+        </div>
+
+
+        <div class="summary-box">
+
+          <div class="summary-number">
+            ${remaining}
+          </div>
+
+          <div class="small">
+            Remaining
+          </div>
+
+        </div>
+
+      </div>
+
+      <p
+        style="
+          text-align:center;
+          font-weight:bold;
+          color:#e91e63;
+        "
+      >
+        ${percent}% Complete
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>
+        Today's Tasks
+      </h2>
+
+      <p class="muted">
+        I only need to focus on the tasks that move
+        my current goal forward today.
+      </p>
+
+      <div class="task-list">
+
+        ${taskHTML}
+
+      </div>
+
+
+      <div class="add-task-box">
+
+        <h3 style="margin-top:0;">
+          ➕ Add a Task for Today
+        </h3>
+
+        <input
+          id="newDailyTask"
+          placeholder="Type a task I need to accomplish today..."
+          onkeydown="
+            if(event.key === 'Enter'){
+              addDailyTask();
+            }
+          "
+        >
+
+        <div class="btnRow">
+
+          <button
+            class="btn"
+            onclick="addDailyTask()"
+          >
+            + Add Task
+          </button>
+
+        </div>
+
+      </div>
+
+
+      ${templateHTML}
+
+
+      <div class="day-note">
+
+        <h3 style="margin-top:0;">
+          📝 Today's Notes
+        </h3>
+
+        <textarea
+          id="dailyNote"
+          placeholder="Write anything I need to remember about today's goal work..."
+          oninput="saveDailyNote()"
+        >${escapeHtml(
+          schedule.note || ""
+        )}</textarea>
+
+        <p class="small muted">
+          Auto-saves as you type.
+        </p>
+
+      </div>
+
+
+      <div class="btnRow">
+
+        <button
+          class="btn"
+          onclick="resetTodayTasks()"
+        >
+          🔄 Reset Today's Tasks
+        </button>
+
+        <button
+          class="btn ghost"
+          onclick="startTodayForActiveGoal()"
+        >
+          🔁 Reload Active Goal Tasks
+        </button>
+
+        <button
+          class="btn secondary"
+          onclick="showSection('active')"
+        >
+          View Active Goal
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
 function showSection(id){
 
   document
     .querySelectorAll(".section")
-    .forEach(s =>
-      s.classList.remove("active")
+    .forEach(
+      s =>
+        s.classList.remove("active")
     );
 
-  document
-    .getElementById(id)
-    .classList.add("active");
+
+  const section =
+    document.getElementById(id);
+
+
+  if(section){
+
+    section.classList.add("active");
+
+  }
+
 
   renderAll();
 
 }
 
 
-/* =========================
-   ALL DEFAULT GOALS
-========================= */
+/* =========================================================
+   DEFAULT GOALS
+========================================================= */
 
 function addDefaultGoals(){
 
   const defaults = [
 
     {
+      title:"Wholesale Real Estate",
+      category:"Real Estate",
+      type:"standard",
+      notes:"Primary real estate work. Daily actions are managed in the Daily Schedule and Lessie Bea CRM."
+    },
+
+    {
       title:"Real Estate • Minimum 2 Deals/Month (Outcome Only)",
       category:"Real Estate",
       type:"realestate_outcome",
-      notes:"Outcome only here. All daily actions live in my Real Estate CRM."
+      notes:"Outcome only here. Daily actions live in my Real Estate CRM / Daily Schedule."
     },
 
     {
@@ -779,7 +3025,7 @@ function addDefaultGoals(){
       title:"Keep All My Websites & Apps Running Properly • 12 Week Focus",
       category:"Websites & Apps",
       type:"standard",
-      notes:"Keep all of my websites, CRMs, apps, and online systems working properly, updated, and maintained."
+      notes:"Keep all websites, CRMs, apps, and online systems working properly, updated, and maintained."
     }
 
   ];
@@ -788,7 +3034,8 @@ function addDefaultGoals(){
   const existing =
     new Set(
       store.goals.map(
-        g => g.title.toLowerCase()
+        g =>
+          g.title.toLowerCase()
       )
     );
 
@@ -878,9 +3125,9 @@ function addDefaultGoals(){
 }
 
 
-/* =========================
+/* =========================================================
    ADD CUSTOM GOAL
-========================= */
+========================================================= */
 
 function addGoal(){
 
@@ -948,7 +3195,10 @@ function addGoal(){
   };
 
 
-  if(type === "realestate_outcome"){
+  if(
+    type ===
+    "realestate_outcome"
+  ){
 
     g.re = {
       m1:0,
@@ -983,15 +3233,16 @@ function addGoal(){
 }
 
 
-/* =========================
+/* =========================================================
    ACTIVE GOAL
-========================= */
+========================================================= */
 
 function setActiveGoal(goalId){
 
   const current =
     store.goals.find(
-      g => g.status === "active"
+      g =>
+        g.status === "active"
     );
 
 
@@ -1010,7 +3261,8 @@ function setActiveGoal(goalId){
 
     }
 
-    current.status = "parked";
+    current.status =
+      "parked";
 
   }
 
@@ -1022,9 +3274,13 @@ function setActiveGoal(goalId){
   if(!g) return;
 
 
-  g.status = "active";
+  g.status =
+    "active";
 
-  g.startDate = todayISO();
+
+  g.startDate =
+    todayISO();
+
 
   g.endDate =
     addDays(
@@ -1032,10 +3288,42 @@ function setActiveGoal(goalId){
       84
     );
 
+
   g.completedAt = "";
+
 
   store.activeGoalId =
     goalId;
+
+
+  /*
+    When a new active goal is selected,
+    automatically create today's schedule
+    for that goal.
+  */
+
+  const template =
+    getTemplateForGoal(g);
+
+
+  store.dailySchedules[
+    getDailyScheduleKey()
+  ] = {
+
+    goalId:g.id,
+
+    tasks:
+      template.map(
+        text => ({
+          id:taskUid(),
+          text,
+          completed:false
+        })
+      ),
+
+    note:""
+
+  };
 
 
   saveStore();
@@ -1050,6 +3338,7 @@ function parkGoal(goalId){
   const g =
     getGoalById(goalId);
 
+
   if(!g) return;
 
 
@@ -1057,12 +3346,14 @@ function parkGoal(goalId){
     g.status === "active"
   ){
 
-    store.activeGoalId = null;
+    store.activeGoalId =
+      null;
 
   }
 
 
-  g.status = "parked";
+  g.status =
+    "parked";
 
 
   saveStore();
@@ -1077,10 +3368,13 @@ function completeGoal(goalId){
   const g =
     getGoalById(goalId);
 
+
   if(!g) return;
 
 
-  g.status = "done";
+  g.status =
+    "done";
+
 
   g.completedAt =
     todayISO();
@@ -1091,7 +3385,8 @@ function completeGoal(goalId){
     goalId
   ){
 
-    store.activeGoalId = null;
+    store.activeGoalId =
+      null;
 
   }
 
@@ -1107,7 +3402,10 @@ function completeGoal(goalId){
   );
 
 
-  launchConfetti(2200);
+  launchConfetti(
+    2200
+  );
+
 
   renderAll();
 
@@ -1139,7 +3437,8 @@ function deleteGoal(goalId){
 
   store.goals =
     store.goals.filter(
-      x => x.id !== goalId
+      x =>
+        x.id !== goalId
     );
 
 
@@ -1148,7 +3447,28 @@ function deleteGoal(goalId){
     goalId
   ){
 
-    store.activeGoalId = null;
+    store.activeGoalId =
+      null;
+
+  }
+
+
+  /*
+    Remove today's schedule if it belongs
+    to the deleted goal.
+  */
+
+  const today =
+    getDailyScheduleKey();
+
+
+  if(
+    store.dailySchedules[today] &&
+    store.dailySchedules[today].goalId ===
+      goalId
+  ){
+
+    delete store.dailySchedules[today];
 
   }
 
@@ -1160,14 +3480,15 @@ function deleteGoal(goalId){
 }
 
 
-/* =========================
+/* =========================================================
    NOTES
-========================= */
+========================================================= */
 
 function saveGoalNote(goalId){
 
   const g =
     getGoalById(goalId);
+
 
   if(!g) return;
 
@@ -1197,6 +3518,7 @@ function updateActiveGoalNotes(
   const g =
     getGoalById(goalId);
 
+
   if(!g) return;
 
 
@@ -1216,9 +3538,9 @@ function updateActiveGoalNotes(
 }
 
 
-/* =========================
+/* =========================================================
    REAL ESTATE
-========================= */
+========================================================= */
 
 function updateDealMonth(
   goalId,
@@ -1233,7 +3555,7 @@ function updateDealMonth(
   if(
     !g ||
     g.type !==
-    "realestate_outcome"
+      "realestate_outcome"
   ){
 
     return;
@@ -1260,9 +3582,9 @@ function updateDealMonth(
 }
 
 
-/* =========================
+/* =========================================================
    BANNER
-========================= */
+========================================================= */
 
 function showGoalAchievedBanner(
   goalText,
@@ -1312,9 +3634,9 @@ function showGoalAchievedBanner(
 }
 
 
-/* =========================
+/* =========================================================
    CONFETTI
-========================= */
+========================================================= */
 
 function launchConfetti(
   durationMs = 1500
@@ -1396,21 +3718,24 @@ function launchConfetti(
       y:
         -Math.random() *
         canvas.height *
-        0.2,
+        .2,
 
       r:
         (4 +
-          Math.random() * 6) *
+          Math.random() *
+          6) *
         DPR,
 
       vy:
         (3 +
-          Math.random() * 6) *
+          Math.random() *
+          6) *
         DPR,
 
       vx:
         (-2 +
-          Math.random() * 4) *
+          Math.random() *
+          4) *
         DPR,
 
       rot:
@@ -1418,8 +3743,9 @@ function launchConfetti(
         Math.PI,
 
       vr:
-        (-0.2 +
-          Math.random() * 0.4),
+        (-.2 +
+          Math.random() *
+          .4),
 
       color:
         colors[
@@ -1430,7 +3756,8 @@ function launchConfetti(
         ],
 
       shape:
-        Math.random() < 0.5
+        Math.random() <
+          .5
           ? "rect"
           : "circle"
 
@@ -1469,7 +3796,7 @@ function launchConfetti(
 
       p.vy *= 1.004;
 
-      p.vx *= 0.999;
+      p.vx *= .999;
 
 
       if(
@@ -1487,7 +3814,8 @@ function launchConfetti(
 
         p.vy =
           (3 +
-            Math.random() * 6) *
+            Math.random() *
+            6) *
           DPR;
 
       }
@@ -1495,14 +3823,17 @@ function launchConfetti(
 
       ctx.save();
 
+
       ctx.translate(
         p.x,
         p.y
       );
 
+
       ctx.rotate(
         p.rot
       );
+
 
       ctx.fillStyle =
         p.color;
@@ -1527,7 +3858,7 @@ function launchConfetti(
         ctx.arc(
           0,
           0,
-          p.r * 0.6,
+          p.r * .6,
           0,
           Math.PI * 2
         );
@@ -1542,7 +3873,10 @@ function launchConfetti(
     }
 
 
-    if(t < durationMs){
+    if(
+      t <
+      durationMs
+    ){
 
       requestAnimationFrame(
         frame
@@ -1572,14 +3906,16 @@ function launchConfetti(
   );
 
 
-  requestAnimationFrame(frame);
+  requestAnimationFrame(
+    frame
+  );
 
 }
 
 
-/* =========================
-   VISION GOAL LIST
-========================= */
+/* =========================================================
+   VISION GOALS
+========================================================= */
 
 function renderVisionGoals(){
 
@@ -1610,20 +3946,23 @@ function renderVisionGoals(){
   const categories = {};
 
 
-  store.goals.forEach(g => {
+  store.goals.forEach(
+    g => {
 
-    if(
-      !categories[g.category]
-    ){
+      if(
+        !categories[g.category]
+      ){
 
-      categories[g.category] =
-        [];
+        categories[g.category] =
+          [];
+
+      }
+
+      categories[g.category]
+        .push(g);
 
     }
-
-    categories[g.category].push(g);
-
-  });
+  );
 
 
   let html = "";
@@ -1631,44 +3970,57 @@ function renderVisionGoals(){
 
   Object.keys(categories)
     .sort()
-    .forEach(category => {
+    .forEach(
+      category => {
 
-      html += `
-        <div class="goal-category">
-          ${escapeHtml(category)}
-        </div>
-        <ul>
-      `;
+        html += `
 
+          <div class="goal-category">
+            ${escapeHtml(category)}
+          </div>
 
-      categories[category]
-        .forEach(g => {
+          <ul>
 
-          html += `
-            <li>
-              ${escapeHtml(g.title)}
-              ${statusPill(g.status)}
-            </li>
-          `;
-
-        });
+        `;
 
 
-      html += `
-        </ul>
-      `;
+        categories[category]
+          .forEach(
+            g => {
 
-    });
+              html += `
+
+                <li>
+
+                  ${escapeHtml(g.title)}
+
+                  ${statusPill(g.status)}
+
+                </li>
+
+              `;
+
+            }
+          );
 
 
-  wrap.innerHTML = html;
+        html += `
+          </ul>
+        `;
+
+      }
+    );
+
+
+  wrap.innerHTML =
+    html;
 
 }
 
 
-/* =========================
+/* =========================================================
    GOALS TABLE
-========================= */
+========================================================= */
 
 function renderGoalsTable(){
 
@@ -1697,175 +4049,223 @@ function renderGoalsTable(){
 
 
   const rows =
-    store.goals.map(g => {
+    store.goals
+      .map(
+        g => {
 
-      const anotherActive =
-        store.goals.some(
-          x =>
-            x.status === "active" &&
-            x.id !== g.id
-        );
+          const activateBtn =
+            g.status !== "active"
 
-
-      const activateBtn =
-        g.status !== "active"
-
-          ? `
-            <button
-              class="btn"
-              onclick="setActiveGoal('${g.id}')"
-            >
-              Activate 12-Week
-            </button>
-          `
-
-          : `
-            <button
-              class="btn secondary"
-              onclick="parkGoal('${g.id}')"
-            >
-              Park
-            </button>
-          `;
-
-
-      const typeLabel =
-        g.type ===
-        "realestate_outcome"
-          ? "Outcome Only"
-          : "Standard";
-
-
-      return `
-
-        <tr>
-
-          <td>
-
-            <div>
-
-              <strong>
-                ${escapeHtml(g.title)}
-              </strong>
-
-              ${statusPill(g.status)}
-
-            </div>
-
-            <div class="small muted">
-              ${escapeHtml(g.category)}
-              •
-              ${typeLabel}
-            </div>
-
-
-            ${
-              g.completedAt
-                ? `
-                  <div class="small muted">
-                    🏁 Completed:
-                    ${escapeHtml(
-                      g.completedAt
-                    )}
-                  </div>
-                `
-                : ""
-            }
-
-
-            <div style="margin-top:10px;">
-
-              <div
-                class="small muted"
-                style="margin-bottom:6px;"
-              >
-                <strong>
-                  Notes for this goal:
-                </strong>
-              </div>
-
-
-              <textarea
-                id="note_${g.id}"
-                rows="3"
-                placeholder="Write notes for this goal..."
-              >${escapeHtml(
-                g.notes || ""
-              )}</textarea>
-
-
-              <div
-                class="btnRow"
-                style="margin-top:8px;"
-              >
+              ? `
 
                 <button
-                  class="btn ghost"
-                  onclick="saveGoalNote('${g.id}')"
+                  class="btn"
+                  onclick="
+                    setActiveGoal(
+                      '${g.id}'
+                    )
+                  "
                 >
-                  Save Note
+                  Activate 12-Week
                 </button>
 
-              </div>
+              `
 
-            </div>
+              : `
 
-          </td>
+                <button
+                  class="btn secondary"
+                  onclick="
+                    parkGoal(
+                      '${g.id}'
+                    )
+                  "
+                >
+                  Park
+                </button>
 
-
-          <td class="right">
-
-            <div class="small muted">
-              Created:
-              ${escapeHtml(
-                g.createdAt || "—"
-              )}
-            </div>
-
-            <div class="small muted">
-              12 Weeks:
-              ${escapeHtml(
-                g.startDate || "—"
-              )}
-              →
-              ${escapeHtml(
-                g.endDate || "—"
-              )}
-            </div>
+              `;
 
 
-            <div
-              class="btnRow"
-              style="justify-content:flex-end;"
-            >
-
-              ${activateBtn}
-
-
-              <button
-                class="btn ghost"
-                onclick="completeGoal('${g.id}')"
-              >
-                Complete
-              </button>
+          const typeLabel =
+            g.type ===
+              "realestate_outcome"
+                ? "Outcome Only"
+                : "Standard";
 
 
-              <button
-                class="btn warn"
-                onclick="deleteGoal('${g.id}')"
-              >
-                Delete
-              </button>
+          return `
 
-            </div>
+            <tr>
 
-          </td>
+              <td>
 
-        </tr>
+                <div>
 
-      `;
+                  <strong>
+                    ${escapeHtml(g.title)}
+                  </strong>
 
-    }).join("");
+                  ${statusPill(g.status)}
+
+                </div>
+
+
+                <div class="small muted">
+
+                  ${escapeHtml(g.category)}
+
+                  •
+
+                  ${typeLabel}
+
+                </div>
+
+
+                ${
+                  g.completedAt
+                    ? `
+
+                      <div class="small muted">
+
+                        🏁 Completed:
+                        ${escapeHtml(
+                          g.completedAt
+                        )}
+
+                      </div>
+
+                    `
+                    : ""
+                }
+
+
+                <div
+                  style="
+                    margin-top:10px;
+                  "
+                >
+
+                  <div
+                    class="small muted"
+                    style="
+                      margin-bottom:6px;
+                    "
+                  >
+
+                    <strong>
+                      Notes for this goal:
+                    </strong>
+
+                  </div>
+
+
+                  <textarea
+                    id="note_${g.id}"
+                    rows="3"
+                    placeholder="Write notes for this goal..."
+                  >${escapeHtml(
+                    g.notes || ""
+                  )}</textarea>
+
+
+                  <div
+                    class="btnRow"
+                    style="
+                      margin-top:8px;
+                    "
+                  >
+
+                    <button
+                      class="btn ghost"
+                      onclick="
+                        saveGoalNote(
+                          '${g.id}'
+                        )
+                      "
+                    >
+                      Save Note
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </td>
+
+
+              <td class="right">
+
+                <div class="small muted">
+
+                  Created:
+                  ${escapeHtml(
+                    g.createdAt || "—"
+                  )}
+
+                </div>
+
+
+                <div class="small muted">
+
+                  12 Weeks:
+                  ${escapeHtml(
+                    g.startDate || "—"
+                  )}
+
+                  →
+
+                  ${escapeHtml(
+                    g.endDate || "—"
+                  )}
+
+                </div>
+
+
+                <div
+                  class="btnRow"
+                  style="
+                    justify-content:flex-end;
+                  "
+                >
+
+                  ${activateBtn}
+
+
+                  <button
+                    class="btn ghost"
+                    onclick="
+                      completeGoal(
+                        '${g.id}'
+                      )
+                    "
+                  >
+                    Complete
+                  </button>
+
+
+                  <button
+                    class="btn warn"
+                    onclick="
+                      deleteGoal(
+                        '${g.id}'
+                      )
+                    "
+                  >
+                    Delete
+                  </button>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          `;
+
+        }
+      )
+      .join("");
 
 
   wrap.innerHTML = `
@@ -1875,16 +4275,23 @@ function renderGoalsTable(){
       <thead>
 
         <tr>
-          <th>Goal</th>
+
+          <th>
+            Goal
+          </th>
+
           <th class="right">
             Actions
           </th>
+
         </tr>
 
       </thead>
 
       <tbody>
+
         ${rows}
+
       </tbody>
 
     </table>
@@ -1894,9 +4301,9 @@ function renderGoalsTable(){
 }
 
 
-/* =========================
+/* =========================================================
    ACTIVE GOAL DISPLAY
-========================= */
+========================================================= */
 
 function renderActiveGoal(){
 
@@ -1947,7 +4354,8 @@ function renderActiveGoal(){
         Active goal not found.
       </div>`;
 
-    store.activeGoalId = null;
+    store.activeGoalId =
+      null;
 
     saveStore();
 
@@ -1971,13 +4379,15 @@ function renderActiveGoal(){
 
 
     const target =
-      g.reTotalTarget || 6;
+      g.reTotalTarget ||
+      6;
 
 
     const percent =
       Math.min(
         100,
-        (total / target) * 100
+        (total / target) *
+          100
       );
 
 
@@ -1998,11 +4408,17 @@ function renderActiveGoal(){
 
 
         <p class="muted">
+
           Goal:
           <strong>
             minimum 2 deals per month
           </strong>.
+
           No to-do list here.
+
+          Daily actions can be managed
+          from the Daily Schedule.
+
         </p>
 
 
@@ -2125,24 +4541,34 @@ function renderActiveGoal(){
 
 
       <p class="muted">
+
         <strong>
           Category:
         </strong>
-        ${escapeHtml(g.category)}
+
+        ${escapeHtml(
+          g.category
+        )}
+
       </p>
 
 
       <p class="muted">
+
         <strong>
           Timeline:
         </strong>
+
         ${escapeHtml(
           g.startDate || "—"
         )}
+
         →
+
         ${escapeHtml(
           g.endDate || "—"
         )}
+
       </p>
 
 
@@ -2168,8 +4594,10 @@ function renderActiveGoal(){
         <br>
 
         <span class="small">
+
           When this 12-week cycle is finished,
           you can choose another goal.
+
         </span>
 
       </div>
@@ -2213,8 +4641,20 @@ function renderActiveGoal(){
       <div class="btnRow">
 
         <button
+          class="btn"
+          onclick="
+            showSection('schedule')
+          "
+        >
+          🗓️ Open Daily Schedule
+        </button>
+
+
+        <button
           class="btn secondary"
-          onclick="parkGoal('${g.id}')"
+          onclick="
+            parkGoal('${g.id}')
+          "
         >
           Park This Goal
         </button>
@@ -2222,7 +4662,9 @@ function renderActiveGoal(){
 
         <button
           class="btn ghost"
-          onclick="completeGoal('${g.id}')"
+          onclick="
+            completeGoal('${g.id}')
+          "
         >
           Mark Completed
         </button>
@@ -2239,9 +4681,9 @@ function renderActiveGoal(){
 }
 
 
-/* =========================
+/* =========================================================
    PROGRESS
-========================= */
+========================================================= */
 
 function renderProgress(){
 
@@ -2287,6 +4729,87 @@ function renderProgress(){
       : null;
 
 
+  const todaySchedule =
+    activeGoal
+      ? getTodaySchedule()
+      : null;
+
+
+  let scheduleProgress = "";
+
+
+  if(
+    todaySchedule &&
+    todaySchedule.goalId ===
+      activeGoal?.id
+  ){
+
+    const total =
+      todaySchedule.tasks.length;
+
+
+    const completed =
+      todaySchedule.tasks.filter(
+        t => t.completed
+      ).length;
+
+
+    const percent =
+      total
+        ? Math.round(
+            completed /
+            total *
+            100
+          )
+        : 0;
+
+
+    scheduleProgress = `
+
+      <hr
+        style="
+          border:0;
+          border-top:1px solid #eee;
+        "
+      />
+
+      <h3>
+        Today's Schedule Progress
+      </h3>
+
+      <div class="progress-bar">
+
+        <div
+          class="progress-fill"
+          style="
+            width:${percent}%;
+          "
+        ></div>
+
+      </div>
+
+      <p>
+
+        <strong>
+          ${completed}
+        </strong>
+        of
+        <strong>
+          ${total}
+        </strong>
+        tasks completed today.
+
+        <strong>
+          ${percent}%
+        </strong>
+
+      </p>
+
+    `;
+
+  }
+
+
   wrap.innerHTML = `
 
     <div
@@ -2303,24 +4826,30 @@ function renderProgress(){
 
 
       <p>
+
         <strong>
           Total Goals:
         </strong>
+
         ${totalGoals}
+
       </p>
 
 
       <p>
+
         <strong>
           Active:
         </strong>
+
         ${active}
 
         •
-        
+
         <strong>
           Parked:
         </strong>
+
         ${parked}
 
         •
@@ -2328,7 +4857,9 @@ function renderProgress(){
         <strong>
           Completed:
         </strong>
+
         ${done}
+
       </p>
 
 
@@ -2349,6 +4880,9 @@ function renderProgress(){
       </p>
 
 
+      ${scheduleProgress}
+
+
       <hr
         style="
           border:0;
@@ -2358,6 +4892,7 @@ function renderProgress(){
 
 
       <p>
+
         <strong>
           1st Goal Weight 175:
         </strong>
@@ -2368,15 +4903,20 @@ function renderProgress(){
             : "⬜"
         }
 
+
         ${
           store.weight.w175Date
             ? `
+
               <span class="small muted">
+
                 • 📅
                 ${escapeHtml(
                   store.weight.w175Date
                 )}
+
               </span>
+
             `
             : ""
         }
@@ -2396,15 +4936,20 @@ function renderProgress(){
             : "⬜"
         }
 
+
         ${
           store.weight.w155Date
             ? `
+
               <span class="small muted">
+
                 • 📅
                 ${escapeHtml(
                   store.weight.w155Date
                 )}
+
               </span>
+
             `
             : ""
         }
@@ -2418,9 +4963,9 @@ function renderProgress(){
 }
 
 
-/* =========================
+/* =========================================================
    RENDER EVERYTHING
-========================= */
+========================================================= */
 
 function renderAll(){
 
@@ -2470,7 +5015,9 @@ function renderAll(){
         w175.checked;
 
 
-      if(w175.checked){
+      if(
+        w175.checked
+      ){
 
         store.weight.w175Date =
           formatPrettyDate(
@@ -2527,7 +5074,9 @@ function renderAll(){
         w155.checked;
 
 
-      if(w155.checked){
+      if(
+        w155.checked
+      ){
 
         store.weight.w155Date =
           formatPrettyDate(
@@ -2568,20 +5117,22 @@ function renderAll(){
 
   renderActiveGoal();
 
+  renderDailySchedule();
+
   renderProgress();
 
 }
 
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 function resetConfirm(){
 
   if(
     confirm(
-      "Reset Lessie Bea Goal CRM data? This clears all goals, notes, and progress."
+      "Reset Lessie Bea Goal CRM data? This clears all goals, notes, daily schedules, and progress."
     )
   ){
 
@@ -2607,11 +5158,9 @@ function resetConfirm(){
 }
 
 
-/* =========================
+/* =========================================================
    FIRST LOAD
-   Automatically add missing
-   default goals for existing users.
-========================= */
+========================================================= */
 
 function initializeDefaultGoals(){
 
@@ -2636,4 +5185,3 @@ renderAll();
 
 </body>
 </html>
-```
