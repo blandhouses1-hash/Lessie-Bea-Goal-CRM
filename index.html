@@ -422,20 +422,6 @@
     margin:0;
   }
 
-  .timer-box{
-    text-align:center;
-    background:#fff7fa;
-    border:2px solid #000;
-    border-radius:14px;
-    padding:20px;
-  }
-
-  .timer-display{
-    font-size:52px;
-    font-weight:bold;
-    margin:15px 0;
-  }
-
   @media(max-width:600px){
 
     body{
@@ -453,10 +439,6 @@
 
     .link-input-grid{
       grid-template-columns:1fr;
-    }
-
-    .timer-display{
-      font-size:42px;
     }
 
   }
@@ -674,55 +656,6 @@
 
   </div>
 
-
-  <!-- ADD YOUR OWN GOAL -->
-
-  <div class="card">
-
-    <h2>➕ Add Your Own Goal</h2>
-
-    <p>
-      Add a goal that is not already listed.
-    </p>
-
-    <label>
-      Goal
-    </label>
-
-    <input
-      id="newGoalTitle"
-      type="text"
-      placeholder="Enter your goal"
-    >
-
-    <label>
-      Category
-    </label>
-
-    <input
-      id="newGoalCategory"
-      type="text"
-      placeholder="Example: Business, Personal, Education"
-    >
-
-    <label>
-      Notes
-    </label>
-
-    <textarea
-      id="newGoalNotes"
-      placeholder="Add notes about this goal"
-    ></textarea>
-
-    <button
-      class="btn"
-      onclick="addCustomGoal()"
-    >
-      ➕ Add Goal
-    </button>
-
-  </div>
-
 </section>
 
 
@@ -736,7 +669,7 @@
 
     <h2>⭐ Active 12-Week Goal</h2>
 
-    <div id="activeGoalContent"></div>
+    <div id="activeGoal"></div>
 
   </div>
 
@@ -754,76 +687,20 @@
     <h2>🗓️ Daily Schedule</h2>
 
     <div class="notice">
-
-      Your Daily Schedule executes the work for your active
-      12-week goal.
-
+      Use this page to execute the work for your active goal.
     </div>
 
-    <div id="dailyScheduleContent"></div>
+    <label for="dailyDate">
+      Date
+    </label>
 
-  </div>
+    <input
+      type="date"
+      id="dailyDate"
+      onchange="prepareDailyPage()"
+    >
 
-
-  <!-- POMODORO TIMER -->
-
-  <div class="card">
-
-    <h2>🍅 Pomodoro Timer</h2>
-
-    <div class="timer-box">
-
-      <p>
-        Use the timer to focus on the task you are working on.
-      </p>
-
-      <label>
-        Focus Minutes
-      </label>
-
-      <input
-        id="pomodoroMinutes"
-        type="number"
-        min="1"
-        max="120"
-        value="25"
-        onchange="setPomodoroMinutes()"
-      >
-
-      <div
-        id="pomodoroDisplay"
-        class="timer-display"
-      >
-        25:00
-      </div>
-
-      <div class="button-row"
-           style="justify-content:center;">
-
-        <button
-          class="btn btn-green"
-          onclick="startPomodoro()"
-        >
-          ▶️ Start
-        </button>
-
-        <button
-          class="btn btn-light"
-          onclick="pausePomodoro()"
-        >
-          ⏸️ Pause
-        </button>
-
-        <button
-          class="btn btn-danger"
-          onclick="resetPomodoro()"
-        >
-          🔄 Reset
-        </button>
-
-      </div>
-
-    </div>
+    <div id="dailyContent"></div>
 
   </div>
 
@@ -841,187 +718,158 @@
     <h2>💗 Personal</h2>
 
     <div class="notice">
-
-      Keep appointments, personal tasks, and errands separate
-      from your goal work.
-
+      Keep personal appointments, to-do items, and errands
+      separate from your business and goal work.
     </div>
 
   </div>
 
 
-  <!-- APPOINTMENTS -->
-
   <div class="card">
 
     <h2>📅 Appointments</h2>
 
-    <label>
-      Appointment
-    </label>
+    <label>Date</label>
 
     <input
-      id="appointmentTitle"
-      type="text"
-      placeholder="Doctor, dentist, meeting, etc."
-    >
-
-    <label>
-      Date
-    </label>
-
-    <input
-      id="appointmentDate"
       type="date"
+      id="appointmentDate"
     >
 
-    <label>
-      Time
-    </label>
+    <label>Time</label>
 
     <input
-      id="appointmentTime"
       type="time"
+      id="appointmentTime"
     >
 
-    <label>
-      Notes
-    </label>
+    <label>Appointment</label>
+
+    <input
+      type="text"
+      id="appointmentTitle"
+      placeholder="Doctor, dentist, etc."
+    >
+
+    <label>Notes</label>
 
     <textarea
       id="appointmentNotes"
-      placeholder="Appointment notes"
+      placeholder="Appointment details"
     ></textarea>
 
-    <button
-      class="btn"
-      onclick="addAppointment()"
-    >
-      ➕ Add Appointment
-    </button>
+    <div class="button-row">
 
-    <div
-      id="appointmentsList"
-      style="margin-top:15px;"
-    ></div>
+      <button
+        class="btn"
+        onclick="addAppointment()"
+      >
+        ➕ Add Appointment
+      </button>
+
+    </div>
+
+    <div id="appointmentsList"></div>
 
   </div>
 
-
-  <!-- PERSONAL TO-DO -->
 
   <div class="card">
 
     <h2>📝 Personal To-Do List</h2>
 
-    <label>
-      Task
-    </label>
+    <label>Task</label>
 
     <input
-      id="personalTaskTitle"
       type="text"
-      placeholder="Enter personal task"
+      id="personalTaskTitle"
+      placeholder="Personal task"
     >
 
-    <label>
-      Date
-    </label>
+    <label>Date</label>
 
     <input
-      id="personalTaskDate"
       type="date"
+      id="personalTaskDate"
     >
 
-    <label>
-      Notes
-    </label>
+    <label>Notes</label>
 
     <textarea
       id="personalTaskNotes"
       placeholder="Notes"
     ></textarea>
 
-    <label>
-      Link
-    </label>
+    <label>Optional Link</label>
 
     <input
-      id="personalTaskLink"
       type="url"
-      placeholder="https://..."
+      id="personalTaskLink"
+      placeholder="https://"
     >
 
-    <button
-      class="btn"
-      onclick="addPersonalTask()"
-    >
-      ➕ Add Personal Task
-    </button>
+    <div class="button-row">
 
-    <div
-      id="personalTasksList"
-      style="margin-top:15px;"
-    ></div>
+      <button
+        class="btn"
+        onclick="addPersonalTask()"
+      >
+        ➕ Add Task
+      </button>
+
+    </div>
+
+    <div id="personalTasksList"></div>
 
   </div>
 
-
-  <!-- ERRANDS -->
 
   <div class="card">
 
     <h2>🛒 Errands</h2>
 
-    <label>
-      Errand
-    </label>
+    <label>Errand</label>
 
     <input
-      id="errandTitle"
       type="text"
-      placeholder="Grocery store, pickup, bank, etc."
+      id="errandTitle"
+      placeholder="Grocery store, pharmacy, etc."
     >
 
-    <label>
-      Date
-    </label>
+    <label>Date</label>
 
     <input
-      id="errandDate"
       type="date"
+      id="errandDate"
     >
 
-    <label>
-      Notes
-    </label>
+    <label>Notes</label>
 
     <textarea
       id="errandNotes"
-      placeholder="Errand notes"
+      placeholder="What needs to be done"
     ></textarea>
 
-    <label>
-      Link
-    </label>
+    <label>Optional Link</label>
 
     <input
-      id="errandLink"
       type="url"
-      placeholder="https://..."
+      id="errandLink"
+      placeholder="https://"
     >
 
-    <button
-      class="btn"
-      onclick="addErrand()"
-    >
-      ➕ Add Errand
-    </button>
+    <div class="button-row">
 
-    <div
-      id="errandsList"
-      style="margin-top:15px;"
-    ></div>
+      <button
+        class="btn"
+        onclick="addErrand()"
+      >
+        ➕ Add Errand
+      </button>
+
+    </div>
+
+    <div id="errandsList"></div>
 
   </div>
 
@@ -1036,54 +884,140 @@
 
   <div class="card">
 
-    <h2>💗 Routine</h2>
+    <h2>💗 My Routine</h2>
+
+    <div class="notice">
+      My daily routine is divided into Morning,
+      Afternoon, Evening, and Night.
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>🌅 Morning Routine</h2>
 
     <label>
-      🌅 Morning
+      What I do in the morning
     </label>
 
     <textarea
       id="morningRoutine"
-      placeholder="Morning routine"
+      placeholder="Example:
+Wake up at 6:00 AM
+Read my Bible
+Pray
+Workout
+Get ready for the day"
     ></textarea>
 
+    <div class="button-row">
+
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
+        💾 Save Morning Routine
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>☀️ Afternoon Routine</h2>
 
     <label>
-      ☀️ Afternoon
+      What I do in the afternoon
     </label>
 
     <textarea
       id="afternoonRoutine"
-      placeholder="Afternoon routine"
+      placeholder="Example:
+Work on Real Estate
+Follow up with sellers
+Work on current goal
+Lunch
+Errands"
     ></textarea>
 
+    <div class="button-row">
+
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
+        💾 Save Afternoon Routine
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>🌆 Evening Routine</h2>
 
     <label>
-      🌆 Evening
+      What I do in the evening
     </label>
 
     <textarea
       id="eveningRoutine"
-      placeholder="Evening routine"
+      placeholder="Example:
+Finish work
+Spend time with family
+Dinner
+Clean up
+Prepare for tomorrow"
     ></textarea>
 
+    <div class="button-row">
+
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
+        💾 Save Evening Routine
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>🌙 Night Routine</h2>
 
     <label>
-      🌙 Night
+      What I do at night
     </label>
 
     <textarea
       id="nightRoutine"
-      placeholder="Night routine"
+      placeholder="Example:
+Review my day
+Pray
+Read Bible
+Prepare clothes for tomorrow
+Go to bed"
     ></textarea>
 
+    <div class="button-row">
 
-    <button
-      class="btn"
-      onclick="saveRoutine()"
-    >
-      💾 Save Routine
-    </button>
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
+        💾 Save Night Routine
+      </button>
+
+    </div>
 
   </div>
 
@@ -1115,20 +1049,17 @@
 
   <div class="card">
 
-    <h2>🔄 Reset CRM</h2>
+    <h2>🔄 Reset</h2>
 
     <div class="notice">
-
-      Resetting will clear the saved Goal CRM data from this
-      device.
-
+      Resetting will clear the saved CRM data from this device.
     </div>
 
     <button
       class="btn btn-danger"
       onclick="resetCRM()"
     >
-      🔄 Reset Goal CRM
+      🔄 Reset CRM
     </button>
 
   </div>
@@ -1152,32 +1083,26 @@ const STORAGE_KEY =
 
 let state = {
 
-  goals: [],
+  goals:[],
 
-  dailyTasks: {},
+  dailyTasks:{},
 
-  appointments: [],
+  appointments:[],
 
-  personalTasks: [],
+  personalTasks:[],
 
-  errands: [],
+  errands:[],
 
-  routine: {
+  routine:{
     morning:"",
     afternoon:"",
     evening:"",
     night:""
   },
 
-  vision: {
+  vision:{
     weight175:false,
     weight155:false
-  },
-
-  pomodoro: {
-    minutes:25,
-    secondsRemaining:1500,
-    running:false
   }
 
 };
@@ -1190,407 +1115,295 @@ let state = {
 const DEFAULT_GOALS = [
 
   {
-    title:"Real Estate",
-    category:"Business",
-    notes:"Wholesale real estate and investor work."
+    title:"Real Estate • Minimum 2 Deals/Month (Outcome Only)",
+    category:"Real Estate",
+    type:"realestate",
+    notes:"Focus on getting a minimum of 2 deals per month.",
+    links:[
+      ["Propwire","https://www.propwire.com/"],
+      ["Zillow FSBO","https://www.zillow.com/"],
+      ["Craigslist","https://www.craigslist.org/"],
+      ["County GIS","https://www.google.com/search?q=county+GIS"],
+      ["Redfin","https://www.redfin.com/"],
+      ["Google Maps","https://www.google.com/maps/"],
+      ["Regrid","https://regrid.com/"],
+      ["NETR Online","https://www.netronline.com/"],
+      ["Google Voice","https://voice.google.com/"],
+      ["Realtor.com","https://www.realtor.com/"]
+    ]
   },
 
   {
     title:"GED",
     category:"Education",
-    notes:"Complete GED."
+    type:"standard",
+    notes:"Complete GED.",
+    links:[]
   },
 
   {
     title:"Fix Teeth",
     category:"Personal",
-    notes:"Work toward getting dental work completed."
+    type:"standard",
+    notes:"Work toward getting my teeth fixed.",
+    links:[]
   },
 
   {
-    title:"Buy Home & Rental Properties",
+    title:"Buy a Home & Rental Properties",
     category:"Real Estate",
-    notes:"Purchase a home and rental properties."
+    type:"standard",
+    notes:"Buy a home and build rental properties.",
+    links:[]
   },
 
   {
     title:"Bookkeeping Business",
     category:"Business",
-    notes:"Build bookkeeping business."
+    type:"standard",
+    notes:"Build bookkeeping business.",
+    links:[]
   },
 
   {
     title:"Credit Repaired",
     category:"Financial",
-    notes:"Repair and improve credit."
+    type:"standard",
+    notes:"Repair and improve credit.",
+    links:[]
   },
 
   {
-    title:"Medical Assistant Facility",
-    category:"Career",
-    notes:"Work toward medical assistant facility goal."
+    title:"Open Medical Assistant Facility • 12 Week Focus",
+    category:"Healthcare",
+    type:"standard",
+    notes:"I already have my Medical Assistant. This goal is for building toward opening a facility for medical assistants later.",
+    links:[]
   },
 
   {
-    title:"Class A CDL",
+    title:"Class A (CDL)",
     category:"Career",
-    notes:"Work toward Class A CDL."
+    type:"standard",
+    notes:"Work toward obtaining Class A CDL.",
+    links:[]
   },
 
   {
     title:"Cornstarch Business",
     category:"Business",
-    notes:"Grow Mr. & Mrs. Cornstarch."
+    type:"standard",
+    notes:"Grow the Cornstarch Business.",
+    links:[]
   },
 
   {
     title:"YouTube Channels",
-    category:"Content",
-    notes:"Build YouTube channels."
+    category:"Social Media",
+    type:"standard",
+    notes:"Build and grow YouTube channels.",
+    links:[]
   },
 
   {
     title:"Courses",
     category:"Education",
-    notes:"Complete courses."
+    type:"standard",
+    notes:"Complete courses.",
+    links:[]
   },
 
   {
     title:"Dispatcher Business",
     category:"Business",
-    notes:"Build dispatch business."
+    type:"standard",
+    notes:"Build dispatcher business.",
+    links:[]
   },
 
   {
     title:"House Inspector Business",
     category:"Business",
-    notes:"Build house inspection business."
+    type:"standard",
+    notes:"Build house inspector business.",
+    links:[]
   },
 
   {
-    title:"Independent Living Homes",
+    title:"Open Independent Living Homes",
     category:"Business",
-    notes:"Work toward independent living homes."
+    type:"standard",
+    notes:"Build toward opening independent living homes.",
+    links:[]
   },
 
   {
-    title:"Dropshipping",
+    title:"Dropshipping Business",
     category:"Business",
-    notes:"Build dropshipping business."
+    type:"standard",
+    notes:"Build dropshipping business.",
+    links:[]
   },
 
   {
-    title:"Author",
+    title:"Become an Author",
     category:"Creative",
-    notes:"Write and publish books."
+    type:"standard",
+    notes:"Become an author.",
+    links:[]
   },
 
   {
-    title:"Build/Sell Courses",
+    title:"Build & Sell Courses",
     category:"Business",
-    notes:"Create and sell courses."
+    type:"standard",
+    notes:"Create and sell courses.",
+    links:[]
   },
 
   {
     title:"Make Planners",
     category:"Business",
-    notes:"Create planners."
+    type:"standard",
+    notes:"Create planners.",
+    links:[]
   },
 
   {
-    title:"Create/Sell Products",
+    title:"Create & Sell Products",
     category:"Business",
-    notes:"Create and sell products."
+    type:"standard",
+    notes:"Create and sell products.",
+    links:[]
   },
 
   {
-    title:"Monetize Instagram",
-    category:"Content",
-    notes:"Build and monetize Instagram."
+    title:"Monetize Instagram & Grow My Following",
+    category:"Social Media",
+    type:"standard",
+    notes:"Grow Instagram following and monetize.",
+    links:[]
   },
 
   {
-    title:"Monetize YouTube",
-    category:"Content",
-    notes:"Build and monetize YouTube."
+    title:"Monetize YouTube & Grow My Following",
+    category:"Social Media",
+    type:"standard",
+    notes:"Grow YouTube following and monetize.",
+    links:[]
   },
 
   {
-    title:"Millions of Followers",
-    category:"Content",
-    notes:"Build a large social media following."
+    title:"Build Millions of Followers Across My Social Media",
+    category:"Social Media",
+    type:"standard",
+    notes:"Build a large following across social media.",
+    links:[]
   },
 
   {
-    title:"Keep Websites/Apps Running",
+    title:"Keep All My Websites & Apps Running Properly",
     category:"Technology",
-    notes:"Maintain websites and apps."
+    type:"standard",
+    notes:"Maintain all websites and apps.",
+    links:[]
   }
 
 ];
 
 
 /* =========================
-   DEFAULT DAILY TASKS
+   REAL ESTATE DAILY TEMPLATE
+   ALL ORIGINAL SITE LINKS
 ========================= */
 
-const DEFAULT_DAILY_TASKS = {
+const REAL_ESTATE_TASKS = [
 
-  "Real Estate":[
+  {
+    title:"Find 5–10 seller leads",
 
-    "Motivated seller calls",
+    links:[
+      ["Propwire","https://www.propwire.com/"],
+      ["Zillow FSBO","https://www.zillow.com/"],
+      ["Craigslist","https://www.craigslist.org/"],
+      ["County GIS","https://www.google.com/search?q=county+GIS"],
+      ["Redfin","https://www.redfin.com/"],
+      ["Google Maps","https://www.google.com/maps/"],
+      ["Regrid","https://regrid.com/"],
+      ["NETR Online","https://www.netronline.com/"]
+    ]
 
-    "Find seller leads",
+  },
 
-    "Follow up with leads",
+  {
+    title:"Contact 3–5 sellers",
 
-    "Analyze deals",
+    links:[
+      ["Google Voice","https://voice.google.com/"]
+    ]
 
-    "Find buyers"
+  },
 
-  ],
+  {
+    title:"Find 3–5 new buyers",
 
-  "GED":[
+    links:[
+      ["Propwire","https://www.propwire.com/"],
+      ["Zillow","https://www.zillow.com/"],
+      ["Craigslist","https://www.craigslist.org/"],
+      ["Realtor.com","https://www.realtor.com/"],
+      ["Redfin","https://www.redfin.com/"],
+      ["Google Maps","https://www.google.com/maps/"]
+    ]
 
-    "Study GED material",
+  },
 
-    "Complete practice questions",
+  {
+    title:"Analyze 1–2 properties",
 
-    "Review weak areas"
+    links:[
+      ["Propwire","https://www.propwire.com/"],
+      ["Zillow","https://www.zillow.com/"],
+      ["Redfin","https://www.redfin.com/"],
+      ["Regrid","https://regrid.com/"],
+      ["NETR Online","https://www.netronline.com/"]
+    ]
 
-  ],
+  },
 
-  "Fix Teeth":[
+  {
+    title:"Send 1 offer",
 
-    "Research dental options",
+    links:[]
 
-    "Schedule dental appointment",
+  },
 
-    "Work on dental plan"
+  {
+    title:"Follow up with sellers",
 
-  ],
+    links:[
+      ["Google Voice","https://voice.google.com/"]
+    ]
 
-  "Buy Home & Rental Properties":[
+  },
 
-    "Research properties",
+  {
+    title:"Follow up with buyers",
 
-    "Review financing",
+    links:[
+      ["Google Voice","https://voice.google.com/"]
+    ]
 
-    "Analyze potential properties"
+  },
 
-  ],
+  {
+    title:"Update CRM",
 
-  "Bookkeeping Business":[
+    links:[]
 
-    "Study bookkeeping",
+  }
 
-    "Find potential clients",
-
-    "Work on bookkeeping system"
-
-  ],
-
-  "Credit Repaired":[
-
-    "Review credit",
-
-    "Address credit issues",
-
-    "Track progress"
-
-  ],
-
-  "Medical Assistant Facility":[
-
-    "Research program",
-
-    "Study requirements",
-
-    "Complete application work"
-
-  ],
-
-  "Class A CDL":[
-
-    "Research CDL requirements",
-
-    "Study CDL material",
-
-    "Work on training plan"
-
-  ],
-
-  "Cornstarch Business":[
-
-    "Make products",
-
-    "Work on sales",
-
-    "Work on marketing",
-
-    "Review inventory"
-
-  ],
-
-  "YouTube Channels":[
-
-    "Create video idea",
-
-    "Record content",
-
-    "Edit content",
-
-    "Publish content"
-
-  ],
-
-  "Courses":[
-
-    "Choose course work",
-
-    "Complete lesson",
-
-    "Take notes"
-
-  ],
-
-  "Dispatcher Business":[
-
-    "Find carriers",
-
-    "Research loads",
-
-    "Work on dispatch system",
-
-    "Contact prospects"
-
-  ],
-
-  "House Inspector Business":[
-
-    "Study inspection requirements",
-
-    "Research licensing",
-
-    "Work on business setup"
-
-  ],
-
-  "Independent Living Homes":[
-
-    "Research requirements",
-
-    "Research properties",
-
-    "Research business model"
-
-  ],
-
-  "Dropshipping":[
-
-    "Research products",
-
-    "Review suppliers",
-
-    "Work on store",
-
-    "Work on marketing"
-
-  ],
-
-  "Author":[
-
-    "Write",
-
-    "Edit",
-
-    "Research publishing"
-
-  ],
-
-  "Build/Sell Courses":[
-
-    "Choose course topic",
-
-    "Create lesson",
-
-    "Build course material",
-
-    "Work on sales page"
-
-  ],
-
-  "Make Planners":[
-
-    "Design planner",
-
-    "Review planner pages",
-
-    "Work on planner product"
-
-  ],
-
-  "Create/Sell Products":[
-
-    "Research product",
-
-    "Create product",
-
-    "Work on listing",
-
-    "Work on marketing"
-
-  ],
-
-  "Monetize Instagram":[
-
-    "Create content",
-
-    "Post content",
-
-    "Engage with audience",
-
-    "Review analytics"
-
-  ],
-
-  "Monetize YouTube":[
-
-    "Create video",
-
-    "Record video",
-
-    "Edit video",
-
-    "Publish video"
-
-  ],
-
-  "Millions of Followers":[
-
-    "Create content",
-
-    "Post consistently",
-
-    "Engage with audience",
-
-    "Review growth"
-
-  ],
-
-  "Keep Websites/Apps Running":[
-
-    "Check websites",
-
-    "Check apps",
-
-    "Fix issues",
-
-    "Update systems"
-
-  ]
-
-};
+];
 
 
 /* =========================
@@ -1600,9 +1413,7 @@ const DEFAULT_DAILY_TASKS = {
 function loadState(){
 
   const saved =
-    localStorage.getItem(
-      STORAGE_KEY
-    );
+    localStorage.getItem(STORAGE_KEY);
 
   if(saved){
 
@@ -1611,19 +1422,17 @@ function loadState(){
       const parsed =
         JSON.parse(saved);
 
-      state = {
+      if(parsed &&
+         typeof parsed==="object"){
 
-        ...state,
+        state=parsed;
 
-        ...parsed
+      }
 
-      };
+    }catch(e){
 
-    }catch(error){
-
-      console.error(
-        "Could not load saved state.",
-        error
+      console.log(
+        "Could not load saved state."
       );
 
     }
@@ -1631,28 +1440,125 @@ function loadState(){
   }
 
 
-  if(
-    !Array.isArray(state.goals) ||
-    state.goals.length === 0
-  ){
+  if(!Array.isArray(state.goals)){
+    state.goals=[];
+  }
+
+
+  if(!state.dailyTasks ||
+     typeof state.dailyTasks!=="object"){
+
+    state.dailyTasks={};
+
+  }
+
+
+  if(!Array.isArray(state.appointments)){
+    state.appointments=[];
+  }
+
+
+  if(!Array.isArray(state.personalTasks)){
+    state.personalTasks=[];
+  }
+
+
+  if(!Array.isArray(state.errands)){
+    state.errands=[];
+  }
+
+
+  if(!state.routine ||
+     typeof state.routine!=="object"){
+
+    state.routine={
+      morning:"",
+      afternoon:"",
+      evening:"",
+      night:""
+    };
+
+  }
+
+
+  if(typeof state.routine.morning!=="string"){
+    state.routine.morning="";
+  }
+
+
+  if(typeof state.routine.afternoon!=="string"){
+    state.routine.afternoon="";
+  }
+
+
+  if(typeof state.routine.evening!=="string"){
+    state.routine.evening="";
+  }
+
+
+  if(typeof state.routine.night!=="string"){
+    state.routine.night="";
+  }
+
+
+  if(!state.vision){
+
+    state.vision={
+      weight175:false,
+      weight155:false
+    };
+
+  }
+
+
+  /*
+    IMPORTANT:
+    Make sure EVERY existing goal has
+    a links array without deleting any
+    existing links.
+  */
+
+  state.goals.forEach(goal=>{
+
+    if(!Array.isArray(goal.links)){
+      goal.links=[];
+    }
+
+  });
+
+
+  if(state.goals.length===0){
 
     state.goals =
       DEFAULT_GOALS.map(
         (goal,index)=>({
 
-          id:Date.now()+index,
+          id:
+            "goal_" +
+            Date.now() +
+            "_" +
+            index,
 
           title:goal.title,
 
           category:goal.category,
 
-          notes:goal.notes,
+          type:goal.type,
+
+          notes:goal.notes || "",
+
+          links:
+            Array.isArray(goal.links)
+            ? [...goal.links]
+            : [],
 
           active:false,
 
           completed:false,
 
-          links:[]
+          useLater:false,
+
+          startDate:""
 
         })
       );
@@ -1660,110 +1566,20 @@ function loadState(){
   }
 
 
-  state.goals =
-    state.goals.map(
-      goal=>({
-
-        ...goal,
-
-        links:
-          Array.isArray(goal.links)
-          ?
-          goal.links
-          :
-          []
-
-      })
-    );
-
-
-  if(!state.routine){
-
-    state.routine={
-
-      morning:"",
-
-      afternoon:"",
-
-      evening:"",
-
-      night:""
-
-    };
-
-  }
-
-
-  if(!state.vision){
-
-    state.vision={
-
-      weight175:false,
-
-      weight155:false
-
-    };
-
-  }
-
-
-  if(!state.appointments){
-
-    state.appointments=[];
-
-  }
-
-
-  if(!state.personalTasks){
-
-    state.personalTasks=[];
-
-  }
-
-
-  if(!state.errands){
-
-    state.errands=[];
-
-  }
-
-
-  if(!state.dailyTasks){
-
-    state.dailyTasks={};
-
-  }
-
-
-  if(!state.pomodoro){
-
-    state.pomodoro={
-
-      minutes:25,
-
-      secondsRemaining:1500,
-
-      running:false
-
-    };
-
-  }
+  saveState();
 
 }
 
 
 /* =========================
-   SAVE STATE
+   SAVE
 ========================= */
 
 function saveState(){
 
   localStorage.setItem(
-
     STORAGE_KEY,
-
     JSON.stringify(state)
-
   );
 
 }
@@ -1777,46 +1593,49 @@ function showPage(pageId,button){
 
   document
     .querySelectorAll(".page")
-    .forEach(
-      page=>{
-        page.classList.remove("active");
-      }
-    );
-
-
-  const page =
-    document.getElementById(
-      pageId
-    );
-
-
-  if(page){
-
-    page.classList.add("active");
-
-  }
+    .forEach(page=>{
+      page.classList.remove("active");
+    });
 
 
   document
     .querySelectorAll(".tab")
-    .forEach(
-      tab=>{
-        tab.style.background="#ffd1dc";
-      }
-    );
+    .forEach(tab=>{
+      tab.classList.remove("active");
+    });
+
+
+  const page =
+    document.getElementById(pageId);
+
+
+  if(page){
+    page.classList.add("active");
+  }
 
 
   if(button){
-
-    button.style.background="#ffb6c8";
-
+    button.classList.add("active");
   }
 
 
   if(pageId==="daily"){
-
     prepareDailyPage();
+  }
 
+
+  if(pageId==="personal"){
+    renderPersonal();
+  }
+
+
+  if(pageId==="routine"){
+    renderRoutine();
+  }
+
+
+  if(pageId==="active"){
+    renderActiveGoal();
   }
 
 }
@@ -1835,10 +1654,6 @@ function toggleVision(key){
 
 }
 
-
-/* =========================
-   RENDER VISION
-========================= */
 
 function renderVision(){
 
@@ -1871,10 +1686,6 @@ function renderVision(){
 }
 
 
-/* =========================
-   RENDER VISION GOALS
-========================= */
-
 function renderVisionGoals(){
 
   const box =
@@ -1882,14 +1693,13 @@ function renderVisionGoals(){
       "visionGoals"
     );
 
-
   if(!box)return;
 
 
   if(!state.goals.length){
 
     box.innerHTML =
-      '<div class="empty">No goals added yet.</div>';
+      '<div class="empty">No goals yet.</div>';
 
     return;
 
@@ -1903,185 +1713,14 @@ function renderVisionGoals(){
         <div class="goal-card">
 
           <div class="goal-title">
-
-            ${escapeHtml(
-              goal.title
-            )}
-
+            ${escapeHtml(goal.title)}
           </div>
 
           <span class="pill">
-
             ${escapeHtml(
-              goal.category || "General"
+              goal.category || "Goal"
             )}
-
           </span>
-
-          ${
-            goal.active
-            ?
-            `
-              <span class="status status-active">
-                ⭐ Active 12-Week Goal
-              </span>
-            `
-            :
-            ""
-          }
-
-        </div>
-
-      `
-    ).join("");
-
-}
-
-
-/* =========================
-   ADD CUSTOM GOAL
-========================= */
-
-function addCustomGoal(){
-
-  const title =
-    document
-      .getElementById(
-        "newGoalTitle"
-      )
-      .value
-      .trim();
-
-
-  const category =
-    document
-      .getElementById(
-        "newGoalCategory"
-      )
-      .value
-      .trim();
-
-
-  const notes =
-    document
-      .getElementById(
-        "newGoalNotes"
-      )
-      .value
-      .trim();
-
-
-  if(!title){
-
-    alert(
-      "Please enter a goal."
-    );
-
-    return;
-
-  }
-
-
-  state.goals.push({
-
-    id:Date.now(),
-
-    title:title,
-
-    category:
-      category || "General",
-
-    notes:notes,
-
-    active:false,
-
-    completed:false,
-
-    links:[]
-
-  });
-
-
-  saveState();
-
-  document
-    .getElementById(
-      "newGoalTitle"
-    )
-    .value="";
-
-
-  document
-    .getElementById(
-      "newGoalCategory"
-    )
-    .value="";
-
-
-  document
-    .getElementById(
-      "newGoalNotes"
-    )
-    .value="";
-
-
-  renderAll();
-
-  alert(
-    "Goal added! 🎯"
-  );
-
-}
-
-
-/* =========================
-   RENDER GOALS LIST
-========================= */
-
-function renderGoalsList(){
-
-  const box =
-    document.getElementById(
-      "goalsList"
-    );
-
-
-  if(!box)return;
-
-
-  if(!state.goals.length){
-
-    box.innerHTML =
-      '<div class="empty">No goals available.</div>';
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    state.goals.map(
-      goal=>`
-
-        <div class="goal-card">
-
-          <div class="goal-title">
-
-            ${escapeHtml(
-              goal.title
-            )}
-
-          </div>
-
-
-          <span class="pill">
-
-            ${escapeHtml(
-              goal.category || "General"
-            )}
-
-          </span>
-
 
           ${
             goal.active
@@ -2092,212 +1731,8 @@ function renderGoalsList(){
               </span>
             `
             :
-            `
-              <span class="status status-use">
-                Available
-              </span>
-            `
-          }
-
-
-          ${
-            goal.completed
-            ?
-            `
-              <span class="status status-complete">
-                ✅ Completed
-              </span>
-            `
-            :
             ""
           }
-
-
-          ${
-            goal.notes
-            ?
-            `
-              <p>
-                ${escapeHtml(
-                  goal.notes
-                )}
-              </p>
-            `
-            :
-            ""
-          }
-
-
-          <div class="goal-actions">
-
-            ${
-              goal.active
-              ?
-              `
-                <button
-                  class="btn btn-light"
-                  onclick="
-                    deactivateGoal(
-                      ${goal.id}
-                    )
-                  "
-                >
-                  ⭐ Active Goal
-                </button>
-              `
-              :
-              `
-                <button
-                  class="btn btn-green"
-                  onclick="
-                    setActiveGoal(
-                      ${goal.id}
-                    )
-                  "
-                >
-                  ⭐ Make Active
-                </button>
-              `
-            }
-
-
-            ${
-              goal.completed
-              ?
-              `
-                <button
-                  class="btn btn-light"
-                  onclick="
-                    toggleGoalComplete(
-                      ${goal.id}
-                    )
-                  "
-                >
-                  ↩️ Reopen
-                </button>
-              `
-              :
-              `
-                <button
-                  class="btn btn-blue"
-                  onclick="
-                    toggleGoalComplete(
-                      ${goal.id}
-                    )
-                  "
-                >
-                  ✅ Complete
-                </button>
-              `
-            }
-
-
-            <button
-              class="btn btn-light"
-              onclick="
-                editGoal(
-                  ${goal.id}
-                )
-              "
-            >
-              ✏️ Edit
-            </button>
-
-
-            <button
-              class="btn btn-danger"
-              onclick="
-                deleteGoal(
-                  ${goal.id}
-                )
-              "
-            >
-              🗑️ Delete
-            </button>
-
-          </div>
-
-
-          <div class="goal-links-box">
-
-            <strong>
-              🔗 Goal Links
-            </strong>
-
-            ${
-              goal.links &&
-              goal.links.length
-              ?
-              goal.links.map(
-                (link,index)=>`
-
-                  <div class="goal-link-row">
-
-                    <a
-                      href="${escapeAttribute(link.url)}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      ${escapeHtml(
-                        link.name || link.url
-                      )}
-                    </a>
-
-                    <button
-                      class="btn btn-danger"
-                      onclick="
-                        deleteGoalLink(
-                          ${goal.id},
-                          ${index}
-                        )
-                      "
-                    >
-                      Delete
-                    </button>
-
-                  </div>
-
-                `
-              ).join("")
-              :
-              `
-                <p>
-                  No links added.
-                </p>
-              `
-            }
-
-
-            <div class="link-input-grid">
-
-              <input
-                id="goalLinkName_${goal.id}"
-                type="text"
-                placeholder="Link name"
-              >
-
-              <input
-                id="goalLinkUrl_${goal.id}"
-                type="url"
-                placeholder="https://..."
-              >
-
-            </div>
-
-
-            <button
-              class="btn btn-light"
-              style="margin-top:8px;"
-              onclick="
-                addGoalLink(
-                  ${goal.id}
-                )
-              "
-            >
-              ➕ Add Link
-            </button>
-
-          </div>
 
         </div>
 
@@ -2308,201 +1743,342 @@ function renderGoalsList(){
 
 
 /* =========================
-   SET ACTIVE GOAL
+   ALL GOALS
 ========================= */
 
-function setActiveGoal(id){
+function renderGoalsList(){
 
-  state.goals =
-    state.goals.map(
-      goal=>({
-
-        ...goal,
-
-        active:
-          goal.id===id
-
-      })
+  const box =
+    document.getElementById(
+      "goalsList"
     );
 
-
-  saveState();
-
-  renderAll();
-
-  alert(
-    "This goal is now your active 12-week goal. ⭐"
-  );
-
-}
+  if(!box)return;
 
 
-/* =========================
-   DEACTIVATE GOAL
-========================= */
+  if(!state.goals.length){
 
-function deactivateGoal(id){
+    box.innerHTML =
+      '<div class="empty">No goals yet.</div>';
 
-  const goal =
-    state.goals.find(
-      item=>item.id===id
-    );
-
-
-  if(goal){
-
-    goal.active=false;
+    return;
 
   }
 
 
-  saveState();
+  box.innerHTML =
+    state.goals.map(
+      (goal,index)=>{
 
-  renderAll();
+        let status =
+          "Not Active";
+
+
+        if(goal.completed){
+
+          status="Completed";
+
+        }
+        else if(goal.useLater){
+
+          status="Use Later";
+
+        }
+        else if(goal.active){
+
+          status="Active";
+
+        }
+
+
+        let statusClass =
+          "status-active";
+
+
+        if(goal.completed){
+
+          statusClass =
+            "status-complete";
+
+        }
+        else if(goal.useLater){
+
+          statusClass =
+            "status-use";
+
+        }
+
+
+        return `
+
+          <div class="goal-card">
+
+            <div class="goal-title">
+
+              ${index+1}.
+              ${escapeHtml(
+                goal.title
+              )}
+
+            </div>
+
+
+            <span class="pill">
+
+              ${escapeHtml(
+                goal.category || "Goal"
+              )}
+
+            </span>
+
+
+            <span
+              class="status ${statusClass}"
+            >
+
+              ${status}
+
+            </span>
+
+
+            <p>
+
+              ${escapeHtml(
+                goal.notes || ""
+              )}
+
+            </p>
+
+
+            <!-- GOAL LINKS -->
+
+            <div class="goal-links-box">
+
+              <strong>
+                🔗 Goal Websites
+              </strong>
+
+
+              <div class="links">
+
+                ${
+                  Array.isArray(goal.links) &&
+                  goal.links.length
+
+                  ?
+
+                  goal.links.map(
+                    (link,linkIndex)=>`
+
+                      <div class="goal-link-row">
+
+                        <a
+                          href="${escapeAttribute(link[1])}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          🔗
+                          ${escapeHtml(link[0])}
+                        </a>
+
+                        <button
+                          class="btn btn-danger"
+                          onclick="
+                            deleteGoalLink(
+                              '${goal.id}',
+                              ${linkIndex}
+                            )
+                          "
+                        >
+                          🗑️
+                        </button>
+
+                      </div>
+
+                    `
+                  ).join("")
+
+                  :
+
+                  `
+                    <div>
+                      No links added yet.
+                    </div>
+                  `
+                }
+
+              </div>
+
+
+              <label>
+                Website Name
+              </label>
+
+              <div class="link-input-grid">
+
+                <input
+                  type="text"
+                  id="linkName_${goal.id}"
+                  placeholder="Example: Propwire"
+                >
+
+                <input
+                  type="url"
+                  id="linkURL_${goal.id}"
+                  placeholder="https://www.example.com"
+                >
+
+              </div>
+
+
+              <div class="button-row">
+
+                <button
+                  class="btn btn-blue"
+                  onclick="
+                    addGoalLink(
+                      '${goal.id}'
+                    )
+                  "
+                >
+                  ➕ Add Link
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="goal-actions">
+
+              <button
+                class="btn btn-blue"
+                onclick="
+                  setActiveGoal(
+                    '${goal.id}'
+                  )
+                "
+              >
+                ⭐ Make Active
+              </button>
+
+
+              <button
+                class="btn btn-green"
+                onclick="
+                  completeGoal(
+                    '${goal.id}'
+                  )
+                "
+              >
+                ✅ Completed
+              </button>
+
+
+              <button
+                class="btn btn-light"
+                onclick="
+                  useGoalLater(
+                    '${goal.id}'
+                  )
+                "
+              >
+                ⏳ Use Later
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
 
 }
 
 
 /* =========================
-   COMPLETE GOAL
+   ADD LINK TO ANY GOAL
 ========================= */
 
-function toggleGoalComplete(id){
+function addGoalLink(goalId){
 
   const goal =
     state.goals.find(
-      item=>item.id===id
+      g=>g.id===goalId
     );
 
 
   if(!goal)return;
 
 
-  goal.completed =
-    !goal.completed;
-
-
-  saveState();
-
-  renderAll();
-
-}
-
-
-/* =========================
-   EDIT GOAL
-========================= */
-
-function editGoal(id){
-
-  const goal =
-    state.goals.find(
-      item=>item.id===id
+  const nameInput =
+    document.getElementById(
+      "linkName_"+goalId
     );
 
 
-  if(!goal)return;
-
-
-  const title =
-    prompt(
-      "Goal:",
-      goal.title
+  const urlInput =
+    document.getElementById(
+      "linkURL_"+goalId
     );
 
 
-  if(title===null)return;
+  if(!nameInput ||
+     !urlInput){
+
+    return;
+
+  }
 
 
-  const category =
-    prompt(
-      "Category:",
-      goal.category || ""
+  const name =
+    nameInput.value.trim();
+
+
+  let url =
+    urlInput.value.trim();
+
+
+  if(!name){
+
+    alert(
+      "Please enter the website name."
     );
 
+    return;
 
-  if(category===null)return;
+  }
 
 
-  const notes =
-    prompt(
-      "Notes:",
-      goal.notes || ""
+  if(!url){
+
+    alert(
+      "Please enter the website link."
     );
 
+    return;
 
-  if(notes===null)return;
-
-
-  goal.title =
-    title.trim() || goal.title;
+  }
 
 
-  goal.category =
-    category.trim() || "General";
+  /*
+    Allow user to type:
+    example.com
+    or
+    https://example.com
+  */
 
+  if(
+    !url.startsWith("http://") &&
+    !url.startsWith("https://")
+  ){
 
-  goal.notes =
-    notes.trim();
+    url =
+      "https://" + url;
 
-
-  saveState();
-
-  renderAll();
-
-}
-
-
-/* =========================
-   DELETE GOAL
-========================= */
-
-function deleteGoal(id){
-
-  const goal =
-    state.goals.find(
-      item=>item.id===id
-    );
-
-
-  if(!goal)return;
-
-
-  const confirmed =
-    confirm(
-      `Delete the goal "${goal.title}"?`
-    );
-
-
-  if(!confirmed)return;
-
-
-  state.goals =
-    state.goals.filter(
-      item=>item.id!==id
-    );
-
-
-  saveState();
-
-  renderAll();
-
-}
-
-
-/* =========================
-   GOAL LINKS
-========================= */
-
-function addGoalLink(id){
-
-  const goal =
-    state.goals.find(
-      item=>item.id===id
-    );
-
-
-  if(!goal)return;
+  }
 
 
   if(!Array.isArray(goal.links)){
@@ -2512,56 +2088,21 @@ function addGoalLink(id){
   }
 
 
-  const nameInput =
-    document.getElementById(
-      `goalLinkName_${id}`
-    );
-
-
-  const urlInput =
-    document.getElementById(
-      `goalLinkUrl_${id}`
-    );
-
-
-  if(!urlInput)return;
-
-
-  const url =
-    urlInput.value.trim();
-
-
-  const name =
-    nameInput
-      ?
-      nameInput.value.trim()
-      :
-      "";
-
-
-  if(!url){
-
-    alert(
-      "Please enter a link."
-    );
-
-    return;
-
-  }
-
-
-  goal.links.push({
-
-    name:name,
-
-    url:url
-
-  });
+  goal.links.push([
+    name,
+    url
+  ]);
 
 
   saveState();
 
-  renderAll();
+  renderGoalsList();
+
+  renderActiveGoal();
+
+  alert(
+    "Link added to this goal! 🔗"
+  );
 
 }
 
@@ -2572,25 +2113,120 @@ function addGoalLink(id){
 
 function deleteGoalLink(
   goalId,
-  index
+  linkIndex
 ){
 
   const goal =
     state.goals.find(
-      item=>item.id===goalId
+      g=>g.id===goalId
     );
 
 
-  if(!goal)return;
+  if(!goal ||
+     !Array.isArray(goal.links)){
 
-
-  if(!Array.isArray(goal.links))
     return;
+
+  }
+
+
+  if(
+    !confirm(
+      "Delete this goal link?"
+    )
+  ){
+
+    return;
+
+  }
 
 
   goal.links.splice(
-    index,
+    linkIndex,
     1
+  );
+
+
+  saveState();
+
+  renderGoalsList();
+
+  renderActiveGoal();
+
+}
+
+
+/* =========================
+   SET ACTIVE GOAL
+========================= */
+
+function setActiveGoal(id){
+
+  const selectedGoal =
+    state.goals.find(
+      goal=>String(goal.id)===String(id)
+    );
+
+
+  if(!selectedGoal){
+
+    alert(
+      "Goal could not be found."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    ONLY ONE ACTIVE GOAL
+  */
+
+  state.goals.forEach(
+    goal=>{
+
+      goal.active =
+        String(goal.id)===String(id);
+
+      if(
+        String(goal.id)===String(id)
+      ){
+
+        goal.useLater=false;
+
+        /*
+          Save the start date
+          when the goal becomes active.
+        */
+
+        if(!goal.startDate){
+
+          const today =
+            new Date();
+
+          const year =
+            today.getFullYear();
+
+          const month =
+            String(
+              today.getMonth()+1
+            ).padStart(2,"0");
+
+          const day =
+            String(
+              today.getDate()
+            ).padStart(2,"0");
+
+
+          goal.startDate =
+            `${year}-${month}-${day}`;
+
+        }
+
+      }
+
+    }
   );
 
 
@@ -2598,27 +2234,111 @@ function deleteGoalLink(
 
   renderAll();
 
+
+  /*
+    Automatically show the Active Goal
+    after selecting it.
+  */
+
+  showPage(
+    "active",
+    document.querySelector(
+      ".tab:nth-child(3)"
+    )
+  );
+
 }
 
 
 /* =========================
-   ACTIVE GOAL
+   COMPLETE GOAL
+========================= */
+
+function completeGoal(id){
+
+  const goal =
+    state.goals.find(
+      g=>String(g.id)===String(id)
+    );
+
+
+  if(!goal)return;
+
+
+  goal.completed=true;
+
+  goal.active=false;
+
+  goal.useLater=false;
+
+
+  saveState();
+
+  renderAll();
+
+
+  alert(
+    "Goal marked completed! 🎉"
+  );
+
+}
+
+
+/* =========================
+   USE LATER
+========================= */
+
+function useGoalLater(id){
+
+  const goal =
+    state.goals.find(
+      g=>String(g.id)===String(id)
+    );
+
+
+  if(!goal)return;
+
+
+  goal.useLater=true;
+
+  goal.active=false;
+
+
+  saveState();
+
+  renderAll();
+
+
+  alert(
+    "Goal marked Use Later! ⏳"
+  );
+
+}
+
+
+/* =========================
+   ACTIVE GOAL DISPLAY
 ========================= */
 
 function renderActiveGoal(){
 
   const box =
     document.getElementById(
-      "activeGoalContent"
+      "activeGoal"
     );
 
 
   if(!box)return;
 
 
+  /*
+    Find the actual active goal
+    from the saved state.
+  */
+
   const goal =
     state.goals.find(
-      item=>item.active===true
+      g=>g.active===true
     );
 
 
@@ -2634,9 +2354,8 @@ function renderActiveGoal(){
 
         <p>
           Go to All Goals and choose
-          "Make Active" for the goal
-          you want to focus on for
-          the next 12 weeks.
+          the goal you want to focus on
+          for your 12 weeks.
         </p>
 
       </div>
@@ -2646,30 +2365,6 @@ function renderActiveGoal(){
     return;
 
   }
-
-
-  const tasks =
-    getTasksForGoal(
-      goal.title
-    );
-
-
-  const completed =
-    tasks.filter(
-      task=>task.completed
-    ).length;
-
-
-  const percent =
-    tasks.length
-    ?
-    Math.round(
-      completed /
-      tasks.length *
-      100
-    )
-    :
-    0;
 
 
   box.innerHTML = `
@@ -2682,30 +2377,33 @@ function renderActiveGoal(){
         )}
       </h2>
 
-      <span class="status status-active">
-        ACTIVE 12-WEEK FOCUS
-      </span>
 
-      <p>
-
-        <strong>
-          Category:
-        </strong>
+      <span class="pill">
 
         ${escapeHtml(
-          goal.category || "General"
+          goal.category || "Goal"
         )}
 
-      </p>
+      </span>
+
+
+      <span class="status status-active">
+
+        ⭐ Active 12-Week Goal
+
+      </span>
 
 
       ${
-        goal.notes
+        goal.startDate
         ?
         `
           <p>
+            <strong>
+              12-Week Focus Started:
+            </strong>
             ${escapeHtml(
-              goal.notes
+              goal.startDate
             )}
           </p>
         `
@@ -2713,94 +2411,63 @@ function renderActiveGoal(){
         ""
       }
 
-    </div>
-
-
-    <div class="card">
-
-      <h3>
-        📊 Goal Task Progress
-      </h3>
-
-      <div class="progress-wrap">
-
-        <div
-          class="progress-bar"
-          style="
-            width:${percent}%
-          "
-        >
-
-          ${percent}%
-
-        </div>
-
-      </div>
 
       <p>
 
-        ${completed}
-        of
-        ${tasks.length}
-        tasks completed.
+        ${escapeHtml(
+          goal.notes || ""
+        )}
 
       </p>
 
-    </div>
+
+      <!-- LINKS FOR ACTIVE GOAL -->
+
+      <div class="goal-links-box">
+
+        <h3>
+          🔗 Websites for My Active Goal
+        </h3>
 
 
-    <div class="card">
+        ${
+          Array.isArray(goal.links) &&
+          goal.links.length
 
-      <h3>
-        🎯 What To Work On
-      </h3>
-
-      ${
-        tasks.length
-        ?
-        tasks.map(
-          task=>`
-
-            <div class="task-item">
-
-              <input
-                type="checkbox"
-                ${
-                  task.completed
-                  ?
-                  "checked"
-                  :
-                  ""
-                }
-                onchange="
-                  toggleDailyTask(
-                    '${escapeAttribute(goal.title)}',
-                    ${task.id}
-                  )
-                "
-              >
-
-              <div>
-
-                <strong>
-                  ${escapeHtml(
-                    task.title
-                  )}
-                </strong>
-
-              </div>
-
-            </div>
+          ?
 
           `
-        ).join("")
-        :
-        `
-          <div class="empty">
-            No tasks yet.
-          </div>
-        `
-      }
+            <div class="links">
+
+              ${goal.links.map(
+                link=>`
+
+                  <a
+                    href="${escapeAttribute(link[1])}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🔗
+                    ${escapeHtml(link[0])}
+                  </a>
+
+                `
+              ).join("")}
+
+            </div>
+          `
+
+          :
+
+          `
+            <div class="empty">
+              No websites added to this goal yet.
+              Add them from All Goals.
+            </div>
+          `
+        }
+
+      </div>
 
     </div>
 
@@ -2810,67 +2477,95 @@ function renderActiveGoal(){
 
 
 /* =========================
-   DAILY TASKS
-========================= */
-
-function getTasksForGoal(title){
-
-  if(!state.dailyTasks[title]){
-
-    const defaults =
-      DEFAULT_DAILY_TASKS[title]
-      ||
-      [];
-
-
-    state.dailyTasks[title] =
-      defaults.map(
-        (task,index)=>({
-
-          id:
-            Date.now() +
-            index,
-
-          title:task,
-
-          completed:false
-
-        })
-      );
-
-
-    saveState();
-
-  }
-
-
-  return state.dailyTasks[title];
-
-}
-
-
-/* =========================
-   PREPARE DAILY PAGE
+   DAILY SCHEDULE
 ========================= */
 
 function prepareDailyPage(){
 
+  const dateInput =
+    document.getElementById(
+      "dailyDate"
+    );
+
+
+  if(!dateInput)return;
+
+
+  if(!dateInput.value){
+
+    const today =
+      new Date();
+
+
+    const year =
+      today.getFullYear();
+
+
+    const month =
+      String(
+        today.getMonth()+1
+      ).padStart(2,"0");
+
+
+    const day =
+      String(
+        today.getDate()
+      ).padStart(2,"0");
+
+
+    dateInput.value =
+      `${year}-${month}-${day}`;
+
+  }
+
+
+  renderDailySchedule();
+
+}
+
+
+function getDailyTasksForDate(date){
+
+  if(!state.dailyTasks[date]){
+
+    state.dailyTasks[date]=[];
+
+  }
+
+
+  return state.dailyTasks[date];
+
+}
+
+
+function renderDailySchedule(){
+
   const box =
     document.getElementById(
-      "dailyScheduleContent"
+      "dailyContent"
     );
 
 
-  if(!box)return;
+  const date =
+    document.getElementById(
+      "dailyDate"
+    )?.value;
 
 
-  const goal =
+  if(!box || !date)return;
+
+
+  /*
+    ALWAYS find the saved active goal.
+  */
+
+  const activeGoal =
     state.goals.find(
-      item=>item.active===true
+      goal=>goal.active===true
     );
 
 
-  if(!goal){
+  if(!activeGoal){
 
     box.innerHTML = `
 
@@ -2881,7 +2576,8 @@ function prepareDailyPage(){
         </h3>
 
         <p>
-          Select an active goal first.
+          Go to All Goals and select
+          ⭐ Make Active.
         </p>
 
       </div>
@@ -2893,120 +2589,194 @@ function prepareDailyPage(){
   }
 
 
-  const tasks =
-    getTasksForGoal(
-      goal.title
-    );
+  let tasks =
+    getDailyTasksForDate(date);
+
+
+  /*
+    Real Estate gets its original
+    daily schedule with all links.
+  */
+
+  if(
+    activeGoal.type==="realestate" &&
+    tasks.length===0
+  ){
+
+    tasks =
+      REAL_ESTATE_TASKS.map(
+        (task,index)=>({
+
+          id:
+            "daily_" +
+            date +
+            "_" +
+            index,
+
+          title:
+            task.title,
+
+          links:
+            task.links,
+
+          completed:false
+
+        })
+      );
+
+
+    state.dailyTasks[date]=tasks;
+
+    saveState();
+
+  }
+
+
+  if(tasks.length===0){
+
+    box.innerHTML = `
+
+      <div class="notice">
+
+        <h3>
+          ⭐ ${escapeHtml(
+            activeGoal.title
+          )}
+        </h3>
+
+        <p>
+          Daily Schedule for
+          ${escapeHtml(date)}
+        </p>
+
+      </div>
+
+
+      <div class="button-row">
+
+        <button
+          class="btn"
+          onclick="addDailyTask()"
+        >
+          ➕ Add Daily Task
+        </button>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
 
 
   box.innerHTML = `
 
-    <div class="focus-box">
+    <div class="notice">
 
-      <h2>
-        ⭐ Today's Focus:
-        ${escapeHtml(
-          goal.title
+      <h3>
+        ⭐ ${escapeHtml(
+          activeGoal.title
         )}
-      </h2>
+      </h3>
 
       <p>
-        This schedule changes according
-        to the active goal.
+        Daily Schedule for
+        ${escapeHtml(date)}
       </p>
 
     </div>
 
 
-    <div class="card">
+    ${tasks.map(
+      (task,index)=>`
 
-      <h3>
-        📝 Today's Goal Tasks
-      </h3>
+        <div class="goal-card">
 
-      ${
-        tasks.length
-        ?
-        tasks.map(
-          task=>`
+          <div class="task-item">
 
-            <div class="task-item">
+            <input
+              type="checkbox"
+              ${
+                task.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                toggleDailyTask(
+                  '${date}',
+                  ${index}
+                )
+              "
+            >
 
-              <input
-                type="checkbox"
-                ${
-                  task.completed
-                  ?
-                  "checked"
-                  :
-                  ""
-                }
-                onchange="
-                  toggleDailyTask(
-                    '${escapeAttribute(goal.title)}',
-                    ${task.id}
-                  )
-                "
-              >
 
-              <div style="flex:1;">
+            <div style="flex:1">
 
-                <strong>
-                  ${escapeHtml(
-                    task.title
-                  )}
-                </strong>
+              <strong>
+                ${escapeHtml(
+                  task.title
+                )}
+              </strong>
 
-              </div>
 
-              <button
-                class="btn btn-danger"
-                onclick="
-                  deleteDailyTask(
-                    '${escapeAttribute(goal.title)}',
-                    ${task.id}
-                  )
-                "
-              >
-                🗑️
-              </button>
+              ${
+                task.links &&
+                task.links.length
+                ?
+                `
+                  <div class="links">
+
+                    ${task.links.map(
+                      link=>`
+
+                        <a
+                          href="${escapeAttribute(link[1])}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          🔗
+                          ${escapeHtml(
+                            link[0]
+                          )}
+                        </a>
+
+                      `
+                    ).join("")}
+
+                  </div>
+                `
+                :
+                ""
+              }
 
             </div>
 
-          `
-        ).join("")
-        :
-        `
-          <div class="empty">
-            No daily tasks.
           </div>
-        `
-      }
 
-    </div>
+        </div>
+
+      `
+    ).join("")}
 
 
-    <div class="card">
-
-      <h3>
-        ➕ Add Task To Today's Goal
-      </h3>
-
-      <input
-        id="newDailyTask"
-        type="text"
-        placeholder="Enter a task"
-      >
+    <div class="button-row">
 
       <button
         class="btn"
+        onclick="addDailyTask()"
+      >
+        ➕ Add Daily Task
+      </button>
+
+
+      <button
+        class="btn btn-danger"
         onclick="
-          addDailyTask(
-            '${escapeAttribute(goal.title)}'
-          )
+          clearDailyTasks('${date}')
         "
       >
-        ➕ Add Task
+        🗑️ Clear Daily Tasks
       </button>
 
     </div>
@@ -3016,47 +2786,68 @@ function prepareDailyPage(){
 }
 
 
-/* =========================
-   ADD DAILY TASK
-========================= */
+function toggleDailyTask(
+  date,
+  index
+){
 
-function addDailyTask(goalTitle){
+  if(!state.dailyTasks[date])
+    return;
 
-  const input =
+
+  if(!state.dailyTasks[date][index])
+    return;
+
+
+  state.dailyTasks[date][index].completed =
+    !state.dailyTasks[date][index].completed;
+
+
+  saveState();
+
+  renderDailySchedule();
+
+  renderProgress();
+
+}
+
+
+function addDailyTask(){
+
+  const date =
     document.getElementById(
-      "newDailyTask"
-    );
+      "dailyDate"
+    ).value;
 
 
-  if(!input)return;
+  if(!date)return;
 
 
   const title =
-    input.value.trim();
-
-
-  if(!title){
-
-    alert(
-      "Enter a task first."
+    prompt(
+      "Enter daily task:"
     );
 
-    return;
+
+  if(!title)return;
+
+
+  if(!state.dailyTasks[date]){
+
+    state.dailyTasks[date]=[];
 
   }
 
 
-  const tasks =
-    getTasksForGoal(
-      goalTitle
-    );
+  state.dailyTasks[date].push({
 
-
-  tasks.push({
-
-    id:Date.now(),
+    id:
+      "daily_" +
+      Date.now(),
 
     title:title,
+
+    links:[],
 
     completed:false
 
@@ -3065,137 +2856,67 @@ function addDailyTask(goalTitle){
 
   saveState();
 
-  prepareDailyPage();
-
-  renderActiveGoal();
+  renderDailySchedule();
 
 }
 
 
-/* =========================
-   TOGGLE DAILY TASK
-========================= */
+function clearDailyTasks(date){
 
-function toggleDailyTask(
-  goalTitle,
-  taskId
-){
-
-  const tasks =
-    getTasksForGoal(
-      goalTitle
-    );
-
-
-  const task =
-    tasks.find(
-      item=>item.id===taskId
-    );
-
-
-  if(!task)return;
-
-
-  task.completed =
-    !task.completed;
-
-
-  saveState();
-
-  prepareDailyPage();
-
-  renderActiveGoal();
-
-  renderProgress();
-
-}
-
-
-/* =========================
-   DELETE DAILY TASK
-========================= */
-
-function deleteDailyTask(
-  goalTitle,
-  taskId
-){
-
-  if(!confirm(
-    "Delete this task?"
-  )){
+  if(
+    !confirm(
+      "Clear all daily tasks for this date?"
+    )
+  ){
 
     return;
 
   }
 
 
-  const tasks =
-    getTasksForGoal(
-      goalTitle
-    );
-
-
-  state.dailyTasks[goalTitle] =
-    tasks.filter(
-      item=>item.id!==taskId
-    );
-
+  delete state.dailyTasks[date];
 
   saveState();
 
-  prepareDailyPage();
-
-  renderActiveGoal();
-
-  renderProgress();
+  renderDailySchedule();
 
 }
 
 
 /* =========================
-   APPOINTMENTS
+   PERSONAL
 ========================= */
 
 function addAppointment(){
 
-  const title =
-    document
-      .getElementById(
-        "appointmentTitle"
-      )
-      .value
-      .trim();
-
-
   const date =
-    document
-      .getElementById(
-        "appointmentDate"
-      )
-      .value;
+    document.getElementById(
+      "appointmentDate"
+    ).value;
 
 
   const time =
-    document
-      .getElementById(
-        "appointmentTime"
-      )
-      .value;
+    document.getElementById(
+      "appointmentTime"
+    ).value;
+
+
+  const title =
+    document.getElementById(
+      "appointmentTitle"
+    ).value.trim();
 
 
   const notes =
-    document
-      .getElementById(
-        "appointmentNotes"
-      )
-      .value
-      .trim();
+    document.getElementById(
+      "appointmentNotes"
+    ).value.trim();
 
 
   if(!title){
 
     alert(
-      "Please enter an appointment."
+      "Please enter the appointment."
     );
 
     return;
@@ -3207,13 +2928,15 @@ function addAppointment(){
 
     id:Date.now(),
 
-    title:title,
+    date,
 
-    date:date,
+    time,
 
-    time:time,
+    title,
 
-    notes:notes
+    notes,
+
+    completed:false
 
   });
 
@@ -3221,42 +2944,20 @@ function addAppointment(){
   saveState();
 
 
-  document
-    .getElementById(
-      "appointmentTitle"
-    )
-    .value="";
+  document.getElementById(
+    "appointmentTitle"
+  ).value="";
 
 
-  document
-    .getElementById(
-      "appointmentDate"
-    )
-    .value="";
-
-
-  document
-    .getElementById(
-      "appointmentTime"
-    )
-    .value="";
-
-
-  document
-    .getElementById(
-      "appointmentNotes"
-    )
-    .value="";
+  document.getElementById(
+    "appointmentNotes"
+  ).value="";
 
 
   renderPersonal();
 
 }
 
-
-/* =========================
-   DELETE APPOINTMENT
-========================= */
 
 function deleteAppointment(id){
 
@@ -3273,228 +2974,12 @@ function deleteAppointment(id){
 }
 
 
-/* =========================
-   PERSONAL TASK
-   ADD
-========================= */
-
-function addPersonalTask(){
-
-  const title =
-    document
-      .getElementById(
-        "personalTaskTitle"
-      )
-      .value
-      .trim();
-
-
-  const date =
-    document
-      .getElementById(
-        "personalTaskDate"
-      )
-      .value;
-
-
-  const notes =
-    document
-      .getElementById(
-        "personalTaskNotes"
-      )
-      .value
-      .trim();
-
-
-  const link =
-    document
-      .getElementById(
-        "personalTaskLink"
-      )
-      .value
-      .trim();
-
-
-  if(!title){
-
-    alert(
-      "Please enter a personal task."
-    );
-
-    return;
-
-  }
-
-
-  state.personalTasks.push({
-
-    id:Date.now(),
-
-    title:title,
-
-    date:date,
-
-    notes:notes,
-
-    link:link,
-
-    completed:false
-
-  });
-
-
-  saveState();
-
-
-  document
-    .getElementById(
-      "personalTaskTitle"
-    )
-    .value="";
-
-
-  document
-    .getElementById(
-      "personalTaskDate"
-    )
-    .value="";
-
-
-  document
-    .getElementById(
-      "personalTaskNotes"
-    )
-    .value="";
-
-
-  document
-    .getElementById(
-      "personalTaskLink"
-    )
-    .value="";
-
-
-  renderPersonal();
-
-}
-
-
-/* =========================
-   PERSONAL TASK
-   DELETE
-========================= */
-
-function deletePersonalTask(index){
-
-  if(
-    index < 0 ||
-    index >= state.personalTasks.length
-  ){
-
-    return;
-
-  }
-
-
-  state.personalTasks.splice(
-    index,
-    1
-  );
-
-
-  saveState();
-
-  renderPersonal();
-
-}
-
-
-/* =========================
-   PERSONAL TASK
-   EDIT
-========================= */
-
-function editPersonalTask(index){
+function toggleAppointment(id){
 
   const item =
-    state.personalTasks[index];
-
-
-  if(!item)return;
-
-
-  const title =
-    prompt(
-      "Personal Task:",
-      item.title || ""
+    state.appointments.find(
+      item=>item.id===id
     );
-
-
-  if(title===null)return;
-
-
-  const date =
-    prompt(
-      "Date:",
-      item.date || ""
-    );
-
-
-  if(date===null)return;
-
-
-  const notes =
-    prompt(
-      "Notes:",
-      item.notes || ""
-    );
-
-
-  if(notes===null)return;
-
-
-  const link =
-    prompt(
-      "Link:",
-      item.link || ""
-    );
-
-
-  if(link===null)return;
-
-
-  item.title =
-    title.trim() || item.title;
-
-
-  item.date =
-    date.trim();
-
-
-  item.notes =
-    notes.trim();
-
-
-  item.link =
-    link.trim();
-
-
-  saveState();
-
-  renderPersonal();
-
-}
-
-
-/* =========================
-   PERSONAL TASK
-   TOGGLE
-========================= */
-
-function togglePersonalTask(index){
-
-  const item =
-    state.personalTasks[index];
 
 
   if(!item)return;
@@ -3511,45 +2996,170 @@ function togglePersonalTask(index){
 }
 
 
-/* =========================
-   ERRANDS
-========================= */
+function addPersonalTask(){
+
+  const title =
+    document.getElementById(
+      "personalTaskTitle"
+    ).value.trim();
+
+
+  const date =
+    document.getElementById(
+      "personalTaskDate"
+    ).value;
+
+
+  const notes =
+    document.getElementById(
+      "personalTaskNotes"
+    ).value.trim();
+
+
+  const link =
+    document.getElementById(
+      "personalTaskLink"
+    ).value.trim();
+
+
+  if(!title){
+
+    alert(
+      "Please enter a task."
+    );
+
+    return;
+
+  }
+
+
+  state.personalTasks.push({
+
+    id:Date.now(),
+
+    title,
+
+    date,
+
+    notes,
+
+    link,
+
+    completed:false
+
+  });
+
+
+  saveState();
+
+
+  document.getElementById(
+    "personalTaskTitle"
+  ).value="";
+
+
+  document.getElementById(
+    "personalTaskDate"
+  ).value="";
+
+
+  document.getElementById(
+    "personalTaskNotes"
+  ).value="";
+
+
+  document.getElementById(
+    "personalTaskLink"
+  ).value="";
+
+
+  renderPersonal();
+
+}
+
+
+function deletePersonalTask(index){
+
+  if(index < 0 || index >= state.personalTasks.length)return;
+
+  state.personalTasks.splice(index,1);
+
+  saveState();
+
+  renderPersonal();
+
+}
+
+
+function editPersonalTask(index){
+
+  const item = state.personalTasks[index];
+
+  if(!item)return;
+
+  const title = prompt("Task:",item.title || "");
+  if(title===null)return;
+
+  const date = prompt("Date:",item.date || "");
+  if(date===null)return;
+
+  const notes = prompt("Notes:",item.notes || "");
+  if(notes===null)return;
+
+  const link = prompt("Optional Link:",item.link || "");
+  if(link===null)return;
+
+  item.title = title.trim() || item.title;
+  item.date = date.trim();
+  item.notes = notes.trim();
+  item.link = link.trim();
+
+  saveState();
+
+  renderPersonal();
+
+}
+
+
+function togglePersonalTask(index){
+
+  const item = state.personalTasks[index];
+
+  if(!item)return;
+
+  item.completed = !item.completed;
+
+  saveState();
+
+  renderPersonal();
+
+}
+
 
 function addErrand(){
 
   const title =
-    document
-      .getElementById(
-        "errandTitle"
-      )
-      .value
-      .trim();
+    document.getElementById(
+      "errandTitle"
+    ).value.trim();
 
 
   const date =
-    document
-      .getElementById(
-        "errandDate"
-      )
-      .value;
+    document.getElementById(
+      "errandDate"
+    ).value;
 
 
   const notes =
-    document
-      .getElementById(
-        "errandNotes"
-      )
-      .value
-      .trim();
+    document.getElementById(
+      "errandNotes"
+    ).value.trim();
 
 
   const link =
-    document
-      .getElementById(
-        "errandLink"
-      )
-      .value
-      .trim();
+    document.getElementById(
+      "errandLink"
+    ).value.trim();
 
 
   if(!title){
@@ -3567,13 +3177,13 @@ function addErrand(){
 
     id:Date.now(),
 
-    title:title,
+    title,
 
-    date:date,
+    date,
 
-    notes:notes,
+    notes,
 
-    link:link,
+    link,
 
     completed:false
 
@@ -3583,42 +3193,30 @@ function addErrand(){
   saveState();
 
 
-  document
-    .getElementById(
-      "errandTitle"
-    )
-    .value="";
+  document.getElementById(
+    "errandTitle"
+  ).value="";
 
 
-  document
-    .getElementById(
-      "errandDate"
-    )
-    .value="";
+  document.getElementById(
+    "errandDate"
+  ).value="";
 
 
-  document
-    .getElementById(
-      "errandNotes"
-    )
-    .value="";
+  document.getElementById(
+    "errandNotes"
+  ).value="";
 
 
-  document
-    .getElementById(
-      "errandLink"
-    )
-    .value="";
+  document.getElementById(
+    "errandLink"
+  ).value="";
 
 
   renderPersonal();
 
 }
 
-
-/* =========================
-   DELETE ERRAND
-========================= */
 
 function deleteErrand(id){
 
@@ -3634,10 +3232,6 @@ function deleteErrand(id){
 
 }
 
-
-/* =========================
-   TOGGLE ERRAND
-========================= */
 
 function toggleErrand(id){
 
@@ -3661,10 +3255,6 @@ function toggleErrand(id){
 }
 
 
-/* =========================
-   RENDER PERSONAL
-========================= */
-
 function renderPersonal(){
 
   renderAppointments();
@@ -3675,10 +3265,6 @@ function renderPersonal(){
 
 }
 
-
-/* =========================
-   RENDER APPOINTMENTS
-========================= */
 
 function renderAppointments(){
 
@@ -3707,53 +3293,58 @@ function renderAppointments(){
 
         <div class="appointment-card">
 
-          <h3>
-            📅
+          <div class="checkbox-line">
+
+            <input
+              type="checkbox"
+              ${
+                item.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                toggleAppointment(
+                  ${item.id}
+                )
+              "
+            >
+
+            <strong>
+              ${escapeHtml(
+                item.title
+              )}
+            </strong>
+
+          </div>
+
+
+          <p>
+
             ${escapeHtml(
-              item.title
+              item.date || ""
             )}
-          </h3>
 
-
-          ${
-            item.date
-            ?
-            `<p>
-              📆
-              ${escapeHtml(
-                item.date
-              )}
-            </p>`
-            :
-            ""
-          }
-
-
-          ${
-            item.time
-            ?
-            `<p>
-              ⏰
-              ${escapeHtml(
+            ${
+              item.time
+              ?
+              " • " +
+              escapeHtml(
                 item.time
-              )}
-            </p>`
-            :
-            ""
-          }
+              )
+              :
+              ""
+            }
+
+          </p>
 
 
-          ${
-            item.notes
-            ?
-            `<p>
-              ${escapeHtml(
-                item.notes
-              )}
-            </p>`
-            :
-            ""
-          }
+          <p>
+
+            ${escapeHtml(
+              item.notes || ""
+            )}
+
+          </p>
 
 
           <button
@@ -3775,150 +3366,49 @@ function renderAppointments(){
 }
 
 
-/* =========================
-   RENDER PERSONAL TASKS
-========================= */
-
 function renderPersonalTasks(){
 
-  const box =
-    document.getElementById(
-      "personalTasksList"
-    );
-
+  const box = document.getElementById("personalTasksList");
 
   if(!box)return;
 
-
   if(!state.personalTasks.length){
 
-    box.innerHTML =
-      '<div class="empty">No personal tasks added yet.</div>';
+    box.innerHTML = '<div class="empty">No personal tasks added yet.</div>';
 
     return;
 
   }
 
+  box.innerHTML = state.personalTasks.map((item,index)=>`
 
-  box.innerHTML =
-    state.personalTasks.map(
-      (item,index)=>`
+    <div class="personal-card">
 
-        <div class="personal-card">
+      <div class="checkbox-line">
 
-          <div class="checkbox-line">
+        <input type="checkbox" ${item.completed ? "checked" : ""} onchange="togglePersonalTask(${index})">
 
-            <input
-              type="checkbox"
-              ${
-                item.completed
-                ?
-                "checked"
-                :
-                ""
-              }
-              onchange="
-                togglePersonalTask(
-                  ${index}
-                )
-              "
-            >
+        <strong>${escapeHtml(item.title)}</strong>
 
-            <strong>
-              ${escapeHtml(
-                item.title
-              )}
-            </strong>
+      </div>
 
-          </div>
+      ${item.date ? `<p>📅 ${escapeHtml(item.date)}</p>` : ""}
 
+      ${item.notes ? `<p>${escapeHtml(item.notes)}</p>` : ""}
 
-          ${
-            item.date
-            ?
-            `<p>
-              📅
-              ${escapeHtml(
-                item.date
-              )}
-            </p>`
-            :
-            ""
-          }
+      ${item.link ? `<p><a href="${escapeAttribute(normalizeLink(item.link))}" target="_blank" rel="noopener noreferrer">🔗 Open Link</a></p>` : ""}
 
+      <div class="button-row">
+        <button class="btn btn-light" onclick="editPersonalTask(${index})">✏️ Edit</button>
+        <button class="btn btn-danger" onclick="deletePersonalTask(${index})">🗑️ Delete</button>
+      </div>
 
-          ${
-            item.notes
-            ?
-            `<p>
-              ${escapeHtml(
-                item.notes
-              )}
-            </p>`
-            :
-            ""
-          }
+    </div>
 
-
-          ${
-            item.link
-            ?
-            `
-              <p>
-
-                <a
-                  href="${escapeAttribute(item.link)}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  🔗 Open Link
-                </a>
-
-              </p>
-            `
-            :
-            ""
-          }
-
-
-          <div class="button-row">
-
-            <button
-              class="btn btn-light"
-              onclick="
-                editPersonalTask(
-                  ${index}
-                )
-              "
-            >
-              ✏️ Edit
-            </button>
-
-
-            <button
-              class="btn btn-danger"
-              onclick="
-                deletePersonalTask(
-                  ${index}
-                )
-              "
-            >
-              🗑️ Delete
-            </button>
-
-          </div>
-
-        </div>
-
-      `
-    ).join("");
+  `).join("");
 
 }
 
-
-/* =========================
-   RENDER ERRANDS
-========================= */
 
 function renderErrands(){
 
@@ -3953,10 +3443,8 @@ function renderErrands(){
               type="checkbox"
               ${
                 item.completed
-                ?
-                "checked"
-                :
-                ""
+                ? "checked"
+                : ""
               }
               onchange="
                 toggleErrand(
@@ -4101,10 +3589,6 @@ function renderRoutine(){
 }
 
 
-/* =========================
-   SAVE ROUTINE
-========================= */
-
 function saveRoutine(){
 
   if(!state.routine){
@@ -4159,248 +3643,6 @@ function saveRoutine(){
 
 
 /* =========================
-   POMODORO
-========================= */
-
-let pomodoroInterval = null;
-
-
-function renderPomodoro(){
-
-  const display =
-    document.getElementById(
-      "pomodoroDisplay"
-    );
-
-
-  const input =
-    document.getElementById(
-      "pomodoroMinutes"
-    );
-
-
-  if(!display)return;
-
-
-  if(input){
-
-    input.value =
-      state.pomodoro.minutes || 25;
-
-  }
-
-
-  const totalSeconds =
-    Math.max(
-      0,
-      state.pomodoro.secondsRemaining || 0
-    );
-
-
-  const minutes =
-    Math.floor(
-      totalSeconds / 60
-    );
-
-
-  const seconds =
-    totalSeconds % 60;
-
-
-  display.textContent =
-    `${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
-
-}
-
-
-function setPomodoroMinutes(){
-
-  const input =
-    document.getElementById(
-      "pomodoroMinutes"
-    );
-
-
-  if(!input)return;
-
-
-  let minutes =
-    parseInt(
-      input.value,
-      10
-    );
-
-
-  if(
-    isNaN(minutes) ||
-    minutes < 1
-  ){
-
-    minutes=1;
-
-  }
-
-
-  if(minutes > 120){
-
-    minutes=120;
-
-  }
-
-
-  state.pomodoro.minutes =
-    minutes;
-
-
-  state.pomodoro.secondsRemaining =
-    minutes * 60;
-
-
-  state.pomodoro.running=false;
-
-
-  if(pomodoroInterval){
-
-    clearInterval(
-      pomodoroInterval
-    );
-
-    pomodoroInterval=null;
-
-  }
-
-
-  saveState();
-
-  renderPomodoro();
-
-}
-
-
-function startPomodoro(){
-
-  if(state.pomodoro.running){
-
-    return;
-
-  }
-
-
-  if(
-    !state.pomodoro.secondsRemaining ||
-    state.pomodoro.secondsRemaining <= 0
-  ){
-
-    state.pomodoro.secondsRemaining =
-      state.pomodoro.minutes * 60;
-
-  }
-
-
-  state.pomodoro.running=true;
-
-
-  saveState();
-
-  renderPomodoro();
-
-
-  pomodoroInterval =
-    setInterval(
-      ()=>{
-
-        if(
-          state.pomodoro.secondsRemaining > 0
-        ){
-
-          state.pomodoro.secondsRemaining--;
-
-          saveState();
-
-          renderPomodoro();
-
-        }
-
-
-        if(
-          state.pomodoro.secondsRemaining <= 0
-        ){
-
-          clearInterval(
-            pomodoroInterval
-          );
-
-          pomodoroInterval=null;
-
-          state.pomodoro.running=false;
-
-          saveState();
-
-          renderPomodoro();
-
-          alert(
-            "Pomodoro complete! 🍅 Great job! 🙏"
-          );
-
-        }
-
-      },
-      1000
-    );
-
-}
-
-
-function pausePomodoro(){
-
-  if(pomodoroInterval){
-
-    clearInterval(
-      pomodoroInterval
-    );
-
-    pomodoroInterval=null;
-
-  }
-
-
-  state.pomodoro.running=false;
-
-  saveState();
-
-  renderPomodoro();
-
-}
-
-
-function resetPomodoro(){
-
-  if(pomodoroInterval){
-
-    clearInterval(
-      pomodoroInterval
-    );
-
-    pomodoroInterval=null;
-
-  }
-
-
-  state.pomodoro.running=false;
-
-
-  state.pomodoro.secondsRemaining =
-    state.pomodoro.minutes * 60;
-
-
-  saveState();
-
-  renderPomodoro();
-
-}
-
-
-/* =========================
    PROGRESS
 ========================= */
 
@@ -4438,24 +3680,22 @@ function renderProgress(){
 
   Object.values(
     state.dailyTasks
-  ).forEach(
-    tasks=>{
+  ).forEach(tasks=>{
 
-      if(!Array.isArray(tasks))
-        return;
-
-
-      dailyTotal +=
-        tasks.length;
+    if(!Array.isArray(tasks))
+      return;
 
 
-      dailyCompleted +=
-        tasks.filter(
-          task=>task.completed
-        ).length;
+    dailyTotal +=
+      tasks.length;
 
-    }
-  );
+
+    dailyCompleted +=
+      tasks.filter(
+        task=>task.completed
+      ).length;
+
+  });
 
 
   const goalPercent =
@@ -4595,13 +3835,11 @@ function renderProgress(){
 
         `
           <p>
-
             <strong>
               ${escapeHtml(
                 activeGoal.title
               )}
             </strong>
-
           </p>
         `
 
@@ -4683,6 +3921,19 @@ function escapeHtml(value){
    ESCAPE ATTRIBUTE
 ========================= */
 
+function normalizeLink(value){
+
+  const link = String(value || "").trim();
+
+  if(!link)return "";
+
+  if(/^https?:\/\//i.test(link))return link;
+
+  return "https://" + link;
+
+}
+
+
 function escapeAttribute(value){
 
   return String(
@@ -4745,8 +3996,6 @@ function renderAll(){
   renderPersonal();
 
   renderRoutine();
-
-  renderPomodoro();
 
 }
 
