@@ -654,6 +654,39 @@
 
     <div id="goalsList"></div>
 
+    <div class="card">
+      <h3>➕ Add Your Own Goal</h3>
+
+      <label for="customGoalTitle">Goal</label>
+      <input
+        type="text"
+        id="customGoalTitle"
+        placeholder="Enter a goal not listed above"
+      >
+
+      <label for="customGoalCategory">Category</label>
+      <input
+        type="text"
+        id="customGoalCategory"
+        placeholder="Example: Business, Personal, Education"
+      >
+
+      <label for="customGoalNotes">Notes</label>
+      <textarea
+        id="customGoalNotes"
+        placeholder="Optional notes about this goal"
+      ></textarea>
+
+      <div class="button-row">
+        <button
+          class="btn"
+          onclick="addCustomGoal()"
+        >
+          ➕ Add Goal
+        </button>
+      </div>
+    </div>
+
   </div>
 
 </section>
@@ -688,6 +721,49 @@
 
     <div class="notice">
       Use this page to execute the work for your active goal.
+    </div>
+
+    <div class="card">
+      <h3>🍅 Pomodoro Timer</h3>
+
+      <div class="focus-box" style="text-align:center;">
+        <div id="pomodoroDisplay" style="font-size:42px;font-weight:bold;">25:00</div>
+        <div id="pomodoroStatus" style="font-weight:bold;margin-top:5px;">
+          Focus
+        </div>
+      </div>
+
+      <label for="pomodoroMinutes">Focus Minutes</label>
+      <input
+        type="number"
+        id="pomodoroMinutes"
+        min="1"
+        max="120"
+        value="25"
+      >
+
+      <div class="button-row">
+        <button
+          class="btn"
+          onclick="startPomodoro()"
+        >
+          ▶️ Start
+        </button>
+
+        <button
+          class="btn btn-light"
+          onclick="pausePomodoro()"
+        >
+          ⏸️ Pause
+        </button>
+
+        <button
+          class="btn btn-danger"
+          onclick="resetPomodoro()"
+        >
+          🔄 Reset
+        </button>
+      </div>
     </div>
 
     <label for="dailyDate">
@@ -1103,6 +1179,12 @@ let state = {
   vision:{
     weight175:false,
     weight155:false
+  },
+
+  pomodoro:{
+    minutes:25,
+    seconds:1500,
+    running:false
   }
 
 };
@@ -1510,6 +1592,27 @@ function loadState(){
 
   }
 
+  if(!state.pomodoro ||
+     typeof state.pomodoro!=="object"){
+
+    state.pomodoro={
+      minutes:25,
+      seconds:1500,
+      running:false
+    };
+
+  }
+
+  if(typeof state.pomodoro.minutes!=="number"){
+    state.pomodoro.minutes=25;
+  }
+
+  if(typeof state.pomodoro.seconds!=="number"){
+    state.pomodoro.seconds=state.pomodoro.minutes*60;
+  }
+
+  state.pomodoro.running=false;
+
 
   /*
     IMPORTANT:
@@ -1621,6 +1724,7 @@ function showPage(pageId,button){
 
   if(pageId==="daily"){
     prepareDailyPage();
+    renderPomodoro();
   }
 
 
@@ -1999,8 +2103,93 @@ function renderGoalsList(){
 
 
 /* =========================
+   ADD CUSTOM GOAL
+========================= */
+
+function addCustomGoal(){
+
+  const titleInput =
+    document.getElementById("customGoalTitle");
+
+  const categoryInput =
+    document.getElementById("customGoalCategory");
+
+  const notesInput =
+    document.getElementById("customGoalNotes");
+
+  if(!titleInput)return;
+
+  const title =
+    titleInput.value.trim();
+
+  const category =
+    categoryInput
+      ? categoryInput.value.trim()
+      : "";
+
+  const notes =
+    notesInput
+      ? notesInput.value.trim()
+      : "";
+
+  if(!title){
+
+    alert("Please enter your goal.");
+
+    return;
+
+  }
+
+  state.goals.push({
+
+    id:
+      "goal_" +
+      Date.now(),
+
+    title:title,
+
+    category:
+      category || "Custom",
+
+    type:"standard",
+
+    notes:notes,
+
+    links:[],
+
+    active:false,
+
+    completed:false,
+
+    useLater:false,
+
+    startDate:""
+
+  });
+
+  saveState();
+
+  titleInput.value="";
+
+  if(categoryInput){
+    categoryInput.value="";
+  }
+
+  if(notesInput){
+    notesInput.value="";
+  }
+
+  renderAll();
+
+  alert("Your custom goal was added! 🎯");
+
+}
+
+
+/* =========================
    ADD LINK TO ANY GOAL
 ========================= */
+
 
 function addGoalLink(goalId){
 
@@ -2884,8 +3073,210 @@ function clearDailyTasks(date){
 
 
 /* =========================
+   POMODORO TIMER
+========================= */
+
+let pomodoroInterval=null;
+
+function renderPomodoro(){
+
+  const display =
+    document.getElementById("pomodoroDisplay");
+
+  const status =
+    document.getElementById("pomodoroStatus");
+
+  const minutesInput =
+    document.getElementById("pomodoroMinutes");
+
+  if(!display)return;
+
+  const totalSeconds =
+    Math.max(
+      0,
+      Number(
+        state.pomodoro?.seconds ?? 1500
+      )
+    );
+
+  const minutes =
+    Math.floor(totalSeconds/60);
+
+  const seconds =
+    totalSeconds%60;
+
+  display.textContent =
+    String(minutes).padStart(2,"0") +
+    ":" +
+    String(seconds).padStart(2,"0");
+
+  if(status){
+
+    status.textContent =
+      state.pomodoro?.running
+      ? "Focus"
+      : totalSeconds===0
+        ? "Complete"
+        : "Paused";
+
+  }
+
+  if(minutesInput &&
+     document.activeElement!==minutesInput){
+
+    minutesInput.value =
+      state.pomodoro?.minutes ?? 25;
+
+  }
+
+}
+
+function startPomodoro(){
+
+  if(pomodoroInterval)return;
+
+  const minutesInput =
+    document.getElementById("pomodoroMinutes");
+
+  let minutes =
+    Number(
+      minutesInput?.value
+    );
+
+  if(!Number.isFinite(minutes)){
+    minutes=25;
+  }
+
+  minutes =
+    Math.min(
+      120,
+      Math.max(
+        1,
+        Math.floor(minutes)
+      )
+    );
+
+  if(
+    state.pomodoro.seconds<=0 ||
+    state.pomodoro.minutes!==minutes
+  ){
+
+    state.pomodoro.minutes=minutes;
+    state.pomodoro.seconds=minutes*60;
+
+  }
+
+  state.pomodoro.running=true;
+
+  saveState();
+
+  renderPomodoro();
+
+  pomodoroInterval =
+    setInterval(()=>{
+
+      if(
+        state.pomodoro.seconds<=0
+      ){
+
+        clearInterval(
+          pomodoroInterval
+        );
+
+        pomodoroInterval=null;
+
+        state.pomodoro.running=false;
+
+        saveState();
+
+        renderPomodoro();
+
+        alert("Pomodoro complete! 🍅");
+
+        return;
+
+      }
+
+      state.pomodoro.seconds--;
+
+      saveState();
+
+      renderPomodoro();
+
+    },1000);
+
+}
+
+function pausePomodoro(){
+
+  if(pomodoroInterval){
+
+    clearInterval(
+      pomodoroInterval
+    );
+
+    pomodoroInterval=null;
+
+  }
+
+  state.pomodoro.running=false;
+
+  saveState();
+
+  renderPomodoro();
+
+}
+
+function resetPomodoro(){
+
+  if(pomodoroInterval){
+
+    clearInterval(
+      pomodoroInterval
+    );
+
+    pomodoroInterval=null;
+
+  }
+
+  const minutesInput =
+    document.getElementById("pomodoroMinutes");
+
+  let minutes =
+    Number(
+      minutesInput?.value
+    );
+
+  if(!Number.isFinite(minutes)){
+    minutes=25;
+  }
+
+  minutes =
+    Math.min(
+      120,
+      Math.max(
+        1,
+        Math.floor(minutes)
+      )
+    );
+
+  state.pomodoro={
+    minutes:minutes,
+    seconds:minutes*60,
+    running:false
+  };
+
+  saveState();
+
+  renderPomodoro();
+
+}
+
+
+/* =========================
    PERSONAL
 ========================= */
+
 
 function addAppointment(){
 
@@ -4037,6 +4428,8 @@ function renderAll(){
   renderPersonal();
 
   renderRoutine();
+
+  renderPomodoro();
 
 }
 
