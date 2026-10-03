@@ -497,6 +497,7 @@
 
 </div>
 
+
 <!-- =========================
      MY VISION
 ========================= -->
@@ -1066,11 +1067,6 @@ Go to bed"
 </section>
 
 
-<!-- Firebase Cloud Sync SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-
 <script>
 
 /* =========================
@@ -1411,24 +1407,6 @@ const REAL_ESTATE_TASKS = [
 
 
 /* =========================
-   NORMALIZE STATE
-========================= */
-function normalizeState(){
-  if(!Array.isArray(state.goals))state.goals=[];
-  if(!state.dailyTasks||typeof state.dailyTasks!=="object")state.dailyTasks={};
-  if(!Array.isArray(state.appointments))state.appointments=[];
-  if(!Array.isArray(state.personalTasks))state.personalTasks=[];
-  if(!Array.isArray(state.errands))state.errands=[];
-  if(!state.routine||typeof state.routine!=="object")state.routine={morning:"",afternoon:"",evening:"",night:""};
-  if(typeof state.routine.morning!=="string")state.routine.morning="";
-  if(typeof state.routine.afternoon!=="string")state.routine.afternoon="";
-  if(typeof state.routine.evening!=="string")state.routine.evening="";
-  if(typeof state.routine.night!=="string")state.routine.night="";
-  if(!state.vision||typeof state.vision!=="object")state.vision={weight175:false,weight155:false};
-  state.goals.forEach(goal=>{if(!Array.isArray(goal.links))goal.links=[];});
-}
-
-/* =========================
    LOAD STATE
 ========================= */
 
@@ -1462,7 +1440,92 @@ function loadState(){
   }
 
 
-  normalizeState();
+  if(!Array.isArray(state.goals)){
+    state.goals=[];
+  }
+
+
+  if(!state.dailyTasks ||
+     typeof state.dailyTasks!=="object"){
+
+    state.dailyTasks={};
+
+  }
+
+
+  if(!Array.isArray(state.appointments)){
+    state.appointments=[];
+  }
+
+
+  if(!Array.isArray(state.personalTasks)){
+    state.personalTasks=[];
+  }
+
+
+  if(!Array.isArray(state.errands)){
+    state.errands=[];
+  }
+
+
+  if(!state.routine ||
+     typeof state.routine!=="object"){
+
+    state.routine={
+      morning:"",
+      afternoon:"",
+      evening:"",
+      night:""
+    };
+
+  }
+
+
+  if(typeof state.routine.morning!=="string"){
+    state.routine.morning="";
+  }
+
+
+  if(typeof state.routine.afternoon!=="string"){
+    state.routine.afternoon="";
+  }
+
+
+  if(typeof state.routine.evening!=="string"){
+    state.routine.evening="";
+  }
+
+
+  if(typeof state.routine.night!=="string"){
+    state.routine.night="";
+  }
+
+
+  if(!state.vision){
+
+    state.vision={
+      weight175:false,
+      weight155:false
+    };
+
+  }
+
+
+  /*
+    IMPORTANT:
+    Make sure EVERY existing goal has
+    a links array without deleting any
+    existing links.
+  */
+
+  state.goals.forEach(goal=>{
+
+    if(!Array.isArray(goal.links)){
+      goal.links=[];
+    }
+
+  });
+
 
   if(state.goals.length===0){
 
@@ -1512,14 +1575,12 @@ function loadState(){
    SAVE
 ========================= */
 
-function saveState(syncCloud=true){
+function saveState(){
 
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(state)
   );
-
-  if(syncCloud) scheduleCloudSync();
 
 }
 
@@ -2955,17 +3016,10 @@ function addPersonalTask(){
     ).value.trim();
 
 
-  let link =
+  const link =
     document.getElementById(
       "personalTaskLink"
     ).value.trim();
-
-
-  if(link && !/^https?:\/\//i.test(link)){
-
-    link = "https://" + link;
-
-  }
 
 
   if(!title){
@@ -3026,15 +3080,9 @@ function addPersonalTask(){
 
 function deletePersonalTask(index){
 
-  if(index < 0 || index >= state.personalTasks.length){
-
-    return;
-
-  }
-
+  if(index < 0 || index >= state.personalTasks.length)return;
 
   state.personalTasks.splice(index,1);
-
 
   saveState();
 
@@ -3049,62 +3097,22 @@ function editPersonalTask(index){
 
   if(!item)return;
 
+  const title = prompt("Task:",item.title || "");
+  if(title===null)return;
 
-  const title = prompt(
-    "Task:",
-    item.title || ""
-  );
+  const date = prompt("Date:",item.date || "");
+  if(date===null)return;
 
-  if(title === null)return;
+  const notes = prompt("Notes:",item.notes || "");
+  if(notes===null)return;
 
+  const link = prompt("Optional Link:",item.link || "");
+  if(link===null)return;
 
-  const date = prompt(
-    "Date:",
-    item.date || ""
-  );
-
-  if(date === null)return;
-
-
-  const notes = prompt(
-    "Notes:",
-    item.notes || ""
-  );
-
-  if(notes === null)return;
-
-
-  const link = prompt(
-    "Optional Link:",
-    item.link || ""
-  );
-
-  if(link === null)return;
-
-
-  item.title =
-    title.trim() || item.title;
-
-  item.date =
-    date.trim();
-
-  item.notes =
-    notes.trim();
-
-  item.link =
-    link.trim();
-
-
-  if(
-    item.link &&
-    !/^https?:\/\//i.test(item.link)
-  ){
-
-    item.link =
-      "https://" + item.link;
-
-  }
-
+  item.title = title.trim() || item.title;
+  item.date = date.trim();
+  item.notes = notes.trim();
+  item.link = link.trim();
 
   saveState();
 
@@ -3115,16 +3123,11 @@ function editPersonalTask(index){
 
 function togglePersonalTask(index){
 
-  const item =
-    state.personalTasks[index];
-
+  const item = state.personalTasks[index];
 
   if(!item)return;
 
-
-  item.completed =
-    !item.completed;
-
+  item.completed = !item.completed;
 
   saveState();
 
@@ -3365,135 +3368,44 @@ function renderAppointments(){
 
 function renderPersonalTasks(){
 
-  const box =
-    document.getElementById(
-      "personalTasksList"
-    );
-
+  const box = document.getElementById("personalTasksList");
 
   if(!box)return;
 
-
   if(!state.personalTasks.length){
 
-    box.innerHTML =
-      '<div class="empty">No personal tasks added yet.</div>';
+    box.innerHTML = '<div class="empty">No personal tasks added yet.</div>';
 
     return;
 
   }
 
+  box.innerHTML = state.personalTasks.map((item,index)=>`
 
-  box.innerHTML =
-    state.personalTasks.map(
-      (item,index)=>`
+    <div class="personal-card">
 
-        <div class="personal-card">
+      <div class="checkbox-line">
 
-          <div class="checkbox-line">
+        <input type="checkbox" ${item.completed ? "checked" : ""} onchange="togglePersonalTask(${index})">
 
-            <input
-              type="checkbox"
-              ${
-                item.completed
-                ? "checked"
-                : ""
-              }
-              onchange="
-                togglePersonalTask(
-                  ${index}
-                )
-              "
-            >
+        <strong>${escapeHtml(item.title)}</strong>
 
-            <strong>
-              ${escapeHtml(
-                item.title
-              )}
-            </strong>
+      </div>
 
-          </div>
+      ${item.date ? `<p>📅 ${escapeHtml(item.date)}</p>` : ""}
 
+      ${item.notes ? `<p>${escapeHtml(item.notes)}</p>` : ""}
 
-          ${
-            item.date
-            ?
-            `<p>
-              📅
-              ${escapeHtml(
-                item.date
-              )}
-            </p>`
-            :
-            ""
-          }
+      ${item.link ? `<p><a href="${escapeAttribute(normalizeLink(item.link))}" target="_blank" rel="noopener noreferrer">🔗 Open Link</a></p>` : ""}
 
+      <div class="button-row">
+        <button class="btn btn-light" onclick="editPersonalTask(${index})">✏️ Edit</button>
+        <button class="btn btn-danger" onclick="deletePersonalTask(${index})">🗑️ Delete</button>
+      </div>
 
-          ${
-            item.notes
-            ?
-            `<p>
-              ${escapeHtml(
-                item.notes
-              )}
-            </p>`
-            :
-            ""
-          }
+    </div>
 
-
-          ${
-            item.link
-            ?
-            `
-              <p>
-
-                <a
-                  href="${escapeAttribute(item.link)}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  🔗 Open Link
-                </a>
-
-              </p>
-            `
-            :
-            ""
-          }
-
-
-          <div class="button-row">
-
-            <button
-              class="btn btn-light"
-              onclick="
-                editPersonalTask(
-                  ${index}
-                )
-              "
-            >
-              ✏️ Edit
-            </button>
-
-
-            <button
-              class="btn btn-danger"
-              onclick="
-                deletePersonalTask(
-                  ${index}
-                )
-              "
-            >
-              🗑️ Delete
-            </button>
-
-          </div>
-
-        </div>
-
-      `
-    ).join("");
+  `).join("");
 
 }
 
@@ -4009,6 +3921,19 @@ function escapeHtml(value){
    ESCAPE ATTRIBUTE
 ========================= */
 
+function normalizeLink(value){
+
+  const link = String(value || "").trim();
+
+  if(!link)return "";
+
+  if(/^https?:\/\//i.test(link))return link;
+
+  return "https://" + link;
+
+}
+
+
 function escapeAttribute(value){
 
   return String(
@@ -4073,148 +3998,6 @@ function renderAll(){
   renderRoutine();
 
 }
-
-
-
-/* =========================
-   FIREBASE CLOUD SYNC
-========================= */
-const firebaseConfig = {
-  apiKey: "AIzaSyAHIPJHJl9oPQmLMtJFEgy0-BDLH8XmaAI",
-  authDomain: "lessie-bea-goal-crm.firebaseapp.com",
-  projectId: "lessie-bea-goal-crm",
-  storageBucket: "lessie-bea-goal-crm.firebasestorage.app",
-  messagingSenderId: "433663665955",
-  appId: "1:433663665955:web:93802440615f81b2740e96",
-  measurementId: "G-JK4TFLFK7"
-};
-if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-const firebaseAuth = firebase.auth();
-const firebaseDB = firebase.firestore();
-const CLOUD_COLLECTION = "goalCRM";
-const CLOUD_DOCUMENT = "data";
-let cloudUser = null;
-let cloudSyncTimer = null;
-let cloudUnsubscribe = null;
-
-function cloudStatus(message, success=false){
-  // Firebase sync runs in the background. There is intentionally no
-  // Cloud Sync panel in this CRM.
-  console.log("[Goal CRM Firebase]", message);
-}
-function friendlyFirebaseError(error){
-  const code=error?.code||"";
-  const m={
-    "auth/email-already-in-use":"That email already has a Firebase account. Use Login instead.",
-    "auth/invalid-email":"Please enter a valid email address.",
-    "auth/weak-password":"Choose a stronger password with at least 6 characters.",
-    "auth/invalid-credential":"The email or password is incorrect.",
-    "auth/user-not-found":"No Firebase account was found for that email.",
-    "auth/wrong-password":"The password is incorrect.",
-    "auth/too-many-requests":"Too many attempts. Please wait and try again.",
-    "permission-denied":"Firebase denied access. Check the Firestore Rules.",
-    "unavailable":"Firebase is temporarily unavailable. Check your internet connection."
-  };
-  return m[code]||error?.message||"Please try again.";
-}
-async function createCloudAccount(){
-  const email=document.getElementById("cloudEmail")?.value.trim();
-  const password=document.getElementById("cloudPassword")?.value||"";
-  if(!email||!password){cloudStatus("Enter your email and password first.");return;}
-  if(password.length<6){cloudStatus("Firebase requires a password of at least 6 characters.");return;}
-  try{await firebaseAuth.createUserWithEmailAndPassword(email,password);cloudStatus("Account created and signed in. ☁️",true);}
-  catch(e){cloudStatus("Account could not be created: "+friendlyFirebaseError(e));}
-}
-async function loginToCloud(){
-  const email=document.getElementById("cloudEmail")?.value.trim();
-  const password=document.getElementById("cloudPassword")?.value||"";
-  if(!email||!password){cloudStatus("Enter your email and password first.");return;}
-  try{await firebaseAuth.signInWithEmailAndPassword(email,password);cloudStatus("Signed in successfully. ☁️",true);}
-  catch(e){cloudStatus("Sign-in failed: "+friendlyFirebaseError(e));}
-}
-async function logoutFromCloud(){
-  try{await firebaseAuth.signOut();cloudStatus("Signed out. Your local data is still on this device.");}
-  catch(e){cloudStatus("Could not sign out: "+friendlyFirebaseError(e));}
-}
-function cloudDocRef(){
-  if(!cloudUser)return null;
-  return firebaseDB.collection(CLOUD_COLLECTION).doc(cloudUser.uid).collection(CLOUD_DOCUMENT).doc("main");
-}
-async function uploadLocalDataToCloud(showMessage=true){
-  if(!cloudUser){cloudStatus("Sign in before uploading your local data.");return false;}
-  try{
-    await cloudDocRef().set({state:JSON.parse(JSON.stringify(state)),updatedAt:firebase.firestore.FieldValue.serverTimestamp(),appVersion:"Goal CRM Firebase Sync v1"});
-    if(showMessage)cloudStatus("Your Goal CRM data was uploaded to the cloud. ☁️",true);
-    return true;
-  }catch(e){cloudStatus("Cloud upload failed: "+friendlyFirebaseError(e));return false;}
-}
-async function downloadCloudDataToLocal(showMessage=true){
-  if(!cloudUser){cloudStatus("Sign in before downloading cloud data.");return false;}
-  try{
-    const snap=await cloudDocRef().get();
-    if(!snap.exists||!snap.data()?.state){cloudStatus("No Goal CRM cloud data exists yet. Your local data is still safe on this device.");return false;}
-    if(!confirm("Download the cloud copy and replace the Goal CRM data currently on this device? Your current device data will be replaced."))return false;
-    state=snap.data().state;
-    normalizeState();
-    saveState(false);
-    renderAll();
-    if(showMessage)cloudStatus("Cloud data downloaded to this device. ☁️",true);
-    return true;
-  }catch(e){cloudStatus("Cloud download failed: "+friendlyFirebaseError(e));return false;}
-}
-async function checkCloudDataAfterSignIn(){
-  if(!cloudUser)return;
-  try{
-    const ref=cloudDocRef();
-    const snap=await ref.get();
-
-    if(snap.exists&&snap.data()?.state){
-      state=snap.data().state;
-      normalizeState();
-      saveState(false);
-      renderAll();
-      cloudStatus("Your Goal CRM data loaded from Firebase. ☁️",true);
-    }else{
-      await uploadLocalDataToCloud(false);
-      cloudStatus("Your Goal CRM data is now saved in Firebase. ☁️",true);
-    }
-
-    if(cloudUnsubscribe)cloudUnsubscribe();
-    cloudUnsubscribe=ref.onSnapshot(snapshot=>{
-      if(!snapshot.exists||!snapshot.data()?.state)return;
-      const cloudState=snapshot.data().state;
-      state=cloudState;
-      normalizeState();
-      saveState(false);
-      renderAll();
-      cloudStatus("Firebase sync updated your Goal CRM. ☁️",true);
-    },error=>{
-      cloudStatus("Firebase sync needs attention: "+friendlyFirebaseError(error));
-    });
-  }catch(e){cloudStatus("Could not sync with Firebase: "+friendlyFirebaseError(e));}
-}
-function scheduleCloudSync(){
-  if(!cloudUser)return;
-  clearTimeout(cloudSyncTimer);
-  cloudSyncTimer=setTimeout(async()=>{
-    try{
-      await cloudDocRef().set({state:JSON.parse(JSON.stringify(state)),updatedAt:firebase.firestore.FieldValue.serverTimestamp(),appVersion:"Goal CRM Firebase Sync v1"});
-      cloudStatus("Saved locally and synced to the cloud. ☁️",true);
-    }catch(e){cloudStatus("Saved on this device. Cloud sync needs attention: "+friendlyFirebaseError(e));}
-  },700);
-}
-firebaseAuth.onAuthStateChanged(async user=>{
-  if(cloudUnsubscribe){
-    cloudUnsubscribe();
-    cloudUnsubscribe=null;
-  }
-  cloudUser=user||null;
-  if(cloudUser){
-    await checkCloudDataAfterSignIn();
-  }else{
-    cloudStatus("Firebase account not signed in; local data remains safe.");
-  }
-});
 
 
 /* =========================
