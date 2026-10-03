@@ -15,27 +15,19 @@
     color: #222;
   }
 
-  h1,h2,h3{
-    color:#b83267;
-  }
-
-  button{
-    font-size:18px;
-  }
-
-  .header{
+  header{
     background:#000;
     color:#fff;
-    padding:20px;
     text-align:center;
+    padding:20px 10px;
   }
 
-  .header h1{
-    color:#fff;
+  header h1{
     margin:0;
+    color:#ffd1dc;
   }
 
-  .header p{
+  header p{
     margin:8px 0 0;
   }
 
@@ -45,30 +37,30 @@
     gap:8px;
     padding:12px;
     background:#fff;
-    border-bottom:2px solid #f3a6c7;
+    border-bottom:2px solid #000;
     position:sticky;
     top:0;
-    z-index:10;
+    z-index:20;
   }
 
   .tab{
+    border:2px solid #000;
     background:#ffd1dc;
-    border:2px solid #f3a6c7;
-    border-radius:12px;
     padding:10px 14px;
+    border-radius:12px;
     cursor:pointer;
+    font-size:16px;
     font-weight:bold;
   }
 
-  .tab.active{
-    background:#000;
-    color:#fff;
+  .tab:hover{
+    background:#ffb6c8;
   }
 
   .page{
     display:none;
     max-width:1100px;
-    margin:20px auto;
+    margin:auto;
     padding:20px;
   }
 
@@ -78,23 +70,25 @@
 
   .card{
     background:#fff;
-    border:2px solid #f3a6c7;
+    border:2px solid #000;
     border-radius:16px;
     padding:20px;
     margin-bottom:20px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    box-shadow:0 3px 8px rgba(0,0,0,.12);
   }
 
-  .goal-card{
-    background:#fff;
-    border:2px solid #f3a6c7;
-    border-radius:16px;
-    padding:18px;
-    margin-bottom:15px;
+  h2,h3{
+    margin-top:0;
   }
 
-  .goal-card.active-goal{
-    border:3px solid #000;
+  h2{
+    color:#111;
+  }
+
+  label{
+    display:block;
+    font-weight:bold;
+    margin:10px 0 5px;
   }
 
   input,
@@ -102,46 +96,58 @@
   select{
     width:100%;
     box-sizing:border-box;
-    padding:10px;
-    margin:6px 0 12px;
-    border:1px solid #ccc;
-    border-radius:8px;
+    padding:12px;
+    border:2px solid #000;
+    border-radius:10px;
     font-size:17px;
+    margin-bottom:10px;
   }
 
   textarea{
-    min-height:100px;
+    min-height:120px;
+    resize:vertical;
   }
 
   .btn{
-    border:0;
-    border-radius:10px;
-    padding:10px 16px;
-    cursor:pointer;
-    font-weight:bold;
-    margin:4px;
-  }
-
-  .btn-primary{
     background:#000;
     color:#fff;
+    border:2px solid #000;
+    border-radius:10px;
+    padding:10px 15px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
   }
 
-  .btn-pink{
+  .btn:hover{
+    opacity:.85;
+  }
+
+  .btn-light{
     background:#ffd1dc;
     color:#000;
-    border:2px solid #f3a6c7;
   }
 
   .btn-danger{
-    background:#c62828;
+    background:#c00;
     color:#fff;
   }
 
   .btn-green{
-    background:#d9f7df;
-    color:#176b2c;
-    border:2px solid #75c987;
+    background:#168a3a;
+    color:#fff;
+  }
+
+  .btn-blue{
+    background:#1464c0;
+    color:#fff;
+  }
+
+  .button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
   }
 
   .grid{
@@ -150,82 +156,306 @@
     gap:15px;
   }
 
-  .schedule-row{
-    display:grid;
-    grid-template-columns:160px 1fr;
-    gap:10px;
-    align-items:center;
+  .pill{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    background:#ffd1dc;
+    border:1px solid #000;
+    font-size:14px;
+    margin:3px;
+  }
+
+  .status{
+    padding:8px 12px;
+    border-radius:10px;
+    font-weight:bold;
+    display:inline-block;
+  }
+
+  .status-active{
+    background:#ffd1dc;
+    border:1px solid #000;
+  }
+
+  .status-complete{
+    background:#d7ffd7;
+    border:1px solid #168a3a;
+  }
+
+  .status-use{
+    background:#fff1b8;
+    border:1px solid #9b7b00;
+  }
+
+  .vision-list{
+    list-style:none;
+    padding:0;
+  }
+
+  .vision-list li{
+    background:#fff;
+    border:2px solid #000;
+    border-radius:12px;
+    padding:12px;
     margin-bottom:10px;
   }
 
-  .check-row{
+  .focus-box{
+    background:#ffd1dc;
+    border:2px solid #000;
+    border-radius:14px;
+    padding:15px;
+    margin-bottom:15px;
+  }
+
+  .goal-card{
+    background:#fff;
+    border:2px solid #000;
+    border-radius:14px;
+    padding:15px;
+    margin-bottom:15px;
+  }
+
+  .goal-title{
+    font-size:21px;
+    font-weight:bold;
+    margin-bottom:8px;
+  }
+
+  .goal-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+  }
+
+  th,td{
+    border:1px solid #000;
+    padding:10px;
+    text-align:left;
+    vertical-align:top;
+  }
+
+  th{
+    background:#ffd1dc;
+  }
+
+  .notice{
+    background:#fff8d6;
+    border:2px solid #000;
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:15px;
+  }
+
+  .success{
+    background:#d7ffd7;
+    border:2px solid #168a3a;
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:15px;
+  }
+
+  .empty{
+    background:#fff;
+    border:2px dashed #000;
+    border-radius:12px;
+    padding:15px;
+    text-align:center;
+  }
+
+  .progress-wrap{
+    background:#eee;
+    border:2px solid #000;
+    border-radius:20px;
+    overflow:hidden;
+    height:30px;
+    margin:10px 0;
+  }
+
+  .progress-bar{
+    height:100%;
+    background:#ffd1dc;
+    width:0%;
     display:flex;
     align-items:center;
+    justify-content:center;
+    font-weight:bold;
+  }
+
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
     gap:10px;
-    margin:8px 0;
-  }
-
-  .check-row input{
-    width:auto;
-    margin:0;
-  }
-
-  .small{
-    font-size:14px;
-    color:#666;
   }
 
   .stat{
-    background:#fff0f5;
-    border:2px solid #f3a6c7;
-    border-radius:14px;
+    background:#fff;
+    border:2px solid #000;
+    border-radius:12px;
     padding:15px;
     text-align:center;
   }
 
   .stat strong{
     display:block;
-    font-size:30px;
-    color:#b83267;
+    font-size:28px;
   }
 
-  .link-list a{
-    display:inline-block;
-    margin:5px;
-    padding:8px 12px;
-    border-radius:8px;
-    background:#ffd1dc;
+  .task-item{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:10px;
+    border-bottom:1px solid #ccc;
+  }
+
+  .task-item:last-child{
+    border-bottom:none;
+  }
+
+  .task-item input[type="checkbox"]{
+    width:auto;
+    margin-top:5px;
+  }
+
+  .links{
+    margin-top:10px;
+  }
+
+  .links a{
     color:#000;
-    text-decoration:none;
-    border:1px solid #f3a6c7;
+    font-weight:bold;
+    text-decoration:underline;
+    margin-right:10px;
+    display:inline-block;
+    margin-bottom:5px;
   }
 
-  @media(max-width:700px){
-    .schedule-row{
-      grid-template-columns:1fr;
-    }
+  .goal-links-box{
+    margin-top:12px;
+    padding:12px;
+    background:#fff7fa;
+    border:1px solid #000;
+    border-radius:10px;
+  }
 
-    .tabs{
-      position:static;
+  .goal-link-row{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px;
+    margin-bottom:8px;
+  }
+
+  .goal-link-row a{
+    color:#000;
+    font-weight:bold;
+    text-decoration:underline;
+    flex:1;
+    min-width:200px;
+  }
+
+  .link-input-grid{
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:8px;
+  }
+
+  .link-input-grid input{
+    margin-bottom:0;
+  }
+
+  .modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    z-index:100;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+
+  .modal-box{
+    background:#fff;
+    border:3px solid #000;
+    border-radius:16px;
+    max-width:600px;
+    width:100%;
+    padding:20px;
+  }
+
+  .appointment-card,
+  .personal-card{
+    background:#fff;
+    border:2px solid #000;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:12px;
+  }
+
+  .category-heading{
+    background:#ffd1dc;
+    border:2px solid #000;
+    border-radius:10px;
+    padding:10px;
+    margin-top:20px;
+  }
+
+  .checkbox-line{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:8px 0;
+  }
+
+  .checkbox-line input{
+    width:auto;
+    margin:0;
+  }
+
+  @media(max-width:600px){
+
+    body{
+      font-size:16px;
     }
 
     .page{
       padding:12px;
     }
+
+    .tab{
+      font-size:14px;
+      padding:8px 10px;
+    }
+
+    .link-input-grid{
+      grid-template-columns:1fr;
+    }
+
   }
 </style>
 </head>
 
 <body>
 
-<div class="header">
+<header>
   <h1>Lessie Bea Goal CRM 🙏</h1>
-  <p>Focus • Discipline • Dedication • Progress</p>
-</div>
+  <p>12-Week Focus • One Active Goal at a Time • All Goals Visible</p>
+</header>
+
 
 <div class="tabs">
 
-  <button class="tab active"
+  <button class="tab"
     onclick="showPage('vision',this)">
     🙏 My Vision
   </button>
@@ -269,7 +499,7 @@
 
 
 <!-- =========================
-     VISION
+     MY VISION
 ========================= -->
 
 <section id="vision" class="page active">
@@ -278,64 +508,127 @@
 
     <h2>🙏 My Vision</h2>
 
-    <p>
-      My goal is to become closer to God while building a
-      disciplined, focused and productive life.
-    </p>
+    <div class="focus-box">
 
-    <h3>My Main Focus</h3>
+      <h3>Daily Focus Plan Mon–Fri</h3>
 
-    <div class="grid">
+      <p>
+        <strong>
+          Lessie Bea CRM — Real Estate / Business
+        </strong>
+        — 3 hours
+      </p>
 
-      <div class="stat">
-        <strong>🙏</strong>
-        Closer to God
+      <p>
+        <strong>
+          Lessie Bea Health CRM — Health & Fitness
+        </strong>
+        — 45–60 minutes
+      </p>
+
+      <p>
+        <strong>
+          Lessie Bea Goal CRM — Vision & 12-Week Focus
+        </strong>
+        — 1 hour
+      </p>
+
+      <p>
+        <strong>Weekends:</strong> Optional
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>🙏 My Future Self Prayer</h3>
+
+      <p>
+        Lord, help me become the woman You created me to be.
+        Help me stay focused, disciplined, faithful, consistent,
+        and obedient to Your direction.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>🌅 Daily Standard</h3>
+
+      <ul class="vision-list">
+
+        <li>⏰ Wake up at 6:00 AM</li>
+
+        <li>📖 Bible first</li>
+
+        <li>🙏 Prayer and God first</li>
+
+        <li>❤️ Loved ones</li>
+
+        <li>🏋️ Workout</li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>💜 Health Goals</h3>
+
+      <div class="checkbox-line">
+
+        <input
+          type="checkbox"
+          id="weight175"
+          onchange="toggleVision('weight175')"
+        >
+
+        <label for="weight175">
+          Reach 175 lbs
+        </label>
+
       </div>
 
-      <div class="stat">
-        <strong>🎯</strong>
-        Dedication
-      </div>
 
-      <div class="stat">
-        <strong>💪</strong>
-        Discipline
-      </div>
+      <div class="checkbox-line">
 
-      <div class="stat">
-        <strong>❤️</strong>
-        Health
+        <input
+          type="checkbox"
+          id="weight155"
+          onchange="toggleVision('weight155')"
+        >
+
+        <label for="weight155">
+          Reach 155 lbs
+        </label>
+
       </div>
 
     </div>
 
-  </div>
+
+    <div class="card">
+
+      <h3>💼 Businesses & Life Goals</h3>
+
+      <div id="visionGoals"></div>
+
+    </div>
 
 
-  <div class="card">
+    <div class="card">
 
-    <h2>📖 Bible Focus</h2>
+      <h3>📅 12-Week Rule</h3>
 
-    <label>
-      Scripture / Verse
-    </label>
+      <p>
+        Focus on one active goal for 12 weeks while keeping all
+        other goals visible.
+      </p>
 
-    <textarea
-      id="visionVerse"
-      placeholder="Write your Bible verse or scripture focus..."
-      onchange="saveVision()"></textarea>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2>🎯 Long-Term Vision</h2>
-
-    <textarea
-      id="longVision"
-      placeholder="Write what you want your life to look like..."
-      onchange="saveVision()"></textarea>
+    </div>
 
   </div>
 
@@ -352,38 +645,16 @@
 
     <h2>🎯 All Goals</h2>
 
-    <p>
-      Add goals that are not already listed.
-    </p>
+    <div class="notice">
 
-    <label>Goal Name</label>
+      Your goals stay visible.
+      Only one goal is the active 12-week focus.
 
-    <input
-      id="newGoalTitle"
-      placeholder="Enter your goal">
+    </div>
 
-    <label>Category</label>
-
-    <input
-      id="newGoalCategory"
-      placeholder="Example: Business, Health, Personal">
-
-    <label>Notes</label>
-
-    <textarea
-      id="newGoalNotes"
-      placeholder="Notes about this goal"></textarea>
-
-    <button
-      class="btn btn-primary"
-      onclick="addGoal()">
-      ➕ Add Goal
-    </button>
+    <div id="goalsList"></div>
 
   </div>
-
-
-  <div id="goalList"></div>
 
 </section>
 
@@ -396,9 +667,9 @@
 
   <div class="card">
 
-    <h2>⭐ Active Goal</h2>
+    <h2>⭐ Active 12-Week Goal</h2>
 
-    <div id="activeGoalArea"></div>
+    <div id="activeGoal"></div>
 
   </div>
 
@@ -415,39 +686,21 @@
 
     <h2>🗓️ Daily Schedule</h2>
 
-    <label>Date</label>
+    <div class="notice">
+      Use this page to execute the work for your active goal.
+    </div>
+
+    <label for="dailyDate">
+      Date
+    </label>
 
     <input
       type="date"
-      id="scheduleDate"
-      onchange="renderDailyTasks()">
+      id="dailyDate"
+      onchange="prepareDailyPage()"
+    >
 
-    <div id="dailySchedule"></div>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2>➕ Add Daily Task</h2>
-
-    <label>Task</label>
-
-    <input
-      id="newDailyTask"
-      placeholder="Enter task">
-
-    <label>Time</label>
-
-    <input
-      id="newDailyTime"
-      placeholder="Example: 8:00 AM">
-
-    <button
-      class="btn btn-primary"
-      onclick="addDailyTask()">
-      ➕ Add Task
-    </button>
+    <div id="dailyContent"></div>
 
   </div>
 
@@ -464,33 +717,109 @@
 
     <h2>💗 Personal</h2>
 
-    <h3>Appointments</h3>
+    <div class="notice">
+      Keep personal appointments, to-do items, and errands
+      separate from your business and goal work.
+    </div>
 
-    <div id="appointmentList"></div>
+  </div>
 
-    <label>Appointment</label>
 
-    <input
-      id="appointmentName"
-      placeholder="Doctor, dentist, appointment, etc.">
+  <div class="card">
+
+    <h2>📅 Appointments</h2>
 
     <label>Date</label>
 
     <input
       type="date"
-      id="appointmentDate">
+      id="appointmentDate"
+    >
 
     <label>Time</label>
 
     <input
+      type="time"
       id="appointmentTime"
-      placeholder="Example: 10:00 AM">
+    >
 
-    <button
-      class="btn btn-primary"
-      onclick="addAppointment()">
-      ➕ Add Appointment
-    </button>
+    <label>Appointment</label>
+
+    <input
+      type="text"
+      id="appointmentTitle"
+      placeholder="Doctor, dentist, etc."
+    >
+
+    <label>Notes</label>
+
+    <textarea
+      id="appointmentNotes"
+      placeholder="Appointment details"
+    ></textarea>
+
+    <div class="button-row">
+
+      <button
+        class="btn"
+        onclick="addAppointment()"
+      >
+        ➕ Add Appointment
+      </button>
+
+    </div>
+
+    <div id="appointmentsList"></div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>📝 Personal To-Do List</h2>
+
+    <label>Task</label>
+
+    <input
+      type="text"
+      id="personalTaskTitle"
+      placeholder="Personal task"
+    >
+
+    <label>Date</label>
+
+    <input
+      type="date"
+      id="personalTaskDate"
+    >
+
+    <label>Notes</label>
+
+    <textarea
+      id="personalTaskNotes"
+      placeholder="Notes"
+    ></textarea>
+
+    <label>Optional Link</label>
+
+    <input
+      type="url"
+      id="personalTaskLink"
+      placeholder="https://"
+    >
+
+    <div class="button-row">
+
+      <button
+        class="btn"
+        onclick="addPersonalTask()"
+      >
+        ➕ Add Task
+      </button>
+
+    </div>
+
+    <div id="personalTasksList"></div>
 
   </div>
 
@@ -499,36 +828,48 @@
 
     <h2>🛒 Errands</h2>
 
-    <div id="errandList"></div>
+    <label>Errand</label>
 
     <input
-      id="newErrand"
-      placeholder="Example: Grocery store">
+      type="text"
+      id="errandTitle"
+      placeholder="Grocery store, pharmacy, etc."
+    >
 
-    <button
-      class="btn btn-primary"
-      onclick="addErrand()">
-      ➕ Add Errand
-    </button>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2>💗 Personal Tasks</h2>
-
-    <div id="personalTaskList"></div>
+    <label>Date</label>
 
     <input
-      id="newPersonalTask"
-      placeholder="Enter personal task">
+      type="date"
+      id="errandDate"
+    >
 
-    <button
-      class="btn btn-primary"
-      onclick="addPersonalTask()">
-      ➕ Add Personal Task
-    </button>
+    <label>Notes</label>
+
+    <textarea
+      id="errandNotes"
+      placeholder="What needs to be done"
+    ></textarea>
+
+    <label>Optional Link</label>
+
+    <input
+      type="url"
+      id="errandLink"
+      placeholder="https://"
+    >
+
+    <div class="button-row">
+
+      <button
+        class="btn"
+        onclick="addErrand()"
+      >
+        ➕ Add Errand
+      </button>
+
+    </div>
+
+    <div id="errandsList"></div>
 
   </div>
 
@@ -543,34 +884,140 @@
 
   <div class="card">
 
-    <h2>💗 Routine</h2>
+    <h2>💗 My Routine</h2>
 
-    <label>🌅 Morning Routine</label>
+    <div class="notice">
+      My daily routine is divided into Morning,
+      Afternoon, Evening, and Night.
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>🌅 Morning Routine</h2>
+
+    <label>
+      What I do in the morning
+    </label>
 
     <textarea
       id="morningRoutine"
-      onchange="saveRoutine()"></textarea>
+      placeholder="Example:
+Wake up at 6:00 AM
+Read my Bible
+Pray
+Workout
+Get ready for the day"
+    ></textarea>
+
+    <div class="button-row">
+
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
+        💾 Save Morning Routine
+      </button>
+
+    </div>
+
+  </div>
 
 
-    <label>☀️ Afternoon Routine</label>
+  <div class="card">
+
+    <h2>☀️ Afternoon Routine</h2>
+
+    <label>
+      What I do in the afternoon
+    </label>
 
     <textarea
       id="afternoonRoutine"
-      onchange="saveRoutine()"></textarea>
+      placeholder="Example:
+Work on Real Estate
+Follow up with sellers
+Work on current goal
+Lunch
+Errands"
+    ></textarea>
+
+    <div class="button-row">
+
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
+        💾 Save Afternoon Routine
+      </button>
+
+    </div>
+
+  </div>
 
 
-    <label>🌇 Evening Routine</label>
+  <div class="card">
+
+    <h2>🌆 Evening Routine</h2>
+
+    <label>
+      What I do in the evening
+    </label>
 
     <textarea
       id="eveningRoutine"
-      onchange="saveRoutine()"></textarea>
+      placeholder="Example:
+Finish work
+Spend time with family
+Dinner
+Clean up
+Prepare for tomorrow"
+    ></textarea>
+
+    <div class="button-row">
+
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
+        💾 Save Evening Routine
+      </button>
+
+    </div>
+
+  </div>
 
 
-    <label>🌙 Night Routine</label>
+  <div class="card">
+
+    <h2>🌙 Night Routine</h2>
+
+    <label>
+      What I do at night
+    </label>
 
     <textarea
       id="nightRoutine"
-      onchange="saveRoutine()"></textarea>
+      placeholder="Example:
+Review my day
+Pray
+Read Bible
+Prepare clothes for tomorrow
+Go to bed"
+    ></textarea>
+
+    <div class="button-row">
+
+      <button
+        class="btn"
+        onclick="saveRoutine()"
+      >
+        💾 Save Night Routine
+      </button>
+
+    </div>
 
   </div>
 
@@ -587,55 +1034,7 @@
 
     <h2>📊 Progress</h2>
 
-    <div class="grid">
-
-      <div class="stat">
-        <strong id="totalGoals">0</strong>
-        Total Goals
-      </div>
-
-      <div class="stat">
-        <strong id="completedGoals">0</strong>
-        Completed
-      </div>
-
-      <div class="stat">
-        <strong id="activeGoalsCount">0</strong>
-        Active Goal
-      </div>
-
-      <div class="stat">
-        <strong id="dailyCompleted">0</strong>
-        Daily Tasks Done
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2>📈 Weekly Grade</h2>
-
-    <p>
-      <strong>A = 19–21</strong><br>
-      B = 17–18<br>
-      C = 14–16<br>
-      D = 10–13<br>
-      F = 0–9
-    </p>
-
-    <label>Weekly Points</label>
-
-    <input
-      type="number"
-      id="weeklyPoints"
-      min="0"
-      max="21"
-      onchange="saveProgress()">
-
-    <div id="weeklyGrade"></div>
+    <div id="progressContent"></div>
 
   </div>
 
@@ -650,15 +1049,16 @@
 
   <div class="card">
 
-    <h2>🔄 Reset CRM</h2>
+    <h2>🔄 Reset</h2>
 
-    <p>
+    <div class="notice">
       Resetting will clear the saved CRM data from this device.
-    </p>
+    </div>
 
     <button
       class="btn btn-danger"
-      onclick="resetCRM()">
+      onclick="resetCRM()"
+    >
       🔄 Reset CRM
     </button>
 
@@ -670,7 +1070,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-
 <script>
 
 /* =========================
@@ -706,12 +1105,8 @@ let state = {
 
   vision:{
     weight175:false,
-    weight155:false,
-    verse:"",
-    longVision:""
-  },
-
-  weeklyPoints:0
+    weight155:false
+  }
 
 };
 
@@ -726,7 +1121,49 @@ const DEFAULT_GOALS = [
     title:"Real Estate • Minimum 2 Deals/Month (Outcome Only)",
     category:"Real Estate",
     type:"realestate",
-    notes:"Focus on getting a minimum of 2 deals per month.",
+    notes:"Outcome goal: minimum 2 real estate deals per month.",
+    links:[
+      ["Lessie Bea CRM","https://blandhouses1-hash.github.io/Lessie-Bea-CRM/"],
+      ["My Realestate Goal Site Helpful Info","https://sites.google.com/d/1QXBSTUG6vqPurn4D8gWhr28PJurQ3X3E/p/1G5rP7MWG4Onw4EyvaKc72AnUYnlP6wuM/edit"],
+      ["Blands Realestate Investors System","https://sites.google.com/d/1iKxF-48RJiP9moAog3LbhlVBpjQ7RYRe/p/1J57VWeoRO74mWUXT-i299klAHbu6T-l3/edit"],
+      ["Billy Land - Find Cheap Land","https://billyland.com/"]
+    ]
+  },
+  {title:"GED",category:"Education",type:"standard",notes:"Complete my GED.",links:[]},
+  {title:"Fix Teeth",category:"Personal",type:"standard",notes:"Work toward getting my teeth fixed.",links:[]},
+  {title:"Buy a Home & Rental Properties",category:"Housing / Rentals",type:"standard",notes:"Buy my home and build rental properties.",links:[]},
+  {title:"Bookkeeping Business",category:"Business",type:"standard",notes:"Build my bookkeeping business.",links:[]},
+  {title:"Credit Repaired",category:"Credit",type:"standard",notes:"Repair and improve my credit.",links:[]},
+  {title:"Open Medical Assistant Facility • 12 Week Focus",category:"Healthcare",type:"standard",notes:"I already have my Medical Assistant. This goal is for building toward opening a facility for medical assistants later.",links:[]},
+  {title:"Class A (CDL)",category:"CDL / Class A",type:"standard",notes:"Work toward obtaining my Class A CDL.",links:[]},
+  {title:"Cornstarch Business",category:"Business",type:"standard",notes:"Grow and improve my Cornstarch Business.",links:[]},
+  {title:"YouTube Channels",category:"YouTube",type:"standard",notes:"Build and maintain my YouTube channels.",links:[]},
+  {title:"Courses",category:"Courses",type:"standard",notes:"Complete my Real Estate Course + Author Course.",links:[]},
+  {title:"Dispatcher Business",category:"Dispatcher",type:"standard",notes:"Build my dispatcher business.",links:[]},
+  {title:"House Inspector Business",category:"House Inspector",type:"standard",notes:"Build my house inspector business.",links:[]},
+  {title:"Open Independent Living Homes",category:"Independent Living Homes",type:"standard",notes:"Work toward opening independent living homes.",links:[]},
+  {title:"Dropshipping Business",category:"Dropshipping",type:"standard",notes:"Build my dropshipping business.",links:[]},
+  {title:"Become an Author",category:"Author",type:"standard",notes:"Write and publish my books.",links:[]},
+  {title:"Build & Sell Courses",category:"Courses",type:"standard",notes:"Create and sell my own courses.",links:[]},
+  {title:"Make Planners",category:"Planners",type:"standard",notes:"Create my planners, including the Bea Planner.",links:[]},
+  {title:"Create & Sell Products",category:"Products",type:"standard",notes:"Kids' Coloring Books, Mugs, T-Shirts & Other Items.",links:[]},
+  {title:"Monetize Instagram & Grow My Following",category:"Social Media",type:"standard",notes:"Grow and monetize Instagram.",links:[]},
+  {title:"Monetize YouTube & Grow My Following",category:"YouTube",type:"standard",notes:"Grow and monetize YouTube.",links:[]},
+  {title:"Build Millions of Followers Across My Social Media",category:"Social Media",type:"standard",notes:"Build a large following across my social platforms.",links:[]},
+  {title:"Keep All My Websites & Apps Running Properly",category:"Websites & Apps",type:"standard",notes:"Maintain all of my websites and apps.",links:[]}
+];
+
+
+/* =========================
+   REAL ESTATE DAILY TEMPLATE
+   ALL ORIGINAL SITE LINKS
+========================= */
+
+const REAL_ESTATE_TASKS = [
+
+  {
+    title:"Find 5–10 seller leads",
+
     links:[
       ["Propwire","https://www.propwire.com/"],
       ["Zillow FSBO","https://www.zillow.com/"],
@@ -735,154 +1172,77 @@ const DEFAULT_GOALS = [
       ["Redfin","https://www.redfin.com/"],
       ["Google Maps","https://www.google.com/maps/"],
       ["Regrid","https://regrid.com/"],
-      ["NETR Online","https://www.netronline.com/"],
-      ["Google Voice","https://voice.google.com/"],
-      ["Realtor.com","https://www.realtor.com/"]
+      ["NETR Online","https://www.netronline.com/"]
     ]
+
   },
 
   {
-    title:"GED",
-    category:"Education",
-    type:"standard",
-    notes:"Complete GED.",
-    links:[]
+    title:"Contact 3–5 sellers",
+
+    links:[
+      ["Google Voice","https://voice.google.com/"]
+    ]
+
   },
 
   {
-    title:"Fix Teeth",
-    category:"Personal",
-    type:"standard",
-    notes:"Work toward getting my teeth fixed.",
-    links:[]
+    title:"Find 3–5 new buyers",
+
+    links:[
+      ["Propwire","https://www.propwire.com/"],
+      ["Zillow","https://www.zillow.com/"],
+      ["Craigslist","https://www.craigslist.org/"],
+      ["Realtor.com","https://www.realtor.com/"],
+      ["Redfin","https://www.redfin.com/"],
+      ["Google Maps","https://www.google.com/maps/"]
+    ]
+
   },
 
   {
-    title:"Buy a Home & Rental Properties",
-    category:"Real Estate",
-    type:"standard",
-    notes:"Buy a home and build rental properties.",
-    links:[]
+    title:"Analyze 1–2 properties",
+
+    links:[
+      ["Propwire","https://www.propwire.com/"],
+      ["Zillow","https://www.zillow.com/"],
+      ["Redfin","https://www.redfin.com/"],
+      ["Regrid","https://regrid.com/"],
+      ["NETR Online","https://www.netronline.com/"]
+    ]
+
   },
 
   {
-    title:"Bookkeeping",
-    category:"Business",
-    type:"standard",
-    notes:"Build bookkeeping skills and business.",
+    title:"Send 1 offer",
+
     links:[]
+
   },
 
   {
-    title:"Improve Credit",
-    category:"Financial",
-    type:"standard",
-    notes:"Work toward improving credit.",
-    links:[]
+    title:"Follow up with sellers",
+
+    links:[
+      ["Google Voice","https://voice.google.com/"]
+    ]
+
   },
 
   {
-    title:"Medical Assistant",
-    category:"Career",
-    type:"standard",
-    notes:"Work toward Medical Assistant career.",
-    links:[]
+    title:"Follow up with buyers",
+
+    links:[
+      ["Google Voice","https://voice.google.com/"]
+    ]
+
   },
 
   {
-    title:"CDL / Class A",
-    category:"Career",
-    type:"standard",
-    notes:"Work toward getting CDL Class A.",
-    links:[]
-  },
+    title:"Update CRM",
 
-  {
-    title:"Cornstarch Business",
-    category:"Business",
-    type:"standard",
-    notes:"Grow Mr. & Mrs. Cornstarch Hardies.",
     links:[]
-  },
 
-  {
-    title:"YouTube",
-    category:"Business",
-    type:"standard",
-    notes:"Build YouTube channel.",
-    links:[]
-  },
-
-  {
-    title:"Dispatcher",
-    category:"Career",
-    type:"standard",
-    notes:"Build dispatching skills and business.",
-    links:[]
-  },
-
-  {
-    title:"House Inspector",
-    category:"Career",
-    type:"standard",
-    notes:"Work toward becoming a home inspector.",
-    links:[]
-  },
-
-  {
-    title:"Dropshipping",
-    category:"Business",
-    type:"standard",
-    notes:"Build dropshipping business.",
-    links:[]
-  },
-
-  {
-    title:"Author",
-    category:"Creative",
-    type:"standard",
-    notes:"Write and publish books.",
-    links:[]
-  },
-
-  {
-    title:"Build Courses",
-    category:"Business",
-    type:"standard",
-    notes:"Create and build courses.",
-    links:[]
-  },
-
-  {
-    title:"Planners, Coloring Books, Mugs & T-Shirts",
-    category:"Business",
-    type:"standard",
-    notes:"Create products including planners, children's coloring books, mugs and T-shirts.",
-    links:[]
-  },
-
-  {
-    title:"Monetized Instagram & YouTube",
-    category:"Business",
-    type:"standard",
-    notes:"Build social media platforms and work toward monetization.",
-    links:[]
-  },
-
-  {
-    title:"All Websites & Apps Running Well",
-    category:"Business",
-    type:"standard",
-    notes:"Keep websites and apps working properly.",
-    links:[]
-  },
-
-  {
-    title:"Independent Living Homes",
-    category:"Real Estate",
-    type:"standard",
-    notes:"Build independent living homes.",
-    links:[]
   }
 
 ];
@@ -907,11 +1267,7 @@ function loadState(){
       if(parsed &&
          typeof parsed==="object"){
 
-        state = Object.assign(
-          {},
-          state,
-          parsed
-        );
+        state=parsed;
 
       }
 
@@ -925,21 +1281,39 @@ function loadState(){
 
   }
 
-  if(!Array.isArray(state.goals) ||
-     state.goals.length===0){
 
-    state.goals =
-      DEFAULT_GOALS.map(goal => ({
-        ...goal,
-        completed:false,
-        active:false
-      }));
+  if(!Array.isArray(state.goals)){
+    state.goals=[];
+  }
+
+
+  if(!state.dailyTasks ||
+     typeof state.dailyTasks!=="object"){
+
+    state.dailyTasks={};
 
   }
 
-  if(!state.routine){
 
-    state.routine = {
+  if(!Array.isArray(state.appointments)){
+    state.appointments=[];
+  }
+
+
+  if(!Array.isArray(state.personalTasks)){
+    state.personalTasks=[];
+  }
+
+
+  if(!Array.isArray(state.errands)){
+    state.errands=[];
+  }
+
+
+  if(!state.routine ||
+     typeof state.routine!=="object"){
+
+    state.routine={
       morning:"",
       afternoon:"",
       evening:"",
@@ -948,31 +1322,93 @@ function loadState(){
 
   }
 
+
+  if(typeof state.routine.morning!=="string"){
+    state.routine.morning="";
+  }
+
+
+  if(typeof state.routine.afternoon!=="string"){
+    state.routine.afternoon="";
+  }
+
+
+  if(typeof state.routine.evening!=="string"){
+    state.routine.evening="";
+  }
+
+
+  if(typeof state.routine.night!=="string"){
+    state.routine.night="";
+  }
+
+
   if(!state.vision){
 
-    state.vision = {
+    state.vision={
       weight175:false,
-      weight155:false,
-      verse:"",
-      longVision:""
+      weight155:false
     };
 
   }
 
-  if(!Array.isArray(state.appointments))
-    state.appointments=[];
 
-  if(!Array.isArray(state.personalTasks))
-    state.personalTasks=[];
+  /*
+    IMPORTANT:
+    Make sure EVERY existing goal has
+    a links array without deleting any
+    existing links.
+  */
 
-  if(!Array.isArray(state.errands))
-    state.errands=[];
+  state.goals.forEach(goal=>{
 
-  if(!state.dailyTasks)
-    state.dailyTasks={};
+    if(!Array.isArray(goal.links)){
+      goal.links=[];
+    }
 
-  if(typeof state.weeklyPoints !== "number")
-    state.weeklyPoints=0;
+  });
+
+
+  if(state.goals.length===0){
+
+    state.goals =
+      DEFAULT_GOALS.map(
+        (goal,index)=>({
+
+          id:
+            "goal_" +
+            Date.now() +
+            "_" +
+            index,
+
+          title:goal.title,
+
+          category:goal.category,
+
+          type:goal.type,
+
+          notes:goal.notes || "",
+
+          links:
+            Array.isArray(goal.links)
+            ? [...goal.links]
+            : [],
+
+          active:false,
+
+          completed:false,
+
+          useLater:false,
+
+          startDate:""
+
+        })
+      );
+
+  }
+
+
+  saveState();
 
 }
 
@@ -994,16 +1430,8 @@ function saveState(syncCloud = true){
     JSON.stringify(state)
   );
 
-  if(
-    syncCloud &&
-    cloudUser &&
-    cloudReady &&
-    !cloudApplying &&
-    typeof scheduleCloudSync === "function"
-  ){
-
+  if (syncCloud && cloudUser && cloudReady && !cloudApplying && typeof scheduleCloudSync === "function") {
     scheduleCloudSync();
-
   }
 
 }
@@ -1021,317 +1449,875 @@ function showPage(pageId,button){
       page.classList.remove("active");
     });
 
+
   document
     .querySelectorAll(".tab")
     .forEach(tab=>{
       tab.classList.remove("active");
     });
 
+
   const page =
     document.getElementById(pageId);
 
-  if(page)
+
+  if(page){
     page.classList.add("active");
+  }
 
-  if(button)
+
+  if(button){
     button.classList.add("active");
+  }
 
-  renderAll();
+
+  if(pageId==="daily"){
+    prepareDailyPage();
+  }
+
+
+  if(pageId==="personal"){
+    renderPersonal();
+  }
+
+
+  if(pageId==="routine"){
+    renderRoutine();
+  }
+
+
+  if(pageId==="active"){
+    renderActiveGoal();
+  }
 
 }
 
 
 /* =========================
-   GOALS
+   VISION
 ========================= */
 
-function renderGoals(){
+function toggleVision(key){
 
-  const container =
-    document.getElementById("goalList");
+  state.vision[key] =
+    document.getElementById(key).checked;
 
-  if(!container)return;
+  saveState();
+
+}
+
+
+function renderVision(){
+
+  const weight175 =
+    document.getElementById(
+      "weight175"
+    );
+
+  const weight155 =
+    document.getElementById(
+      "weight155"
+    );
+
+
+  if(weight175){
+
+    weight175.checked =
+      !!state.vision.weight175;
+
+  }
+
+
+  if(weight155){
+
+    weight155.checked =
+      !!state.vision.weight155;
+
+  }
+
+}
+
+
+function renderVisionGoals(){
+
+  const box =
+    document.getElementById(
+      "visionGoals"
+    );
+
+  if(!box)return;
+
 
   if(!state.goals.length){
 
-    container.innerHTML = `
-      <div class="card">
-        <p>No goals added yet.</p>
-      </div>
-    `;
+    box.innerHTML =
+      '<div class="empty">No goals yet.</div>';
 
     return;
 
   }
 
-  container.innerHTML =
-    state.goals.map((goal,index)=>`
 
-      <div class="goal-card ${goal.active ? "active-goal" : ""}">
+  box.innerHTML =
+    state.goals.map(
+      goal=>`
 
-        <h3>
-          ${escapeHtml(goal.title)}
-        </h3>
+        <div class="goal-card">
 
-        <p>
-          <strong>Category:</strong>
-          ${escapeHtml(goal.category || "")}
-        </p>
-
-        <p>
-          ${escapeHtml(goal.notes || "")}
-        </p>
-
-        ${
-          goal.links && goal.links.length
-          ?
-          `
-          <div class="link-list">
-            ${goal.links.map(link=>`
-              <a
-                href="${escapeAttribute(link[1])}"
-                target="_blank"
-                rel="noopener noreferrer">
-                ${escapeHtml(link[0])}
-              </a>
-            `).join("")}
+          <div class="goal-title">
+            ${escapeHtml(goal.title)}
           </div>
-          `
-          :
-          ""
-        }
 
-        <div class="check-row">
-
-          <input
-            type="checkbox"
-            ${goal.completed ? "checked" : ""}
-            onchange="toggleGoalComplete(${index})">
-
-          <span>
-            Goal Completed
+          <span class="pill">
+            ${escapeHtml(
+              goal.category || "Goal"
+            )}
           </span>
+
+          ${
+            goal.active
+            ?
+            `
+              <span class="status status-active">
+                ⭐ Active
+              </span>
+            `
+            :
+            ""
+          }
 
         </div>
 
-        <button
-          class="btn btn-primary"
-          onclick="setActiveGoal(${index})">
-          ⭐ Make Active
-        </button>
-
-        <button
-          class="btn btn-pink"
-          onclick="editGoal(${index})">
-          ✏️ Edit
-        </button>
-
-        <button
-          class="btn btn-danger"
-          onclick="deleteGoal(${index})">
-          🗑️ Delete
-        </button>
-
-      </div>
-
-    `).join("");
-
-}
-
-
-function addGoal(){
-
-  const title =
-    document.getElementById("newGoalTitle").value.trim();
-
-  const category =
-    document.getElementById("newGoalCategory").value.trim();
-
-  const notes =
-    document.getElementById("newGoalNotes").value.trim();
-
-  if(!title){
-
-    alert("Please enter a goal.");
-
-    return;
-
-  }
-
-  state.goals.push({
-
-    title:title,
-
-    category:category || "Personal",
-
-    type:"standard",
-
-    notes:notes,
-
-    links:[],
-
-    completed:false,
-
-    active:false
-
-  });
-
-  document.getElementById("newGoalTitle").value="";
-  document.getElementById("newGoalCategory").value="";
-  document.getElementById("newGoalNotes").value="";
-
-  saveState();
-
-  renderAll();
-
-}
-
-
-function toggleGoalComplete(index){
-
-  if(!state.goals[index])return;
-
-  state.goals[index].completed =
-    !state.goals[index].completed;
-
-  saveState();
-
-  renderAll();
-
-}
-
-
-function setActiveGoal(index){
-
-  state.goals.forEach(
-    goal=>goal.active=false
-  );
-
-  if(state.goals[index])
-    state.goals[index].active=true;
-
-  saveState();
-
-  renderAll();
-
-  alert("Active goal updated.");
-
-}
-
-
-function editGoal(index){
-
-  const goal =
-    state.goals[index];
-
-  if(!goal)return;
-
-  const title =
-    prompt(
-      "Change goal name:",
-      goal.title
-    );
-
-  if(title===null)return;
-
-  const notes =
-    prompt(
-      "Change goal notes:",
-      goal.notes || ""
-    );
-
-  if(notes===null)return;
-
-  goal.title =
-    title.trim() || goal.title;
-
-  goal.notes =
-    notes;
-
-  saveState();
-
-  renderAll();
-
-}
-
-
-function deleteGoal(index){
-
-  if(!state.goals[index])return;
-
-  const confirmed =
-    confirm(
-      "Delete this goal?"
-    );
-
-  if(!confirmed)return;
-
-  state.goals.splice(index,1);
-
-  saveState();
-
-  renderAll();
+      `
+    ).join("");
 
 }
 
 
 /* =========================
-   ACTIVE GOAL
+   ALL GOALS
+========================= */
+
+function renderGoalsList(){
+
+  const box =
+    document.getElementById(
+      "goalsList"
+    );
+
+  if(!box)return;
+
+
+  if(!state.goals.length){
+
+    box.innerHTML =
+      '<div class="empty">No goals yet.</div>';
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    state.goals.map(
+      (goal,index)=>{
+
+        let status =
+          "Not Active";
+
+
+        if(goal.completed){
+
+          status="Completed";
+
+        }
+        else if(goal.useLater){
+
+          status="Use Later";
+
+        }
+        else if(goal.active){
+
+          status="Active";
+
+        }
+
+
+        let statusClass =
+          "status-active";
+
+
+        if(goal.completed){
+
+          statusClass =
+            "status-complete";
+
+        }
+        else if(goal.useLater){
+
+          statusClass =
+            "status-use";
+
+        }
+
+
+        return `
+
+          <div class="goal-card">
+
+            <div class="goal-title">
+
+              ${index+1}.
+              ${escapeHtml(
+                goal.title
+              )}
+
+            </div>
+
+
+            <span class="pill">
+
+              ${escapeHtml(
+                goal.category || "Goal"
+              )}
+
+            </span>
+
+
+            <span
+              class="status ${statusClass}"
+            >
+
+              ${status}
+
+            </span>
+
+
+            <p>
+
+              ${escapeHtml(
+                goal.notes || ""
+              )}
+
+            </p>
+
+
+            <!-- GOAL LINKS -->
+
+            <div class="goal-links-box">
+
+              <strong>
+                🔗 Goal Websites
+              </strong>
+
+
+              <div class="links">
+
+                ${
+                  Array.isArray(goal.links) &&
+                  goal.links.length
+
+                  ?
+
+                  goal.links.map(
+                    (link,linkIndex)=>`
+
+                      <div class="goal-link-row">
+
+                        <a
+                          href="${escapeAttribute(link[1])}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          🔗
+                          ${escapeHtml(link[0])}
+                        </a>
+
+                        <button
+                          class="btn btn-danger"
+                          onclick="
+                            deleteGoalLink(
+                              '${goal.id}',
+                              ${linkIndex}
+                            )
+                          "
+                        >
+                          🗑️
+                        </button>
+
+                      </div>
+
+                    `
+                  ).join("")
+
+                  :
+
+                  `
+                    <div>
+                      No links added yet.
+                    </div>
+                  `
+                }
+
+              </div>
+
+
+              <label>
+                Website Name
+              </label>
+
+              <div class="link-input-grid">
+
+                <input
+                  type="text"
+                  id="linkName_${goal.id}"
+                  placeholder="Example: Propwire"
+                >
+
+                <input
+                  type="url"
+                  id="linkURL_${goal.id}"
+                  placeholder="https://www.example.com"
+                >
+
+              </div>
+
+
+              <div class="button-row">
+
+                <button
+                  class="btn btn-blue"
+                  onclick="
+                    addGoalLink(
+                      '${goal.id}'
+                    )
+                  "
+                >
+                  ➕ Add Link
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="goal-actions">
+
+              <button
+                class="btn btn-blue"
+                onclick="
+                  setActiveGoal(
+                    '${goal.id}'
+                  )
+                "
+              >
+                ⭐ Make Active
+              </button>
+
+
+              <button
+                class="btn btn-green"
+                onclick="
+                  completeGoal(
+                    '${goal.id}'
+                  )
+                "
+              >
+                ✅ Completed
+              </button>
+
+
+              <button
+                class="btn btn-light"
+                onclick="
+                  useGoalLater(
+                    '${goal.id}'
+                  )
+                "
+              >
+                ⏳ Use Later
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
+
+}
+
+
+/* =========================
+   ADD LINK TO ANY GOAL
+========================= */
+
+function addGoalLink(goalId){
+
+  const goal =
+    state.goals.find(
+      g=>g.id===goalId
+    );
+
+
+  if(!goal)return;
+
+
+  const nameInput =
+    document.getElementById(
+      "linkName_"+goalId
+    );
+
+
+  const urlInput =
+    document.getElementById(
+      "linkURL_"+goalId
+    );
+
+
+  if(!nameInput ||
+     !urlInput){
+
+    return;
+
+  }
+
+
+  const name =
+    nameInput.value.trim();
+
+
+  let url =
+    urlInput.value.trim();
+
+
+  if(!name){
+
+    alert(
+      "Please enter the website name."
+    );
+
+    return;
+
+  }
+
+
+  if(!url){
+
+    alert(
+      "Please enter the website link."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    Allow user to type:
+    example.com
+    or
+    https://example.com
+  */
+
+  if(
+    !url.startsWith("http://") &&
+    !url.startsWith("https://")
+  ){
+
+    url =
+      "https://" + url;
+
+  }
+
+
+  if(!Array.isArray(goal.links)){
+
+    goal.links=[];
+
+  }
+
+
+  goal.links.push([
+    name,
+    url
+  ]);
+
+
+  saveState();
+
+  renderGoalsList();
+
+  renderActiveGoal();
+
+  alert(
+    "Link added to this goal! 🔗"
+  );
+
+}
+
+
+/* =========================
+   DELETE GOAL LINK
+========================= */
+
+function deleteGoalLink(
+  goalId,
+  linkIndex
+){
+
+  const goal =
+    state.goals.find(
+      g=>g.id===goalId
+    );
+
+
+  if(!goal ||
+     !Array.isArray(goal.links)){
+
+    return;
+
+  }
+
+
+  if(
+    !confirm(
+      "Delete this goal link?"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  goal.links.splice(
+    linkIndex,
+    1
+  );
+
+
+  saveState();
+
+  renderGoalsList();
+
+  renderActiveGoal();
+
+}
+
+
+/* =========================
+   SET ACTIVE GOAL
+========================= */
+
+function setActiveGoal(id){
+
+  const selectedGoal =
+    state.goals.find(
+      goal=>String(goal.id)===String(id)
+    );
+
+
+  if(!selectedGoal){
+
+    alert(
+      "Goal could not be found."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    ONLY ONE ACTIVE GOAL
+  */
+
+  state.goals.forEach(
+    goal=>{
+
+      goal.active =
+        String(goal.id)===String(id);
+
+      if(
+        String(goal.id)===String(id)
+      ){
+
+        goal.useLater=false;
+
+        /*
+          Save the start date
+          when the goal becomes active.
+        */
+
+        if(!goal.startDate){
+
+          const today =
+            new Date();
+
+          const year =
+            today.getFullYear();
+
+          const month =
+            String(
+              today.getMonth()+1
+            ).padStart(2,"0");
+
+          const day =
+            String(
+              today.getDate()
+            ).padStart(2,"0");
+
+
+          goal.startDate =
+            `${year}-${month}-${day}`;
+
+        }
+
+      }
+
+    }
+  );
+
+
+  saveState();
+
+  renderAll();
+
+
+  /*
+    Automatically show the Active Goal
+    after selecting it.
+  */
+
+  showPage(
+    "active",
+    document.querySelector(
+      ".tab:nth-child(3)"
+    )
+  );
+
+}
+
+
+/* =========================
+   COMPLETE GOAL
+========================= */
+
+function completeGoal(id){
+
+  const goal =
+    state.goals.find(
+      g=>String(g.id)===String(id)
+    );
+
+
+  if(!goal)return;
+
+
+  goal.completed=true;
+
+  goal.active=false;
+
+  goal.useLater=false;
+
+
+  saveState();
+
+  renderAll();
+
+
+  alert(
+    "Goal marked completed! 🎉"
+  );
+
+}
+
+
+/* =========================
+   USE LATER
+========================= */
+
+function useGoalLater(id){
+
+  const goal =
+    state.goals.find(
+      g=>String(g.id)===String(id)
+    );
+
+
+  if(!goal)return;
+
+
+  goal.useLater=true;
+
+  goal.active=false;
+
+
+  saveState();
+
+  renderAll();
+
+
+  alert(
+    "Goal marked Use Later! ⏳"
+  );
+
+}
+
+
+/* =========================
+   ACTIVE GOAL DISPLAY
 ========================= */
 
 function renderActiveGoal(){
 
-  const container =
-    document.getElementById("activeGoalArea");
-
-  if(!container)return;
-
-  const activeGoal =
-    state.goals.find(
-      goal=>goal.active
+  const box =
+    document.getElementById(
+      "activeGoal"
     );
 
-  if(!activeGoal){
 
-    container.innerHTML=`
-      <p>No active goal selected.</p>
-      <p>
-        Go to <strong>All Goals</strong>
-        and choose a goal.
-      </p>
+  if(!box)return;
+
+
+  /*
+    Find the actual active goal
+    from the saved state.
+  */
+
+  const goal =
+    state.goals.find(
+      g=>g.active===true
+    );
+
+
+  if(!goal){
+
+    box.innerHTML = `
+
+      <div class="empty">
+
+        <h3>
+          No Active Goal
+        </h3>
+
+        <p>
+          Go to All Goals and choose
+          the goal you want to focus on
+          for your 12 weeks.
+        </p>
+
+      </div>
+
     `;
 
     return;
 
   }
 
-  container.innerHTML=`
 
-    <div class="goal-card active-goal">
+  box.innerHTML = `
 
-      <h3>
-        ⭐ ${escapeHtml(activeGoal.title)}
-      </h3>
+    <div class="focus-box">
+
+      <h2>
+        ⭐ ${escapeHtml(
+          goal.title
+        )}
+      </h2>
+
+
+      <span class="pill">
+
+        ${escapeHtml(
+          goal.category || "Goal"
+        )}
+
+      </span>
+
+
+      <span class="status status-active">
+
+        ⭐ Active 12-Week Goal
+
+      </span>
+
+
+      ${
+        goal.startDate
+        ?
+        `
+          <p>
+            <strong>
+              12-Week Focus Started:
+            </strong>
+            ${escapeHtml(
+              goal.startDate
+            )}
+          </p>
+        `
+        :
+        ""
+      }
+
 
       <p>
-        <strong>Category:</strong>
-        ${escapeHtml(activeGoal.category || "")}
+
+        ${escapeHtml(
+          goal.notes || ""
+        )}
+
       </p>
 
-      <p>
-        ${escapeHtml(activeGoal.notes || "")}
-      </p>
 
-      <div class="check-row">
+      <!-- LINKS FOR ACTIVE GOAL -->
 
-        <input
-          type="checkbox"
-          ${activeGoal.completed ? "checked" : ""}
-          onchange="toggleActiveGoalComplete()">
+      <div class="goal-links-box">
 
-        <span>
-          Goal Completed
-        </span>
+        <h3>
+          🔗 Websites for My Active Goal
+        </h3>
+
+
+        ${
+          Array.isArray(goal.links) &&
+          goal.links.length
+
+          ?
+
+          `
+            <div class="links">
+
+              ${goal.links.map(
+                link=>`
+
+                  <a
+                    href="${escapeAttribute(link[1])}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🔗
+                    ${escapeHtml(link[0])}
+                  </a>
+
+                `
+              ).join("")}
+
+            </div>
+          `
+
+          :
+
+          `
+            <div class="empty">
+              No websites added to this goal yet.
+              Add them from All Goals.
+            </div>
+          `
+        }
 
       </div>
 
@@ -1342,190 +2328,409 @@ function renderActiveGoal(){
 }
 
 
-function toggleActiveGoalComplete(){
-
-  const index =
-    state.goals.findIndex(
-      goal=>goal.active
-    );
-
-  if(index<0)return;
-
-  state.goals[index].completed =
-    !state.goals[index].completed;
-
-  saveState();
-
-  renderAll();
-
-}
-
-
 /* =========================
-   DAILY TASKS
+   DAILY SCHEDULE
 ========================= */
 
-function getSelectedDate(){
+function prepareDailyPage(){
 
-  const input =
-    document.getElementById("scheduleDate");
+  const dateInput =
+    document.getElementById(
+      "dailyDate"
+    );
 
-  if(input && input.value)
-    return input.value;
 
-  const today =
-    new Date();
+  if(!dateInput)return;
 
-  return today.toISOString()
-    .split("T")[0];
+
+  if(!dateInput.value){
+
+    const today =
+      new Date();
+
+
+    const year =
+      today.getFullYear();
+
+
+    const month =
+      String(
+        today.getMonth()+1
+      ).padStart(2,"0");
+
+
+    const day =
+      String(
+        today.getDate()
+      ).padStart(2,"0");
+
+
+    dateInput.value =
+      `${year}-${month}-${day}`;
+
+  }
+
+
+  renderDailySchedule();
 
 }
 
 
-function renderDailyTasks(){
+function getDailyTasksForDate(date){
 
-  const container =
-    document.getElementById("dailySchedule");
+  if(!state.dailyTasks[date]){
 
-  if(!container)return;
-
-  const date =
-    getSelectedDate();
-
-  if(!state.dailyTasks[date])
     state.dailyTasks[date]=[];
 
-  const tasks =
-    state.dailyTasks[date];
+  }
 
-  if(!tasks.length){
 
-    container.innerHTML=`
-      <p>
-        No tasks for this date yet.
-      </p>
+  return state.dailyTasks[date];
+
+}
+
+
+function renderDailySchedule(){
+
+  const box =
+    document.getElementById(
+      "dailyContent"
+    );
+
+
+  const date =
+    document.getElementById(
+      "dailyDate"
+    )?.value;
+
+
+  if(!box || !date)return;
+
+
+  /*
+    ALWAYS find the saved active goal.
+  */
+
+  const activeGoal =
+    state.goals.find(
+      goal=>goal.active===true
+    );
+
+
+  if(!activeGoal){
+
+    box.innerHTML = `
+
+      <div class="empty">
+
+        <h3>
+          No Active Goal
+        </h3>
+
+        <p>
+          Go to All Goals and select
+          ⭐ Make Active.
+        </p>
+
+      </div>
+
     `;
 
     return;
 
   }
 
-  container.innerHTML =
-    tasks.map((task,index)=>`
 
-      <div class="goal-card">
+  let tasks =
+    getDailyTasksForDate(date);
 
-        <div class="check-row">
 
-          <input
-            type="checkbox"
-            ${task.done ? "checked" : ""}
-            onchange="toggleDailyTask(${index})">
+  /*
+    Real Estate gets its original
+    daily schedule with all links.
+  */
 
-          <span>
-            <strong>
-              ${escapeHtml(task.time || "")}
-            </strong>
-            —
-            ${escapeHtml(task.text || "")}
-          </span>
+  if(
+    activeGoal.type==="realestate" &&
+    tasks.length===0
+  ){
 
-        </div>
+    tasks =
+      REAL_ESTATE_TASKS.map(
+        (task,index)=>({
+
+          id:
+            "daily_" +
+            date +
+            "_" +
+            index,
+
+          title:
+            task.title,
+
+          links:
+            task.links,
+
+          completed:false
+
+        })
+      );
+
+
+    state.dailyTasks[date]=tasks;
+
+    saveState();
+
+  }
+
+
+  if(tasks.length===0){
+
+    box.innerHTML = `
+
+      <div class="notice">
+
+        <h3>
+          ⭐ ${escapeHtml(
+            activeGoal.title
+          )}
+        </h3>
+
+        <p>
+          Daily Schedule for
+          ${escapeHtml(date)}
+        </p>
+
+      </div>
+
+
+      <div class="button-row">
 
         <button
-          class="btn btn-danger"
-          onclick="deleteDailyTask(${index})">
-          🗑️ Delete
+          class="btn"
+          onclick="addDailyTask()"
+        >
+          ➕ Add Daily Task
         </button>
 
       </div>
 
-    `).join("");
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML = `
+
+    <div class="notice">
+
+      <h3>
+        ⭐ ${escapeHtml(
+          activeGoal.title
+        )}
+      </h3>
+
+      <p>
+        Daily Schedule for
+        ${escapeHtml(date)}
+      </p>
+
+    </div>
+
+
+    ${tasks.map(
+      (task,index)=>`
+
+        <div class="goal-card">
+
+          <div class="task-item">
+
+            <input
+              type="checkbox"
+              ${
+                task.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                toggleDailyTask(
+                  '${date}',
+                  ${index}
+                )
+              "
+            >
+
+
+            <div style="flex:1">
+
+              <strong>
+                ${escapeHtml(
+                  task.title
+                )}
+              </strong>
+
+
+              ${
+                task.links &&
+                task.links.length
+                ?
+                `
+                  <div class="links">
+
+                    ${task.links.map(
+                      link=>`
+
+                        <a
+                          href="${escapeAttribute(link[1])}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          🔗
+                          ${escapeHtml(
+                            link[0]
+                          )}
+                        </a>
+
+                      `
+                    ).join("")}
+
+                  </div>
+                `
+                :
+                ""
+              }
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `
+    ).join("")}
+
+
+    <div class="button-row">
+
+      <button
+        class="btn"
+        onclick="addDailyTask()"
+      >
+        ➕ Add Daily Task
+      </button>
+
+
+      <button
+        class="btn btn-danger"
+        onclick="
+          clearDailyTasks('${date}')
+        "
+      >
+        🗑️ Clear Daily Tasks
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+
+function toggleDailyTask(
+  date,
+  index
+){
+
+  if(!state.dailyTasks[date])
+    return;
+
+
+  if(!state.dailyTasks[date][index])
+    return;
+
+
+  state.dailyTasks[date][index].completed =
+    !state.dailyTasks[date][index].completed;
+
+
+  saveState();
+
+  renderDailySchedule();
+
+  renderProgress();
 
 }
 
 
 function addDailyTask(){
 
-  const text =
-    document.getElementById("newDailyTask")
-      .value.trim();
+  const date =
+    document.getElementById(
+      "dailyDate"
+    ).value;
 
-  const time =
-    document.getElementById("newDailyTime")
-      .value.trim();
 
-  if(!text){
+  if(!date)return;
 
-    alert("Enter a task.");
+
+  const title =
+    prompt(
+      "Enter daily task:"
+    );
+
+
+  if(!title)return;
+
+
+  if(!state.dailyTasks[date]){
+
+    state.dailyTasks[date]=[];
+
+  }
+
+
+  state.dailyTasks[date].push({
+
+    id:
+      "daily_" +
+      Date.now(),
+
+    title:title,
+
+    links:[],
+
+    completed:false
+
+  });
+
+
+  saveState();
+
+  renderDailySchedule();
+
+}
+
+
+function clearDailyTasks(date){
+
+  if(
+    !confirm(
+      "Clear all daily tasks for this date?"
+    )
+  ){
 
     return;
 
   }
 
-  const date =
-    getSelectedDate();
 
-  if(!state.dailyTasks[date])
-    state.dailyTasks[date]=[];
-
-  state.dailyTasks[date].push({
-
-    text:text,
-
-    time:time,
-
-    done:false
-
-  });
-
-  document.getElementById("newDailyTask").value="";
-  document.getElementById("newDailyTime").value="";
+  delete state.dailyTasks[date];
 
   saveState();
 
-  renderDailyTasks();
-
-  renderProgress();
-
-}
-
-
-function toggleDailyTask(index){
-
-  const date =
-    getSelectedDate();
-
-  if(!state.dailyTasks[date] ||
-     !state.dailyTasks[date][index])
-    return;
-
-  state.dailyTasks[date][index].done =
-    !state.dailyTasks[date][index].done;
-
-  saveState();
-
-  renderDailyTasks();
-
-  renderProgress();
-
-}
-
-
-function deleteDailyTask(index){
-
-  const date =
-    getSelectedDate();
-
-  if(!state.dailyTasks[date])return;
-
-  state.dailyTasks[date].splice(index,1);
-
-  saveState();
-
-  renderDailyTasks();
-
-  renderProgress();
+  renderDailySchedule();
 
 }
 
@@ -1536,39 +2741,83 @@ function deleteDailyTask(index){
 
 function addAppointment(){
 
-  const name =
-    document.getElementById("appointmentName")
-      .value.trim();
-
   const date =
-    document.getElementById("appointmentDate")
-      .value;
+    document.getElementById(
+      "appointmentDate"
+    ).value;
+
 
   const time =
-    document.getElementById("appointmentTime")
-      .value.trim();
+    document.getElementById(
+      "appointmentTime"
+    ).value;
 
-  if(!name){
 
-    alert("Enter an appointment.");
+  const title =
+    document.getElementById(
+      "appointmentTitle"
+    ).value.trim();
+
+
+  const notes =
+    document.getElementById(
+      "appointmentNotes"
+    ).value.trim();
+
+
+  if(!title){
+
+    alert(
+      "Please enter the appointment."
+    );
 
     return;
 
   }
 
+
   state.appointments.push({
 
-    name:name,
+    id:Date.now(),
 
-    date:date,
+    date,
 
-    time:time
+    time,
+
+    title,
+
+    notes,
+
+    completed:false
 
   });
 
-  document.getElementById("appointmentName").value="";
-  document.getElementById("appointmentDate").value="";
-  document.getElementById("appointmentTime").value="";
+
+  saveState();
+
+
+  document.getElementById(
+    "appointmentTitle"
+  ).value="";
+
+
+  document.getElementById(
+    "appointmentNotes"
+  ).value="";
+
+
+  renderPersonal();
+
+}
+
+
+function deleteAppointment(id){
+
+  state.appointments =
+    state.appointments.filter(
+      item=>item.id!==id
+    );
+
 
   saveState();
 
@@ -1577,196 +2826,20 @@ function addAppointment(){
 }
 
 
-function renderPersonal(){
+function toggleAppointment(id){
 
-  const appointments =
-    document.getElementById("appointmentList");
+  const item =
+    state.appointments.find(
+      item=>item.id===id
+    );
 
-  if(appointments){
 
-    if(!state.appointments.length){
+  if(!item)return;
 
-      appointments.innerHTML =
-        "<p>No appointments added.</p>";
 
-    }else{
+  item.completed =
+    !item.completed;
 
-      appointments.innerHTML =
-        state.appointments.map((item,index)=>`
-
-          <div class="goal-card">
-
-            <strong>
-              ${escapeHtml(item.name)}
-            </strong>
-
-            <p>
-              ${escapeHtml(item.date || "")}
-              ${escapeHtml(item.time || "")}
-            </p>
-
-            <button
-              class="btn btn-danger"
-              onclick="deleteAppointment(${index})">
-              🗑️ Delete
-            </button>
-
-          </div>
-
-        `).join("");
-
-    }
-
-  }
-
-
-  const errands =
-    document.getElementById("errandList");
-
-  if(errands){
-
-    if(!state.errands.length){
-
-      errands.innerHTML =
-        "<p>No errands added.</p>";
-
-    }else{
-
-      errands.innerHTML =
-        state.errands.map((item,index)=>`
-
-          <div class="goal-card">
-
-            <div class="check-row">
-
-              <input
-                type="checkbox"
-                ${item.done ? "checked" : ""}
-                onchange="toggleErrand(${index})">
-
-              <span>
-                ${escapeHtml(item.text)}
-              </span>
-
-            </div>
-
-            <button
-              class="btn btn-danger"
-              onclick="deleteErrand(${index})">
-              🗑️ Delete
-            </button>
-
-          </div>
-
-        `).join("");
-
-    }
-
-  }
-
-
-  const personal =
-    document.getElementById("personalTaskList");
-
-  if(personal){
-
-    if(!state.personalTasks.length){
-
-      personal.innerHTML =
-        "<p>No personal tasks added.</p>";
-
-    }else{
-
-      personal.innerHTML =
-        state.personalTasks.map((item,index)=>`
-
-          <div class="goal-card">
-
-            <div class="check-row">
-
-              <input
-                type="checkbox"
-                ${item.done ? "checked" : ""}
-                onchange="togglePersonalTask(${index})">
-
-              <span>
-                ${escapeHtml(item.text)}
-              </span>
-
-            </div>
-
-            <button
-              class="btn btn-danger"
-              onclick="deletePersonalTask(${index})">
-              🗑️ Delete
-            </button>
-
-          </div>
-
-        `).join("");
-
-    }
-
-  }
-
-}
-
-
-function deleteAppointment(index){
-
-  state.appointments.splice(index,1);
-
-  saveState();
-
-  renderPersonal();
-
-}
-
-
-function addErrand(){
-
-  const input =
-    document.getElementById("newErrand");
-
-  const text =
-    input.value.trim();
-
-  if(!text)return;
-
-  state.errands.push({
-
-    text:text,
-
-    done:false
-
-  });
-
-  input.value="";
-
-  saveState();
-
-  renderPersonal();
-
-}
-
-
-function toggleErrand(index){
-
-  if(!state.errands[index])return;
-
-  state.errands[index].done =
-    !state.errands[index].done;
-
-  saveState();
-
-  renderPersonal();
-
-}
-
-
-function deleteErrand(index){
-
-  state.errands.splice(index,1);
 
   saveState();
 
@@ -1777,23 +2850,174 @@ function deleteErrand(index){
 
 function addPersonalTask(){
 
-  const input =
-    document.getElementById("newPersonalTask");
+  const title =
+    document.getElementById(
+      "personalTaskTitle"
+    ).value.trim();
 
-  const text =
-    input.value.trim();
 
-  if(!text)return;
+  const date =
+    document.getElementById(
+      "personalTaskDate"
+    ).value;
+
+
+  const notes =
+    document.getElementById(
+      "personalTaskNotes"
+    ).value.trim();
+
+
+  let link =
+    document.getElementById(
+      "personalTaskLink"
+    ).value.trim();
+
+
+  if(link && !/^https?:\/\//i.test(link)){
+
+    link = "https://" + link;
+
+  }
+
+
+  if(!title){
+
+    alert(
+      "Please enter a task."
+    );
+
+    return;
+
+  }
+
 
   state.personalTasks.push({
 
-    text:text,
+    id:Date.now(),
 
-    done:false
+    title,
+
+    date,
+
+    notes,
+
+    link,
+
+    completed:false
 
   });
 
-  input.value="";
+
+  saveState();
+
+
+  document.getElementById(
+    "personalTaskTitle"
+  ).value="";
+
+
+  document.getElementById(
+    "personalTaskDate"
+  ).value="";
+
+
+  document.getElementById(
+    "personalTaskNotes"
+  ).value="";
+
+
+  document.getElementById(
+    "personalTaskLink"
+  ).value="";
+
+
+  renderPersonal();
+
+}
+
+
+function deletePersonalTask(index){
+
+  if(index < 0 || index >= state.personalTasks.length){
+
+    return;
+
+  }
+
+
+  state.personalTasks.splice(index,1);
+
+
+  saveState();
+
+  renderPersonal();
+
+}
+
+
+function editPersonalTask(index){
+
+  const item = state.personalTasks[index];
+
+  if(!item)return;
+
+
+  const title = prompt(
+    "Task:",
+    item.title || ""
+  );
+
+  if(title === null)return;
+
+
+  const date = prompt(
+    "Date:",
+    item.date || ""
+  );
+
+  if(date === null)return;
+
+
+  const notes = prompt(
+    "Notes:",
+    item.notes || ""
+  );
+
+  if(notes === null)return;
+
+
+  const link = prompt(
+    "Optional Link:",
+    item.link || ""
+  );
+
+  if(link === null)return;
+
+
+  item.title =
+    title.trim() || item.title;
+
+  item.date =
+    date.trim();
+
+  item.notes =
+    notes.trim();
+
+  item.link =
+    link.trim();
+
+
+  if(
+    item.link &&
+    !/^https?:\/\//i.test(item.link)
+  ){
+
+    item.link =
+      "https://" + item.link;
+
+  }
+
 
   saveState();
 
@@ -1804,10 +3028,16 @@ function addPersonalTask(){
 
 function togglePersonalTask(index){
 
-  if(!state.personalTasks[index])return;
+  const item =
+    state.personalTasks[index];
 
-  state.personalTasks[index].done =
-    !state.personalTasks[index].done;
+
+  if(!item)return;
+
+
+  item.completed =
+    !item.completed;
+
 
   saveState();
 
@@ -1816,13 +3046,486 @@ function togglePersonalTask(index){
 }
 
 
-function deletePersonalTask(index){
+function addErrand(){
 
-  state.personalTasks.splice(index,1);
+  const title =
+    document.getElementById(
+      "errandTitle"
+    ).value.trim();
+
+
+  const date =
+    document.getElementById(
+      "errandDate"
+    ).value;
+
+
+  const notes =
+    document.getElementById(
+      "errandNotes"
+    ).value.trim();
+
+
+  const link =
+    document.getElementById(
+      "errandLink"
+    ).value.trim();
+
+
+  if(!title){
+
+    alert(
+      "Please enter an errand."
+    );
+
+    return;
+
+  }
+
+
+  state.errands.push({
+
+    id:Date.now(),
+
+    title,
+
+    date,
+
+    notes,
+
+    link,
+
+    completed:false
+
+  });
+
+
+  saveState();
+
+
+  document.getElementById(
+    "errandTitle"
+  ).value="";
+
+
+  document.getElementById(
+    "errandDate"
+  ).value="";
+
+
+  document.getElementById(
+    "errandNotes"
+  ).value="";
+
+
+  document.getElementById(
+    "errandLink"
+  ).value="";
+
+
+  renderPersonal();
+
+}
+
+
+function deleteErrand(id){
+
+  state.errands =
+    state.errands.filter(
+      item=>item.id!==id
+    );
+
 
   saveState();
 
   renderPersonal();
+
+}
+
+
+function toggleErrand(id){
+
+  const item =
+    state.errands.find(
+      item=>item.id===id
+    );
+
+
+  if(!item)return;
+
+
+  item.completed =
+    !item.completed;
+
+
+  saveState();
+
+  renderPersonal();
+
+}
+
+
+function renderPersonal(){
+
+  renderAppointments();
+
+  renderPersonalTasks();
+
+  renderErrands();
+
+}
+
+
+function renderAppointments(){
+
+  const box =
+    document.getElementById(
+      "appointmentsList"
+    );
+
+
+  if(!box)return;
+
+
+  if(!state.appointments.length){
+
+    box.innerHTML =
+      '<div class="empty">No appointments added yet.</div>';
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    state.appointments.map(
+      item=>`
+
+        <div class="appointment-card">
+
+          <div class="checkbox-line">
+
+            <input
+              type="checkbox"
+              ${
+                item.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                toggleAppointment(
+                  ${item.id}
+                )
+              "
+            >
+
+            <strong>
+              ${escapeHtml(
+                item.title
+              )}
+            </strong>
+
+          </div>
+
+
+          <p>
+
+            ${escapeHtml(
+              item.date || ""
+            )}
+
+            ${
+              item.time
+              ?
+              " • " +
+              escapeHtml(
+                item.time
+              )
+              :
+              ""
+            }
+
+          </p>
+
+
+          <p>
+
+            ${escapeHtml(
+              item.notes || ""
+            )}
+
+          </p>
+
+
+          <button
+            class="btn btn-danger"
+            onclick="
+              deleteAppointment(
+                ${item.id}
+              )
+            "
+          >
+            🗑️ Delete
+          </button>
+
+        </div>
+
+      `
+    ).join("");
+
+}
+
+
+function renderPersonalTasks(){
+
+  const box =
+    document.getElementById(
+      "personalTasksList"
+    );
+
+
+  if(!box)return;
+
+
+  if(!state.personalTasks.length){
+
+    box.innerHTML =
+      '<div class="empty">No personal tasks added yet.</div>';
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    state.personalTasks.map(
+      (item,index)=>`
+
+        <div class="personal-card">
+
+          <div class="checkbox-line">
+
+            <input
+              type="checkbox"
+              ${
+                item.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                togglePersonalTask(
+                  ${index}
+                )
+              "
+            >
+
+            <strong>
+              ${escapeHtml(
+                item.title
+              )}
+            </strong>
+
+          </div>
+
+
+          ${
+            item.date
+            ?
+            `<p>
+              📅
+              ${escapeHtml(
+                item.date
+              )}
+            </p>`
+            :
+            ""
+          }
+
+
+          ${
+            item.notes
+            ?
+            `<p>
+              ${escapeHtml(
+                item.notes
+              )}
+            </p>`
+            :
+            ""
+          }
+
+
+          ${
+            item.link
+            ?
+            `
+              <p>
+
+                <a
+                  href="${escapeAttribute(item.link)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🔗 Open Link
+                </a>
+
+              </p>
+            `
+            :
+            ""
+          }
+
+
+          <div class="button-row">
+
+            <button
+              class="btn btn-light"
+              onclick="
+                editPersonalTask(
+                  ${index}
+                )
+              "
+            >
+              ✏️ Edit
+            </button>
+
+
+            <button
+              class="btn btn-danger"
+              onclick="
+                deletePersonalTask(
+                  ${index}
+                )
+              "
+            >
+              🗑️ Delete
+            </button>
+
+          </div>
+
+        </div>
+
+      `
+    ).join("");
+
+}
+
+
+function renderErrands(){
+
+  const box =
+    document.getElementById(
+      "errandsList"
+    );
+
+
+  if(!box)return;
+
+
+  if(!state.errands.length){
+
+    box.innerHTML =
+      '<div class="empty">No errands added yet.</div>';
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    state.errands.map(
+      item=>`
+
+        <div class="personal-card">
+
+          <div class="checkbox-line">
+
+            <input
+              type="checkbox"
+              ${
+                item.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                toggleErrand(
+                  ${item.id}
+                )
+              "
+            >
+
+            <strong>
+              ${escapeHtml(
+                item.title
+              )}
+            </strong>
+
+          </div>
+
+
+          ${
+            item.date
+            ?
+            `<p>
+              📅
+              ${escapeHtml(
+                item.date
+              )}
+            </p>`
+            :
+            ""
+          }
+
+
+          ${
+            item.notes
+            ?
+            `<p>
+              ${escapeHtml(
+                item.notes
+              )}
+            </p>`
+            :
+            ""
+          }
+
+
+          ${
+            item.link
+            ?
+            `
+              <p>
+
+                <a
+                  href="${escapeAttribute(item.link)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🔗 Open Link
+                </a>
+
+              </p>
+            `
+            :
+            ""
+          }
+
+
+          <button
+            class="btn btn-danger"
+            onclick="
+              deleteErrand(
+                ${item.id}
+              )
+            "
+          >
+            🗑️ Delete
+          </button>
+
+        </div>
+
+      `
+    ).join("");
 
 }
 
@@ -1834,97 +3537,108 @@ function deletePersonalTask(index){
 function renderRoutine(){
 
   const morning =
-    document.getElementById("morningRoutine");
+    document.getElementById(
+      "morningRoutine"
+    );
+
 
   const afternoon =
-    document.getElementById("afternoonRoutine");
+    document.getElementById(
+      "afternoonRoutine"
+    );
+
 
   const evening =
-    document.getElementById("eveningRoutine");
+    document.getElementById(
+      "eveningRoutine"
+    );
+
 
   const night =
-    document.getElementById("nightRoutine");
+    document.getElementById(
+      "nightRoutine"
+    );
 
-  if(morning)
-    morning.value =
-      state.routine.morning || "";
 
-  if(afternoon)
-    afternoon.value =
-      state.routine.afternoon || "";
+  if(
+    !morning ||
+    !afternoon ||
+    !evening ||
+    !night
+  ){
 
-  if(evening)
-    evening.value =
-      state.routine.evening || "";
+    return;
 
-  if(night)
-    night.value =
-      state.routine.night || "";
+  }
+
+
+  morning.value =
+    state.routine?.morning || "";
+
+
+  afternoon.value =
+    state.routine?.afternoon || "";
+
+
+  evening.value =
+    state.routine?.evening || "";
+
+
+  night.value =
+    state.routine?.night || "";
 
 }
 
 
 function saveRoutine(){
 
-  state.routine = {
+  if(!state.routine){
 
-    morning:
-      document.getElementById("morningRoutine")
-        ?.value || "",
+    state.routine={
 
-    afternoon:
-      document.getElementById("afternoonRoutine")
-        ?.value || "",
+      morning:"",
 
-    evening:
-      document.getElementById("eveningRoutine")
-        ?.value || "",
+      afternoon:"",
 
-    night:
-      document.getElementById("nightRoutine")
-        ?.value || ""
+      evening:"",
 
-  };
+      night:""
+
+    };
+
+  }
+
+
+  state.routine.morning =
+    document.getElementById(
+      "morningRoutine"
+    ).value;
+
+
+  state.routine.afternoon =
+    document.getElementById(
+      "afternoonRoutine"
+    ).value;
+
+
+  state.routine.evening =
+    document.getElementById(
+      "eveningRoutine"
+    ).value;
+
+
+  state.routine.night =
+    document.getElementById(
+      "nightRoutine"
+    ).value;
+
 
   saveState();
 
-}
 
-
-/* =========================
-   VISION
-========================= */
-
-function renderVision(){
-
-  const verse =
-    document.getElementById("visionVerse");
-
-  const longVision =
-    document.getElementById("longVision");
-
-  if(verse)
-    verse.value =
-      state.vision.verse || "";
-
-  if(longVision)
-    longVision.value =
-      state.vision.longVision || "";
-
-}
-
-
-function saveVision(){
-
-  state.vision.verse =
-    document.getElementById("visionVerse")
-      ?.value || "";
-
-  state.vision.longVision =
-    document.getElementById("longVision")
-      ?.value || "";
-
-  saveState();
+  alert(
+    "Routine saved! 💗"
+  );
 
 }
 
@@ -1935,709 +3649,213 @@ function saveVision(){
 
 function renderProgress(){
 
-  const total =
+  const box =
+    document.getElementById(
+      "progressContent"
+    );
+
+
+  if(!box)return;
+
+
+  const totalGoals =
     state.goals.length;
 
-  const completed =
+
+  const completedGoals =
     state.goals.filter(
-      goal=>goal.completed
+      g=>g.completed
     ).length;
 
-  const active =
-    state.goals.filter(
-      goal=>goal.active
-    ).length;
+
+  const activeGoal =
+    state.goals.find(
+      g=>g.active===true
+    );
+
+
+  let dailyTotal=0;
 
   let dailyCompleted=0;
 
-  const date =
-    getSelectedDate();
 
-  if(state.dailyTasks[date]){
+  Object.values(
+    state.dailyTasks
+  ).forEach(tasks=>{
 
-    dailyCompleted =
-      state.dailyTasks[date]
-        .filter(task=>task.done)
-        .length;
-
-  }
-
-  const totalEl =
-    document.getElementById("totalGoals");
-
-  const completedEl =
-    document.getElementById("completedGoals");
-
-  const activeEl =
-    document.getElementById("activeGoalsCount");
-
-  const dailyEl =
-    document.getElementById("dailyCompleted");
-
-  if(totalEl)
-    totalEl.textContent=total;
-
-  if(completedEl)
-    completedEl.textContent=completed;
-
-  if(activeEl)
-    activeEl.textContent=active;
-
-  if(dailyEl)
-    dailyEl.textContent=dailyCompleted;
-
-  const points =
-    document.getElementById("weeklyPoints");
-
-  if(points)
-    points.value =
-      state.weeklyPoints || 0;
-
-  renderWeeklyGrade();
-
-}
+    if(!Array.isArray(tasks))
+      return;
 
 
-function saveProgress(){
-
-  const input =
-    document.getElementById("weeklyPoints");
-
-  state.weeklyPoints =
-    Number(input?.value || 0);
-
-  saveState();
-
-  renderWeeklyGrade();
-
-}
+    dailyTotal +=
+      tasks.length;
 
 
-function renderWeeklyGrade(){
+    dailyCompleted +=
+      tasks.filter(
+        task=>task.completed
+      ).length;
 
-  const container =
-    document.getElementById("weeklyGrade");
+  });
 
-  if(!container)return;
 
-  const points =
-    Number(state.weeklyPoints || 0);
+  const goalPercent =
+    totalGoals
+    ?
+    Math.round(
+      (
+        completedGoals /
+        totalGoals
+      ) * 100
+    )
+    :
+    0;
 
-  let grade="F";
 
-  if(points>=19)
-    grade="A";
-  else if(points>=17)
-    grade="B";
-  else if(points>=14)
-    grade="C";
-  else if(points>=10)
-    grade="D";
+  const dailyPercent =
+    dailyTotal
+    ?
+    Math.round(
+      (
+        dailyCompleted /
+        dailyTotal
+      ) * 100
+    )
+    :
+    0;
 
-  container.innerHTML=`
 
-    <div class="stat">
+  box.innerHTML = `
 
-      <strong>
-        ${grade}
-      </strong>
+    <div class="stats">
 
-      ${points} / 21 points
+      <div class="stat">
+
+        <strong>
+          ${totalGoals}
+        </strong>
+
+        Total Goals
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong>
+          ${completedGoals}
+        </strong>
+
+        Completed Goals
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong>
+          ${dailyCompleted}
+        </strong>
+
+        Daily Tasks Completed
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong>
+          ${dailyTotal}
+        </strong>
+
+        Daily Tasks
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        🎯 Goal Progress
+      </h3>
+
+      <div class="progress-wrap">
+
+        <div
+          class="progress-bar"
+          style="
+            width:${goalPercent}%
+          "
+        >
+
+          ${goalPercent}%
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        🗓️ Daily Schedule Progress
+      </h3>
+
+      <div class="progress-wrap">
+
+        <div
+          class="progress-bar"
+          style="
+            width:${dailyPercent}%
+          "
+        >
+
+          ${dailyPercent}%
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        ⭐ Active Goal
+      </h3>
+
+      ${
+        activeGoal
+
+        ?
+
+        `
+          <p>
+            <strong>
+              ${escapeHtml(
+                activeGoal.title
+              )}
+            </strong>
+          </p>
+        `
+
+        :
+
+        `
+          <p>
+            No active goal selected.
+          </p>
+        `
+      }
 
     </div>
 
   `;
-
-}
-
-
-/* =========================
-   RENDER ALL
-========================= */
-
-function renderAll(){
-
-  renderGoals();
-
-  renderActiveGoal();
-
-  renderDailyTasks();
-
-  renderPersonal();
-
-  renderRoutine();
-
-  renderVision();
-
-  renderProgress();
-
-}
-
-
-/* =========================
-   ESCAPE HTML
-========================= */
-
-function escapeHtml(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-function escapeAttribute(value){
-
-  return escapeHtml(value);
-
-}
-
-
-/* =========================
-   FIREBASE CLOUD SYNC
-========================= */
-
-const firebaseConfig = {
-
-  apiKey:
-    "AIzaSyAHIPJHJl9oPQmLMtJFEgy0-BDLH8XmaAI",
-
-  authDomain:
-    "lessie-bea-goal-crm.firebaseapp.com",
-
-  projectId:
-    "lessie-bea-goal-crm",
-
-  storageBucket:
-    "lessie-bea-goal-crm.firebasestorage.app",
-
-  messagingSenderId:
-    "433663665955",
-
-  appId:
-    "1:433663665955:web:93802440615f81b2740e96",
-
-  measurementId:
-    "G-JK4TFLFKT7"
-
-};
-
-
-let firebaseApp = null;
-
-let firebaseAuth = null;
-
-let firebaseDb = null;
-
-
-function setCloudStatus(message,ok=false){
-
-  const el =
-    document.getElementById("cloudStatus");
-
-  if(el){
-
-    el.textContent =
-      message;
-
-    el.style.color =
-      ok ? "#188038" : "#222";
-
-  }
-
-}
-
-
-function cloudDocRef(){
-
-  if(!firebaseDb || !cloudUser)
-    return null;
-
-  return firebaseDb
-    .collection("goalCRM")
-    .doc(cloudUser.uid)
-    .collection("data")
-    .doc("main");
-
-}
-
-
-function scheduleCloudSync(){
-
-  clearTimeout(cloudSyncTimer);
-
-  cloudSyncTimer =
-    setTimeout(
-      syncStateToCloud,
-      500
-    );
-
-}
-
-
-async function syncStateToCloud(){
-
-  if(
-    !cloudUser ||
-    !cloudReady ||
-    cloudApplying
-  )
-    return;
-
-  const ref =
-    cloudDocRef();
-
-  if(!ref)return;
-
-  try{
-
-    await ref.set({
-
-      state:
-        JSON.parse(
-          JSON.stringify(state)
-        ),
-
-      updatedAt:
-        firebase.firestore.FieldValue
-          .serverTimestamp()
-
-    },{
-      merge:true
-    });
-
-    setCloudStatus(
-      "☁️ Synced automatically",
-      true
-    );
-
-  }catch(error){
-
-    console.error(
-      "Cloud sync error:",
-      error
-    );
-
-    setCloudStatus(
-      "☁️ Sync error: " +
-      (error.message || error)
-    );
-
-  }
-
-}
-
-
-function stopCloudListener(){
-
-  if(
-    typeof cloudUnsubscribe ===
-    "function"
-  ){
-
-    cloudUnsubscribe();
-
-  }
-
-  cloudUnsubscribe=null;
-
-}
-
-
-function startCloudListener(){
-
-  stopCloudListener();
-
-  const ref =
-    cloudDocRef();
-
-  if(!ref)return;
-
-  cloudUnsubscribe =
-    ref.onSnapshot(
-
-      async snapshot => {
-
-        if(!snapshot.exists){
-
-          cloudReady=true;
-
-          setCloudStatus(
-            "☁️ Account connected — uploading your CRM data…",
-            true
-          );
-
-          await syncStateToCloud();
-
-          return;
-
-        }
-
-        const data =
-          snapshot.data();
-
-        if(
-          data &&
-          data.state
-        ){
-
-          cloudApplying=true;
-
-          try{
-
-            state =
-              Object.assign(
-                {},
-                state,
-                data.state
-              );
-
-            localStorage.setItem(
-              STORAGE_KEY,
-              JSON.stringify(state)
-            );
-
-            renderAll();
-
-          }finally{
-
-            cloudApplying=false;
-
-          }
-
-        }
-
-        cloudReady=true;
-
-        setCloudStatus(
-          "☁️ Synced automatically",
-          true
-        );
-
-      },
-
-      error => {
-
-        console.error(
-          "Cloud listener error:",
-          error
-        );
-
-        cloudReady=false;
-
-        setCloudStatus(
-          "☁️ Sync error: " +
-          (error.message || error)
-        );
-
-      }
-
-    );
-
-}
-
-
-async function cloudLogin(){
-
-  if(!firebaseAuth){
-
-    setCloudStatus(
-      "Firebase is not available. Check your internet connection."
-    );
-
-    return;
-
-  }
-
-  const email =
-    document
-      .getElementById("cloudEmail")
-      ?.value.trim();
-
-  const password =
-    document
-      .getElementById("cloudPassword")
-      ?.value;
-
-  if(!email || !password){
-
-    setCloudStatus(
-      "Enter your email and password."
-    );
-
-    return;
-
-  }
-
-  try{
-
-    setCloudStatus(
-      "☁️ Signing in…"
-    );
-
-    await firebaseAuth
-      .signInWithEmailAndPassword(
-        email,
-        password
-      );
-
-  }catch(error){
-
-    console.error(error);
-
-    setCloudStatus(
-      "Login failed: " +
-      (error.message || error)
-    );
-
-  }
-
-}
-
-
-async function cloudCreateAccount(){
-
-  if(!firebaseAuth){
-
-    setCloudStatus(
-      "Firebase is not available. Check your internet connection."
-    );
-
-    return;
-
-  }
-
-  const email =
-    document
-      .getElementById("cloudEmail")
-      ?.value.trim();
-
-  const password =
-    document
-      .getElementById("cloudPassword")
-      ?.value;
-
-  if(!email || !password){
-
-    setCloudStatus(
-      "Enter an email and password first."
-    );
-
-    return;
-
-  }
-
-  if(password.length < 6){
-
-    setCloudStatus(
-      "Password must be at least 6 characters."
-    );
-
-    return;
-
-  }
-
-  try{
-
-    setCloudStatus(
-      "☁️ Creating account…"
-    );
-
-    await firebaseAuth
-      .createUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-  }catch(error){
-
-    console.error(error);
-
-    setCloudStatus(
-      "Account creation failed: " +
-      (error.message || error)
-    );
-
-  }
-
-}
-
-
-async function cloudLogout(){
-
-  if(!firebaseAuth)
-    return;
-
-  try{
-
-    await firebaseAuth.signOut();
-
-  }catch(error){
-
-    console.error(error);
-
-    setCloudStatus(
-      "Logout failed: " +
-      (error.message || error)
-    );
-
-  }
-
-}
-
-
-function updateCloudUI(user){
-
-  const logoutBtn =
-    document.getElementById(
-      "cloudLogoutBtn"
-    );
-
-  const emailInput =
-    document.getElementById(
-      "cloudEmail"
-    );
-
-  const passwordInput =
-    document.getElementById(
-      "cloudPassword"
-    );
-
-  if(user){
-
-    if(logoutBtn)
-      logoutBtn.style.display =
-        "inline-block";
-
-    if(emailInput){
-
-      emailInput.value =
-        user.email || "";
-
-      emailInput.disabled=true;
-
-    }
-
-    if(passwordInput){
-
-      passwordInput.value="";
-
-      passwordInput.disabled=true;
-
-    }
-
-  }else{
-
-    if(logoutBtn)
-      logoutBtn.style.display =
-        "none";
-
-    if(emailInput)
-      emailInput.disabled=false;
-
-    if(passwordInput)
-      passwordInput.disabled=false;
-
-  }
-
-}
-
-
-function initFirebaseCloudSync(){
-
-  try{
-
-    if(
-      typeof firebase ===
-      "undefined" ||
-      !firebase.initializeApp
-    ){
-
-      setCloudStatus(
-        "Firebase could not load. Check your internet connection."
-      );
-
-      return;
-
-    }
-
-    firebaseApp =
-      firebase.apps.length
-      ? firebase.app()
-      : firebase.initializeApp(
-          firebaseConfig
-        );
-
-    firebaseAuth =
-      firebase.auth();
-
-    firebaseDb =
-      firebase.firestore();
-
-    firebaseAuth
-      .setPersistence(
-        firebase.auth.Auth.Persistence.LOCAL
-      )
-      .catch(error=>{
-        console.error(
-          "Auth persistence error:",
-          error
-        );
-      });
-
-    firebaseAuth
-      .onAuthStateChanged(
-        user => {
-
-          cloudUser =
-            user;
-
-          cloudReady=false;
-
-          updateCloudUI(
-            user
-          );
-
-          if(user){
-
-            setCloudStatus(
-              "☁️ Signed in as " +
-              (user.email || "your account") +
-              " — syncing…"
-            );
-
-            startCloudListener();
-
-          }else{
-
-            stopCloudListener();
-
-            setCloudStatus(
-              "☁️ Not signed in. Sign in on every device with the same account."
-            );
-
-          }
-
-        }
-      );
-
-  }catch(error){
-
-    console.error(
-      "Firebase initialization error:",
-      error
-    );
-
-    setCloudStatus(
-      "Firebase setup error: " +
-      (error.message || error)
-    );
-
-  }
 
 }
 
@@ -2653,17 +3871,334 @@ function resetCRM(){
       "Are you sure you want to reset the Goal CRM? This will clear saved data on this device."
     );
 
-  if(!confirmed)
-    return;
+
+  if(!confirmed)return;
+
 
   localStorage.removeItem(
     STORAGE_KEY
   );
 
+
   location.reload();
 
 }
 
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+
+}
+
+
+/* =========================
+   ESCAPE ATTRIBUTE
+========================= */
+
+function escapeAttribute(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  );
+
+}
+
+
+/* =========================
+   RENDER ALL
+========================= */
+
+function renderAll(){
+
+  renderVision();
+
+  renderVisionGoals();
+
+  renderGoalsList();
+
+  renderActiveGoal();
+
+  renderProgress();
+
+
+  if(
+    document.getElementById("daily") &&
+    document
+      .getElementById("daily")
+      .classList
+      .contains("active")
+  ){
+
+    prepareDailyPage();
+
+  }
+
+
+  renderPersonal();
+
+  renderRoutine();
+
+}
+
+
+/* =========================
+   FIREBASE AUTOMATIC CLOUD SYNC
+========================= */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAHIPJHJl9oPQmLMtJFEgy0-BDLH8XmaAI",
+  authDomain: "lessie-bea-goal-crm.firebaseapp.com",
+  projectId: "lessie-bea-goal-crm",
+  storageBucket: "lessie-bea-goal-crm.firebasestorage.app",
+  messagingSenderId: "433663665955",
+  appId: "1:433663665955:web:93802440615f81b2740e96",
+  measurementId: "G-JK4TFLFKT7"
+};
+
+let firebaseApp = null;
+let firebaseAuth = null;
+let firebaseDb = null;
+
+function setCloudStatus(message, success=false){
+  const el = document.getElementById("cloudStatus");
+  if(el){
+    el.textContent = message;
+    el.style.color = success ? "#168a3a" : "#000";
+  }
+}
+
+function cloudDocRef(){
+  if(!firebaseDb || !cloudUser) return null;
+  return firebaseDb.collection("goalCRM")
+    .doc(cloudUser.uid)
+    .collection("data")
+    .doc("main");
+}
+
+function scheduleCloudSync(){
+  clearTimeout(cloudSyncTimer);
+  cloudSyncTimer = setTimeout(syncStateToCloud, 500);
+}
+
+async function syncStateToCloud(){
+  if(!cloudUser || !cloudReady || cloudApplying) return;
+  const ref = cloudDocRef();
+  if(!ref) return;
+
+  try{
+    await ref.set({
+      state: JSON.parse(JSON.stringify(state)),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, {merge:true});
+    setCloudStatus("☁️ Your Goal CRM data is synced automatically.", true);
+  }catch(error){
+    console.error("Firebase sync error:", error);
+    setCloudStatus("☁️ Sync error: " + (error.message || error));
+  }
+}
+
+function stopCloudListener(){
+  if(typeof cloudUnsubscribe === "function") cloudUnsubscribe();
+  cloudUnsubscribe = null;
+}
+
+function startCloudListener(){
+  stopCloudListener();
+  const ref = cloudDocRef();
+  if(!ref) return;
+
+  cloudUnsubscribe = ref.onSnapshot(async snapshot => {
+    if(!snapshot.exists){
+      cloudReady = true;
+      setCloudStatus("☁️ Account connected. Saving your CRM data to the cloud…", true);
+      await syncStateToCloud();
+      return;
+    }
+
+    const data = snapshot.data();
+
+    if(data && data.state){
+      cloudApplying = true;
+      try{
+        state = Object.assign({}, state, data.state);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        renderAll();
+      }finally{
+        cloudApplying = false;
+      }
+    }
+
+    cloudReady = true;
+    setCloudStatus("☁️ Your Goal CRM data is synced automatically.", true);
+  }, error => {
+    console.error("Firebase listener error:", error);
+    cloudReady = false;
+    setCloudStatus("☁️ Sync error: " + (error.message || error));
+  });
+}
+
+async function cloudLogin(){
+  if(!firebaseAuth){
+    setCloudStatus("Firebase is not available. Check your internet connection.");
+    return;
+  }
+
+  const email = document.getElementById("cloudEmail")?.value.trim();
+  const password = document.getElementById("cloudPassword")?.value || "";
+
+  if(!email || !password){
+    setCloudStatus("Enter your email and password.");
+    return;
+  }
+
+  try{
+    setCloudStatus("☁️ Signing in…");
+    await firebaseAuth.signInWithEmailAndPassword(email, password);
+  }catch(error){
+    console.error(error);
+    setCloudStatus("Login failed: " + (error.message || error));
+  }
+}
+
+async function cloudCreateAccount(){
+  if(!firebaseAuth){
+    setCloudStatus("Firebase is not available. Check your internet connection.");
+    return;
+  }
+
+  const email = document.getElementById("cloudEmail")?.value.trim();
+  const password = document.getElementById("cloudPassword")?.value || "";
+
+  if(!email || !password){
+    setCloudStatus("Enter an email and password.");
+    return;
+  }
+
+  if(password.length < 6){
+    setCloudStatus("Password must be at least 6 characters.");
+    return;
+  }
+
+  try{
+    setCloudStatus("☁️ Creating account…");
+    await firebaseAuth.createUserWithEmailAndPassword(email, password);
+  }catch(error){
+    console.error(error);
+    setCloudStatus("Account creation failed: " + (error.message || error));
+  }
+}
+
+async function cloudLogout(){
+  if(!firebaseAuth) return;
+  try{
+    await firebaseAuth.signOut();
+  }catch(error){
+    console.error(error);
+    setCloudStatus("Logout failed: " + (error.message || error));
+  }
+}
+
+function updateCloudUI(user){
+  const logoutBtn = document.getElementById("cloudLogoutBtn");
+  const emailInput = document.getElementById("cloudEmail");
+  const passwordInput = document.getElementById("cloudPassword");
+
+  if(user){
+    if(logoutBtn) logoutBtn.style.display = "inline-block";
+    if(emailInput){
+      emailInput.value = user.email || "";
+      emailInput.disabled = true;
+    }
+    if(passwordInput){
+      passwordInput.value = "";
+      passwordInput.disabled = true;
+    }
+  }else{
+    if(logoutBtn) logoutBtn.style.display = "none";
+    if(emailInput) emailInput.disabled = false;
+    if(passwordInput) passwordInput.disabled = false;
+  }
+}
+
+function initFirebaseCloudSync(){
+  try{
+    if(typeof firebase === "undefined"){
+      setCloudStatus("Firebase could not load. Check your internet connection.");
+      return;
+    }
+
+    firebaseApp = firebase.apps.length ? firebase.app() : firebase.initializeApp(firebaseConfig);
+    firebaseAuth = firebase.auth();
+    firebaseDb = firebase.firestore();
+
+    firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      .catch(error => console.error("Auth persistence error:", error));
+
+    firebaseAuth.onAuthStateChanged(user => {
+      cloudUser = user;
+      cloudReady = false;
+      updateCloudUI(user);
+
+      if(user){
+        setCloudStatus("☁️ Signed in as " + (user.email || "your account") + " — syncing…");
+        startCloudListener();
+      }else{
+        stopCloudListener();
+        setCloudStatus("☁️ Sign in with the same account on your computer and phone to sync all CRM data.");
+      }
+    });
+  }catch(error){
+    console.error("Firebase initialization error:", error);
+    setCloudStatus("Firebase setup error: " + (error.message || error));
+  }
+}
 
 /* =========================
    START APP
@@ -2678,125 +4213,17 @@ initFirebaseCloudSync();
 </script>
 
 
-<!-- =========================
-     CLOUD SYNC PANEL
-========================= -->
-
-<div
-  id="cloudSyncPanel"
-  style="
-    max-width:900px;
-    margin:20px auto;
-    padding:18px;
-    border-radius:16px;
-    background:#fff;
-    border:2px solid #f3a6c7;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-    font-family:Arial,sans-serif;
-  ">
-
-  <h2 style="margin-top:0;">
-    ☁️ Cloud Sync — Computer + Phone
-  </h2>
-
-  <p style="margin-bottom:10px;">
-
-    Sign in with the same Firebase account
-    on your devices to keep your Goal CRM
-    data synchronized automatically.
-
-  </p>
-
-  <div
-    id="cloudStatus"
-    style="
-      font-weight:bold;
-      margin:10px 0;
-    ">
-
-    Connecting to Firebase...
-
+<div id="cloudSyncPanel" style="max-width:900px;margin:20px auto;padding:18px;border-radius:16px;background:#fff;border:2px solid #f3a6c7;box-shadow:0 4px 12px rgba(0,0,0,.08);font-family:Arial,sans-serif;">
+  <h2 style="margin-top:0;">☁️ Cloud Sync — Computer + Phone</h2>
+  <p style="margin-bottom:10px;">Sign in with the same Firebase account on your devices to keep your Goal CRM data synchronized automatically.</p>
+  <div id="cloudStatus" style="font-weight:bold;margin:10px 0;">Connecting to Firebase...</div>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+    <input id="cloudEmail" type="email" placeholder="Email" autocomplete="email" style="padding:10px;border:1px solid #ccc;border-radius:8px;">
+    <input id="cloudPassword" type="password" placeholder="Password" autocomplete="current-password" style="padding:10px;border:1px solid #ccc;border-radius:8px;">
+    <button type="button" onclick="cloudLogin()" style="padding:10px 14px;border:0;border-radius:8px;cursor:pointer;">☁️ Login</button>
+    <button type="button" onclick="cloudCreateAccount()" style="padding:10px 14px;border:0;border-radius:8px;cursor:pointer;">➕ Create Account</button>
+    <button type="button" id="cloudLogoutBtn" onclick="cloudLogout()" style="display:none;padding:10px 14px;border:0;border-radius:8px;cursor:pointer;">Logout</button>
   </div>
-
-  <div
-    style="
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      align-items:center;
-    ">
-
-    <input
-      id="cloudEmail"
-      type="email"
-      placeholder="Email"
-      autocomplete="email"
-      style="
-        width:auto;
-        padding:10px;
-        border:1px solid #ccc;
-        border-radius:8px;
-      ">
-
-    <input
-      id="cloudPassword"
-      type="password"
-      placeholder="Password"
-      autocomplete="current-password"
-      style="
-        width:auto;
-        padding:10px;
-        border:1px solid #ccc;
-        border-radius:8px;
-      ">
-
-    <button
-      type="button"
-      onclick="cloudLogin()"
-      style="
-        padding:10px 14px;
-        border:0;
-        border-radius:8px;
-        cursor:pointer;
-      ">
-
-      ☁️ Login
-
-    </button>
-
-    <button
-      type="button"
-      onclick="cloudCreateAccount()"
-      style="
-        padding:10px 14px;
-        border:0;
-        border-radius:8px;
-        cursor:pointer;
-      ">
-
-      ➕ Create Account
-
-    </button>
-
-    <button
-      type="button"
-      id="cloudLogoutBtn"
-      onclick="cloudLogout()"
-      style="
-        display:none;
-        padding:10px 14px;
-        border:0;
-        border-radius:8px;
-        cursor:pointer;
-      ">
-
-      Logout
-
-    </button>
-
-  </div>
-
 </div>
-
 </body>
 </html>
