@@ -506,83 +506,18 @@
   <div class="notice">Your Goal CRM can still work on this device without signing in. Sign in with the same Firebase account on your devices to keep your Goal CRM data in the cloud.</div>
   <div id="cloudStatus" class="notice">Connecting to Firebase...</div>
   <div id="cloudUserBox" style="font-weight:bold;margin-bottom:10px;">☁️ Not signed in</div>
-
   <div class="grid">
-
-    <div>
-      <label for="cloudEmail">Email</label>
-      <input
-        id="cloudEmail"
-        type="email"
-        autocomplete="email"
-        placeholder="Your email"
-      >
-    </div>
-
-    <div>
-      <label for="cloudPassword">Password</label>
-      <input
-        id="cloudPassword"
-        type="password"
-        autocomplete="current-password"
-        placeholder="Your Firebase password"
-      >
-    </div>
-
+    <div><label for="cloudEmail">Email</label><input id="cloudEmail" type="email" autocomplete="email" placeholder="Your email"></div>
+    <div><label for="cloudPassword">Password</label><input id="cloudPassword" type="password" autocomplete="current-password" placeholder="Your Firebase password"></div>
   </div>
-
   <div class="button-row">
-
-    <button
-      id="cloudLoginBtn"
-      class="btn btn-blue"
-      onclick="loginToCloud()"
-    >
-      ☁️ Login
-    </button>
-
-    <button
-      id="cloudCreateBtn"
-      class="btn btn-green"
-      onclick="createCloudAccount()"
-    >
-      ➕ Create Account
-    </button>
-
-    <button
-      id="cloudLogoutBtn"
-      class="btn btn-light"
-      onclick="logoutFromCloud()"
-      style="display:none;"
-    >
-      🚪 Sign Out
-    </button>
-
-    <button
-      id="cloudUploadBtn"
-      class="btn"
-      onclick="uploadLocalDataToCloud()"
-      style="display:none;"
-    >
-      ⬆️ Upload Local Data
-    </button>
-
-    <button
-      id="cloudDownloadBtn"
-      class="btn btn-blue"
-      onclick="downloadCloudDataToLocal()"
-      style="display:none;"
-    >
-      ⬇️ Download Cloud Data
-    </button>
-
+    <button id="cloudLoginBtn" class="btn btn-blue" onclick="loginToCloud()">☁️ Login</button>
+    <button id="cloudCreateBtn" class="btn btn-green" onclick="createCloudAccount()">➕ Create Account</button>
+    <button id="cloudLogoutBtn" class="btn btn-light" onclick="logoutFromCloud()" style="display:none;">🚪 Sign Out</button>
+    <button id="cloudUploadBtn" class="btn" onclick="uploadLocalDataToCloud()" style="display:none;">⬆️ Upload Local Data</button>
+    <button id="cloudDownloadBtn" class="btn btn-blue" onclick="downloadCloudDataToLocal()" style="display:none;">⬇️ Download Cloud Data</button>
   </div>
-
-  <p style="margin-bottom:0;font-size:14px;">
-    Use the same Firebase email and password on your computer and phone.
-    Your Goal CRM is stored under your private Firebase user account.
-  </p>
-
+  <p style="margin-bottom:0;font-size:14px;">Use the same Firebase email and password on your computer and phone. Your Goal CRM is stored under your private Firebase user account.</p>
 </div>
 
 
@@ -1063,1070 +998,46 @@ Dinner
 Clean up
 Prepare for tomorrow"
     ></textarea>
-
-    <div class="button-row">
-
-      <button
-        class="btn"
-        onclick="saveRoutine()"
-      >
-        💾 Save Evening Routine
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2>🌙 Night Routine</h2>
-
-    <label>
-      What I do at night
-    </label>
-
-    <textarea
-      id="nightRoutine"
-      placeholder="Example:
-Review my day
-Pray
-Read Bible
-Prepare clothes for tomorrow
-Go to bed"
-    ></textarea>
-
-    <div class="button-row">
-
-      <button
-        class="btn"
-        onclick="saveRoutine()"
-      >
-        💾 Save Night Routine
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     PROGRESS
-========================= -->
-
-<section id="progress" class="page">
-
-  <div class="card">
-
-    <h2>📊 Progress</h2>
-
-    <div id="progressContent"></div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     RESET
-========================= -->
-
-<section id="reset" class="page">
-
-  <div class="card">
-
-    <h2>🔄 Reset</h2>
-
-    <div class="notice">
-      Resetting will clear the saved CRM data from this device.
-    </div>
-
-    <button
-      class="btn btn-danger"
-      onclick="resetCRM()"
-    >
-      🔄 Reset CRM
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- Firebase Cloud Sync SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-
-<script>
-
-/* =========================
-   STORAGE
-========================= */
-
-const STORAGE_KEY =
-  "lessieBeaGoalCRM_final_v4_personal_daily";
-
-
-/* =========================
-   STATE
-========================= */
-
-let state = {
-
-  goals:[],
-
-  dailyTasks:{},
-
-  appointments:[],
-
-  personalTasks:[],
-
-  errands:[],
-
-  routine:{
-    morning:"",
-    afternoon:"",
-    evening:"",
-    night:""
-  },
-
-  vision:{
-    weight175:false,
-    weight155:false
-  }
-
-};
-
-
-/* =========================
-   DEFAULT GOALS
-========================= */
-
-const DEFAULT_GOALS = [
-
-  {
-    title:"Real Estate • Minimum 2 Deals/Month (Outcome Only)",
-    category:"Real Estate",
-    type:"realestate",
-    notes:"Focus on getting a minimum of 2 deals per month.",
-    links:[
-      ["Propwire","https://www.propwire.com/"],
-      ["Zillow FSBO","https://www.zillow.com/"],
-      ["Craigslist","https://www.craigslist.org/"],
-      ["County GIS","https://www.google.com/search?q=county+GIS"],
-      ["Redfin","https://www.redfin.com/"],
-      ["Google Maps","https://www.google.com/maps/"],
-      ["Regrid","https://regrid.com/"],
-      ["NETR Online","https://www.netronline.com/"],
-      ["Google Voice","https://voice.google.com/"],
-      ["Realtor.com","https://www.realtor.com/"]
-    ]
-  },
-
-  {
-    title:"GED",
-    category:"Education",
-    type:"standard",
-    notes:"Complete GED.",
-    links:[]
-  },
-
-  {
-    title:"Fix Teeth",
-    category:"Personal",
-    type:"standard",
-    notes:"Work toward getting my teeth fixed.",
-    links:[]
-  },
-
-  {
-    title:"Buy a Home & Rental Properties",
-    category:"Real Estate",
-    type:"standard",
-    notes:"Buy a home and build rental properties.",
-    links:[]
-  },
-
-  {
-    title:"Bookkeeping Business",
-    category:"Business",
-    type:"standard",
-    notes:"Build bookkeeping business.",
-    links:[]
-  },
-
-  {
-    title:"Credit Repaired",
-    category:"Financial",
-    type:"standard",
-    notes:"Repair and improve credit.",
-    links:[]
-  },
-
-  {
-    title:"Open Medical Assistant Facility • 12 Week Focus",
-    category:"Healthcare",
-    type:"standard",
-    notes:"I already have my Medical Assistant. This goal is for building toward opening a facility for medical assistants later.",
-    links:[]
-  },
-
-  {
-    title:"Class A (CDL)",
-    category:"Career",
-    type:"standard",
-    notes:"Work toward obtaining Class A CDL.",
-    links:[]
-  },
-
-  {
-    title:"Cornstarch Business",
-    category:"Business",
-    type:"standard",
-    notes:"Grow the Cornstarch Business.",
-    links:[]
-  },
-
-  {
-    title:"YouTube Channels",
-    category:"Social Media",
-    type:"standard",
-    notes:"Build and grow YouTube channels.",
-    links:[]
-  },
-
-  {
-    title:"Courses",
-    category:"Education",
-    type:"standard",
-    notes:"Complete courses.",
-    links:[]
-  },
-
-  {
-    title:"Dispatcher Business",
-    category:"Business",
-    type:"standard",
-    notes:"Build dispatcher business.",
-    links:[]
-  },
-
-  {
-    title:"House Inspector Business",
-    category:"Business",
-    type:"standard",
-    notes:"Build house inspector business.",
-    links:[]
-  },
-
-  {
-    title:"Open Independent Living Homes",
-    category:"Business",
-    type:"standard",
-    notes:"Build toward opening independent living homes.",
-    links:[]
-  },
-
-  {
-    title:"Dropshipping Business",
-    category:"Business",
-    type:"standard",
-    notes:"Build dropshipping business.",
-    links:[]
-  },
-
-  {
-    title:"Become an Author",
-    category:"Creative",
-    type:"standard",
-    notes:"Become an author.",
-    links:[]
-  },
-
-  {
-    title:"Build & Sell Courses",
-    category:"Business",
-    type:"standard",
-    notes:"Create and sell courses.",
-    links:[]
-  },
-
-  {
-    title:"Make Planners",
-    category:"Business",
-    type:"standard",
-    notes:"Create planners.",
-    links:[]
-  },
-
-  {
-    title:"Create & Sell Products",
-    category:"Business",
-    type:"standard",
-    notes:"Create and sell products.",
-    links:[]
-  },
-
-  {
-    title:"Monetize Instagram & Grow My Following",
-    category:"Social Media",
-    type:"standard",
-    notes:"Grow Instagram following and monetize.",
-    links:[]
-  },
-
-  {
-    title:"Monetize YouTube & Grow My Following",
-    category:"Social Media",
-    type:"standard",
-    notes:"Grow YouTube following and monetize.",
-    links:[]
-  },
-
-  {
-    title:"Build Millions of Followers Across My Social Media",
-    category:"Social Media",
-    type:"standard",
-    notes:"Build a large following across social media.",
-    links:[]
-  },
-
-  {
-    title:"Keep All My Websites & Apps Running Properly",
-    category:"Technology",
-    type:"standard",
-    notes:"Maintain all websites and apps.",
-    links:[]
-  }
-
-];
-
-
-/* =========================
-   REAL ESTATE DAILY TEMPLATE
-   ALL ORIGINAL SITE LINKS
-========================= */
-
-const REAL_ESTATE_TASKS = [
-
-  {
-    title:"Find 5–10 seller leads",
-
-    links:[
-      ["Propwire","https://www.propwire.com/"],
-      ["Zillow FSBO","https://www.zillow.com/"],
-      ["Craigslist","https://www.craigslist.org/"],
-      ["County GIS","https://www.google.com/search?q=county+GIS"],
-      ["Redfin","https://www.redfin.com/"],
-      ["Google Maps","https://www.google.com/maps/"],
-      ["Regrid","https://regrid.com/"],
-      ["NETR Online","https://www.netronline.com/"]
-    ]
-
-  },
-
-  {
-    title:"Contact 3–5 sellers",
-
-    links:[
-      ["Google Voice","https://voice.google.com/"]
-    ]
-
-  },
-
-  {
-    title:"Find 3–5 new buyers",
-
-    links:[
-      ["Propwire","https://www.propwire.com/"],
-      ["Zillow","https://www.zillow.com/"],
-      ["Craigslist","https://www.craigslist.org/"],
-      ["Realtor.com","https://www.realtor.com/"],
-      ["Redfin","https://www.redfin.com/"],
-      ["Google Maps","https://www.google.com/maps/"]
-    ]
-
-  },
-
-  {
-    title:"Analyze 1–2 properties",
-
-    links:[
-      ["Propwire","https://www.propwire.com/"],
-      ["Zillow","https://www.zillow.com/"],
-      ["Redfin","https://www.redfin.com/"],
-      ["Regrid","https://regrid.com/"],
-      ["NETR Online","https://www.netronline.com/"]
-    ]
-
-  },
-
-  {
-    title:"Send 1 offer",
-
-    links:[]
-
-  },
-
-  {
-    title:"Follow up with sellers",
-
-    links:[
-      ["Google Voice","https://voice.google.com/"]
-    ]
-
-  },
-
-  {
-    title:"Follow up with buyers",
-
-    links:[
-      ["Google Voice","https://voice.google.com/"]
-    ]
-
-  },
-
-  {
-    title:"Update CRM",
-
-    links:[]
-
-  }
-
-];
-
-
-/* =========================
-   NORMALIZE STATE
-========================= */
-
-function normalizeState(){
-
-  if(!Array.isArray(state.goals))
-    state.goals=[];
-
-  if(
-    !state.dailyTasks ||
-    typeof state.dailyTasks!=="object"
-  )
-    state.dailyTasks={};
-
-  if(!Array.isArray(state.appointments))
-    state.appointments=[];
-
-  if(!Array.isArray(state.personalTasks))
-    state.personalTasks=[];
-
-  if(!Array.isArray(state.errands))
-    state.errands=[];
-
-  if(
-    !state.routine ||
-    typeof state.routine!=="object"
-  )
-    state.routine={
-      morning:"",
-      afternoon:"",
-      evening:"",
-      night:""
-    };
-
-  if(typeof state.routine.morning!=="string")
-    state.routine.morning="";
-
-  if(typeof state.routine.afternoon!=="string")
-    state.routine.afternoon="";
-
-  if(typeof state.routine.evening!=="string")
-    state.routine.evening="";
-
-  if(typeof state.routine.night!=="string")
-    state.routine.night="";
-
-  if(
-    !state.vision ||
-    typeof state.vision!=="object"
-  )
-    state.vision={
-      weight175:false,
-      weight155:false
-    };
-
-  state.goals.forEach(goal=>{
-    if(!Array.isArray(goal.links))
-      goal.links=[];
-  });
-
-}
-
-
-/* =========================
-   LOAD STATE
-========================= */
-
-function loadState(){
-
-  const saved =
-    localStorage.getItem(STORAGE_KEY);
-
-  if(saved){
-
-    try{
-
-      const parsed =
-        JSON.parse(saved);
-
-      if(
-        parsed &&
-        typeof parsed==="object"
-      ){
-
-        state=parsed;
-
-      }
-
-    }catch(e){
-
-      console.log(
-        "Could not load saved state."
-      );
-
-    }
-
-  }
-
-
-  normalizeState();
-
-  if(state.goals.length===0){
-
-    state.goals =
-      DEFAULT_GOALS.map(
-        (goal,index)=>({
-
-          id:
-            "goal_" +
-            Date.now() +
-            "_" +
-            index,
-
-          title:goal.title,
-
-          category:goal.category,
-
-          type:goal.type,
-
-          notes:goal.notes || "",
-
-          links:
-            Array.isArray(goal.links)
-            ? [...goal.links]
-            : [],
-
-          active:false,
-
-          completed:false,
-
-          useLater:false,
-
-          startDate:""
-
-        })
-      );
-
-  }
-
-
-  saveState();
-
-}
-
-
-/* =========================
-   SAVE
-========================= */
-
-function saveState(syncCloud=true){
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(state)
-  );
-
-  if(syncCloud)
-    scheduleCloudSync();
-
-}
-
-
-/* =========================
-   PAGE NAVIGATION
-========================= */
-
-function showPage(pageId,button){
-
-  document
-    .querySelectorAll(".page")
-    .forEach(page=>{
-      page.classList.remove("active");
-    });
-
-
-  document
-    .querySelectorAll(".tab")
-    .forEach(tab=>{
-      tab.classList.remove("active");
-    });
-
-
-  const page =
-    document.getElementById(pageId);
-
-
-  if(page){
-    page.classList.add("active");
-  }
-
-
-  if(button){
-    button.classList.add("active");
-  }
-
-
-  if(pageId==="daily"){
-    prepareDailyPage();
-  }
-
-
-  if(pageId==="personal"){
-    renderPersonal();
-  }
-
-
-  if(pageId==="routine"){
-    renderRoutine();
-  }
-
-
-  if(pageId==="active"){
-    renderActiveGoal();
-  }
-
-}
-
-
-/* =========================
-   VISION
-========================= */
-
-function toggleVision(key){
-
-  state.vision[key] =
-    document.getElementById(key).checked;
-
-  saveState();
-
-}
-
-
-function renderVision(){
-
-  const weight175 =
-    document.getElementById(
-      "weight175"
-    );
-
-  const weight155 =
-    document.getElementById(
-      "weight155"
-    );
-
-
-  if(weight175){
-
-    weight175.checked =
-      !!state.vision.weight175;
-
-  }
-
-
-  if(weight155){
-
-    weight155.checked =
-      !!state.vision.weight155;
-
-  }
-
-}
-
-
-function renderVisionGoals(){
-
-  const box =
-    document.getElementById(
-      "visionGoals"
-    );
-
-  if(!box)return;
-
-
-  if(!state.goals.length){
-
-    box.innerHTML =
-      '<div class="empty">No goals yet.</div>';
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    state.goals.map(
-      goal=>`
-
-        <div class="goal-card">
-
-          <div class="goal-title">
-            ${escapeHtml(goal.title)}
-          </div>
-
-          <span class="pill">
-            ${escapeHtml(
-              goal.category || "Goal"
-            )}
-          </span>
-
-          ${
-            goal.active
-            ?
-            `
-              <span class="status status-active">
-                ⭐ Active
-              </span>
-            `
-            :
-            ""
-          }
-
-        </div>
-
-      `
-    ).join("");
-
-}
-
-
-/* =========================
-   ALL GOALS
-========================= */
-
-function renderGoalsList(){
-
-  const box =
-    document.getElementById(
-      "goalsList"
-    );
-
-  if(!box)return;
-
-
-  if(!state.goals.length){
-
-    box.innerHTML =
-      '<div class="empty">No goals yet.</div>';
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    state.goals.map(
-      (goal,index)=>{
-
-        let status =
-          "Not Active";
-
-
-        if(goal.completed){
-
-          status="Completed";
-
-        }
-        else if(goal.useLater){
-
-          status="Use Later";
-
-        }
-        else if(goal.active){
-
-          status="Active";
-
-        }
-
-
-        let statusClass =
-          "status-active";
-
-
-        if(goal.completed){
-
-          statusClass =
-            "status-complete";
-
-        }
-        else if(goal.useLater){
-
-          statusClass =
-            "status-use";
-
-        }
-
-
-        return `
-
-          <div class="goal-card">
-
-            <div class="goal-title">
-
-              ${index+1}.
-              ${escapeHtml(
-                goal.title
-              )}
-
-            </div>
-
-
-            <span class="pill">
-
-              ${escapeHtml(
-                goal.category || "Goal"
-              )}
-
-            </span>
-
-
-            <span
-              class="status ${statusClass}"
-            >
-
-              ${status}
-
-            </span>
-
-
-            <p>
-
-              ${escapeHtml(
-                goal.notes || ""
-              )}
-
-            </p>
-
-
-            <!-- GOAL LINKS -->
-
-            <div class="goal-links-box">
-
-              <strong>
-                🔗 Goal Websites
-              </strong>
-
-
-              <div class="links">
-
-                ${
-                  Array.isArray(goal.links) &&
-                  goal.links.length
-
-                  ?
-
-                  goal.links.map(
-                    (link,linkIndex)=>`
-
-                      <div class="goal-link-row">
-
-                        <a
-                          href="${escapeAttribute(link[1])}"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          🔗
-                          ${escapeHtml(link[0])}
-                        </a>
-
-                        <button
-                          class="btn btn-danger"
-                          onclick="
-                            deleteGoalLink(
-                              '${goal.id}',
-                              ${linkIndex}
-                            )
-                          "
-                        >
-                          🗑️
-                        </button>
-
-                      </div>
-
-                    `
-                  ).join("")
-
-                  :
-
-                  `
-                    <div>
-                      No links added yet.
-                    </div>
-                  `
-                }
-
-              </div>
-
-
-              <label>
-                Website Name
-              </label>
-
-              <div class="link-input-grid">
-
-                <input
-                  type="text"
-                  id="linkName_${goal.id}"
-                  placeholder="Example: Propwire"
-                >
-
-                <input
-                  type="url"
-                  id="linkURL_${goal.id}"
-                  placeholder="https://www.example.com"
-                >
-
-              </div>
-
-
-              <div class="button-row">
-
-                <button
-                  class="btn btn-blue"
-                  onclick="
-                    addGoalLink(
-                      '${goal.id}'
-                    )
-                  "
-                >
-                  ➕ Add Link
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <div class="goal-actions">
-
-              <button
-                class="btn btn-blue"
-                onclick="
-                  setActiveGoal(
-                    '${goal.id}'
-                  )
-                "
-              >
-                ⭐ Make Active
-              </button>
-
-
-              <button
-                class="btn btn-green"
-                onclick="
-                  completeGoal(
-                    '${goal.id}'
-                  )
-                "
-              >
-                ✅ Completed
-              </button>
-
-
-              <button
-                class="btn btn-light"
-                onclick="
-                  useGoalLater(
-                    '${goal.id}'
-                  )
-                "
-              >
-                ⏳ Use Later
-              </button>
-
-            </div>
-
-          </div>
-
-        `;
-
-      }
-    ).join("");
-
-}
-      const name =
-      nameInput.value.trim();
-
-
-  const url =
-    normalizeLink(
-      urlInput.value.trim()
-    );
-
+        const url =
+      urlInput.value.trim();
 
   if(!name){
-
-    alert(
-      "Please enter a website name."
-    );
-
+    alert("Please enter the website name.");
     return;
-
   }
-
 
   if(!url){
-
-    alert(
-      "Please enter a valid website URL."
-    );
-
+    alert("Please enter the website link.");
     return;
-
   }
 
+  let finalURL = url;
+
+  if(
+    !finalURL.startsWith("http://") &&
+    !finalURL.startsWith("https://")
+  ){
+    finalURL =
+      "https://" + finalURL;
+  }
 
   if(!Array.isArray(goal.links)){
-
     goal.links=[];
-
   }
-
 
   goal.links.push([
     name,
-    url
+    finalURL
   ]);
 
-
   saveState();
-
-
   renderGoalsList();
-
+  renderActiveGoal();
 
   nameInput.value="";
   urlInput.value="";
 
+  alert("Link added to this goal! 🔗");
 }
 
 
@@ -2134,160 +1045,35 @@ function renderGoalsList(){
    DELETE GOAL LINK
 ========================= */
 
-function deleteGoalLink(
-  goalId,
-  linkIndex
-){
+function deleteGoalLink(goalId,linkIndex){
 
   const goal =
     state.goals.find(
       g=>g.id===goalId
     );
 
+  if(!goal)return;
 
-  if(!goal ||
-     !Array.isArray(goal.links)){
-
-    return;
-
+  if(!Array.isArray(goal.links)){
+    goal.links=[];
   }
-
 
   if(
     !confirm(
       "Delete this website link?"
     )
   ){
-
     return;
-
   }
-
 
   goal.links.splice(
     linkIndex,
     1
   );
 
-
   saveState();
-
-å  renderGoalsList();
-
-}
-
-
-/* =========================
-   ADD NEW GOAL
-========================= */
-
-function addNewGoal(){
-
-  const titleInput =
-    document.getElementById(
-      "newGoalTitle"
-    );
-
-
-  const categoryInput =
-    document.getElementById(
-      "newGoalCategory"
-    );
-
-
-  const notesInput =
-    document.getElementById(
-      "newGoalNotes"
-    );
-
-
-  if(!titleInput){
-
-    return;
-
-  }
-
-
-  const title =
-    titleInput.value.trim();
-
-
-  const category =
-    categoryInput
-    ? categoryInput.value.trim()
-    : "";
-
-
-  const notes =
-    notesInput
-    ? notesInput.value.trim()
-    : "";
-
-
-  if(!title){
-
-    alert(
-      "Please enter a goal."
-    );
-
-    return;
-
-  }
-
-
-  state.goals.push({
-
-    id:
-      "goal_" +
-      Date.now() +
-      "_" +
-      Math.random()
-        .toString(36)
-        .slice(2),
-
-    title:title,
-
-    category:
-      category || "Goal",
-
-    type:"standard",
-
-    notes:notes,
-
-    links:[],
-
-    active:false,
-
-    completed:false,
-
-    useLater:false,
-
-    startDate:""
-
-  });
-
-
-  saveState();
-
-
-  titleInput.value="";
-
-  if(categoryInput){
-
-    categoryInput.value="";
-
-  }
-
-  if(notesInput){
-
-    notesInput.value="";
-
-  }
-
-
   renderGoalsList();
-
-  renderVisionGoals();
+  renderActiveGoal();
 
 }
 
@@ -2300,54 +1086,33 @@ function setActiveGoal(goalId){
 
   state.goals.forEach(
     goal=>{
-
       goal.active =
         goal.id===goalId;
 
-      if(
-        goal.id===goalId
-      ){
-
-        goal.useLater=false;
+      if(goal.id===goalId){
         goal.completed=false;
+        goal.useLater=false;
 
         if(!goal.startDate){
-
           goal.startDate =
             new Date()
               .toISOString()
-              .slice(0,10);
-
+              .split("T")[0];
         }
-
       }
-
     }
   );
 
-
   saveState();
 
-
-  renderGoalsList();
-
-  renderVisionGoals();
-
-  renderActiveGoal();
-
-  prepareDailyPage();
-
+  renderAll();
 
   alert(
-    "This goal is now your active goal."
+    "Your 12-week active goal has been updated! ⭐"
   );
 
 }
 
-
-/* =========================
-   COMPLETE GOAL
-========================= */
 
 function completeGoal(goalId){
 
@@ -2356,34 +1121,26 @@ function completeGoal(goalId){
       g=>g.id===goalId
     );
 
-
   if(!goal)return;
 
+  if(
+    !confirm(
+      "Mark this goal as completed?"
+    )
+  ){
+    return;
+  }
 
   goal.completed=true;
-
   goal.active=false;
-
   goal.useLater=false;
-
 
   saveState();
 
-
-  renderGoalsList();
-
-  renderVisionGoals();
-
-  renderActiveGoal();
-
-  prepareDailyPage();
+  renderAll();
 
 }
 
-
-/* =========================
-   USE GOAL LATER
-========================= */
 
 function useGoalLater(goalId){
 
@@ -2392,106 +1149,84 @@ function useGoalLater(goalId){
       g=>g.id===goalId
     );
 
-
   if(!goal)return;
 
-
   goal.useLater=true;
-
   goal.active=false;
-
   goal.completed=false;
-
 
   saveState();
 
+  renderAll();
 
-  renderGoalsList();
+}
 
-  renderVisionGoals();
 
-  renderActiveGoal();
+function getActiveGoal(){
 
-  prepareDailyPage();
+  return state.goals.find(
+    goal=>goal.active
+  ) || null;
 
 }
 
 
 /* =========================
-   RENDER ACTIVE GOAL
+   ACTIVE GOAL DISPLAY
 ========================= */
 
 function renderActiveGoal(){
 
   const box =
     document.getElementById(
-      "activeGoalContent"
+      "activeGoal"
     );
-
 
   if(!box)return;
 
-
   const goal =
-    state.goals.find(
-      g=>g.active
-    );
-
+    getActiveGoal();
 
   if(!goal){
 
     box.innerHTML=`
-
       <div class="empty">
+        <h3>No Active Goal</h3>
 
-        ⭐ No active goal right now.
-
-        <br><br>
-
-        Go to the
-        <strong>Goals</strong>
-        tab and choose
-        <strong>Make Active</strong>
-        on the goal you want to work on.
-
+        <p>
+          Go to All Goals and choose
+          one goal as your 12-week focus.
+        </p>
       </div>
-
     `;
 
     return;
-
   }
 
 
   box.innerHTML=`
 
-    <div class="active-goal-box">
+    <div class="goal-card">
 
       <div class="goal-title">
-
-        ⭐
-        ${escapeHtml(goal.title)}
-
+        ⭐ ${escapeHtml(goal.title)}
       </div>
 
-
       <span class="pill">
-
         ${escapeHtml(
           goal.category || "Goal"
         )}
-
       </span>
 
+      <span class="status status-active">
+        ⭐ Active 12-Week Goal
+      </span>
 
       <p>
-
         ${escapeHtml(
           goal.notes || ""
         )}
-
       </p>
-
 
       ${
         goal.startDate
@@ -2499,7 +1234,7 @@ function renderActiveGoal(){
         `
           <p>
             <strong>
-              Started:
+              Start Date:
             </strong>
             ${escapeHtml(
               goal.startDate
@@ -2511,58 +1246,50 @@ function renderActiveGoal(){
       }
 
 
-      <div class="notice">
+      <div class="goal-links-box">
 
-        This is the goal your daily work
-        should be focused around.
+        <strong>
+          🔗 Goal Websites
+        </strong>
+
+        <div class="links">
+
+          ${
+            Array.isArray(goal.links) &&
+            goal.links.length
+
+            ?
+
+            goal.links.map(
+              link=>`
+
+                <a
+                  href="${escapeAttribute(link[1])}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🔗
+                  ${escapeHtml(link[0])}
+                </a>
+
+              `
+            ).join("")
+
+            :
+
+            `
+              <div>
+                No links added yet.
+              </div>
+            `
+          }
+
+        </div>
 
       </div>
 
 
-      ${
-        goal.type==="realestate"
-        ?
-        `
-          <div class="goal-links-box">
-
-            <strong>
-              🔗 Real Estate Websites
-            </strong>
-
-            <div class="links">
-
-              ${
-                goal.links &&
-                goal.links.length
-                ?
-                goal.links.map(
-                  link=>`
-
-                    <a
-                      href="${escapeAttribute(link[1])}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      🔗
-                      ${escapeHtml(link[0])}
-                    </a>
-
-                  `
-                ).join("")
-                :
-                "<div>No links added yet.</div>"
-              }
-
-            </div>
-
-          </div>
-        `
-        :
-        ""
-      }
-
-
-      <div class="goal-actions">
+      <div class="button-row">
 
         <button
           class="btn btn-green"
@@ -2572,9 +1299,8 @@ function renderActiveGoal(){
             )
           "
         >
-          ✅ Mark Completed
+          ✅ Completed
         </button>
-
 
         <button
           class="btn btn-light"
@@ -2597,20 +1323,70 @@ function renderActiveGoal(){
 
 
 /* =========================
-   DAILY SCHEDULE
+   DAILY DATE
 ========================= */
 
-function getTodayKey(){
+function getToday(){
 
   return new Date()
     .toISOString()
-    .slice(0,10);
+    .split("T")[0];
 
 }
 
 
 /* =========================
-   DAILY PAGE
+   DAILY TASKS
+========================= */
+
+function getDailyTasksForDate(date){
+
+  if(
+    !state.dailyTasks[date]
+  ){
+
+    const activeGoal =
+      getActiveGoal();
+
+    if(
+      activeGoal &&
+      activeGoal.type==="realestate"
+    ){
+
+      state.dailyTasks[date] =
+        REAL_ESTATE_TASKS.map(
+          task=>({
+
+            title:task.title,
+
+            completed:false,
+
+            links:
+              Array.isArray(task.links)
+              ? task.links
+              : []
+
+          })
+        );
+
+    }
+    else{
+
+      state.dailyTasks[date]=[];
+
+    }
+
+    saveState(false);
+
+  }
+
+  return state.dailyTasks[date];
+
+}
+
+
+/* =========================
+   PREPARE DAILY PAGE
 ========================= */
 
 function prepareDailyPage(){
@@ -2620,396 +1396,14 @@ function prepareDailyPage(){
       "dailyDate"
     );
 
-
   if(!dateInput)return;
 
-
   if(!dateInput.value){
-
     dateInput.value =
-      getTodayKey();
-
+      getToday();
   }
-
 
   renderDailySchedule();
-
-}
-
-
-/* =========================
-   DAILY TASKS
-========================= */
-
-function getDailyTasksForDate(
-  date
-){
-
-  if(
-    !state.dailyTasks[date]
-  ){
-
-    state.dailyTasks[date]=[];
-
-  }
-
-
-  return state.dailyTasks[date];
-
-}
-
-
-/* =========================
-   CREATE DAILY TASKS
-========================= */
-
-function createDailyTasks(){
-
-  const dateInput =
-    document.getElementById(
-      "dailyDate"
-    );
-
-
-  if(!dateInput){
-
-    return;
-
-  }
-
-
-  const date =
-    dateInput.value ||
-    getTodayKey();
-
-
-  const existing =
-    getDailyTasksForDate(
-      date
-    );
-
-
-  if(existing.length){
-
-    if(
-      !confirm(
-        "Tasks already exist for this date. Add the active goal's daily tasks again?"
-      )
-    ){
-
-      return;
-
-    }
-
-  }
-
-
-  const activeGoal =
-    state.goals.find(
-      goal=>goal.active
-    );
-
-
-  if(
-    activeGoal &&
-    activeGoal.type==="realestate"
-  ){
-
-    REAL_ESTATE_TASKS.forEach(
-      template=>{
-
-        existing.push({
-
-          id:
-            "task_" +
-            Date.now() +
-            "_" +
-            Math.random()
-              .toString(36)
-              .slice(2),
-
-          title:
-            template.title,
-
-          completed:false,
-
-          links:
-            Array.isArray(
-              template.links
-            )
-            ?
-            template.links.map(
-              link=>[
-                link[0],
-                link[1]
-              ]
-            )
-            :
-            []
-
-        });
-
-      }
-    );
-
-  }
-  else{
-
-    existing.push({
-
-      id:
-        "task_" +
-        Date.now() +
-        "_" +
-        Math.random()
-          .toString(36)
-          .slice(2),
-
-      title:
-        "Work on my active goal",
-
-      completed:false,
-
-      links:[]
-
-    });
-
-
-    existing.push({
-
-      id:
-        "task_" +
-        Date.now() +
-        "_" +
-        Math.random()
-          .toString(36)
-          .slice(2),
-
-      title:
-        "Complete one important action for my goal",
-
-      completed:false,
-
-      links:[]
-
-    });
-
-
-    existing.push({
-
-      id:
-        "task_" +
-        Date.now() +
-        "_" +
-        Math.random()
-          .toString(36)
-          .slice(2),
-
-      title:
-        "Follow up or move my goal forward",
-
-      completed:false,
-
-      links:[]
-
-    });
-
-  }
-
-
-  saveState();
-
-
-  renderDailySchedule();
-
-}
-
-
-/* =========================
-   ADD CUSTOM DAILY TASK
-========================= */
-
-function addDailyTask(){
-
-  const dateInput =
-    document.getElementById(
-      "dailyDate"
-    );
-
-
-  const taskInput =
-    document.getElementById(
-      "newDailyTask"
-    );
-
-
-  if(!taskInput){
-
-    return;
-
-  }
-
-
-  const title =
-    taskInput.value.trim();
-
-
-  if(!title){
-
-    alert(
-      "Please enter a task."
-    );
-
-    return;
-
-  }
-
-
-  const date =
-    dateInput &&
-    dateInput.value
-    ?
-    dateInput.value
-    :
-    getTodayKey();
-
-
-  const tasks =
-    getDailyTasksForDate(
-      date
-    );
-
-
-  tasks.push({
-
-    id:
-      "task_" +
-      Date.now() +
-      "_" +
-      Math.random()
-        .toString(36)
-        .slice(2),
-
-    title:title,
-
-    completed:false,
-
-    links:[]
-
-  });
-
-
-  saveState();
-
-
-  taskInput.value="";
-
-
-  renderDailySchedule();
-
-}
-
-
-/* =========================
-   TOGGLE DAILY TASK
-========================= */
-
-function toggleDailyTask(
-  date,
-  taskId
-){
-
-  const tasks =
-    state.dailyTasks[date];
-
-
-  if(!Array.isArray(tasks)){
-
-    return;
-
-  }
-
-
-  const task =
-    tasks.find(
-      item=>item.id===taskId
-    );
-
-
-  if(!task)return;
-
-
-  task.completed =
-    !task.completed;
-
-
-  saveState();
-
-
-  renderDailySchedule();
-
-
-  renderProgress();
-
-}
-
-
-/* =========================
-   DELETE DAILY TASK
-========================= */
-
-function deleteDailyTask(
-  date,
-  taskId
-){
-
-  const tasks =
-    state.dailyTasks[date];
-
-
-  if(!Array.isArray(tasks)){
-
-    return;
-
-  }
-
-
-  const index =
-    tasks.findIndex(
-      item=>item.id===taskId
-    );
-
-
-  if(index===-1){
-
-    return;
-
-  }
-
-
-  if(
-    !confirm(
-      "Delete this daily task?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  tasks.splice(
-    index,
-    1
-  );
-
-
-  saveState();
-
-
-  renderDailySchedule();
-
-  renderProgress();
 
 }
 
@@ -3022,76 +1416,167 @@ function renderDailySchedule(){
 
   const box =
     document.getElementById(
-      "dailyTaskList"
+      "dailyContent"
     );
 
-
   if(!box)return;
-
 
   const dateInput =
     document.getElementById(
       "dailyDate"
     );
 
-
   const date =
-    dateInput &&
-    dateInput.value
-    ?
-    dateInput.value
-    :
-    getTodayKey();
+    dateInput.value ||
+    getToday();
 
+  const activeGoal =
+    getActiveGoal();
 
-  const tasks =
-    getDailyTasksForDate(
-      date
-    );
-
-
-  if(!tasks.length){
+  if(!activeGoal){
 
     box.innerHTML=`
 
       <div class="empty">
 
-        No daily tasks have been added
-        for this date yet.
+        <h3>
+          No Active Goal
+        </h3>
 
-        <br><br>
-
-        Click
-        <strong>
-          Create Daily Tasks
-        </strong>
-        to create tasks based on
-        your active goal.
+        <p>
+          Choose one goal as your
+          active 12-week goal first.
+        </p>
 
       </div>
 
     `;
 
     return;
+  }
+
+
+  const tasks =
+    getDailyTasksForDate(date);
+
+
+  if(
+    activeGoal.type==="realestate" &&
+    tasks.length===0
+  ){
+
+    state.dailyTasks[date] =
+      REAL_ESTATE_TASKS.map(
+        task=>({
+
+          title:task.title,
+
+          completed:false,
+
+          links:
+            Array.isArray(task.links)
+            ? task.links
+            : []
+
+        })
+      );
+
+    saveState(false);
 
   }
 
 
-  box.innerHTML =
-    tasks.map(
-      (task,index)=>`
+  const currentTasks =
+    state.dailyTasks[date] || [];
 
-        <div
-          class="daily-task
-          ${task.completed
-            ? "task-complete"
-            : ""
-          }"
-        >
 
-          <div class="daily-task-main">
+  let completedCount =
+    currentTasks.filter(
+      task=>task.completed
+    ).length;
 
-            <label class="task-check">
+
+  let totalCount =
+    currentTasks.length;
+
+
+  let percent =
+    totalCount
+    ?
+    Math.round(
+      completedCount /
+      totalCount *
+      100
+    )
+    :
+    0;
+
+
+  box.innerHTML=`
+
+    <div class="focus-box">
+
+      <h3>
+        ⭐ Today's Active Goal
+      </h3>
+
+      <p>
+        <strong>
+          ${escapeHtml(
+            activeGoal.title
+          )}
+        </strong>
+      </p>
+
+      <p>
+        Date:
+        <strong>
+          ${escapeHtml(date)}
+        </strong>
+      </p>
+
+    </div>
+
+
+    <div class="progress-wrap">
+
+      <div
+        class="progress-bar"
+        style="width:${percent}%"
+      >
+        ${percent}%
+      </div>
+
+    </div>
+
+
+    <p>
+      <strong>
+        ${completedCount}
+      </strong>
+      of
+      <strong>
+        ${totalCount}
+      </strong>
+      tasks completed
+    </p>
+
+
+    <div class="card">
+
+      <h3>
+        📝 Today's Tasks
+      </h3>
+
+      ${
+        currentTasks.length
+
+        ?
+
+        currentTasks.map(
+          (task,index)=>`
+
+            <div class="task-item">
 
               <input
                 type="checkbox"
@@ -3103,86 +1588,217 @@ function renderDailySchedule(){
                 onchange="
                   toggleDailyTask(
                     '${escapeAttribute(date)}',
-                    '${escapeAttribute(task.id)}'
+                    ${index}
                   )
                 "
               >
 
-              <span>
+              <div style="flex:1;">
 
-                ${index+1}.
-                ${escapeHtml(
-                  task.title
-                )}
+                <strong>
+                  ${escapeHtml(
+                    task.title
+                  )}
+                </strong>
 
-              </span>
+                ${
+                  Array.isArray(task.links) &&
+                  task.links.length
 
-            </label>
+                  ?
 
+                  `
+                    <div class="links">
 
-            ${
-              task.links &&
-              task.links.length
-              ?
-              `
-                <div class="task-links">
+                      ${
+                        task.links.map(
+                          link=>`
 
-                  ${task.links.map(
-                    link=>`
+                            <a
+                              href="${escapeAttribute(link[1])}"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              🔗
+                              ${escapeHtml(
+                                link[0]
+                              )}
+                            </a>
 
-                      <a
-                        href="${escapeAttribute(link[1])}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        🔗
-                        ${escapeHtml(link[0])}
-                      </a>
+                          `
+                        ).join("")
+                      }
 
-                    `
-                  ).join("")}
+                    </div>
+                  `
 
-                </div>
-              `
-              :
-              ""
-            }
+                  :
 
+                  ""
+                }
+
+              </div>
+
+            </div>
+
+          `
+        ).join("")
+
+        :
+
+        `
+          <div class="empty">
+            No tasks for this date.
           </div>
+        `
+      }
+
+    </div>
 
 
-          <button
-            class="btn btn-danger"
-            onclick="
-              deleteDailyTask(
-                '${escapeAttribute(date)}',
-                '${escapeAttribute(task.id)}'
-              )
-            "
-          >
-            🗑️
-          </button>
+    <div class="button-row">
 
-        </div>
+      <button
+        class="btn btn-blue"
+        onclick="
+          addCustomDailyTask(
+            '${escapeAttribute(date)}'
+          )
+        "
+      >
+        ➕ Add Task
+      </button>
 
-      `
-    ).join("");
+      <button
+        class="btn btn-light"
+        onclick="
+          resetDailyTasks(
+            '${escapeAttribute(date)}'
+          )
+        "
+      >
+        🔄 Reset Today's Tasks
+      </button>
 
+    </div>
+
+  `;
 
 }
 
 
 /* =========================
-   PERSONAL SECTION
+   TOGGLE DAILY TASK
 ========================= */
 
-function renderPersonal(){
+function toggleDailyTask(
+  date,
+  index
+){
 
-  renderAppointments();
+  if(
+    !state.dailyTasks[date] ||
+    !state.dailyTasks[date][index]
+  ){
+    return;
+  }
 
-  renderPersonalTasks();
+  state.dailyTasks[date][index].completed =
+    !state.dailyTasks[date][index].completed;
 
-  renderErrands();
+  saveState();
+
+  renderDailySchedule();
+
+}
+
+
+/* =========================
+   ADD CUSTOM DAILY TASK
+========================= */
+
+function addCustomDailyTask(date){
+
+  const title =
+    prompt(
+      "Enter your daily task:"
+    );
+
+  if(!title ||
+     !title.trim()
+  ){
+    return;
+  }
+
+  if(!state.dailyTasks[date]){
+    state.dailyTasks[date]=[];
+  }
+
+  state.dailyTasks[date].push({
+
+    title:title.trim(),
+
+    completed:false,
+
+    links:[]
+
+  });
+
+  saveState();
+
+  renderDailySchedule();
+
+}
+
+
+/* =========================
+   RESET DAILY TASKS
+========================= */
+
+function resetDailyTasks(date){
+
+  if(
+    !confirm(
+      "Reset today's tasks?"
+    )
+  ){
+    return;
+  }
+
+  const activeGoal =
+    getActiveGoal();
+
+  if(
+    activeGoal &&
+    activeGoal.type==="realestate"
+  ){
+
+    state.dailyTasks[date] =
+      REAL_ESTATE_TASKS.map(
+        task=>({
+
+          title:task.title,
+
+          completed:false,
+
+          links:
+            Array.isArray(task.links)
+            ? task.links
+            : []
+
+        })
+      );
+
+  }
+  else{
+
+    state.dailyTasks[date]=[];
+
+  }
+
+  saveState();
+
+  renderDailySchedule();
 
 }
 
@@ -3193,33 +1809,42 @@ function renderPersonal(){
 
 function addAppointment(){
 
-  const titleInput =
-    document.getElementById(
-      "appointmentTitle"
-    );
-
-  const dateInput =
+  const date =
     document.getElementById(
       "appointmentDate"
-    );
+    ).value;
 
-  const timeInput =
+  const time =
     document.getElementById(
       "appointmentTime"
-    );
-
-
-  if(!titleInput)return;
-
+    ).value;
 
   const title =
-    titleInput.value.trim();
+    document.getElementById(
+      "appointmentTitle"
+    ).value.trim();
+
+  const notes =
+    document.getElementById(
+      "appointmentNotes"
+    ).value.trim();
+
+
+  if(!date){
+
+    alert(
+      "Please choose an appointment date."
+    );
+
+    return;
+
+  }
 
 
   if(!title){
 
     alert(
-      "Please enter an appointment."
+      "Please enter the appointment."
     );
 
     return;
@@ -3230,24 +1855,16 @@ function addAppointment(){
   state.appointments.push({
 
     id:
-      "appt_" +
-      Date.now() +
-      "_" +
-      Math.random()
-        .toString(36)
-        .slice(2),
+      "appointment_" +
+      Date.now(),
 
-    title:title,
+    date,
 
-    date:
-      dateInput
-      ? dateInput.value
-      : "",
+    time,
 
-    time:
-      timeInput
-      ? timeInput.value
-      : "",
+    title,
+
+    notes,
 
     completed:false
 
@@ -3256,159 +1873,23 @@ function addAppointment(){
 
   saveState();
 
+  document.getElementById(
+    "appointmentDate"
+  ).value="";
 
-  titleInput.value="";
+  document.getElementById(
+    "appointmentTime"
+  ).value="";
 
-  if(dateInput){
+  document.getElementById(
+    "appointmentTitle"
+  ).value="";
 
-    dateInput.value="";
+  document.getElementById(
+    "appointmentNotes"
+  ).value="";
 
-  }
-
-  if(timeInput){
-
-    timeInput.value="";
-
-  }
-
-
-  renderAppointments();
-
-}
-
-
-/* =========================
-   RENDER APPOINTMENTS
-========================= */
-
-function renderAppointments(){
-
-  const box =
-    document.getElementById(
-      "appointmentsList"
-    );
-
-
-  if(!box)return;
-
-
-  if(!state.appointments.length){
-
-    box.innerHTML=
-      '<div class="empty">No appointments added yet.</div>';
-
-    return;
-
-  }
-
-
-  const sorted =
-    [...state.appointments]
-      .sort(
-        (a,b)=>{
-
-          const aKey =
-            (a.date||"") +
-            " " +
-            (a.time||"");
-
-          const bKey =
-            (b.date||"") +
-            " " +
-            (b.time||"");
-
-          return aKey.localeCompare(
-            bKey
-          );
-
-        }
-      );
-
-
-  box.innerHTML =
-    sorted.map(
-      item=>`
-
-        <div
-          class="personal-row
-          ${item.completed
-            ? "task-complete"
-            : ""
-          }"
-        >
-
-          <div>
-
-            <strong>
-              📅
-              ${escapeHtml(
-                item.title
-              )}
-            </strong>
-
-            <div class="small-text">
-
-              ${
-                item.date
-                ?
-                escapeHtml(
-                  item.date
-                )
-                :
-                "No date"
-              }
-
-              ${
-                item.time
-                ?
-                " • " +
-                escapeHtml(
-                  item.time
-                )
-                :
-                ""
-              }
-
-            </div>
-
-          </div>
-
-
-          <div class="button-row">
-
-            <button
-              class="btn btn-green"
-              onclick="
-                toggleAppointment(
-                  '${escapeAttribute(item.id)}'
-                )
-              "
-            >
-              ${
-                item.completed
-                ? "↩️ Undo"
-                : "✅ Done"
-              }
-            </button>
-
-
-            <button
-              class="btn btn-danger"
-              onclick="
-                deleteAppointment(
-                  '${escapeAttribute(item.id)}'
-                )
-              "
-            >
-              🗑️
-            </button>
-
-          </div>
-
-        </div>
-
-      `
-    ).join("");
+  renderPersonal();
 
 }
 
@@ -3421,23 +1902,18 @@ function toggleAppointment(id){
 
   const item =
     state.appointments.find(
-      appt=>appt.id===id
+      appointment =>
+        appointment.id===id
     );
 
-
   if(!item)return;
-
 
   item.completed =
     !item.completed;
 
-
   saveState();
 
-
-  renderAppointments();
-
-  renderProgress();
+  renderPersonal();
 
 }
 
@@ -3448,38 +1924,78 @@ function toggleAppointment(id){
 
 function deleteAppointment(id){
 
-  const index =
-    state.appointments.findIndex(
-      appt=>appt.id===id
-    );
-
-
-  if(index===-1)return;
-
-
   if(
     !confirm(
       "Delete this appointment?"
     )
   ){
-
     return;
-
   }
 
-
-  state.appointments.splice(
-    index,
-    1
-  );
-
+  state.appointments =
+    state.appointments.filter(
+      appointment =>
+        appointment.id!==id
+    );
 
   saveState();
 
+  renderPersonal();
 
-  renderAppointments();
+}
 
-  renderProgress();
+
+/* =========================
+   EDIT APPOINTMENT
+========================= */
+
+function editAppointment(id){
+
+  const item =
+    state.appointments.find(
+      appointment =>
+        appointment.id===id
+    );
+
+  if(!item)return;
+
+  const newTitle =
+    prompt(
+      "Edit appointment:",
+      item.title
+    );
+
+  if(
+    newTitle===null
+  ){
+    return;
+  }
+
+  if(
+    !newTitle.trim()
+  ){
+    return;
+  }
+
+  item.title =
+    newTitle.trim();
+
+  const newNotes =
+    prompt(
+      "Edit notes:",
+      item.notes || ""
+    );
+
+  if(
+    newNotes!==null
+  ){
+    item.notes =
+      newNotes;
+  }
+
+  saveState();
+
+  renderPersonal();
 
 }
 
@@ -3490,23 +2006,31 @@ function deleteAppointment(id){
 
 function addPersonalTask(){
 
-  const input =
-    document.getElementById(
-      "personalTaskInput"
-    );
-
-
-  if(!input)return;
-
-
   const title =
-    input.value.trim();
+    document.getElementById(
+      "personalTaskTitle"
+    ).value.trim();
+
+  const date =
+    document.getElementById(
+      "personalTaskDate"
+    ).value;
+
+  const notes =
+    document.getElementById(
+      "personalTaskNotes"
+    ).value.trim();
+
+  const link =
+    document.getElementById(
+      "personalTaskLink"
+    ).value.trim();
 
 
   if(!title){
 
     alert(
-      "Please enter a personal task."
+      "Please enter the personal task."
     );
 
     return;
@@ -3518,13 +2042,15 @@ function addPersonalTask(){
 
     id:
       "personal_" +
-      Date.now() +
-      "_" +
-      Math.random()
-        .toString(36)
-        .slice(2),
+      Date.now(),
 
-    title:title,
+    title,
+
+    date,
+
+    notes,
+
+    link,
 
     completed:false
 
@@ -3533,92 +2059,23 @@ function addPersonalTask(){
 
   saveState();
 
+  document.getElementById(
+    "personalTaskTitle"
+  ).value="";
 
-  input.value="";
+  document.getElementById(
+    "personalTaskDate"
+  ).value="";
 
+  document.getElementById(
+    "personalTaskNotes"
+  ).value="";
 
-  renderPersonalTasks();
+  document.getElementById(
+    "personalTaskLink"
+  ).value="";
 
-}
-
-
-/* =========================
-   RENDER PERSONAL TASKS
-========================= */
-
-function renderPersonalTasks(){
-
-  const box =
-    document.getElementById(
-      "personalTasksList"
-    );
-
-
-  if(!box)return;
-
-
-  if(!state.personalTasks.length){
-
-    box.innerHTML=
-      '<div class="empty">No personal tasks added yet.</div>';
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    state.personalTasks.map(
-      task=>`
-
-        <div
-          class="personal-row
-          ${task.completed
-            ? "task-complete"
-            : ""
-          }"
-        >
-
-          <label class="task-check">
-
-            <input
-              type="checkbox"
-              ${
-                task.completed
-                ? "checked"
-                : ""
-              }
-              onchange="
-                togglePersonalTask(
-                  '${escapeAttribute(task.id)}'
-                )
-              "
-            >
-
-            <span>
-              ${escapeHtml(
-                task.title
-              )}
-            </span>
-
-          </label>
-
-
-          <button
-            class="btn btn-danger"
-            onclick="
-              deletePersonalTask(
-                '${escapeAttribute(task.id)}'
-              )
-            "
-          >
-            🗑️
-          </button>
-
-        </div>
-
-      `
-    ).join("");
+  renderPersonal();
 
 }
 
@@ -3629,25 +2086,19 @@ function renderPersonalTasks(){
 
 function togglePersonalTask(id){
 
-  const task =
+  const item =
     state.personalTasks.find(
-      item=>item.id===id
+      task=>task.id===id
     );
 
+  if(!item)return;
 
-  if(!task)return;
-
-
-  task.completed =
-    !task.completed;
-
+  item.completed =
+    !item.completed;
 
   saveState();
 
-
-  renderPersonalTasks();
-
-  renderProgress();
+  renderPersonal();
 
 }
 
@@ -3658,38 +2109,85 @@ function togglePersonalTask(id){
 
 function deletePersonalTask(id){
 
-  const index =
-    state.personalTasks.findIndex(
-      item=>item.id===id
-    );
-
-
-  if(index===-1)return;
-
-
   if(
     !confirm(
       "Delete this personal task?"
     )
   ){
-
     return;
-
   }
 
-
-  state.personalTasks.splice(
-    index,
-    1
-  );
-
+  state.personalTasks =
+    state.personalTasks.filter(
+      task=>task.id!==id
+    );
 
   saveState();
 
+  renderPersonal();
 
-  renderPersonalTasks();
+}
 
-  renderProgress();
+
+/* =========================
+   EDIT PERSONAL TASK
+========================= */
+
+function editPersonalTask(id){
+
+  const item =
+    state.personalTasks.find(
+      task=>task.id===id
+    );
+
+  if(!item)return;
+
+  const title =
+    prompt(
+      "Edit personal task:",
+      item.title
+    );
+
+  if(title===null)return;
+
+  if(!title.trim())return;
+
+  item.title =
+    title.trim();
+
+  const notes =
+    prompt(
+      "Edit notes:",
+      item.notes || ""
+    );
+
+  if(notes!==null){
+    item.notes=notes;
+  }
+
+  const date =
+    prompt(
+      "Edit date (YYYY-MM-DD):",
+      item.date || ""
+    );
+
+  if(date!==null){
+    item.date=date;
+  }
+
+  const link =
+    prompt(
+      "Edit link:",
+      item.link || ""
+    );
+
+  if(link!==null){
+    item.link=link;
+  }
+
+  saveState();
+
+  renderPersonal();
 
 }
 
@@ -3700,23 +2198,31 @@ function deletePersonalTask(id){
 
 function addErrand(){
 
-  const input =
-    document.getElementById(
-      "errandInput"
-    );
-
-
-  if(!input)return;
-
-
   const title =
-    input.value.trim();
+    document.getElementById(
+      "errandTitle"
+    ).value.trim();
+
+  const date =
+    document.getElementById(
+      "errandDate"
+    ).value;
+
+  const notes =
+    document.getElementById(
+      "errandNotes"
+    ).value.trim();
+
+  const link =
+    document.getElementById(
+      "errandLink"
+    ).value.trim();
 
 
   if(!title){
 
     alert(
-      "Please enter an errand."
+      "Please enter the errand."
     );
 
     return;
@@ -3728,13 +2234,15 @@ function addErrand(){
 
     id:
       "errand_" +
-      Date.now() +
-      "_" +
-      Math.random()
-        .toString(36)
-        .slice(2),
+      Date.now(),
 
-    title:title,
+    title,
+
+    date,
+
+    notes,
+
+    link,
 
     completed:false
 
@@ -3743,95 +2251,23 @@ function addErrand(){
 
   saveState();
 
+  document.getElementById(
+    "errandTitle"
+  ).value="";
 
-  input.value="";
+  document.getElementById(
+    "errandDate"
+  ).value="";
 
+  document.getElementById(
+    "errandNotes"
+  ).value="";
 
-  renderErrands();
+  document.getElementById(
+    "errandLink"
+  ).value="";
 
-}
-
-
-/* =========================
-   RENDER ERRANDS
-========================= */
-
-function renderErrands(){
-
-  const box =
-    document.getElementById(
-      "errandsList"
-    );
-
-
-  if(!box)return;
-
-
-  if(!state.errands.length){
-
-    box.innerHTML=
-      '<div class="empty">No errands added yet.</div>';
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    state.errands.map(
-      item=>`
-
-        <div
-          class="personal-row
-          ${item.completed
-            ? "task-complete"
-            : ""
-          }"
-        >
-
-          <label class="task-check">
-
-            <input
-              type="checkbox"
-              ${
-                item.completed
-                ? "checked"
-                : ""
-              }
-              onchange="
-                toggleErrand(
-                  '${escapeAttribute(item.id)}'
-                )
-              "
-            >
-
-            <span>
-
-              🛒
-              ${escapeHtml(
-                item.title
-              )}
-
-            </span>
-
-          </label>
-
-
-          <button
-            class="btn btn-danger"
-            onclick="
-              deleteErrand(
-                '${escapeAttribute(item.id)}'
-              )
-            "
-          >
-            🗑️
-          </button>
-
-        </div>
-
-      `
-    ).join("");
+  renderPersonal();
 
 }
 
@@ -3847,20 +2283,14 @@ function toggleErrand(id){
       errand=>errand.id===id
     );
 
-
   if(!item)return;
-
 
   item.completed =
     !item.completed;
 
-
   saveState();
 
-
-  renderErrands();
-
-  renderProgress();
+  renderPersonal();
 
 }
 
@@ -3871,45 +2301,917 @@ function toggleErrand(id){
 
 function deleteErrand(id){
 
-  const index =
-    state.errands.findIndex(
-      errand=>errand.id===id
-    );
-
-
-  if(index===-1)return;
-
-
   if(
     !confirm(
       "Delete this errand?"
     )
   ){
+    return;
+  }
+
+  state.errands =
+    state.errands.filter(
+      errand=>errand.id!==id
+    );
+
+  saveState();
+
+  renderPersonal();
+
+}
+
+
+/* =========================
+   EDIT ERRAND
+========================= */
+
+function editErrand(id){
+
+  const item =
+    state.errands.find(
+      errand=>errand.id===id
+    );
+
+  if(!item)return;
+
+  const title =
+    prompt(
+      "Edit errand:",
+      item.title
+    );
+
+  if(title===null)return;
+
+  if(!title.trim())return;
+
+  item.title =
+    title.trim();
+
+  const notes =
+    prompt(
+      "Edit notes:",
+      item.notes || ""
+    );
+
+  if(notes!==null){
+    item.notes=notes;
+  }
+
+  const date =
+    prompt(
+      "Edit date (YYYY-MM-DD):",
+      item.date || ""
+    );
+
+  if(date!==null){
+    item.date=date;
+  }
+
+  const link =
+    prompt(
+      "Edit link:",
+      item.link || ""
+    );
+
+  if(link!==null){
+    item.link=link;
+  }
+
+  saveState();
+
+  renderPersonal();
+
+}
+
+
+/* =========================
+   PERSONAL DISPLAY
+========================= */
+
+function renderPersonal(){
+
+  renderAppointments();
+  renderPersonalTasks();
+  renderErrands();
+
+}
+
+
+/* =========================
+   RENDER APPOINTMENTS
+========================= */
+
+function renderAppointments(){
+
+  const box =
+    document.getElementById(
+      "appointmentsList"
+    );
+
+  if(!box)return;
+
+  if(
+    !state.appointments.length
+  ){
+
+    box.innerHTML=`
+      <div class="empty">
+        No appointments added yet.
+      </div>
+    `;
 
     return;
 
   }
 
 
-  state.errands.splice(
-    index,
-    1
-  );
+  const sorted =
+    [...state.appointments]
+      .sort(
+        (a,b)=>{
+
+          const aValue =
+            (a.date || "") +
+            " " +
+            (a.time || "");
+
+          const bValue =
+            (b.date || "") +
+            " " +
+            (b.time || "");
+
+          return aValue
+            .localeCompare(bValue);
+
+        }
+      );
 
 
-  saveState();
+  box.innerHTML =
+    sorted.map(
+      item=>`
+
+        <div
+          class="appointment-card"
+        >
+
+          <div class="task-item">
+
+            <input
+              type="checkbox"
+              ${
+                item.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                toggleAppointment(
+                  '${item.id}'
+                )
+              "
+            >
+
+            <div style="flex:1;">
+
+              <div
+                style="
+                  font-size:20px;
+                  font-weight:bold;
+                  ${
+                    item.completed
+                    ?
+                    "text-decoration:line-through;"
+                    :
+                    ""
+                  }
+                "
+              >
+                📅
+                ${escapeHtml(
+                  item.title
+                )}
+              </div>
+
+              <p>
+                ${
+                  item.date
+                  ?
+                  escapeHtml(
+                    item.date
+                  )
+                  :
+                  ""
+                }
+
+                ${
+                  item.time
+                  ?
+                  " • " +
+                  escapeHtml(
+                    item.time
+                  )
+                  :
+                  ""
+                }
+              </p>
+
+              ${
+                item.notes
+                ?
+                `
+                  <p>
+                    ${escapeHtml(
+                      item.notes
+                    )}
+                  </p>
+                `
+                :
+                ""
+              }
+
+            </div>
+
+          </div>
 
 
-  renderErrands();
+          <div class="button-row">
 
-  renderProgress();
+            <button
+              class="btn btn-light"
+              onclick="
+                editAppointment(
+                  '${item.id}'
+                )
+              "
+            >
+              ✏️ Edit
+            </button>
+
+            <button
+              class="btn btn-danger"
+              onclick="
+                deleteAppointment(
+                  '${item.id}'
+                )
+              "
+            >
+              🗑️ Delete
+            </button>
+
+          </div>
+
+        </div>
+
+      `
+    ).join("");
 
 }
 
 
 /* =========================
-   ROUTINES
+   RENDER PERSONAL TASKS
 ========================= */
+
+function renderPersonalTasks(){
+
+  const box =
+    document.getElementById(
+      "personalTasksList"
+    );
+
+  if(!box)return;
+
+  if(
+    !state.personalTasks.length
+  ){
+
+    box.innerHTML=`
+      <div class="empty">
+        No personal tasks added yet.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  const sorted =
+    [...state.personalTasks]
+      .sort(
+        (a,b)=>
+          (a.date || "")
+          .localeCompare(
+            b.date || ""
+          )
+      );
+
+
+  box.innerHTML =
+    sorted.map(
+      item=>`
+
+        <div class="personal-card">
+
+          <div class="task-item">
+
+            <input
+              type="checkbox"
+              ${
+                item.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                togglePersonalTask(
+                  '${item.id}'
+                )
+              "
+            >
+
+            <div style="flex:1;">
+
+              <div
+                style="
+                  font-size:20px;
+                  font-weight:bold;
+                  ${
+                    item.completed
+                    ?
+                    "text-decoration:line-through;"
+                    :
+                    ""
+                  }
+                "
+              >
+                📝
+                ${escapeHtml(
+                  item.title
+                )}
+              </div>
+
+              ${
+                item.date
+                ?
+                `
+                  <p>
+                    📅
+                    ${escapeHtml(
+                      item.date
+                    )}
+                  </p>
+                `
+                :
+                ""
+              }
+
+              ${
+                item.notes
+                ?
+                `
+                  <p>
+                    ${escapeHtml(
+                      item.notes
+                    )}
+                  </p>
+                `
+                :
+                ""
+              }
+
+              ${
+                item.link
+                ?
+                `
+                  <p>
+                    <a
+                      href="${escapeAttribute(item.link)}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      🔗 Open Link
+                    </a>
+                  </p>
+                `
+                :
+                ""
+              }
+
+            </div>
+
+          </div>
+
+
+          <div class="button-row">
+
+            <button
+              class="btn btn-light"
+              onclick="
+                editPersonalTask(
+                  '${item.id}'
+                )
+              "
+            >
+              ✏️ Edit
+            </button>
+
+            <button
+              class="btn btn-danger"
+              onclick="
+                deletePersonalTask(
+                  '${item.id}'
+                )
+              "
+            >
+              🗑️ Delete
+            </button>
+
+          </div>
+
+        </div>
+
+      `
+    ).join("");
+
+}
+      }
+
+  state.personalTasks.push({
+
+    id:Date.now(),
+
+    title,
+
+    date,
+
+    notes,
+
+    link,
+
+    completed:false
+
+  });
+
+  saveState();
+
+  document.getElementById(
+    "personalTaskTitle"
+  ).value="";
+
+  document.getElementById(
+    "personalTaskDate"
+  ).value="";
+
+  document.getElementById(
+    "personalTaskNotes"
+  ).value="";
+
+  document.getElementById(
+    "personalTaskLink"
+  ).value="";
+
+  renderPersonal();
+
+}
+
+
+/* =========================
+   PERSONAL TASK DISPLAY
+========================= */
+
+function renderPersonalTasks(){
+
+  const box =
+    document.getElementById(
+      "personalTasksList"
+    );
+
+  if(!box)return;
+
+  if(!state.personalTasks.length){
+
+    box.innerHTML=`
+      <div class="empty">
+        No personal tasks yet.
+      </div>
+    `;
+
+    return;
+  }
+
+  box.innerHTML =
+    state.personalTasks.map(
+      item=>`
+
+        <div class="personal-card">
+
+          <div class="task-item">
+
+            <input
+              type="checkbox"
+              ${
+                item.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                togglePersonalTask(
+                  '${item.id}'
+                )
+              "
+            >
+
+            <div style="flex:1;">
+
+              <strong>
+                ${escapeHtml(
+                  item.title
+                )}
+              </strong>
+
+              ${
+                item.date
+                ?
+                `<p>
+                  📅 ${escapeHtml(item.date)}
+                </p>`
+                :
+                ""
+              }
+
+              ${
+                item.notes
+                ?
+                `<p>
+                  ${escapeHtml(item.notes)}
+                </p>`
+                :
+                ""
+              }
+
+              ${
+                item.link
+                ?
+                `<p>
+                  <a
+                    href="${escapeAttribute(item.link)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🔗 Open Link
+                  </a>
+                </p>`
+                :
+                ""
+              }
+
+            </div>
+
+          </div>
+
+          <div class="button-row">
+
+            <button
+              class="btn btn-danger"
+              onclick="
+                deletePersonalTask(
+                  '${item.id}'
+                )
+              "
+            >
+              🗑️ Delete
+            </button>
+
+          </div>
+
+        </div>
+
+      `
+    ).join("");
+
+}
+
+
+function togglePersonalTask(id){
+
+  const item =
+    state.personalTasks.find(
+      task=>String(task.id)===String(id)
+    );
+
+  if(!item)return;
+
+  item.completed =
+    !item.completed;
+
+  saveState();
+
+  renderPersonalTasks();
+
+}
+
+
+function deletePersonalTask(id){
+
+  if(
+    !confirm(
+      "Delete this personal task?"
+    )
+  ){
+    return;
+  }
+
+  state.personalTasks =
+    state.personalTasks.filter(
+      task=>String(task.id)!==String(id)
+    );
+
+  saveState();
+
+  renderPersonalTasks();
+
+}
+
+
+/* =========================
+   ERRANDS
+========================= */
+
+function addErrand(){
+
+  const title =
+    document.getElementById(
+      "errandTitle"
+    ).value.trim();
+
+  const date =
+    document.getElementById(
+      "errandDate"
+    ).value;
+
+  const notes =
+    document.getElementById(
+      "errandNotes"
+    ).value.trim();
+
+  let link =
+    document.getElementById(
+      "errandLink"
+    ).value.trim();
+
+  if(link && !/^https?:\/\//i.test(link)){
+
+    link =
+      "https://" + link;
+
+  }
+
+  if(!title){
+
+    alert(
+      "Please enter an errand."
+    );
+
+    return;
+
+  }
+
+  state.errands.push({
+
+    id:Date.now(),
+
+    title,
+
+    date,
+
+    notes,
+
+    link,
+
+    completed:false
+
+  });
+
+  saveState();
+
+  document.getElementById(
+    "errandTitle"
+  ).value="";
+
+  document.getElementById(
+    "errandDate"
+  ).value="";
+
+  document.getElementById(
+    "errandNotes"
+  ).value="";
+
+  document.getElementById(
+    "errandLink"
+  ).value="";
+
+  renderPersonal();
+
+}
+
+
+function toggleErrand(id){
+
+  const item =
+    state.errands.find(
+      errand=>String(errand.id)===String(id)
+    );
+
+  if(!item)return;
+
+  item.completed =
+    !item.completed;
+
+  saveState();
+
+  renderPersonal();
+
+}
+
+
+function deleteErrand(id){
+
+  if(
+    !confirm(
+      "Delete this errand?"
+    )
+  ){
+    return;
+  }
+
+  state.errands =
+    state.errands.filter(
+      errand=>
+        String(errand.id)!==
+        String(id)
+    );
+
+  saveState();
+
+  renderPersonal();
+
+}
+
+
+function renderErrands(){
+
+  const box =
+    document.getElementById(
+      "errandsList"
+    );
+
+  if(!box)return;
+
+  if(!state.errands.length){
+
+    box.innerHTML=`
+      <div class="empty">
+        No errands added yet.
+      </div>
+    `;
+
+    return;
+
+  }
+
+  box.innerHTML =
+    state.errands.map(
+      item=>`
+
+        <div class="personal-card">
+
+          <div class="task-item">
+
+            <input
+              type="checkbox"
+              ${
+                item.completed
+                ? "checked"
+                : ""
+              }
+              onchange="
+                toggleErrand(
+                  '${item.id}'
+                )
+              "
+            >
+
+            <div style="flex:1;">
+
+              <strong>
+                🛒
+                ${escapeHtml(
+                  item.title
+                )}
+              </strong>
+
+              ${
+                item.date
+                ?
+                `<p>
+                  📅
+                  ${escapeHtml(
+                    item.date
+                  )}
+                </p>`
+                :
+                ""
+              }
+
+              ${
+                item.notes
+                ?
+                `<p>
+                  ${escapeHtml(
+                    item.notes
+                  )}
+                </p>`
+                :
+                ""
+              }
+
+              ${
+                item.link
+                ?
+                `<p>
+                  <a
+                    href="${escapeAttribute(item.link)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🔗 Open Link
+                  </a>
+                </p>`
+                :
+                ""
+              }
+
+            </div>
+
+          </div>
+
+          <div class="button-row">
+
+            <button
+              class="btn btn-danger"
+              onclick="
+                deleteErrand(
+                  '${item.id}'
+                )
+              "
+            >
+              🗑️ Delete
+            </button>
+
+          </div>
+
+        </div>
+
+      `
+    ).join("");
+
+}
+
+
+/* =========================
+   ROUTINE
+========================= */
+
+function saveRoutine(){
+
+  state.routine.morning =
+    document.getElementById(
+      "morningRoutine"
+    )?.value || "";
+
+  state.routine.afternoon =
+    document.getElementById(
+      "afternoonRoutine"
+    )?.value || "";
+
+  state.routine.evening =
+    document.getElementById(
+      "eveningRoutine"
+    )?.value || "";
+
+  state.routine.night =
+    document.getElementById(
+      "nightRoutine"
+    )?.value || "";
+
+  saveState();
+
+  alert(
+    "Routine saved! 💗"
+  );
+
+}
+
 
 function renderRoutine(){
 
@@ -3941,14 +3243,12 @@ function renderRoutine(){
 
   }
 
-
   if(afternoon){
 
     afternoon.value =
       state.routine.afternoon || "";
 
   }
-
 
   if(evening){
 
@@ -3957,74 +3257,12 @@ function renderRoutine(){
 
   }
 
-
   if(night){
 
     night.value =
       state.routine.night || "";
 
   }
-
-}
-
-
-/* =========================
-   SAVE ROUTINE
-========================= */
-
-function saveRoutine(){
-
-  const morning =
-    document.getElementById(
-      "morningRoutine"
-    );
-
-  const afternoon =
-    document.getElementById(
-      "afternoonRoutine"
-    );
-
-  const evening =
-    document.getElementById(
-      "eveningRoutine"
-    );
-
-  const night =
-    document.getElementById(
-      "nightRoutine"
-    );
-
-
-  state.routine.morning =
-    morning
-    ? morning.value
-    : state.routine.morning;
-
-
-  state.routine.afternoon =
-    afternoon
-    ? afternoon.value
-    : state.routine.afternoon;
-
-
-  state.routine.evening =
-    evening
-    ? evening.value
-    : state.routine.evening;
-
-
-  state.routine.night =
-    night
-    ? night.value
-    : state.routine.night;
-
-
-  saveState();
-
-
-  alert(
-    "Routine saved."
-  );
 
 }
 
@@ -4040,13 +3278,23 @@ function renderProgress(){
       "progressContent"
     );
 
-
   if(!box)return;
 
 
-  let dailyTotal=0;
+  const totalGoals =
+    state.goals.length;
 
-  let dailyCompleted=0;
+  const completedGoals =
+    state.goals.filter(
+      goal=>goal.completed
+    ).length;
+
+  const activeGoal =
+    getActiveGoal();
+
+
+  let totalTasks=0;
+  let completedTasks=0;
 
 
   Object.values(
@@ -4054,12 +3302,13 @@ function renderProgress(){
   ).forEach(
     tasks=>{
 
-      if(!Array.isArray(tasks))return;
+      if(!Array.isArray(tasks))
+        return;
 
-      dailyTotal +=
+      totalTasks +=
         tasks.length;
 
-      dailyCompleted +=
+      completedTasks +=
         tasks.filter(
           task=>task.completed
         ).length;
@@ -4068,181 +3317,157 @@ function renderProgress(){
   );
 
 
-  const personalTotal =
-    state.personalTasks.length;
-
-  const personalCompleted =
-    state.personalTasks.filter(
-      task=>task.completed
-    ).length;
-
-
-  const errandsTotal =
-    state.errands.length;
-
-  const errandsCompleted =
-    state.errands.filter(
-      item=>item.completed
-    ).length;
+  const goalPercent =
+    totalGoals
+    ?
+    Math.round(
+      completedGoals /
+      totalGoals *
+      100
+    )
+    :
+    0;
 
 
-  const appointmentsTotal =
-    state.appointments.length;
-
-  const appointmentsCompleted =
-    state.appointments.filter(
-      item=>item.completed
-    ).length;
-
-
-  const completedGoals =
-    state.goals.filter(
-      goal=>goal.completed
-    ).length;
-
-
-  const activeGoal =
-    state.goals.find(
-      goal=>goal.active
-    );
+  const taskPercent =
+    totalTasks
+    ?
+    Math.round(
+      completedTasks /
+      totalTasks *
+      100
+    )
+    :
+    0;
 
 
   box.innerHTML=`
 
-    <div class="progress-grid">
+    <div class="stats">
 
-      <div class="progress-box">
+      <div class="stat">
 
         <strong>
-          🎯 Goals
+          ${totalGoals}
         </strong>
 
-        <div class="progress-number">
+        Total Goals
 
+      </div>
+
+
+      <div class="stat">
+
+        <strong>
           ${completedGoals}
-          /
-          ${state.goals.length}
+        </strong>
 
-        </div>
-
-        <div>
-          Completed
-        </div>
+        Completed Goals
 
       </div>
 
 
-      <div class="progress-box">
+      <div class="stat">
 
         <strong>
-          📋 Daily Tasks
+          ${totalTasks}
         </strong>
 
-        <div class="progress-number">
-
-          ${dailyCompleted}
-          /
-          ${dailyTotal}
-
-        </div>
-
-        <div>
-          Completed
-        </div>
+        Daily Tasks
 
       </div>
 
 
-      <div class="progress-box">
+      <div class="stat">
 
         <strong>
-          👤 Personal Tasks
+          ${completedTasks}
         </strong>
 
-        <div class="progress-number">
-
-          ${personalCompleted}
-          /
-          ${personalTotal}
-
-        </div>
-
-        <div>
-          Completed
-        </div>
-
-      </div>
-
-
-      <div class="progress-box">
-
-        <strong>
-          🛒 Errands
-        </strong>
-
-        <div class="progress-number">
-
-          ${errandsCompleted}
-          /
-          ${errandsTotal}
-
-        </div>
-
-        <div>
-          Completed
-        </div>
-
-      </div>
-
-
-      <div class="progress-box">
-
-        <strong>
-          📅 Appointments
-        </strong>
-
-        <div class="progress-number">
-
-          ${appointmentsCompleted}
-          /
-          ${appointmentsTotal}
-
-        </div>
-
-        <div>
-          Completed
-        </div>
+        Completed Tasks
 
       </div>
 
     </div>
 
 
-    <div class="card-inner">
+    <div class="card">
 
       <h3>
-        ⭐ Current Active Goal
+        ⭐ Active Goal
       </h3>
 
       ${
         activeGoal
         ?
         `
-          <div class="notice">
-
+          <p>
             ${escapeHtml(
               activeGoal.title
             )}
-
-          </div>
+          </p>
         `
         :
         `
-          <div class="empty">
+          <p>
             No active goal selected.
-          </div>
+          </p>
         `
       }
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        🎯 Goal Progress
+      </h3>
+
+      <div class="progress-wrap">
+
+        <div
+          class="progress-bar"
+          style="width:${goalPercent}%"
+        >
+          ${goalPercent}%
+        </div>
+
+      </div>
+
+      <p>
+        ${completedGoals}
+        of
+        ${totalGoals}
+        goals completed.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        🗓️ Daily Task Progress
+      </h3>
+
+      <div class="progress-wrap">
+
+        <div
+          class="progress-bar"
+          style="width:${taskPercent}%"
+        >
+          ${taskPercent}%
+        </div>
+
+      </div>
+
+      <p>
+        ${completedTasks}
+        of
+        ${totalTasks}
+        daily tasks completed.
+      </p>
 
     </div>
 
@@ -4252,14 +3477,14 @@ function renderProgress(){
 
 
 /* =========================
-   RESET CRM
+   RESET
 ========================= */
 
 function resetCRM(){
 
   if(
     !confirm(
-      "Are you sure you want to reset the CRM? This will clear the saved CRM data from this device."
+      "Are you sure you want to reset the Goal CRM on this device?"
     )
   ){
 
@@ -4286,23 +3511,15 @@ function resetCRM(){
     errands:[],
 
     routine:{
-
       morning:"",
-
       afternoon:"",
-
       evening:"",
-
       night:""
-
     },
 
     vision:{
-
       weight175:false,
-
       weight155:false
-
     }
 
   };
@@ -4310,12 +3527,10 @@ function resetCRM(){
 
   loadState();
 
-
   renderAll();
 
-
   alert(
-    "CRM has been reset."
+    "Goal CRM has been reset."
   );
 
 }
@@ -4365,64 +3580,32 @@ function escapeAttribute(value){
 
 function normalizeLink(url){
 
-  if(!url){
+  if(!url)return "";
 
-    return "";
-
-  }
-
-
-  let value =
-    String(url)
-      .trim();
-
+  url =
+    String(url).trim();
 
   if(
-    !/^https?:\/\//i.test(
-      value
-    )
+    !/^https?:\/\//i.test(url)
   ){
 
-    value =
-      "https://" +
-      value;
+    url =
+      "https://" + url;
 
   }
 
-
-  try{
-
-    const parsed =
-      new URL(value);
-
-
-    if(
-      parsed.protocol!=="http:" &&
-      parsed.protocol!=="https:"
-    ){
-
-      return "";
-
-    }
-
-
-    return parsed.href;
-
-  }
-  catch(e){
-
-    return "";
-
-  }
+  return url;
 
 }
 
 
 /* =========================
-   RENDER EVERYTHING
+   RENDER ALL
 ========================= */
 
 function renderAll(){
+
+  normalizeState();
 
   renderVision();
 
@@ -4432,13 +3615,13 @@ function renderAll(){
 
   renderActiveGoal();
 
-  prepareDailyPage();
-
   renderPersonal();
 
   renderRoutine();
 
   renderProgress();
+
+  prepareDailyPage();
 
 }
 
@@ -4477,24 +3660,19 @@ const firebaseConfig = {
    FIREBASE VARIABLES
 ========================= */
 
-let firebaseApp =
-  null;
+let firebaseApp = null;
 
-let firebaseAuth =
-  null;
+let firebaseAuth = null;
 
-let firebaseDB =
-  null;
+let firebaseDB = null;
 
-let currentUser =
-  null;
+let currentCloudUser = null;
 
-let cloudSyncTimer =
-  null;
+let cloudSyncTimer = null;
 
 
 /* =========================
-   FIREBASE INITIALIZE
+   FIREBASE START
 ========================= */
 
 function initializeFirebase(){
@@ -4502,34 +3680,23 @@ function initializeFirebase(){
   try{
 
     if(
-      typeof firebase==="undefined"
+      typeof firebase ===
+      "undefined"
     ){
 
-      console.error(
-        "Firebase SDK did not load."
+      updateCloudStatus(
+        "Firebase could not load. The CRM will still work on this device."
       );
 
-      return false;
+      return;
 
     }
 
 
-    if(
-      !firebase.apps.length
-    ){
-
-      firebaseApp =
-        firebase.initializeApp(
-          firebaseConfig
-        );
-
-    }
-    else{
-
-      firebaseApp =
-        firebase.app();
-
-    }
+    firebaseApp =
+      firebase.initializeApp(
+        firebaseConfig
+      );
 
 
     firebaseAuth =
@@ -4543,35 +3710,42 @@ function initializeFirebase(){
     firebaseAuth.onAuthStateChanged(
       async user=>{
 
-        currentUser =
+        currentCloudUser =
           user || null;
-
 
         updateCloudControls();
 
-
         if(user){
 
+          updateCloudStatus(
+            "☁️ Signed in as " +
+            user.email
+          );
+
           await checkCloudDataAfterSignIn();
+
+        }
+        else{
+
+          updateCloudStatus(
+            "☁️ Not signed in. Your CRM is saved on this device."
+          );
 
         }
 
       }
     );
 
-
-    return true;
-
   }
   catch(error){
 
     console.error(
-      "Firebase initialization error:",
       error
     );
 
-
-    return false;
+    updateCloudStatus(
+      "Firebase setup error. Your local CRM data is still available."
+    );
 
   }
 
@@ -4582,149 +3756,104 @@ function initializeFirebase(){
    CLOUD STATUS
 ========================= */
 
-function cloudStatus(
-  message,
-  type="info"
-){
+function updateCloudStatus(message){
 
   const box =
     document.getElementById(
       "cloudStatus"
     );
 
+  if(box){
 
-  if(!box)return;
+    box.textContent =
+      message;
 
-
-  box.className =
-    "cloud-status " +
-    type;
-
-
-  box.textContent =
-    message;
+  }
 
 }
 
-
-/* =========================
-   UPDATE CLOUD CONTROLS
-========================= */
 
 function updateCloudControls(){
 
-  const loginBtn =
+  const loggedIn =
+    !!currentCloudUser;
+
+
+  const login =
     document.getElementById(
-      "loginBtn"
+      "cloudLoginBtn"
     );
 
-  const createBtn =
+  const create =
     document.getElementById(
-      "createAccountBtn"
+      "cloudCreateBtn"
     );
 
-  const signOutBtn =
+  const logout =
     document.getElementById(
-      "signOutBtn"
+      "cloudLogoutBtn"
     );
 
-  const uploadBtn =
+  const upload =
     document.getElementById(
-      "uploadCloudBtn"
+      "cloudUploadBtn"
     );
 
-  const downloadBtn =
+  const download =
     document.getElementById(
-      "downloadCloudBtn"
+      "cloudDownloadBtn"
     );
 
-  const email =
+  const userBox =
     document.getElementById(
-      "cloudEmail"
+      "cloudUserBox"
     );
 
 
-  const password =
-    document.getElementById(
-      "cloudPassword"
-    );
+  if(login)
+    login.style.display =
+      loggedIn
+      ? "none"
+      : "inline-block";
 
 
-  const signedIn =
-    !!currentUser;
+  if(create)
+    create.style.display =
+      loggedIn
+      ? "none"
+      : "inline-block";
 
 
-  if(loginBtn){
-
-    loginBtn.disabled =
-      signedIn;
-
-  }
-
-
-  if(createBtn){
-
-    createBtn.disabled =
-      signedIn;
-
-  }
+  if(logout)
+    logout.style.display =
+      loggedIn
+      ? "inline-block"
+      : "none";
 
 
-  if(signOutBtn){
-
-    signOutBtn.disabled =
-      !signedIn;
-
-  }
-
-
-  if(uploadBtn){
-
-    uploadBtn.disabled =
-      !signedIn;
-
-  }
+  if(upload)
+    upload.style.display =
+      loggedIn
+      ? "inline-block"
+      : "none";
 
 
-  if(downloadBtn){
-
-    downloadBtn.disabled =
-      !signedIn;
-
-  }
-
-
-  if(email){
-
-    email.disabled =
-      signedIn;
-
-  }
+  if(download)
+    download.style.display =
+      loggedIn
+      ? "inline-block"
+      : "none";
 
 
-  if(password){
+  if(userBox){
 
-    password.disabled =
-      signedIn;
-
-  }
-
-
-  if(signedIn){
-
-    cloudStatus(
-      "☁️ Signed in as " +
-      currentUser.email,
-      "success"
-    );
-
-  }
-  else{
-
-    cloudStatus(
-      "☁️ Not signed in. Your CRM is still saved on this device.",
-      "info"
-    );
+    userBox.textContent =
+      loggedIn
+      ?
+      "☁️ Signed in: " +
+      currentCloudUser.email
+      :
+      "☁️ Not signed in";
 
   }
 
@@ -4732,18 +3861,13 @@ function updateCloudControls(){
 
 
 /* =========================
-   FRIENDLY FIREBASE ERRORS
+   FIREBASE ERROR MESSAGE
 ========================= */
 
-function friendlyFirebaseError(
-  error
-){
+function friendlyFirebaseError(error){
 
-  if(!error){
-
-    return "Something went wrong.";
-
-  }
+  if(!error)
+    return "Unknown Firebase error.";
 
 
   const code =
@@ -4759,10 +3883,10 @@ function friendlyFirebaseError(
       "Please enter a valid email address.",
 
     "auth/weak-password":
-      "Password is too weak. Use at least 6 characters.",
+      "Firebase requires a stronger password.",
 
     "auth/user-not-found":
-      "No account was found with that email.",
+      "No Firebase account was found for that email.",
 
     "auth/wrong-password":
       "The password is incorrect.",
@@ -4770,17 +3894,11 @@ function friendlyFirebaseError(
     "auth/invalid-credential":
       "The email or password is incorrect.",
 
-    "auth/too-many-requests":
-      "Too many attempts. Please wait and try again.",
-
     "auth/network-request-failed":
-      "Network connection problem. Check your internet connection.",
+      "Internet connection problem. Please try again.",
 
     "permission-denied":
-      "Firebase denied access. Check your Firestore security rules.",
-
-    "failed-precondition":
-      "Firebase needs additional setup before this can be used."
+      "Firebase Firestore permission was denied. Check your Firestore Rules."
 
   };
 
@@ -4795,7 +3913,7 @@ function friendlyFirebaseError(
 
 
 /* =========================
-   CREATE ACCOUNT
+   CREATE CLOUD ACCOUNT
 ========================= */
 
 async function createCloudAccount(){
@@ -4811,26 +3929,15 @@ async function createCloudAccount(){
   }
 
 
-  const emailInput =
+  const email =
     document.getElementById(
       "cloudEmail"
-    );
-
-  const passwordInput =
-    document.getElementById(
-      "cloudPassword"
-    );
-
-
-  const email =
-    emailInput
-    ? emailInput.value.trim()
-    : "";
+    ).value.trim();
 
   const password =
-    passwordInput
-    ? passwordInput.value
-    : "";
+    document.getElementById(
+      "cloudPassword"
+    ).value;
 
 
   if(!email){
@@ -4855,22 +3962,10 @@ async function createCloudAccount(){
   }
 
 
-  if(password.length<6){
-
-    alert(
-      "Firebase requires a password of at least 6 characters."
-    );
-
-    return;
-
-  }
-
-
   try{
 
-    cloudStatus(
-      "Creating your account...",
-      "info"
+    updateCloudStatus(
+      "Creating your cloud account..."
     );
 
 
@@ -4881,9 +3976,8 @@ async function createCloudAccount(){
       );
 
 
-    cloudStatus(
-      "☁️ Account created and signed in.",
-      "success"
+    alert(
+      "Your Firebase cloud account was created! ☁️"
     );
 
   }
@@ -4893,12 +3987,16 @@ async function createCloudAccount(){
       error
     );
 
-
-    cloudStatus(
+    alert(
       friendlyFirebaseError(
         error
-      ),
-      "error"
+      )
+    );
+
+    updateCloudStatus(
+      friendlyFirebaseError(
+        error
+      )
     );
 
   }
@@ -4910,7 +4008,7 @@ async function createCloudAccount(){
    LOGIN
 ========================= */
 
-async function loginCloud(){
+async function loginToCloud(){
 
   if(!firebaseAuth){
 
@@ -4923,26 +4021,15 @@ async function loginCloud(){
   }
 
 
-  const emailInput =
+  const email =
     document.getElementById(
       "cloudEmail"
-    );
-
-  const passwordInput =
-    document.getElementById(
-      "cloudPassword"
-    );
-
-
-  const email =
-    emailInput
-    ? emailInput.value.trim()
-    : "";
+    ).value.trim();
 
   const password =
-    passwordInput
-    ? passwordInput.value
-    : "";
+    document.getElementById(
+      "cloudPassword"
+    ).value;
 
 
   if(!email){
@@ -4969,9 +4056,8 @@ async function loginCloud(){
 
   try{
 
-    cloudStatus(
-      "Signing in...",
-      "info"
+    updateCloudStatus(
+      "Signing in..."
     );
 
 
@@ -4982,9 +4068,8 @@ async function loginCloud(){
       );
 
 
-    cloudStatus(
-      "☁️ Signed in successfully.",
-      "success"
+    alert(
+      "You are signed in! ☁️"
     );
 
   }
@@ -4994,12 +4079,16 @@ async function loginCloud(){
       error
     );
 
-
-    cloudStatus(
+    alert(
       friendlyFirebaseError(
         error
-      ),
-      "error"
+      )
+    );
+
+    updateCloudStatus(
+      friendlyFirebaseError(
+        error
+      )
     );
 
   }
@@ -5008,230 +4097,807 @@ async function loginCloud(){
 
 
 /* =========================
-   SIGN OUT
+   LOGOUT
 ========================= */
 
-async function logoutCloud(){
+async function logoutFromCloud(){
 
   if(!firebaseAuth)return;
-
 
   try{
 
     await firebaseAuth.signOut();
 
-
-    currentUser=null;
-
-
-    updateCloudControls();
-
-
-    cloudStatus(
-      "☁️ Signed out. Your local CRM data is still on this device.",
-      "info"
+    updateCloudStatus(
+      "☁️ Signed out. Your local CRM data remains on this device."
     );
 
   }
   catch(error){
 
-    console.error(
-      error
-    );
-
-
-    cloudStatus(
+    alert(
       friendlyFirebaseError(
         error
-      ),
-      "error"
+      )
     );
 
   }
 
 }
+      }
 
+  function escapeHtml(value){
 
-/* =========================
-   CLOUD DOCUMENT REFERENCE
-========================= */
-
-function getCloudDocument(){
-
-  if(
-    !firebaseDB ||
-    !currentUser
-  ){
-
-    return null;
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
 
   }
 
 
-  return firebaseDB
-    .collection("goalCRM")
-    .doc(currentUser.uid)
-    .collection("data")
-    .doc("main");
+  function escapeAttribute(value){
 
-}
-
-
-/* =========================
-   UPLOAD LOCAL DATA
-========================= */
-
-async function uploadLocalDataToCloud(){
-
-  if(!currentUser){
-
-    alert(
-      "Please sign in first."
-    );
-
-    return;
+    return escapeHtml(value);
 
   }
 
 
-  const docRef =
-    getCloudDocument();
+  /* =========================
+     FIREBASE CLOUD SYNC
+  ========================= */
+
+  const firebaseConfig = {
+
+    apiKey:
+      "AIzaSyAHIPHJl9oPQmLMtJFEgy0-BDLH8XmaAI",
+
+    authDomain:
+      "lessie-bea-goal-crm.firebaseapp.com",
+
+    projectId:
+      "lessie-bea-goal-crm",
+
+    storageBucket:
+      "lessie-bea-goal-crm.firebasestorage.app",
+
+    messagingSenderId:
+      "433663665955",
+
+    appId:
+      "1:433663665955:web:93802440615f81b2740e96",
+
+    measurementId:
+      "G-JK4TFLFKT7"
+
+  };
 
 
-  if(!docRef){
+  let firebaseReady = false;
 
-    return;
+  let firebaseUser = null;
 
-  }
-
-
-  try{
-
-    cloudStatus(
-      "☁️ Uploading your CRM...",
-      "info"
-    );
+  let cloudSyncTimer = null;
 
 
-    normalizeState();
+  function initializeFirebase(){
+
+    try{
+
+      if(
+        typeof firebase === "undefined"
+      ){
+
+        console.warn(
+          "Firebase SDK not loaded."
+        );
+
+        return;
+
+      }
 
 
-    await docRef.set({
+      if(
+        !firebase.apps.length
+      ){
 
-      state:
-        JSON.parse(
-          JSON.stringify(state)
-        ),
+        firebase.initializeApp(
+          firebaseConfig
+        );
 
-      updatedAt:
-        firebase.firestore.FieldValue.serverTimestamp()
-
-    });
+      }
 
 
-    cloudStatus(
-      "☁️ CRM uploaded successfully.",
-      "success"
-    );
-
-  }
-  catch(error){
-
-    console.error(
-      error
-    );
+      firebaseReady = true;
 
 
-    cloudStatus(
-      "Upload failed: " +
-      friendlyFirebaseError(
+      firebase.auth()
+        .onAuthStateChanged(
+          async user=>{
+
+            firebaseUser = user || null;
+
+            updateCloudControls();
+
+            if(user){
+
+              await checkCloudDataAfterSignIn();
+
+            }
+
+          }
+        );
+
+    }catch(error){
+
+      console.error(
+        "Firebase initialization error:",
         error
-      ),
-      "error"
-    );
+      );
 
-  }
+      firebaseReady = false;
 
-}
-
-
-/* =========================
-   DOWNLOAD CLOUD DATA
-========================= */
-
-async function downloadCloudDataToLocal(){
-
-  if(!currentUser){
-
-    alert(
-      "Please sign in first."
-    );
-
-    return;
+    }
 
   }
 
 
-  const docRef =
-    getCloudDocument();
+  function cloudStatus(message){
+
+    const box =
+      document.getElementById(
+        "cloudStatus"
+      );
+
+    if(!box)return;
+
+    box.textContent =
+      message || "";
+
+  }
 
 
-  if(!docRef)return;
+  function updateCloudControls(){
+
+    const email =
+      document.getElementById(
+        "cloudEmail"
+      );
+
+    const password =
+      document.getElementById(
+        "cloudPassword"
+      );
+
+    const loginBtn =
+      document.getElementById(
+        "cloudLoginBtn"
+      );
+
+    const createBtn =
+      document.getElementById(
+        "cloudCreateBtn"
+      );
+
+    const logoutBtn =
+      document.getElementById(
+        "cloudLogoutBtn"
+      );
+
+    const uploadBtn =
+      document.getElementById(
+        "cloudUploadBtn"
+      );
+
+    const downloadBtn =
+      document.getElementById(
+        "cloudDownloadBtn"
+      );
 
 
-  try{
+    if(
+      firebaseUser
+    ){
 
-    cloudStatus(
-      "☁️ Checking cloud data...",
-      "info"
+      if(email)
+        email.disabled=true;
+
+      if(password)
+        password.disabled=true;
+
+      if(loginBtn)
+        loginBtn.style.display="none";
+
+      if(createBtn)
+        createBtn.style.display="none";
+
+      if(logoutBtn)
+        logoutBtn.style.display="inline-block";
+
+      if(uploadBtn)
+        uploadBtn.disabled=false;
+
+      if(downloadBtn)
+        downloadBtn.disabled=false;
+
+    }else{
+
+      if(email)
+        email.disabled=false;
+
+      if(password)
+        password.disabled=false;
+
+      if(loginBtn)
+        loginBtn.style.display="inline-block";
+
+      if(createBtn)
+        createBtn.style.display="inline-block";
+
+      if(logoutBtn)
+        logoutBtn.style.display="none";
+
+      if(uploadBtn)
+        uploadBtn.disabled=true;
+
+      if(downloadBtn)
+        downloadBtn.disabled=true;
+
+    }
+
+  }
+
+
+  function friendlyFirebaseError(error){
+
+    const code =
+      error?.code || "";
+
+    if(
+      code ===
+      "auth/email-already-in-use"
+    ){
+
+      return(
+        "That email already has an account. Please log in instead."
+      );
+
+    }
+
+
+    if(
+      code ===
+      "auth/invalid-email"
+    ){
+
+      return(
+        "Please enter a valid email address."
+      );
+
+    }
+
+
+    if(
+      code ===
+      "auth/weak-password"
+    ){
+
+      return(
+        "Password must be at least 6 characters."
+      );
+
+    }
+
+
+    if(
+      code ===
+      "auth/invalid-credential"
+      ||
+      code ===
+      "auth/wrong-password"
+      ||
+      code ===
+      "auth/user-not-found"
+    ){
+
+      return(
+        "The email or password is incorrect."
+      );
+
+    }
+
+
+    if(
+      code ===
+      "auth/too-many-requests"
+    ){
+
+      return(
+        "Too many attempts. Please wait and try again."
+      );
+
+    }
+
+
+    if(
+      code ===
+      "permission-denied"
+      ||
+      code ===
+      "firestore/permission-denied"
+    ){
+
+      return(
+        "Firebase Firestore permission was denied. Check your Firestore Rules."
+      );
+
+    }
+
+
+    return(
+      error?.message ||
+      "Something went wrong. Please try again."
     );
 
-
-    const snapshot =
-      await docRef.get();
+  }
 
 
-    if(!snapshot.exists){
+  function cloudDocument(){
+
+    if(
+      !firebaseReady ||
+      !firebaseUser
+    ){
+
+      return null;
+
+    }
+
+
+    return firebase
+      .firestore()
+      .collection("goalCRM")
+      .doc(firebaseUser.uid)
+      .collection("data")
+      .doc("main");
+
+  }
+
+
+  async function createCloudAccount(){
+
+    if(!firebaseReady){
+
+      alert(
+        "Cloud sync is not ready yet."
+      );
+
+      return;
+
+    }
+
+
+    const email =
+      document.getElementById(
+        "cloudEmail"
+      ).value.trim();
+
+    const password =
+      document.getElementById(
+        "cloudPassword"
+      ).value;
+
+
+    if(!email){
+
+      alert(
+        "Please enter your email."
+      );
+
+      return;
+
+    }
+
+
+    if(!password){
+
+      alert(
+        "Please enter a password."
+      );
+
+      return;
+
+    }
+
+
+    try{
 
       cloudStatus(
-        "No cloud CRM data was found for this account.",
-        "info"
+        "Creating your account..."
+      );
+
+
+      await firebase
+        .auth()
+        .createUserWithEmailAndPassword(
+          email,
+          password
+        );
+
+
+      cloudStatus(
+        "Account created and signed in. 💗"
+      );
+
+    }catch(error){
+
+      console.error(error);
+
+      cloudStatus(
+        friendlyFirebaseError(error)
+      );
+
+      alert(
+        friendlyFirebaseError(error)
+      );
+
+    }
+
+  }
+
+
+  async function loginToCloud(){
+
+    if(!firebaseReady){
+
+      alert(
+        "Cloud sync is not ready yet."
+      );
+
+      return;
+
+    }
+
+
+    const email =
+      document.getElementById(
+        "cloudEmail"
+      ).value.trim();
+
+    const password =
+      document.getElementById(
+        "cloudPassword"
+      ).value;
+
+
+    if(!email){
+
+      alert(
+        "Please enter your email."
+      );
+
+      return;
+
+    }
+
+
+    if(!password){
+
+      alert(
+        "Please enter your password."
+      );
+
+      return;
+
+    }
+
+
+    try{
+
+      cloudStatus(
+        "Signing in..."
+      );
+
+
+      await firebase
+        .auth()
+        .signInWithEmailAndPassword(
+          email,
+          password
+        );
+
+
+      cloudStatus(
+        "Signed in successfully. ☁️"
+      );
+
+    }catch(error){
+
+      console.error(error);
+
+      cloudStatus(
+        friendlyFirebaseError(error)
+      );
+
+      alert(
+        friendlyFirebaseError(error)
+      );
+
+    }
+
+  }
+
+
+  async function logoutFromCloud(){
+
+    if(
+      !firebaseReady
+    ){
+
+      return;
+
+    }
+
+
+    try{
+
+      await firebase
+        .auth()
+        .signOut();
+
+
+      cloudStatus(
+        "Signed out. Your local data is still on this device."
+      );
+
+    }catch(error){
+
+      console.error(error);
+
+      alert(
+        friendlyFirebaseError(error)
+      );
+
+    }
+
+  }
+
+
+  async function uploadLocalDataToCloud(){
+
+    const ref =
+      cloudDocument();
+
+    if(!ref){
+
+      alert(
+        "Please sign in before uploading your data."
+      );
+
+      return;
+
+    }
+
+
+    try{
+
+      cloudStatus(
+        "Uploading your Goal CRM..."
+      );
+
+
+      const cleanState =
+        normalizeState(
+          state
+        );
+
+
+      await ref.set({
+
+        state:
+          cleanState,
+
+        updatedAt:
+          firebase.firestore.FieldValue.serverTimestamp(),
+
+        updatedBy:
+          firebaseUser.uid
+
+      });
+
+
+      cloudStatus(
+        "Your Goal CRM was uploaded to the cloud. ☁️💗"
       );
 
 
       alert(
-        "There is no saved CRM data in the cloud for this account yet."
+        "Your Goal CRM is now saved in the cloud."
       );
 
+    }catch(error){
 
-      return;
+      console.error(error);
 
-    }
-
-
-    const data =
-      snapshot.data();
-
-
-    if(
-      !data ||
-      !data.state
-    ){
+      cloudStatus(
+        friendlyFirebaseError(error)
+      );
 
       alert(
-        "The cloud record does not contain CRM data."
+        friendlyFirebaseError(error)
       );
 
+    }
+
+  }
+
+
+  async function downloadCloudDataToLocal(){
+
+    const ref =
+      cloudDocument();
+
+    if(!ref){
+
+      alert(
+        "Please sign in before downloading your data."
+      );
 
       return;
 
     }
 
 
+    const confirmed =
+      confirm(
+        "Download your cloud data and replace the Goal CRM data currently on this device?"
+      );
+
+
+    if(!confirmed){
+
+      return;
+
+    }
+
+
+    try{
+
+      cloudStatus(
+        "Downloading your Goal CRM..."
+      );
+
+
+      const snap =
+        await ref.get();
+
+
+      if(!snap.exists){
+
+        cloudStatus(
+          "No cloud data was found for this account."
+        );
+
+        alert(
+          "No cloud data was found for this account."
+        );
+
+        return;
+
+      }
+
+
+      const data =
+        snap.data();
+
+
+      if(
+        !data ||
+        !data.state
+      ){
+
+        alert(
+          "The cloud record does not contain Goal CRM data."
+        );
+
+        return;
+
+      }
+
+
+      state =
+        normalizeState(
+          data.state
+        );
+
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(state)
+      );
+
+
+      renderAll();
+
+
+      cloudStatus(
+        "Cloud data downloaded successfully. ☁️"
+      );
+
+
+      alert(
+        "Your cloud Goal CRM data has been downloaded to this device."
+      );
+
+    }catch(error){
+
+      console.error(error);
+
+      cloudStatus(
+        friendlyFirebaseError(error)
+      );
+
+      alert(
+        friendlyFirebaseError(error)
+      );
+
+    }
+
+  }
+
+
+  async function checkCloudDataAfterSignIn(){
+
+    const ref =
+      cloudDocument();
+
+    if(!ref){
+
+      return;
+
+    }
+
+
+    try{
+
+      const snap =
+        await ref.get();
+
+
+      if(snap.exists){
+
+        cloudStatus(
+          "Cloud data found. Use Download to load it on this device, or Upload to replace it with this device's data."
+        );
+
+      }else{
+
+        cloudStatus(
+          "No cloud data yet. Click Upload Local Data to save this device's Goal CRM."
+        );
+
+      }
+
+    }catch(error){
+
+      console.error(error);
+
+      cloudStatus(
+        friendlyFirebaseError(error)
+      );
+
+    }
+
+  }
+
+
+  function scheduleCloudSync(){
+
     if(
-      !confirm(
-        "Download the cloud CRM and replace the CRM currently saved on this device?"
-      )
+      !firebaseReady ||
+      !firebaseUser
     ){
 
       return;
@@ -5239,153 +4905,329 @@ async function downloadCloudDataToLocal(){
     }
 
 
-    state =
-      data.state;
+    clearTimeout(
+      cloudSyncTimer
+    );
 
 
-    normalizeState();
+    cloudSyncTimer =
+      setTimeout(
+        async ()=>{
+
+          const ref =
+            cloudDocument();
+
+          if(!ref)return;
 
 
-    saveState(false);
+          try{
 
+            await ref.set({
+
+              state:
+                normalizeState(
+                  state
+                ),
+
+              updatedAt:
+                firebase.firestore.FieldValue.serverTimestamp(),
+
+              updatedBy:
+                firebaseUser.uid
+
+            });
+
+
+            cloudStatus(
+              "Saved to cloud ☁️"
+            );
+
+          }catch(error){
+
+            console.error(
+              "Automatic cloud sync failed:",
+              error
+            );
+
+            cloudStatus(
+              "Local changes saved. Cloud sync needs attention."
+            );
+
+          }
+
+        },
+        700
+      );
+
+  }
+
+
+  /* =========================
+     START APP
+  ========================= */
+
+  function startApp(){
 
     renderAll();
 
+    initializeFirebase();
 
-    cloudStatus(
-      "☁️ Cloud CRM downloaded to this device.",
-      "success"
+  }
+
+
+  if(
+    document.readyState ===
+    "loading"
+  ){
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      startApp
     );
 
-  }
-  catch(error){
+  }else{
 
-    console.error(
-      error
-    );
-
-
-    cloudStatus(
-      "Download failed: " +
-      friendlyFirebaseError(
-        error
-      ),
-      "error"
-    );
+    startApp();
 
   }
 
-}
+</script>
 
+</body>
 
-/* =========================
-   CHECK CLOUD AFTER SIGN-IN
-========================= */
+</html>
+    function escapeHtml(value){
 
-async function checkCloudDataAfterSignIn(){
-
-  if(!currentUser){
-
-    return;
-
-  }
-
-
-  const docRef =
-    getCloudDocument();
-
-
-  if(!docRef)return;
-
-
-  try{
-
-    const snapshot =
-      await docRef.get();
-
-
-    if(snapshot.exists){
-
-      cloudStatus(
-        "☁️ Cloud data found. Choose Upload or Download to decide which copy to use.",
-        "success"
-      );
-
-    }
-    else{
-
-      cloudStatus(
-        "☁️ No cloud copy yet. Upload this device's CRM when you are ready.",
-        "info"
-      );
-
-    }
-
-  }
-  catch(error){
-
-    console.error(
-      error
-    );
-
-
-    cloudStatus(
-      "Could not check cloud data: " +
-      friendlyFirebaseError(
-        error
-      ),
-      "error"
-    );
-
-  }
-
-}
-
-
-/* =========================
-   SCHEDULE CLOUD SYNC
-========================= */
-
-function scheduleCloudSync(){
-
-  if(!currentUser){
-
-    return;
-
-  }
-
-
-  clearTimeout(
-    cloudSyncTimer
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
   );
 
+}
 
-  cloudSyncTimer =
-    setTimeout(
-      ()=>{
 
-        uploadLocalDataToCloud();
+/* =========================
+   ESCAPE ATTRIBUTE
+========================= */
 
-      },
-      700
-    );
+function escapeAttribute(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  );
 
 }
 
 
 /* =========================
-   STARTUP
+   RENDER ALL
+========================= */
+
+function renderAll(){
+
+  renderVision();
+
+  renderVisionGoals();
+
+  renderGoalsList();
+
+  renderActiveGoal();
+
+  renderProgress();
+
+
+  if(
+    document.getElementById("daily") &&
+    document
+      .getElementById("daily")
+      .classList
+      .contains("active")
+  ){
+
+    prepareDailyPage();
+
+  }
+
+
+  renderPersonal();
+
+  renderRoutine();
+
+}
+
+
+
+/* =========================
+   FIREBASE CLOUD SYNC
+========================= */
+const firebaseConfig = {
+  apiKey: "AIzaSyAHIPJHJl9oPQmLMtJFEgy0-BDLH8XmaAI",
+  authDomain: "lessie-bea-goal-crm.firebaseapp.com",
+  projectId: "lessie-bea-goal-crm",
+  storageBucket: "lessie-bea-goal-crm.firebasestorage.app",
+  messagingSenderId: "433663665955",
+  appId: "1:433663665955:web:93802440615f81b2740e96",
+  measurementId: "G-JK4TFLFK7"
+};
+if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+const firebaseAuth = firebase.auth();
+const firebaseDB = firebase.firestore();
+const CLOUD_COLLECTION = "goalCRM";
+const CLOUD_DOCUMENT = "data";
+let cloudUser = null;
+let cloudSyncTimer = null;
+
+function cloudStatus(message, success=false){
+  const box=document.getElementById("cloudStatus");
+  if(!box)return;
+  box.textContent=message;
+  box.className=success ? "success" : "notice";
+}
+function updateCloudControls(){
+  const signedIn=!!cloudUser;
+  const email=document.getElementById("cloudEmail");
+  const password=document.getElementById("cloudPassword");
+  if(email)email.disabled=signedIn;
+  if(password)password.disabled=signedIn;
+  ["cloudLoginBtn","cloudCreateBtn"].forEach(id=>{const b=document.getElementById(id);if(b)b.style.display=signedIn?"none":"inline-block";});
+  ["cloudLogoutBtn","cloudUploadBtn","cloudDownloadBtn"].forEach(id=>{const b=document.getElementById(id);if(b)b.style.display=signedIn?"inline-block":"none";});
+  const u=document.getElementById("cloudUserBox");
+  if(u)u.textContent=signedIn ? "☁️ Signed in: "+cloudUser.email : "☁️ Not signed in";
+}
+function friendlyFirebaseError(error){
+  const code=error?.code||"";
+  const m={
+    "auth/email-already-in-use":"That email already has a Firebase account. Use Login instead.",
+    "auth/invalid-email":"Please enter a valid email address.",
+    "auth/weak-password":"Choose a stronger password with at least 6 characters.",
+    "auth/invalid-credential":"The email or password is incorrect.",
+    "auth/user-not-found":"No Firebase account was found for that email.",
+    "auth/wrong-password":"The password is incorrect.",
+    "auth/too-many-requests":"Too many attempts. Please wait and try again.",
+    "permission-denied":"Firebase denied access. Check the Firestore Rules.",
+    "unavailable":"Firebase is temporarily unavailable. Check your internet connection."
+  };
+  return m[code]||error?.message||"Please try again.";
+}
+async function createCloudAccount(){
+  const email=document.getElementById("cloudEmail")?.value.trim();
+  const password=document.getElementById("cloudPassword")?.value||"";
+  if(!email||!password){cloudStatus("Enter your email and password first.");return;}
+  if(password.length<6){cloudStatus("Firebase requires a password of at least 6 characters.");return;}
+  try{await firebaseAuth.createUserWithEmailAndPassword(email,password);cloudStatus("Account created and signed in. ☁️",true);}
+  catch(e){cloudStatus("Account could not be created: "+friendlyFirebaseError(e));}
+}
+async function loginToCloud(){
+  const email=document.getElementById("cloudEmail")?.value.trim();
+  const password=document.getElementById("cloudPassword")?.value||"";
+  if(!email||!password){cloudStatus("Enter your email and password first.");return;}
+  try{await firebaseAuth.signInWithEmailAndPassword(email,password);cloudStatus("Signed in successfully. ☁️",true);}
+  catch(e){cloudStatus("Sign-in failed: "+friendlyFirebaseError(e));}
+}
+async function logoutFromCloud(){
+  try{await firebaseAuth.signOut();cloudStatus("Signed out. Your local data is still on this device.");}
+  catch(e){cloudStatus("Could not sign out: "+friendlyFirebaseError(e));}
+}
+function cloudDocRef(){
+  if(!cloudUser)return null;
+  return firebaseDB.collection(CLOUD_COLLECTION).doc(cloudUser.uid).collection(CLOUD_DOCUMENT).doc("main");
+}
+async function uploadLocalDataToCloud(showMessage=true){
+  if(!cloudUser){cloudStatus("Sign in before uploading your local data.");return false;}
+  try{
+    await cloudDocRef().set({state:JSON.parse(JSON.stringify(state)),updatedAt:firebase.firestore.FieldValue.serverTimestamp(),appVersion:"Goal CRM Firebase Sync v1"});
+    if(showMessage)cloudStatus("Your Goal CRM data was uploaded to the cloud. ☁️",true);
+    return true;
+  }catch(e){cloudStatus("Cloud upload failed: "+friendlyFirebaseError(e));return false;}
+}
+async function downloadCloudDataToLocal(showMessage=true){
+  if(!cloudUser){cloudStatus("Sign in before downloading cloud data.");return false;}
+  try{
+    const snap=await cloudDocRef().get();
+    if(!snap.exists||!snap.data()?.state){cloudStatus("No Goal CRM cloud data exists yet. Your local data is still safe on this device.");return false;}
+    if(!confirm("Download the cloud copy and replace the Goal CRM data currently on this device? Your current device data will be replaced."))return false;
+    state=snap.data().state;
+    normalizeState();
+    saveState(false);
+    renderAll();
+    if(showMessage)cloudStatus("Cloud data downloaded to this device. ☁️",true);
+    return true;
+  }catch(e){cloudStatus("Cloud download failed: "+friendlyFirebaseError(e));return false;}
+}
+async function checkCloudDataAfterSignIn(){
+  if(!cloudUser)return;
+  try{
+    const snap=await cloudDocRef().get();
+    if(snap.exists&&snap.data()?.state) cloudStatus("Cloud data found for this account. Use Download Cloud Data on this device, or Upload Local Data if this device has the copy you want to keep.");
+    else cloudStatus("This account has no cloud copy yet. Upload Local Data to put this device's Goal CRM into the cloud.",true);
+  }catch(e){cloudStatus("Could not check cloud data: "+friendlyFirebaseError(e));}
+}
+function scheduleCloudSync(){
+  if(!cloudUser)return;
+  clearTimeout(cloudSyncTimer);
+  cloudSyncTimer=setTimeout(async()=>{
+    try{
+      await cloudDocRef().set({state:JSON.parse(JSON.stringify(state)),updatedAt:firebase.firestore.FieldValue.serverTimestamp(),appVersion:"Goal CRM Firebase Sync v1"});
+      cloudStatus("Saved locally and synced to the cloud. ☁️",true);
+    }catch(e){cloudStatus("Saved on this device. Cloud sync needs attention: "+friendlyFirebaseError(e));}
+  },700);
+}
+firebaseAuth.onAuthStateChanged(async user=>{
+  cloudUser=user||null;
+  updateCloudControls();
+  if(cloudUser)await checkCloudDataAfterSignIn();
+  else cloudStatus("Not signed in. Your Goal CRM continues to work on this device.");
+});
+
+
+/* =========================
+   START APP
 ========================= */
 
 loadState();
 
 renderAll();
 
-initializeFirebase();
-
-
 </script>
 
 </body>
-
 </html>
