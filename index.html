@@ -497,7 +497,6 @@
 
 </div>
 
-
 <!-- =========================
      MY VISION
 ========================= -->
@@ -1067,9 +1066,11 @@ Go to bed"
 </section>
 
 
+<!-- Firebase Cloud Sync SDK -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
 <script>
 
 /* =========================
@@ -1121,36 +1122,197 @@ const DEFAULT_GOALS = [
     title:"Real Estate • Minimum 2 Deals/Month (Outcome Only)",
     category:"Real Estate",
     type:"realestate",
-    notes:"Outcome goal: minimum 2 real estate deals per month.",
+    notes:"Focus on getting a minimum of 2 deals per month.",
     links:[
-      ["Lessie Bea CRM","https://blandhouses1-hash.github.io/Lessie-Bea-CRM/"],
-      ["My Realestate Goal Site Helpful Info","https://sites.google.com/d/1QXBSTUG6vqPurn4D8gWhr28PJurQ3X3E/p/1G5rP7MWG4Onw4EyvaKc72AnUYnlP6wuM/edit"],
-      ["Blands Realestate Investors System","https://sites.google.com/d/1iKxF-48RJiP9moAog3LbhlVBpjQ7RYRe/p/1J57VWeoRO74mWUXT-i299klAHbu6T-l3/edit"],
-      ["Billy Land - Find Cheap Land","https://billyland.com/"]
+      ["Propwire","https://www.propwire.com/"],
+      ["Zillow FSBO","https://www.zillow.com/"],
+      ["Craigslist","https://www.craigslist.org/"],
+      ["County GIS","https://www.google.com/search?q=county+GIS"],
+      ["Redfin","https://www.redfin.com/"],
+      ["Google Maps","https://www.google.com/maps/"],
+      ["Regrid","https://regrid.com/"],
+      ["NETR Online","https://www.netronline.com/"],
+      ["Google Voice","https://voice.google.com/"],
+      ["Realtor.com","https://www.realtor.com/"]
     ]
   },
-  {title:"GED",category:"Education",type:"standard",notes:"Complete my GED.",links:[]},
-  {title:"Fix Teeth",category:"Personal",type:"standard",notes:"Work toward getting my teeth fixed.",links:[]},
-  {title:"Buy a Home & Rental Properties",category:"Housing / Rentals",type:"standard",notes:"Buy my home and build rental properties.",links:[]},
-  {title:"Bookkeeping Business",category:"Business",type:"standard",notes:"Build my bookkeeping business.",links:[]},
-  {title:"Credit Repaired",category:"Credit",type:"standard",notes:"Repair and improve my credit.",links:[]},
-  {title:"Open Medical Assistant Facility • 12 Week Focus",category:"Healthcare",type:"standard",notes:"I already have my Medical Assistant. This goal is for building toward opening a facility for medical assistants later.",links:[]},
-  {title:"Class A (CDL)",category:"CDL / Class A",type:"standard",notes:"Work toward obtaining my Class A CDL.",links:[]},
-  {title:"Cornstarch Business",category:"Business",type:"standard",notes:"Grow and improve my Cornstarch Business.",links:[]},
-  {title:"YouTube Channels",category:"YouTube",type:"standard",notes:"Build and maintain my YouTube channels.",links:[]},
-  {title:"Courses",category:"Courses",type:"standard",notes:"Complete my Real Estate Course + Author Course.",links:[]},
-  {title:"Dispatcher Business",category:"Dispatcher",type:"standard",notes:"Build my dispatcher business.",links:[]},
-  {title:"House Inspector Business",category:"House Inspector",type:"standard",notes:"Build my house inspector business.",links:[]},
-  {title:"Open Independent Living Homes",category:"Independent Living Homes",type:"standard",notes:"Work toward opening independent living homes.",links:[]},
-  {title:"Dropshipping Business",category:"Dropshipping",type:"standard",notes:"Build my dropshipping business.",links:[]},
-  {title:"Become an Author",category:"Author",type:"standard",notes:"Write and publish my books.",links:[]},
-  {title:"Build & Sell Courses",category:"Courses",type:"standard",notes:"Create and sell my own courses.",links:[]},
-  {title:"Make Planners",category:"Planners",type:"standard",notes:"Create my planners, including the Bea Planner.",links:[]},
-  {title:"Create & Sell Products",category:"Products",type:"standard",notes:"Kids' Coloring Books, Mugs, T-Shirts & Other Items.",links:[]},
-  {title:"Monetize Instagram & Grow My Following",category:"Social Media",type:"standard",notes:"Grow and monetize Instagram.",links:[]},
-  {title:"Monetize YouTube & Grow My Following",category:"YouTube",type:"standard",notes:"Grow and monetize YouTube.",links:[]},
-  {title:"Build Millions of Followers Across My Social Media",category:"Social Media",type:"standard",notes:"Build a large following across my social platforms.",links:[]},
-  {title:"Keep All My Websites & Apps Running Properly",category:"Websites & Apps",type:"standard",notes:"Maintain all of my websites and apps.",links:[]}
+
+  {
+    title:"GED",
+    category:"Education",
+    type:"standard",
+    notes:"Complete GED.",
+    links:[]
+  },
+
+  {
+    title:"Fix Teeth",
+    category:"Personal",
+    type:"standard",
+    notes:"Work toward getting my teeth fixed.",
+    links:[]
+  },
+
+  {
+    title:"Buy a Home & Rental Properties",
+    category:"Real Estate",
+    type:"standard",
+    notes:"Buy a home and build rental properties.",
+    links:[]
+  },
+
+  {
+    title:"Bookkeeping Business",
+    category:"Business",
+    type:"standard",
+    notes:"Build bookkeeping business.",
+    links:[]
+  },
+
+  {
+    title:"Credit Repaired",
+    category:"Financial",
+    type:"standard",
+    notes:"Repair and improve credit.",
+    links:[]
+  },
+
+  {
+    title:"Open Medical Assistant Facility • 12 Week Focus",
+    category:"Healthcare",
+    type:"standard",
+    notes:"I already have my Medical Assistant. This goal is for building toward opening a facility for medical assistants later.",
+    links:[]
+  },
+
+  {
+    title:"Class A (CDL)",
+    category:"Career",
+    type:"standard",
+    notes:"Work toward obtaining Class A CDL.",
+    links:[]
+  },
+
+  {
+    title:"Cornstarch Business",
+    category:"Business",
+    type:"standard",
+    notes:"Grow the Cornstarch Business.",
+    links:[]
+  },
+
+  {
+    title:"YouTube Channels",
+    category:"Social Media",
+    type:"standard",
+    notes:"Build and grow YouTube channels.",
+    links:[]
+  },
+
+  {
+    title:"Courses",
+    category:"Education",
+    type:"standard",
+    notes:"Complete courses.",
+    links:[]
+  },
+
+  {
+    title:"Dispatcher Business",
+    category:"Business",
+    type:"standard",
+    notes:"Build dispatcher business.",
+    links:[]
+  },
+
+  {
+    title:"House Inspector Business",
+    category:"Business",
+    type:"standard",
+    notes:"Build house inspector business.",
+    links:[]
+  },
+
+  {
+    title:"Open Independent Living Homes",
+    category:"Business",
+    type:"standard",
+    notes:"Build toward opening independent living homes.",
+    links:[]
+  },
+
+  {
+    title:"Dropshipping Business",
+    category:"Business",
+    type:"standard",
+    notes:"Build dropshipping business.",
+    links:[]
+  },
+
+  {
+    title:"Become an Author",
+    category:"Creative",
+    type:"standard",
+    notes:"Become an author.",
+    links:[]
+  },
+
+  {
+    title:"Build & Sell Courses",
+    category:"Business",
+    type:"standard",
+    notes:"Create and sell courses.",
+    links:[]
+  },
+
+  {
+    title:"Make Planners",
+    category:"Business",
+    type:"standard",
+    notes:"Create planners.",
+    links:[]
+  },
+
+  {
+    title:"Create & Sell Products",
+    category:"Business",
+    type:"standard",
+    notes:"Create and sell products.",
+    links:[]
+  },
+
+  {
+    title:"Monetize Instagram & Grow My Following",
+    category:"Social Media",
+    type:"standard",
+    notes:"Grow Instagram following and monetize.",
+    links:[]
+  },
+
+  {
+    title:"Monetize YouTube & Grow My Following",
+    category:"Social Media",
+    type:"standard",
+    notes:"Grow YouTube following and monetize.",
+    links:[]
+  },
+
+  {
+    title:"Build Millions of Followers Across My Social Media",
+    category:"Social Media",
+    type:"standard",
+    notes:"Build a large following across social media.",
+    links:[]
+  },
+
+  {
+    title:"Keep All My Websites & Apps Running Properly",
+    category:"Technology",
+    type:"standard",
+    notes:"Maintain all websites and apps.",
+    links:[]
+  }
+
 ];
 
 
@@ -1249,6 +1411,24 @@ const REAL_ESTATE_TASKS = [
 
 
 /* =========================
+   NORMALIZE STATE
+========================= */
+function normalizeState(){
+  if(!Array.isArray(state.goals))state.goals=[];
+  if(!state.dailyTasks||typeof state.dailyTasks!=="object")state.dailyTasks={};
+  if(!Array.isArray(state.appointments))state.appointments=[];
+  if(!Array.isArray(state.personalTasks))state.personalTasks=[];
+  if(!Array.isArray(state.errands))state.errands=[];
+  if(!state.routine||typeof state.routine!=="object")state.routine={morning:"",afternoon:"",evening:"",night:""};
+  if(typeof state.routine.morning!=="string")state.routine.morning="";
+  if(typeof state.routine.afternoon!=="string")state.routine.afternoon="";
+  if(typeof state.routine.evening!=="string")state.routine.evening="";
+  if(typeof state.routine.night!=="string")state.routine.night="";
+  if(!state.vision||typeof state.vision!=="object")state.vision={weight175:false,weight155:false};
+  state.goals.forEach(goal=>{if(!Array.isArray(goal.links))goal.links=[];});
+}
+
+/* =========================
    LOAD STATE
 ========================= */
 
@@ -1282,92 +1462,7 @@ function loadState(){
   }
 
 
-  if(!Array.isArray(state.goals)){
-    state.goals=[];
-  }
-
-
-  if(!state.dailyTasks ||
-     typeof state.dailyTasks!=="object"){
-
-    state.dailyTasks={};
-
-  }
-
-
-  if(!Array.isArray(state.appointments)){
-    state.appointments=[];
-  }
-
-
-  if(!Array.isArray(state.personalTasks)){
-    state.personalTasks=[];
-  }
-
-
-  if(!Array.isArray(state.errands)){
-    state.errands=[];
-  }
-
-
-  if(!state.routine ||
-     typeof state.routine!=="object"){
-
-    state.routine={
-      morning:"",
-      afternoon:"",
-      evening:"",
-      night:""
-    };
-
-  }
-
-
-  if(typeof state.routine.morning!=="string"){
-    state.routine.morning="";
-  }
-
-
-  if(typeof state.routine.afternoon!=="string"){
-    state.routine.afternoon="";
-  }
-
-
-  if(typeof state.routine.evening!=="string"){
-    state.routine.evening="";
-  }
-
-
-  if(typeof state.routine.night!=="string"){
-    state.routine.night="";
-  }
-
-
-  if(!state.vision){
-
-    state.vision={
-      weight175:false,
-      weight155:false
-    };
-
-  }
-
-
-  /*
-    IMPORTANT:
-    Make sure EVERY existing goal has
-    a links array without deleting any
-    existing links.
-  */
-
-  state.goals.forEach(goal=>{
-
-    if(!Array.isArray(goal.links)){
-      goal.links=[];
-    }
-
-  });
-
+  normalizeState();
 
   if(state.goals.length===0){
 
@@ -1417,22 +1512,14 @@ function loadState(){
    SAVE
 ========================= */
 
-let cloudUser = null;
-let cloudSyncTimer = null;
-let cloudUnsubscribe = null;
-let cloudApplying = false;
-let cloudReady = false;
-
-function saveState(syncCloud = true){
+function saveState(syncCloud=true){
 
   localStorage.setItem(
     STORAGE_KEY,
     JSON.stringify(state)
   );
 
-  if (syncCloud && cloudUser && cloudReady && !cloudApplying && typeof scheduleCloudSync === "function") {
-    scheduleCloudSync();
-  }
+  if(syncCloud) scheduleCloudSync();
 
 }
 
@@ -3988,10 +4075,10 @@ function renderAll(){
 }
 
 
-/* =========================
-   FIREBASE AUTOMATIC CLOUD SYNC
-========================= */
 
+/* =========================
+   FIREBASE CLOUD SYNC
+========================= */
 const firebaseConfig = {
   apiKey: "AIzaSyAHIPJHJl9oPQmLMtJFEgy0-BDLH8XmaAI",
   authDomain: "lessie-bea-goal-crm.firebaseapp.com",
@@ -3999,206 +4086,136 @@ const firebaseConfig = {
   storageBucket: "lessie-bea-goal-crm.firebasestorage.app",
   messagingSenderId: "433663665955",
   appId: "1:433663665955:web:93802440615f81b2740e96",
-  measurementId: "G-JK4TFLFKT7"
+  measurementId: "G-JK4TFLFK7"
 };
+if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+const firebaseAuth = firebase.auth();
+const firebaseDB = firebase.firestore();
+const CLOUD_COLLECTION = "goalCRM";
+const CLOUD_DOCUMENT = "data";
+let cloudUser = null;
+let cloudSyncTimer = null;
+let cloudUnsubscribe = null;
 
-let firebaseApp = null;
-let firebaseAuth = null;
-let firebaseDb = null;
-
-function setCloudStatus(message, success=false){
-  const el = document.getElementById("cloudStatus");
-  if(el){
-    el.textContent = message;
-    el.style.color = success ? "#168a3a" : "#000";
-  }
+function cloudStatus(message, success=false){
+  // Firebase sync runs in the background. There is intentionally no
+  // Cloud Sync panel in this CRM.
+  console.log("[Goal CRM Firebase]", message);
 }
-
+function friendlyFirebaseError(error){
+  const code=error?.code||"";
+  const m={
+    "auth/email-already-in-use":"That email already has a Firebase account. Use Login instead.",
+    "auth/invalid-email":"Please enter a valid email address.",
+    "auth/weak-password":"Choose a stronger password with at least 6 characters.",
+    "auth/invalid-credential":"The email or password is incorrect.",
+    "auth/user-not-found":"No Firebase account was found for that email.",
+    "auth/wrong-password":"The password is incorrect.",
+    "auth/too-many-requests":"Too many attempts. Please wait and try again.",
+    "permission-denied":"Firebase denied access. Check the Firestore Rules.",
+    "unavailable":"Firebase is temporarily unavailable. Check your internet connection."
+  };
+  return m[code]||error?.message||"Please try again.";
+}
+async function createCloudAccount(){
+  const email=document.getElementById("cloudEmail")?.value.trim();
+  const password=document.getElementById("cloudPassword")?.value||"";
+  if(!email||!password){cloudStatus("Enter your email and password first.");return;}
+  if(password.length<6){cloudStatus("Firebase requires a password of at least 6 characters.");return;}
+  try{await firebaseAuth.createUserWithEmailAndPassword(email,password);cloudStatus("Account created and signed in. ☁️",true);}
+  catch(e){cloudStatus("Account could not be created: "+friendlyFirebaseError(e));}
+}
+async function loginToCloud(){
+  const email=document.getElementById("cloudEmail")?.value.trim();
+  const password=document.getElementById("cloudPassword")?.value||"";
+  if(!email||!password){cloudStatus("Enter your email and password first.");return;}
+  try{await firebaseAuth.signInWithEmailAndPassword(email,password);cloudStatus("Signed in successfully. ☁️",true);}
+  catch(e){cloudStatus("Sign-in failed: "+friendlyFirebaseError(e));}
+}
+async function logoutFromCloud(){
+  try{await firebaseAuth.signOut();cloudStatus("Signed out. Your local data is still on this device.");}
+  catch(e){cloudStatus("Could not sign out: "+friendlyFirebaseError(e));}
+}
 function cloudDocRef(){
-  if(!firebaseDb || !cloudUser) return null;
-  return firebaseDb.collection("goalCRM")
-    .doc(cloudUser.uid)
-    .collection("data")
-    .doc("main");
+  if(!cloudUser)return null;
+  return firebaseDB.collection(CLOUD_COLLECTION).doc(cloudUser.uid).collection(CLOUD_DOCUMENT).doc("main");
 }
-
-function scheduleCloudSync(){
-  clearTimeout(cloudSyncTimer);
-  cloudSyncTimer = setTimeout(syncStateToCloud, 500);
-}
-
-async function syncStateToCloud(){
-  if(!cloudUser || !cloudReady || cloudApplying) return;
-  const ref = cloudDocRef();
-  if(!ref) return;
-
+async function uploadLocalDataToCloud(showMessage=true){
+  if(!cloudUser){cloudStatus("Sign in before uploading your local data.");return false;}
   try{
-    await ref.set({
-      state: JSON.parse(JSON.stringify(state)),
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-    }, {merge:true});
-    setCloudStatus("☁️ Your Goal CRM data is synced automatically.", true);
-  }catch(error){
-    console.error("Firebase sync error:", error);
-    setCloudStatus("☁️ Sync error: " + (error.message || error));
-  }
+    await cloudDocRef().set({state:JSON.parse(JSON.stringify(state)),updatedAt:firebase.firestore.FieldValue.serverTimestamp(),appVersion:"Goal CRM Firebase Sync v1"});
+    if(showMessage)cloudStatus("Your Goal CRM data was uploaded to the cloud. ☁️",true);
+    return true;
+  }catch(e){cloudStatus("Cloud upload failed: "+friendlyFirebaseError(e));return false;}
 }
-
-function stopCloudListener(){
-  if(typeof cloudUnsubscribe === "function") cloudUnsubscribe();
-  cloudUnsubscribe = null;
+async function downloadCloudDataToLocal(showMessage=true){
+  if(!cloudUser){cloudStatus("Sign in before downloading cloud data.");return false;}
+  try{
+    const snap=await cloudDocRef().get();
+    if(!snap.exists||!snap.data()?.state){cloudStatus("No Goal CRM cloud data exists yet. Your local data is still safe on this device.");return false;}
+    if(!confirm("Download the cloud copy and replace the Goal CRM data currently on this device? Your current device data will be replaced."))return false;
+    state=snap.data().state;
+    normalizeState();
+    saveState(false);
+    renderAll();
+    if(showMessage)cloudStatus("Cloud data downloaded to this device. ☁️",true);
+    return true;
+  }catch(e){cloudStatus("Cloud download failed: "+friendlyFirebaseError(e));return false;}
 }
+async function checkCloudDataAfterSignIn(){
+  if(!cloudUser)return;
+  try{
+    const ref=cloudDocRef();
+    const snap=await ref.get();
 
-function startCloudListener(){
-  stopCloudListener();
-  const ref = cloudDocRef();
-  if(!ref) return;
-
-  cloudUnsubscribe = ref.onSnapshot(async snapshot => {
-    if(!snapshot.exists){
-      cloudReady = true;
-      setCloudStatus("☁️ Account connected. Saving your CRM data to the cloud…", true);
-      await syncStateToCloud();
-      return;
+    if(snap.exists&&snap.data()?.state){
+      state=snap.data().state;
+      normalizeState();
+      saveState(false);
+      renderAll();
+      cloudStatus("Your Goal CRM data loaded from Firebase. ☁️",true);
+    }else{
+      await uploadLocalDataToCloud(false);
+      cloudStatus("Your Goal CRM data is now saved in Firebase. ☁️",true);
     }
 
-    const data = snapshot.data();
-
-    if(data && data.state){
-      cloudApplying = true;
-      try{
-        state = Object.assign({}, state, data.state);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        renderAll();
-      }finally{
-        cloudApplying = false;
-      }
-    }
-
-    cloudReady = true;
-    setCloudStatus("☁️ Your Goal CRM data is synced automatically.", true);
-  }, error => {
-    console.error("Firebase listener error:", error);
-    cloudReady = false;
-    setCloudStatus("☁️ Sync error: " + (error.message || error));
-  });
-}
-
-async function cloudLogin(){
-  if(!firebaseAuth){
-    setCloudStatus("Firebase is not available. Check your internet connection.");
-    return;
-  }
-
-  const email = document.getElementById("cloudEmail")?.value.trim();
-  const password = document.getElementById("cloudPassword")?.value || "";
-
-  if(!email || !password){
-    setCloudStatus("Enter your email and password.");
-    return;
-  }
-
-  try{
-    setCloudStatus("☁️ Signing in…");
-    await firebaseAuth.signInWithEmailAndPassword(email, password);
-  }catch(error){
-    console.error(error);
-    setCloudStatus("Login failed: " + (error.message || error));
-  }
-}
-
-async function cloudCreateAccount(){
-  if(!firebaseAuth){
-    setCloudStatus("Firebase is not available. Check your internet connection.");
-    return;
-  }
-
-  const email = document.getElementById("cloudEmail")?.value.trim();
-  const password = document.getElementById("cloudPassword")?.value || "";
-
-  if(!email || !password){
-    setCloudStatus("Enter an email and password.");
-    return;
-  }
-
-  if(password.length < 6){
-    setCloudStatus("Password must be at least 6 characters.");
-    return;
-  }
-
-  try{
-    setCloudStatus("☁️ Creating account…");
-    await firebaseAuth.createUserWithEmailAndPassword(email, password);
-  }catch(error){
-    console.error(error);
-    setCloudStatus("Account creation failed: " + (error.message || error));
-  }
-}
-
-async function cloudLogout(){
-  if(!firebaseAuth) return;
-  try{
-    await firebaseAuth.signOut();
-  }catch(error){
-    console.error(error);
-    setCloudStatus("Logout failed: " + (error.message || error));
-  }
-}
-
-function updateCloudUI(user){
-  const logoutBtn = document.getElementById("cloudLogoutBtn");
-  const emailInput = document.getElementById("cloudEmail");
-  const passwordInput = document.getElementById("cloudPassword");
-
-  if(user){
-    if(logoutBtn) logoutBtn.style.display = "inline-block";
-    if(emailInput){
-      emailInput.value = user.email || "";
-      emailInput.disabled = true;
-    }
-    if(passwordInput){
-      passwordInput.value = "";
-      passwordInput.disabled = true;
-    }
-  }else{
-    if(logoutBtn) logoutBtn.style.display = "none";
-    if(emailInput) emailInput.disabled = false;
-    if(passwordInput) passwordInput.disabled = false;
-  }
-}
-
-function initFirebaseCloudSync(){
-  try{
-    if(typeof firebase === "undefined"){
-      setCloudStatus("Firebase could not load. Check your internet connection.");
-      return;
-    }
-
-    firebaseApp = firebase.apps.length ? firebase.app() : firebase.initializeApp(firebaseConfig);
-    firebaseAuth = firebase.auth();
-    firebaseDb = firebase.firestore();
-
-    firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-      .catch(error => console.error("Auth persistence error:", error));
-
-    firebaseAuth.onAuthStateChanged(user => {
-      cloudUser = user;
-      cloudReady = false;
-      updateCloudUI(user);
-
-      if(user){
-        setCloudStatus("☁️ Signed in as " + (user.email || "your account") + " — syncing…");
-        startCloudListener();
-      }else{
-        stopCloudListener();
-        setCloudStatus("☁️ Sign in with the same account on your computer and phone to sync all CRM data.");
-      }
+    if(cloudUnsubscribe)cloudUnsubscribe();
+    cloudUnsubscribe=ref.onSnapshot(snapshot=>{
+      if(!snapshot.exists||!snapshot.data()?.state)return;
+      const cloudState=snapshot.data().state;
+      state=cloudState;
+      normalizeState();
+      saveState(false);
+      renderAll();
+      cloudStatus("Firebase sync updated your Goal CRM. ☁️",true);
+    },error=>{
+      cloudStatus("Firebase sync needs attention: "+friendlyFirebaseError(error));
     });
-  }catch(error){
-    console.error("Firebase initialization error:", error);
-    setCloudStatus("Firebase setup error: " + (error.message || error));
-  }
+  }catch(e){cloudStatus("Could not sync with Firebase: "+friendlyFirebaseError(e));}
 }
+function scheduleCloudSync(){
+  if(!cloudUser)return;
+  clearTimeout(cloudSyncTimer);
+  cloudSyncTimer=setTimeout(async()=>{
+    try{
+      await cloudDocRef().set({state:JSON.parse(JSON.stringify(state)),updatedAt:firebase.firestore.FieldValue.serverTimestamp(),appVersion:"Goal CRM Firebase Sync v1"});
+      cloudStatus("Saved locally and synced to the cloud. ☁️",true);
+    }catch(e){cloudStatus("Saved on this device. Cloud sync needs attention: "+friendlyFirebaseError(e));}
+  },700);
+}
+firebaseAuth.onAuthStateChanged(async user=>{
+  if(cloudUnsubscribe){
+    cloudUnsubscribe();
+    cloudUnsubscribe=null;
+  }
+  cloudUser=user||null;
+  if(cloudUser){
+    await checkCloudDataAfterSignIn();
+  }else{
+    cloudStatus("Firebase account not signed in; local data remains safe.");
+  }
+});
+
 
 /* =========================
    START APP
@@ -4208,22 +4225,7 @@ loadState();
 
 renderAll();
 
-initFirebaseCloudSync();
-
 </script>
 
-
-<div id="cloudSyncPanel" style="max-width:900px;margin:20px auto;padding:18px;border-radius:16px;background:#fff;border:2px solid #f3a6c7;box-shadow:0 4px 12px rgba(0,0,0,.08);font-family:Arial,sans-serif;">
-  <h2 style="margin-top:0;">☁️ Cloud Sync — Computer + Phone</h2>
-  <p style="margin-bottom:10px;">Sign in with the same Firebase account on your devices to keep your Goal CRM data synchronized automatically.</p>
-  <div id="cloudStatus" style="font-weight:bold;margin:10px 0;">Connecting to Firebase...</div>
-  <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
-    <input id="cloudEmail" type="email" placeholder="Email" autocomplete="email" style="padding:10px;border:1px solid #ccc;border-radius:8px;">
-    <input id="cloudPassword" type="password" placeholder="Password" autocomplete="current-password" style="padding:10px;border:1px solid #ccc;border-radius:8px;">
-    <button type="button" onclick="cloudLogin()" style="padding:10px 14px;border:0;border-radius:8px;cursor:pointer;">☁️ Login</button>
-    <button type="button" onclick="cloudCreateAccount()" style="padding:10px 14px;border:0;border-radius:8px;cursor:pointer;">➕ Create Account</button>
-    <button type="button" id="cloudLogoutBtn" onclick="cloudLogout()" style="display:none;padding:10px 14px;border:0;border-radius:8px;cursor:pointer;">Logout</button>
-  </div>
-</div>
 </body>
 </html>
